@@ -17,3 +17,4 @@
 /app/.htaccess
 /src/.htaccess
 /web/.htaccess
+/.idea/*
