@@ -1,3 +1,8 @@
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+admin_import:
+  resource: "@AppBundle/Resources/config/routing/admin.yml"
+  prefix: /admin
+

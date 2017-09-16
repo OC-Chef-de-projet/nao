@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include '::navbar.html.twig' %}
+
+    <div class="container">
+        {% include '::breadcrumb.html.twig'  with {'breadcrumb':breadcrumb} only %}
+        <h4>Administration - Tableau de bord</h4>
+        <div class="row">
+            {% for card in cards %}
+                <div class="col s12 m4">
+                    {% include 'admin/card.twig'  with {'card':card} only %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

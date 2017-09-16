@@ -33,3 +33,7 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    app.admin:
+        class: AppBundle\Service\Admin
+        public: true
+        arguments: []
