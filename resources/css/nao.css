@@ -2,6 +2,9 @@ body {
     background-color: #d1d1d1 ;
 }
 
+nav {
+    background-color: #424242;
+}
 .breadcrumb-nav {
     background-color: transparent;
     box-shadow: none;
@@ -13,6 +16,13 @@ body {
     color: black;
 }
 
+.btn {
+    background-color: black;
+}
+
+.btn:hover {
+    background-color: #555555;
+}
 .circle {
      width: 50px;
      height: 50px;
@@ -23,12 +33,17 @@ body {
 }
 
 .card-image {
-    min-height: 150px;
+    min-height: 80px;
 }
+
 
 .card-stacked {
     padding-top: 10px;
 }
 a {
     color: black;
+}
+
+.pagination li.active {
+    background-color: #555555;
 }

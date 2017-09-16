@@ -69,21 +69,21 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="token", type="string", length=255)
+     * @ORM\Column(name="token", type="string", length=255, nullable=true)
      */
     private $token;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="aboutme", type="string", length=255)
+     * @ORM\Column(name="aboutme", type="string", length=255, nullable=true)
      */
     private $aboutme;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="image_path", type="string", length=255)
+     * @ORM\Column(name="image_path", type="string", length=255, nullable=true)
      */
     private $image_path;
 
@@ -122,7 +122,7 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        return $this->roles;
+        return array($this->role);
     }
 
 
@@ -340,5 +340,22 @@ class User implements UserInterface
     public function getActive()
     {
         return $this->active;
+    }
+
+    public function getRoleString(){
+        return  self::roleToString($this->getRole());
+    }
+
+    public static function roleToString($role){
+        switch ($role){
+            case 'ROLE_ADMIN':
+                return 'Administrateur';
+            case 'ROLE_NATURALIST':
+                return 'Naturaliste';
+            case 'ROLE_OBSERVER':
+                return 'Observateur';
+            default:
+                return 'N/A';
+        }
     }
 }

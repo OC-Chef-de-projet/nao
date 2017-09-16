@@ -1,4 +1,9 @@
-services:
-  app.admin:
+app.admin:
     class: AppBundle\Service\Admin
+    public: true
+    arguments: []
+
+app.user:
+    class: AppBundle\Service\User
+    public: true
     arguments: []

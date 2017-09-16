@@ -69,21 +69,21 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="token", type="string", length=255)
+     * @ORM\Column(name="token", type="string", length=255, nullable=true)
      */
     private $token;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="aboutme", type="string", length=255)
+     * @ORM\Column(name="aboutme", type="string", length=255, nullable=true)
      */
     private $aboutme;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="image_path", type="string", length=255)
+     * @ORM\Column(name="image_path", type="string", length=255, nullable=true)
      */
     private $image_path;
 
@@ -125,5 +125,220 @@ class User implements UserInterface
         return $this->roles;
     }
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return User
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return User
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set newsletter
+     *
+     * @param boolean $newsletter
+     *
+     * @return User
+     */
+    public function setNewsletter($newsletter)
+    {
+        $this->newsletter = $newsletter;
+
+        return $this;
+    }
+
+    /**
+     * Get newsletter
+     *
+     * @return boolean
+     */
+    public function getNewsletter()
+    {
+        return $this->newsletter;
+    }
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     *
+     * @return User
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * Set aboutme
+     *
+     * @param string $aboutme
+     *
+     * @return User
+     */
+    public function setAboutme($aboutme)
+    {
+        $this->aboutme = $aboutme;
+
+        return $this;
+    }
+
+    /**
+     * Get aboutme
+     *
+     * @return string
+     */
+    public function getAboutme()
+    {
+        return $this->aboutme;
+    }
+
+    /**
+     * Set imagePath
+     *
+     * @param string $imagePath
+     *
+     * @return User
+     */
+    public function setImagePath($imagePath)
+    {
+        $this->image_path = $imagePath;
+
+        return $this;
+    }
+
+    /**
+     * Get imagePath
+     *
+     * @return string
+     */
+    public function getImagePath()
+    {
+        return $this->image_path;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     *
+     * @return User
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+}

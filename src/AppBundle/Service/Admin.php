@@ -18,20 +18,20 @@ class Admin
             'title' => 'Gérer les utilisateurs',
             'image' => '',
             'content' => 'Gestion des utilisateurs',
-            'link' => '#'
+            'link' => 'admin_user_index'
         ];
         $cards[] = [
             'title' => 'Gérer les articles',
             'image' => '',
             'content' => 'Gestion des articles du blog',
-            'link' => '#'
+            'link' => 'admin_user_index'
         ];
 
         $cards[] = [
             'title' => 'Modérer les commentaires',
             'image' => '',
             'content' => 'Modérer les commentaires des articles du blog',
-            'link' => '#'
+            'link' => 'admin_user_index'
 
         ];
         return $cards;

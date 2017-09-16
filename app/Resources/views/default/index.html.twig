@@ -2,26 +2,8 @@
 
 {% block body %}
     {% include '::navbar.html.twig' %}
-    <style>
-        .circle {
-            width: 50px;
-            height: 50px;
-            background: #ccc;
-            margin-top:10px;
-            margin-left:10px;
-            margin-right:25px;
-        }
-    </style>
     <div class="container">
-        {% include '::breadcrumb.html.twig'  with {'breadcrumb':breadcrumb} only %}
-        <h3>Administration - Tableau de bord</h3>
-        <div class="row d-flex">
-            {% for card in cards %}
-                <div class="col s12 m4 d-flex">
-                    {% include '::horizontalCard.html.twig'  with {'card':card} only %}
-                </div>
-            {% endfor %}
-        </div>
+        PAGE D'ACCUEIL DU SITE
     </div>
 {% endblock %}
 
