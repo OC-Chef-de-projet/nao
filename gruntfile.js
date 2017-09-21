@@ -176,19 +176,20 @@ module.exports = function (grunt) {
     // Run "grunt dist" to publish the template in a ./dist folder
     grunt.registerTask('dist',
         [
-            //'clean:before_copy',
+            'clean:before_copy',
+	    'dev',
+            'imagemin'
+        ]
+    );
+    grunt.registerTask('dev',
+        [
             'copy:font',
             'copy:jpg',
             'concat',
             'uglify',
             'cssmin',
             'postcss'
-            //'imagemin'
         ]
     );
-
-    // Run "grunt dev" to make sure your CSS and JS files are up to date for development
-    grunt.registerTask('dev',['dist']);
-
 };
 
