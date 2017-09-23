@@ -34,8 +34,8 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
         $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
         $user->setRole('ROLE_ADMIN');
-        $user->setActive(true);
-        $user->setNewsletter(false);
+        $user->setInactive(false);
+        $user->setNewsletter(false);$user->setImagePath('100.jpg');
         $manager->persist($user);
         $manager->flush();
 
@@ -46,7 +46,8 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
         $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
         $user->setRole('ROLE_NATURALIST');
-        $user->setActive(true);
+        $user->setInactive(false);
+        $user->setNewsletter(false);$user->setImagePath('300.jpg');
         $user->setNewsletter(false);
 
         $manager->persist($user);
@@ -59,7 +60,8 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
         $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
         $user->setRole('ROLE_OBSERVER');
-        $user->setActive(true);
+        $user->setInactive(false);
+        $user->setNewsletter(false);$user->setImagePath('200.jpg');
         $user->setNewsletter(false);
 
 
@@ -74,8 +76,9 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
             $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
             $user->setRole('ROLE_ADMIN');
-            $user->setActive(true);
+            $user->setInactive(true);
             $user->setNewsletter(false);
+            $user->setNewsletter(false);$user->setImagePath('default.png');
             $manager->persist($user);
             $manager->flush();
 
@@ -86,7 +89,8 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
             $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
             $user->setRole('ROLE_NATURALIST');
-            $user->setActive(true);
+            $user->setNewsletter(false);$user->setImagePath('default.png');
+            $user->setInactive(true);
             $user->setNewsletter(false);
 
             $manager->persist($user);
@@ -99,7 +103,8 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
             $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
             $user->setRole('ROLE_OBSERVER');
-            $user->setActive(true);
+            $user->setInactive(true);
+            $user->setNewsletter(false);$user->setImagePath('default.png');
             $user->setNewsletter(false);
 
 

@@ -36,3 +36,8 @@ services:
         class: AppBundle\Service\User
         public: true
         arguments: []
+
+
+    AppBundle\EventListener\UserListener:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }

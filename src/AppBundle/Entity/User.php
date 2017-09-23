@@ -88,11 +88,19 @@ class User implements UserInterface
     private $image_path;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime")
+     * @Assert\DateTime(format = "Y-m-d H:i:s")
+     */
+    private $created;
+
+    /**
      * @var boolean
      *
-     * @ORM\Column(name="active", type="boolean")
+     * @ORM\Column(name="inactive", type="boolean")
      */
-    private $active;
+    private $inactive;
 
 
     public function getSalt()
@@ -308,6 +316,7 @@ class User implements UserInterface
         return $this;
     }
 
+
     /**
      * Get imagePath
      *
@@ -319,27 +328,27 @@ class User implements UserInterface
     }
 
     /**
-     * Set active
+     * Set inactive
      *
-     * @param boolean $active
+     * @param boolean $inactive
      *
      * @return User
      */
-    public function setActive($active)
+    public function setInactive($inactive)
     {
-        $this->active = $active;
+        $this->inactive = $inactive;
 
         return $this;
     }
 
     /**
-     * Get active
+     * Get inactive
      *
      * @return boolean
      */
-    public function getActive()
+    public function getInactive()
     {
-        return $this->active;
+        return $this->inactive;
     }
 
     public function getRoleString(){
@@ -358,4 +367,28 @@ class User implements UserInterface
                 return 'N/A';
         }
     }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return User
+     */
+    public function setCreated(\DateTime $created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
 }

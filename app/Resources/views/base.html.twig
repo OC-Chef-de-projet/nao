@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Noa Amis les Oiseaux{% endblock %}</title>
+        <title>{% block title %}Nos Amis les Oiseaux{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('assets/css/core.min.css') }}"/>
             <link rel="stylesheet" href="{{ asset('assets/css/custom.min.css') }}"/>
@@ -11,11 +11,16 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     </head>
-    <body>
+    <body {% if bodyClass is defined %}class="{{ bodyClass }}{% endif %}">
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="{{ asset('assets/js/core.min.js') }}"></script>
             <script src="{{ asset('assets/js/custom.min.js') }}"></script>
         {% endblock %}
+        <script>
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+        </script>
     </body>
 </html>

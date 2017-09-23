@@ -10,6 +10,7 @@ namespace AppBundle\Service;
 
 class User
 {
+
     public function getIndexBreadcrumb()
     {
         $breadcrumb = [
@@ -28,6 +29,8 @@ class User
         ];
         return $breadcrumb;
     }
+
+
     public function getUsersTabs($role,$page)
     {
         $tabs = [

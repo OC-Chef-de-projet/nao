@@ -11,31 +11,6 @@ namespace AppBundle\Service;
 class Admin
 {
 
-    public function getHomeContent()
-    {
-        $cards = [];
-        $cards[] = [
-            'title' => 'Gérer les utilisateurs',
-            'image' => '',
-            'content' => 'Gestion des utilisateurs',
-            'link' => 'admin_user_index'
-        ];
-        $cards[] = [
-            'title' => 'Gérer les articles',
-            'image' => '',
-            'content' => 'Gestion des articles du blog',
-            'link' => 'admin_user_index'
-        ];
-
-        $cards[] = [
-            'title' => 'Modérer les commentaires',
-            'image' => '',
-            'content' => 'Modérer les commentaires des articles du blog',
-            'link' => 'admin_user_index'
-
-        ];
-        return $cards;
-    }
 
     public function getHomeBreadcrumb()
     {

@@ -1,7 +1,4 @@
-admin_user_index:
-    path:     /{page}/{role}
-    defaults: { _controller: AppBundle:Admin\User:index, page: 1, role: 'ROLE_OBSERVER' }
-    methods:  GET
+
 
 admin_user_new:
     path:     /new
@@ -13,8 +10,17 @@ admin_user_edit:
     defaults: { _controller: AppBundle:Admin\User:edit }
     methods:  [GET, POST,DELETE]
 
+admin_user_update:
+    path:     /{id}/update
+    defaults: { _controller: AppBundle:Admin\User:update }
+    methods:  [GET, POST,DELETE]
+
 admin_user_delete:
     path:     /{id}/delete
     defaults: { _controller: AppBundle:Admin\User:delete }
     methods:  DELETE
 
+admin_user_index:
+    path:     /{page}/{role}
+    defaults: { _controller: AppBundle:Admin\User:index, page: 1, role: 'ROLE_OBSERVER' }
+    methods:  [GET, POST]

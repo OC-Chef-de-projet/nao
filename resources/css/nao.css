@@ -1,5 +1,5 @@
 body {
-    background-color: #d1d1d1 ;
+    background-color: #FFFFFF ;
 }
 
 nav {
@@ -16,6 +16,17 @@ nav {
     color: black;
 }
 
+.background-2 {
+    background-color: rgba(0,150,136,0.3);
+}
+
+
+.search_name {
+    margin-left: 40px;
+}
+input[type="text"] {
+    background-color: #FAFAFA !important;
+}
 .btn {
     background-color: black;
 }
@@ -23,20 +34,89 @@ nav {
 .btn:hover {
     background-color: #555555;
 }
-.circle {
+
+.grey-circle {
      width: 50px;
      height: 50px;
-     background: #ccc;
+     background: transparent;
+
      margin-top:10px;
-     margin-left:10px;
      margin-right:25px;
+
 }
 
-.card-image {
-    min-height: 80px;
+.admin_navbar {
+    background-color: #3F51B5;
+}
+.text-grey {
+    color: #949494;
+}
+
+.not-active {
+    pointer-events: none;
+    cursor: default;
+}
+
+.roundedImage {
+    overflow:hidden;
+    -webkit-border-radius:25px;
+    -moz-border-radius:25px;
+    border-radius:25px;
+    width:50px;
+    height:50px;
+    background-color: #949494;
+    margin-right:25px;
+}
+
+.background-1 {
+    background-color: #ffffff;
+}
+
+.btn-cancel {
+    border-color: #424242;
+    background-color: #ffffff;
+    color: black;
+    text-transform: uppercase;
+}
+
+.btn-validate {
+    background-color: #FF3D00;
+    color: white;
+    text-transform: uppercase;
 }
 
 
+label {
+    color: black;
+}
+.roundedImage-medium {
+    overflow:hidden;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    width:100px;
+    height:100px;
+    background-color: #FAFAFA;
+    margin-right:50px;
+}
+
+.pagination li.active a {
+    background-color: #3F51B5;
+}
+.admin_card {
+    height: 150px !important;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+
+.user-flex{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
 .card-stacked {
     padding-top: 10px;
 }

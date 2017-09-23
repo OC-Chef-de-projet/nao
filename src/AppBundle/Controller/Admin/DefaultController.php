@@ -9,8 +9,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         return $this->render('admin\index.html.twig',[
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-            'cards' => $this->container->get('app.admin')->getHomeContent(),
+            'bodyClass' => 'background-2',
             'breadcrumb' => $this->container->get('app.admin')->getHomeBreadcrumb()
         ]);
     }
