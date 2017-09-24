@@ -31,23 +31,26 @@ class User
     }
 
 
-    public function getUsersTabs($role,$page)
+    public function getUsersTabs($role)
     {
         $tabs = [
             'ROLE_OBSERVER' => [
                 'role' => 'ROLE_OBSERVER',
                 'text' => 'Particuliers',
-                'active' => 0
+                'active' => 0,
+                'href' => ''
             ],
             'ROLE_NATURALIST' => [
                 'role' => 'ROLE_NATURALIST',
                 'text' => 'Naturalistes',
-                'active' => 0
+                'active' => 0,
+                'href' => ''
             ],
             'ROLE_ADMIN' => [
                 'role' => 'ROLE_ADMIN',
                 'text' => 'Administrateurs',
-                'active' => 0
+                'active' => 0,
+                'href' => ''
             ],
         ];
         $tabs[$role]['active'] = 1;

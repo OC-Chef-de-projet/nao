@@ -1,17 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block navtabs %}
-    <div class="nav-content">
-        <ul class="tabs tabs-transparent">
-            <li class="tab"><a target="_self" href="{{ path('admin_user_index', {page: current, role: 'ROLE_OBSERVER'}) }}" {{ tab.active ? 'class="active"' }}>Particuliers</a></li>
-            <li class="tab"><a target="_self" href="{{ path('admin_user_index', {page: current, role: 'ROLE_NATURALIST'}) }}" {{ tab.active ? 'class="active"' }}>Naturalistes</a></li>
-            <li class="tab"><a target="_self" href="{{ path('admin_user_index', {page: current, role: 'ROLE_ADMIN'}) }}" {{ tab.active ? 'class="active"' }}>Administrateurs</a></li>
-        </ul>
-    </div>
-{% endblock %}
+
+
 
 {% block body %}
-    {% include '::navbar.html.twig' %}
+{% include ':admin/user:navbar.html.twig' %}
+
+
     <div class="container">
         {% include '::breadcrumb.html.twig'  with {'breadcrumb':breadcrumb} only %}
         <h4>{% trans %}gestion_utilisateurs{% endtrans %}</h4>
@@ -69,5 +64,8 @@
                 </ul>
             </div>
     </div>
-{% endblock %}
+{% endblock body %}
+
+
+
 

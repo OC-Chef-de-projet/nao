@@ -60,7 +60,7 @@ class UserController extends Controller
         $maxPages = ceil($users->count() / $limit);
         return $this->render('@AdminUser/index.html.twig', array(
             'bodyClass' => 'background-2',
-            'tabs' => $this->container->get('app.user')->getUsersTabs($role,$page),
+            'tabs' => $this->container->get('app.user')->getUsersTabs($role),
             'users' => $users->getIterator(),
             'totalUsers' => $totalUsers,
             'totalDisplayed' => $totalDisplayed,

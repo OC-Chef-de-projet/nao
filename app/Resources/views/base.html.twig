@@ -6,17 +6,17 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('assets/css/core.min.css') }}"/>
             <link rel="stylesheet" href="{{ asset('assets/css/custom.min.css') }}"/>
-        {% endblock %}
+        {% endblock stylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     </head>
     <body {% if bodyClass is defined %}class="{{ bodyClass }}{% endif %}">
-        {% block body %}{% endblock %}
+        {% block body %}{% endblock body %}
         {% block javascripts %}
             <script src="{{ asset('assets/js/core.min.js') }}"></script>
             <script src="{{ asset('assets/js/custom.min.js') }}"></script>
-        {% endblock %}
+        {% endblock javascripts%}
         <script>
             $(document).ready(function() {
                 $('select').material_select();
