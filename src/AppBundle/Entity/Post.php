@@ -213,14 +213,11 @@ class Post
             case self::DRAFT:
                 return 'Brouillon';
 
-            case self::TO_BE_VALIDATED:
-                return 'A valider';
-
             case self::PUBLISHED:
                 return 'Publié';
 
-            case self::REFUSED:
-                return 'Refusé';
+            case self::ARCHIVED:
+                return 'Archivé';
 
             default:
                 return 'Erreur';

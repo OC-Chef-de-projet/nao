@@ -41,6 +41,7 @@ twig:
     paths:
         "%kernel.root_dir%/Resources/views/admin": Admin
         "%kernel.root_dir%/Resources/views/admin/user": AdminUser
+        "%kernel.root_dir%/Resources/views/admin/post": AdminPost
 # Doctrine Configuration
 doctrine:
     dbal:

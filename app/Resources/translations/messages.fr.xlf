@@ -56,6 +56,21 @@
                 <target>Utilisateur bloqué</target>
             </trans-unit>
 
+            <!-- Gestion des articles -->
+            <trans-unit id="gestion_articles">
+                <source>gestion_articles</source>
+                <target>Gestion des articles</target>
+            </trans-unit>
+            <trans-unit id="poste_le">
+                <source>poste_le</source>
+                <target>Posté le</target>
+            </trans-unit>
+            <trans-unit id="cree_le">
+                <source>cree_le</source>
+                <target>Créé le</target>
+            </trans-unit>
+
+
             <!-- Général -->
             <trans-unit id="annuler">
                 <source>annuler</source>

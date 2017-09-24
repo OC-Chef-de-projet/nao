@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+{% block body %}
+    {% include ':admin/post:navbar.html.twig' %}
+
+    <div class="container">
+        {% include '::breadcrumb.html.twig'  with {'breadcrumb':breadcrumb} only %}
+        <h4>{% trans %}gestion_articles{% endtrans %}</h4>
+        <!-- -->
+
+        <div class="row">
+            {% for post in posts %}
+
+                <div class="col s12 m6">
+                    <div class="card horizontal card-post">
+                        <div class="card-image card-post">
+                            <img src="{{ asset('images/posts/'~post.imagelink) }}" style="top:5%;left:5%;height:80%;width:80%">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <b>{{ post.title }}</b>
+                                <p>
+                                    {% if post.publishedAt != null %}
+                                        {% trans %}poste_le{% endtrans %} {{ post.publishedAt | date('d/m/Y') }}
+                                    {% else %}
+                                        {% trans %}cree_le{% endtrans %} {{ post.createdAt | date('d/m/Y') }}
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="card-action right-align">
+                                <a class="waves-effect">
+                                    <i class="material-icons left post-icon">delete</i>
+                                    {% trans %}supprimer{% endtrans %}
+                                </a>
+                                <a class="waves-effect">
+                                    <i class="material-icons left post-icon">edit</i>
+                                    {% trans %}editer{% endtrans %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- end user -->
+        <div class="container center-align">
+            <ul class="pagination">
+
+                <li {{ current <= 1 ? 'class="disabled"': 'class="waves-effect"' }}>
+                    <a href="{{ path('admin_post_index', {page: current-1 < 1 ? 1 : current-1}) }}">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+
+                {% for i in current..current+2 %}
+                    <li class="waves-effect {{ current == i ? 'active' }}{{ i > maxPages ? 'disabled' }}">
+                        <a {{ i > maxPages ? 'class="not-active' }}
+                                href="{{ path('admin_post_index', {page: i }) }}">{{ i }}</a>
+                    </li>
+                {% endfor %}
+
+                <li {{ current == maxPages ? 'class="disabled"': 'class="waves-effect"' }}>
+                    <a href="{{ path('admin_post_index', {page: current+1 <= maxPages ? current+1 : current}) }}">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock body %}
+
+
+
+

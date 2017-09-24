@@ -8,7 +8,9 @@
 
 namespace AppBundle\Service;
 
-class User
+use AppBundle\Entity\Post;
+
+class PostService
 {
 
     public function getIndexBreadcrumb()
@@ -24,35 +26,30 @@ class User
             ],
             [
                 'href' => '#',
-                'text' => 'Gestion des utilisateurs'
+                'text' => 'Gestion des articles'
             ],
         ];
         return $breadcrumb;
     }
 
 
-    public function getUsersTabs($role,$page)
+    public function getPostsTabs($post)
     {
         $tabs = [
-            'ROLE_OBSERVER' => [
-                'role' => 'ROLE_OBSERVER',
-                'text' => 'Particuliers',
+            Post::DRAFT => [
+                'status' => Post::DRAFT,
+                'text' => 'Brouillons',
                 'active' => 0,
                 'href' => ''
             ],
-            'ROLE_NATURALIST' => [
-                'role' => 'ROLE_NATURALIST',
-                'text' => 'Naturalistes',
+            Post::PUBLISHED => [
+                'status' => Post::PUBLISHED,
+                'text' => 'Publiés',
                 'active' => 0,
                 'href' => ''
-            ],
-            'ROLE_ADMIN' => [
-                'role' => 'ROLE_ADMIN',
-                'text' => 'Administrateurs',
-                'active' => 0
-            ],
+            ]
         ];
-        $tabs[$role]['active'] = 1;
+        $tabs[$post]['active'] = 1;
         return $tabs;
     }
 }

@@ -37,6 +37,11 @@ services:
         public: true
         arguments: []
 
+    app.post:
+        class: AppBundle\Service\PostService
+        public: true
+        arguments: []
+
 
     AppBundle\EventListener\UserListener:
         tags:
