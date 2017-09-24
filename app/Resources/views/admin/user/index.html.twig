@@ -31,7 +31,7 @@
             {%  for user in users %}
                 <div class="col s12 m6">
                     <a href="{{ path('admin_user_update', { 'id': user.id}) }}">
-                        <div class="card horizontal">
+                        <div class="card horizontal z-depth-0">
                             <div class="card-image roundedImage">
                                 <img src="{{ asset('images/users/'~user.getImagePath) }}">
                             </div>
