@@ -2,12 +2,54 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Nos Amis les Oiseaux{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('assets/css/core.min.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('assets/css/custom.min.css') }}"/>
+        {% endblock stylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <body {% if header.bodyClass is defined %}class="{{ header.bodyClass }}{% endif %}">
+        {% block body %}{% endblock body %}
+        {% block javascripts %}
+            <script src="{{ asset('assets/js/core.min.js') }}"></script>
+            <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+        {% endblock javascripts%}
+        <script>
+            $(document).ready(function() {
+                $('select').material_select();
+                $('.modal').modal();
+            });
+            function post_delete_confirm(id) {
+                MaterialDialog.dialog(
+                    "{% trans %}supprimer_article_confirm{% endtrans %}",
+                    {
+                        title: "{% trans %}supprimer_article{% endtrans %}",
+                        modalType: "modal-fixed-footer", // Can be empty, modal-fixed-footer or bottom-sheet
+                        buttons: {
+                            // Use by default close and confirm buttons
+                            confirm: {
+                                className: "btn-validate",
+                                text: "{% trans %}oui{% endtrans %}",
+                                callback: function () {
+
+                                    var url = '{{ path('admin_post_delete',{ 'id':'post_id'}) }}';
+                                    url = url.replace('post_id',id);
+                                    window.location.href = url;
+                                }
+                            },
+                            close: {
+                                className: "btn-cancel",
+                                text: "{% trans %}non{% endtrans %}",
+                                modalClose: true
+                            }
+                        }
+                    }
+                )
+            }
+
+        </script>
     </body>
 </html>

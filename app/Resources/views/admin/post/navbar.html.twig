@@ -1,0 +1,32 @@
+
+<nav  class="nav-extended">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Observer</a></li>
+            <li><a href="#">Carte</a></li>
+            <li><a href="#">A propos</a></li>
+            <li><a href="#">Le blog</a></li>
+            <li><a href="#">Restez connecté</a></li>
+            <li><a class="waves-effect waves-light btn" href="{{ url('admin_homepage') }}">VOTRE ESPACE</a></li>
+            <li><a href="#"><i class="material-icons">notifications</i></a></li>
+            <li><a href="#"><i class="material-icons">search</i></a></li>
+        </ul>
+
+    </div>
+
+    <div class="nav-content">
+
+
+
+<!--        <i class="material-icons dp48">note_add</i>-->
+        <ul class="tabs tabs-transparent">
+            {% for tab in header.tabs %}
+                <li class="tab"><a target="_self" href="{{ path('admin_post_index', { 'page': '1', 'status': tab.status }) }}" {{ tab.active ? 'class="active"' }}>{{ tab.text }}</a></li>
+            {% endfor %}
+        </ul>
+        <a class="btn-floating halfway-fab waves-effect btn-validate" href="{{ url('admin_post_new') }}"><i class="material-icons">note_add</i></a>
+    </div>
+
+</nav>

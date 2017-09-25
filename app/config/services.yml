@@ -4,16 +4,10 @@ parameters:
     #parameter_name: value
 
 services:
-    # default configuration for services in *this* file
-    _defaults:
-        # automatically injects dependencies in your services
-        autowire: true
-        # automatically registers your services as commands, event subscribers, etc.
-        autoconfigure: true
-        # this means you cannot fetch services directly from the container via $container->get()
-        # if you need to do this, you can override this setting on individual services
-        public: false
 
+    form_authenticator:
+        class: AppBundle\Security\FormAuthenticator
+        arguments: ['@router', '@form.factory', '@security.user_password_encoder.generic']
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     AppBundle\:
@@ -33,3 +27,28 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    app.admin:
+        class: AppBundle\Service\AdminService
+        public: true
+        arguments: []
+
+    app.user:
+        class: AppBundle\Service\UserService
+        public: true
+        arguments: ['%list_limit%']
+
+    app.post:
+        class: AppBundle\Service\PostService
+        public: true
+        arguments: ["@doctrine.orm.entity_manager",'%posts_directory%', '%list_limit%']
+
+
+    AppBundle\EventListener\UserListener:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+
+    AppBundle\EventListener\PostListener:
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: prePersist }
+

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include '::navbar.html.twig' %}
+    <div class="container">
+        {% include '::breadcrumb.html.twig'  with {'breadcrumb':header.breadcrumb} only %}
+        <h4>{% trans %}admin_dashboard{% endtrans %}</h4>
+        <div class="row">
+            <!-- -->
+            <div class="col s12 m4">
+                <a href="{{ url('admin_user_index') }}">
+                    <div class="card horizontal admin_card">
+                        <div class="card-image">
+                            <img src="../../assets/img/grey-circle-.png" class="grey-circle">
+                        </div>
+                        <div class="card-stacked">
+                            <b>{% trans %}gerer_utilisateurs_titre{% endtrans %}</b>
+                            <span class="text-grey">{% trans %}gerer_utilisateurs_contenu{% endtrans %}</span>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+            <!-- -->
+            <div class="col s12 m4">
+                <a href="{{ url('admin_post_index') }}">
+                    <div class="card horizontal admin_card">
+                        <div class="card-image">
+                            <img src="../../assets/img/grey-circle-.png" class="grey-circle">
+                        </div>
+                        <div class="card-stacked">
+                            <b>{% trans %}gerer_articles_titre{% endtrans %}</b>
+                            <span class="text-grey">{% trans %}gerer_articles_contenu{% endtrans %}</span>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+
+            <!-- -->
+            <div class="col s12 m4">
+                <a href="{{ url('admin_user_index') }}">
+                    <div class="card horizontal admin_card">
+                        <div class="card-image">
+                            <img src="../../assets/img/grey-circle-.png" class="grey-circle">
+                        </div>
+                        <div class="card-stacked">
+                            <b>{% trans %}moderer_commentaires_titre{% endtrans %}</b>
+                            <span class="text-grey">{% trans %}moderer_commentaires_contenu{% endtrans %}</span>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -17,3 +17,5 @@
 /app/.htaccess
 /src/.htaccess
 /web/.htaccess
+/node_modules
+/web/assets

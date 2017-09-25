@@ -6,11 +6,13 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
+    posts_directory: '%kernel.project_dir%/web/images/posts'
+    list_limit: 8
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -38,7 +40,10 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
-
+    paths:
+        "%kernel.root_dir%/Resources/views/admin": Admin
+        "%kernel.root_dir%/Resources/views/admin/user": AdminUser
+        "%kernel.root_dir%/Resources/views/admin/post": AdminPost
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -49,6 +54,7 @@ doctrine:
         user: '%database_user%'
         password: '%database_password%'
         charset: UTF8
+        server_version: 14.14
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'

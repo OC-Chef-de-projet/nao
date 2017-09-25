@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="NAO">
+                <source>NAO</source>
+                <target>Nos Amis les Oiseaux</target>
+            </trans-unit>
+
+            <!-- Dashboard -->
+            <trans-unit id="admin_dashboard">
+                <source>admin_dashboard</source>
+                <target>Administration - Tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="gerer_utilisateurs_titre">
+                <source>gerer_utilisateurs_titre</source>
+                <target>Gérer les utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="gerer_utilisateurs_contenu">
+                <source>gerer_utilisateurs_contenu</source>
+                <target>Attribuer ou retirer des droits aux utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="gerer_articles_titre">
+                <source>gerer_articles_titre</source>
+                <target>Gérer les articles</target>
+            </trans-unit>
+            <trans-unit id="gerer_articles_contenu">
+                <source>gerer_articles_contenu</source>
+                <target>Ajouter/modifier/supprimer des articles</target>
+            </trans-unit>
+
+            <trans-unit id="moderer_commentaires_titre">
+                <source>moderer_commentaires_titre</source>
+                <target>Modérer les commentaires</target>
+            </trans-unit>
+            <trans-unit id="moderer_commentaires_contenu">
+                <source>moderer_commentaires_contenu</source>
+                <target>Accepter ou refuser les commentaires des internautes</target>
+            </trans-unit>
+
+            <!-- Gestion des utilisateurs -->
+            <trans-unit id="gestion_utilisateurs">
+                <source>gestion_utilisateurs</source>
+                <target>Gestion des utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="recherche_par_nom">
+                <source>recherche_par_nom</source>
+                <target>Rechercher par nom</target>
+            </trans-unit>
+            <trans-unit id="inscrit_depuis">
+                <source>inscrit_depuis</source>
+                <target>Inscrit depuis le</target>
+            </trans-unit>
+            <trans-unit id="utilisateur_bloque">
+                <source>utilisateur_bloque</source>
+                <target>Utilisateur bloqué</target>
+            </trans-unit>
+
+            <!-- Gestion des articles -->
+            <trans-unit id="gestion_articles">
+                <source>gestion_articles</source>
+                <target>Gestion des articles</target>
+            </trans-unit>
+            <trans-unit id="poste_le">
+                <source>poste_le</source>
+                <target>Posté le</target>
+            </trans-unit>
+            <trans-unit id="cree_le">
+                <source>cree_le</source>
+                <target>Créé le</target>
+            </trans-unit>
+            <trans-unit id="rediger_article">
+                <source>rediger_article</source>
+                <target>Rédiger un article</target>
+            </trans-unit>
+            <trans-unit id="sauve_brouillon">
+                <source>sauve_brouillon</source>
+                <target>Sauvegarder le brouillon</target>
+            </trans-unit>
+            <trans-unit id="sauve_publie">
+                <source>sauve_publie</source>
+                <target>Publier l'article</target>
+            </trans-unit>
+            <trans-unit id="supprimer_article">
+                <source>supprimer_article</source>
+                <target>Suppression article</target>
+            </trans-unit>
+            <trans-unit id="supprimer_article_confirm">
+                <source>supprimer_article_confirm</source>
+                <target>Etes-vous sur de vouloir supprimer cet article ?</target>
+            </trans-unit>
+
+
+
+
+
+
+            <!-- Général -->
+            <trans-unit id="annuler">
+                <source>annuler</source>
+                <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="enregistrer">
+                <source>enregistrer</source>
+                <target>Enregistrer</target>
+            </trans-unit>
+
+            <!-- roles -->
+            <trans-unit id="ROLE_ADMIN">
+                <source>ROLE_ADMIN</source>
+                <target>Administrateur</target>
+            </trans-unit>
+            <trans-unit id="ROLE_NATURALIST">
+                <source>ROLE_NATURALIST</source>
+                <target>Naturaliste</target>
+            </trans-unit>
+            <trans-unit id="ROLE_OBSERVER">
+                <source>ROLE_OBSERVER</source>
+                <target>Particulier</target>
+            </trans-unit>
+
+            <trans-unit id="profil_ROLE_ADMIN">
+                <source>profil_ROLE_ADMIN</source>
+                <target>profil administrateur</target>
+            </trans-unit>
+            <trans-unit id="profil_ROLE_NATURALIST">
+                <source>profil_ROLE_NATURALIST</source>
+                <target>Profil naturaliste</target>
+            </trans-unit>
+            <trans-unit id="profil_ROLE_OBSERVER">
+                <source>profil_ROLE_OBSERVER</source>
+                <target>Profil particulier</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>
+
+
+        <!--
+        {% trans %}{% endtrans %}
+        -->
