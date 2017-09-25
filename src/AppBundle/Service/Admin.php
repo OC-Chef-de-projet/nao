@@ -27,3 +27,4 @@ class Admin
         return $breadcrumb;
     }
 }
+

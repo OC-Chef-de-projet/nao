@@ -24,3 +24,4 @@ admin_user_index:
     path:     /{page}/{role}
     defaults: { _controller: AppBundle:Admin\User:index, page: 1, role: 'ROLE_OBSERVER' }
     methods:  [GET, POST]
+

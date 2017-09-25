@@ -77,3 +77,4 @@ class PostService
         return $tabs;
     }
 }
+

@@ -7,3 +7,4 @@ app.user:
     class: AppBundle\Service\User
     public: true
     arguments: []
+
