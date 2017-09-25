@@ -60,22 +60,18 @@ class UserController extends Controller
             }
         }
 
-        $limit = 8;
-        $users = $em->getRepository('AppBundle:User')->searchUsersByRole($page,$role,$limit,$pattern);
-        $totalUsers = $users->count();
-        $totalDisplayed = $users->getIterator()->count();
-        $maxPages = ceil($users->count() / $limit);
-        return $this->render('@AdminUser/index.html.twig', array(
-            'bodyClass' => 'background-2',
-            'tabs' => $this->container->get('app.user')->getUsersTabs($role),
+        $users = $em->getRepository('AppBundle:User')->searchUsersByRole($page,$role,$this->getParameter('list_limit'),$pattern);
+
+        return $this->render('@AdminUser/index.html.twig', [
+            'header' => [
+                'bodyClass' => 'background-2',
+                'tabs' => $this->container->get('app.user')->getUsersTabs($role),
+                'breadcrumb' => $this->container->get('app.user')->getIndexBreadcrumb()
+            ],
+            'paginate' => $this->container->get('app.user')->getPagination($users,$page),
             'users' => $users->getIterator(),
-            'totalUsers' => $totalUsers,
-            'totalDisplayed' => $totalDisplayed,
-            'current' => $page,
-            'maxPages' => $maxPages,
-            'breadcrumb' => $this->container->get('app.user')->getIndexBreadcrumb(),
             'form' => $form->createView()
-        ));
+        ]);
     }
 
     /**
@@ -105,11 +101,13 @@ class UserController extends Controller
             $em->flush();
             $user = $em->getRepository('AppBundle:User')->find($user->getId());
         }
-        return $this->render('@AdminUser/user.html.twig', array(
-            'breadcrumb' => $this->container->get('app.user')->getIndexBreadcrumb(),
-            'bodyClass' => 'background-2',
+        return $this->render('@AdminUser/user.html.twig', [
+            'header' => [
+                'breadcrumb' => $this->container->get('app.user')->getIndexBreadcrumb(),
+                'bodyClass' => 'background-2'
+            ],
             'form' => $form->createView(),
             'user' => $user
-        ));
+        ]);
     }
 }

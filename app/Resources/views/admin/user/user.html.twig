@@ -3,7 +3,7 @@
 {% block body %}
     {% include '::navbar.html.twig' %}
 <div class="container">
-    {% include '::breadcrumb.html.twig'  with {'breadcrumb':breadcrumb} only %}
+    {% include '::breadcrumb.html.twig'  with {'breadcrumb':header.breadcrumb} only %}
     <h4>{% trans %}gestion_utilisateurs{% endtrans %}</h4>
     <div class="card large row">
         <div class="col s12 m6">

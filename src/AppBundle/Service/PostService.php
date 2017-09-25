@@ -92,12 +92,12 @@ class PostService
     /**
      * Get pagination parameters
      *
-     * @param $posts  Post
-     * @param $status Post status (Post::DRAFT, Post::PUBLISHED)
+     * @param $posts  Post list
+     * @param $status Post status filter (Post::DRAFT, Post::PUBLISHED)
      *
      * @return array  Current pagination
      */
-    public function getPagination($posts,$status)
+    public function getPagination($posts,$page)
     {
 
         $totalPosts = $posts->count();
@@ -106,10 +106,9 @@ class PostService
 
         return ['totalPosts' => $totalPosts,
                 'totalDisplayed' => $totalDisplayed,
-                'current' => $status,
+                'current' => $page,
                 'maxPages' => $maxPages
         ];
-
     }
 
     /**

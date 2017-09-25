@@ -28,14 +28,14 @@ services:
     #     arguments:
     #         $someArgument: 'some_value'
     app.admin:
-        class: AppBundle\Service\Admin
+        class: AppBundle\Service\AdminService
         public: true
         arguments: []
 
     app.user:
-        class: AppBundle\Service\User
+        class: AppBundle\Service\UserService
         public: true
-        arguments: []
+        arguments: ['%list_limit%']
 
     app.post:
         class: AppBundle\Service\PostService

@@ -13,7 +13,7 @@ namespace AppBundle\Service;
  *
  * @package AppBundle\Service
  */
-class User
+class UserService
 {
 
     private $list_limit;
@@ -83,12 +83,12 @@ class User
     /**
      * Get pagination parameters
      *
-     * @param $users  User list
-     * @param $role   User role filter (User::ROLE_ADMIN, User::ROLE_NATURALIST, User::ROLE_OBSERVER)
+     * @param $users  UserService list
+     * @param $role   UserService role filter (User::ROLE_ADMIN, User::ROLE_NATURALIST, User::ROLE_OBSERVER)
      *
      * @return array  Current pagination
      */
-    public function getPagination($users,$role)
+    public function getPagination($users,$page)
     {
 
         $totalUsers = $users->count();

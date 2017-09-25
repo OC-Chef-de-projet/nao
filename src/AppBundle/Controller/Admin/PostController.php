@@ -39,7 +39,7 @@ class PostController extends Controller
                 'tabs' => $this->container->get('app.post')->getPostsTabs($status),
                 'breadcrumb' => $this->container->get('app.post')->getIndexBreadcrumb()
             ],
-            'paginate' => $this->container->get('app.post')->getPagination($posts,$status),
+            'paginate' => $this->container->get('app.post')->getPagination($posts,$page),
             'posts' => $posts->getIterator()
         ]);
     }

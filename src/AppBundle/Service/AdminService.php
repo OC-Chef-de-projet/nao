@@ -13,7 +13,7 @@ namespace AppBundle\Service;
  *
  * @package AppBundle\Service
  */
-class Admin
+class AdminService
 {
 
     /**
