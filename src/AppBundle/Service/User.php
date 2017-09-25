@@ -31,7 +31,7 @@ class User
     }
 
 
-    public function getUsersTabs($role,$page)
+    public function getUsersTabs($role)
     {
         $tabs = [
             'ROLE_OBSERVER' => [

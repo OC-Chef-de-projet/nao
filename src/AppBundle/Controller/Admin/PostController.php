@@ -45,7 +45,6 @@ class PostController extends Controller
      */
     public function editAction(Request $request, Post $post)
     {
-        $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
 
