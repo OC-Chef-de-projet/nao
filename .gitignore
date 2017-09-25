@@ -17,6 +17,5 @@
 /app/.htaccess
 /src/.htaccess
 /web/.htaccess
-/.idea
 /node_modules
 /web/assets
