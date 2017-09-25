@@ -4,6 +4,7 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Post;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Form;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * Class PostService
@@ -97,7 +98,7 @@ class PostService
      *
      * @return array  Current pagination
      */
-    public function getPagination($posts, $page)
+    public function getPagination(Paginator $posts, $page)
     {
 
         $totalPosts = $posts->count();

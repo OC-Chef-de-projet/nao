@@ -8,6 +8,8 @@
 
 namespace AppBundle\Service;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 /**
  * Class User
  *
@@ -88,7 +90,7 @@ class UserService
      *
      * @return array  Current pagination
      */
-    public function getPagination($users,$page)
+    public function getPagination(Paginator $users,$page)
     {
 
         $totalUsers = $users->count();
