@@ -14,16 +14,30 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use AppBundle\Entity\Post;
 
-
+/**
+ * Class LoadPostData
+ * @package AppBundle\DataFixtures\ORM
+ */
 class LoadPostData implements FixtureInterface, ContainerAwareInterface
 {
 
+
     private $container;
+
+    /**
+     * Container
+     *
+     * @param ContainerInterface|null $container
+     */
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
     }
 
+    /**
+     * Create posts
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         // bin/console doctrine:fixtures:load
@@ -66,7 +80,5 @@ class LoadPostData implements FixtureInterface, ContainerAwareInterface
             $manager->persist($post);
         }
         $manager->flush();
-
-
     }
 }
