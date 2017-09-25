@@ -57,7 +57,7 @@ class PostController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->container->get('app.post')->savePost($post,$request, $form);
+            $this->container->get('app.post')->savePost($post, $form);
             return $this->redirectToRoute('admin_post_index');
         }
 

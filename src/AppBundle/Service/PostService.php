@@ -3,7 +3,7 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Post;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Form;
 
 /**
  * Class PostService
@@ -36,12 +36,11 @@ class PostService
      * Save existng post (from edit)
      *
      * @param Post $post        Post entity
-     * @param Request $request  Http request
      * @param $form             Form
      *
      * @return bool
      */
-    public function savePost(Post $post, Request $request, $form)
+    public function savePost(Post $post, Form $form)
     {
         if($form->get('save_draft')->isClicked()) {
             $post->setPublishedAt(null);
