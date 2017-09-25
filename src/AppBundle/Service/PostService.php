@@ -72,7 +72,7 @@ class PostService
      * @param Post $post Post
      * @param $form      Form
      */
-    public function createPost(Post $post, $form)
+    public function createPost(Post $post, Form $form)
     {
         if($form->get('save_draft')->isClicked()) {
             $post->setPublishedAt(null);
