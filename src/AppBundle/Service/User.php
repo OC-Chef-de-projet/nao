@@ -8,9 +8,19 @@
 
 namespace AppBundle\Service;
 
+/**
+ * Class User
+ *
+ * @package AppBundle\Service
+ */
 class User
 {
 
+    /**
+     * Get user index breadcrumb
+     *
+     * @return array
+     */
     public function getIndexBreadcrumb()
     {
         $breadcrumb = [
@@ -31,6 +41,11 @@ class User
     }
 
 
+    /**
+     * Tabs form admin user index
+     * @param $role
+     * @return array
+     */
     public function getUsersTabs($role)
     {
         $tabs = [

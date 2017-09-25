@@ -6,8 +6,22 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use AppBundle\Entity\User;
 
+/**
+ * Class UserRepository
+ *
+ * @package AppBundle\Repository
+ */
 class UserRepository extends EntityRepository
 {
+    /**
+     * get users filtered by role
+     *
+     * @param $currentPage  Current page
+     * @param $role         Role (User::ROLE_ADMIN, User::ROLE_NATURALIST, User::ROLE_OBSERVER)
+     * @param int $limit    Max record by pages
+     *
+     * @return Paginator
+     */
     public function getUsersByRole($currentPage,$role,$limit = 50)
     {
         $query = $this->createQueryBuilder('u')
@@ -21,6 +35,13 @@ class UserRepository extends EntityRepository
     }
 
 
+    /**
+     * get roles list ordering by user role first
+     *
+     * @param User $user    User
+     *
+     * @return mixed
+     */
     public function getRolesForSelect(User $user)
     {
         // get user role
@@ -41,6 +62,16 @@ class UserRepository extends EntityRepository
         return $roles;
     }
 
+    /**
+     * get users with search name and role filter
+     *
+     * @param $currentPage      Current page
+     * @param $role             Role (User::ROLE_ADMIN, User::ROLE_NATURALIST, User::ROLE_OBSERVER)
+     * @param int $limit        Max record by pages
+     * @param string $pattern   Search pattern for user name
+     *
+     * @return Paginator
+     */
     public function searchUsersByRole($currentPage,$role,$limit = 50,$pattern = '')
     {
         $query = $this->createQueryBuilder('u');

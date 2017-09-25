@@ -8,10 +8,19 @@
 
 namespace AppBundle\Service;
 
+/**
+ * Class Admin
+ *
+ * @package AppBundle\Service
+ */
 class Admin
 {
 
-
+    /**
+     * Admin dashboard breadcrumb
+     *
+     * @return array
+     */
     public function getHomeBreadcrumb()
     {
         $breadcrumb = [

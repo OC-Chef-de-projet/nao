@@ -14,16 +14,30 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use AppBundle\Entity\User;
 
-
+/**
+ * Class LoadUserData
+ * @package AppBundle\DataFixtures\ORM
+ */
 class LoadUserData implements FixtureInterface, ContainerAwareInterface
 {
 
     private $container;
+
+    /**
+     * Container
+     *
+     * @param ContainerInterface|null $container
+     */
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
     }
 
+    /**
+     * Create users*
+     *
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         // bin/console doctrine:fixtures:load

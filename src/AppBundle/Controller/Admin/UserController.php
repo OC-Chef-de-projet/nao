@@ -19,15 +19,16 @@ class UserController extends Controller
 {
 
     /**
-     * @param Request $request
-     * @param int $page
-     * @param string $role
+     * Admin user menu
+     *
+     * @param Request $request  Http request
+     * @param int $page         Page to display
+     * @param string $role      Role filter
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request, $page = 1, $role = 'ROLE_OBSERVER' )
     {
-
-
         $em = $this->getDoctrine()->getManager();
         $form = $this->createFormBuilder()
             ->setMethod('POST')
@@ -77,6 +78,14 @@ class UserController extends Controller
         ));
     }
 
+    /**
+     * Update user profile (only role and blocked)
+     *
+     * @param Request $request  Http request
+     * @param User $user        User entity
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function updateAction(Request $request, User $user)
     {
         $em = $this->getDoctrine()->getManager();
@@ -103,6 +112,4 @@ class UserController extends Controller
             'user' => $user
         ));
     }
-
-
 }

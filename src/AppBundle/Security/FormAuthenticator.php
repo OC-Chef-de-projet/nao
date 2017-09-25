@@ -18,21 +18,27 @@ use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
+
+/**
+ * Class FormAuthenticator
+ *
+ * @package AppBundle\Security
+ */
 class FormAuthenticator extends AbstractGuardAuthenticator
 {
 
     use TargetPathTrait;
     private $router;
-    /**
-     * @var FormFactoryInterface
-     */
     private $formFactory;
-
-    /**
-     * @var UserPasswordEncoder
-     */
     private $passwordEncoder;
 
+    /**
+     * FormAuthenticator constructor.
+     *
+     * @param RouterInterface $router
+     * @param FormFactoryInterface $formFactory
+     * @param UserPasswordEncoder $passwordEncoder
+     */
     public function __construct(RouterInterface $router, FormFactoryInterface $formFactory,  UserPasswordEncoder $passwordEncoder)
     {
         $this->router = $router;

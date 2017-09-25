@@ -5,10 +5,17 @@ namespace AppBundle\Controller;
 use AppBundle\Form\Type\LoginType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class SecurityController
+ *
+ * @package AppBundle\Controller
+ */
 class SecurityController extends Controller
 {
     /**
+     * Login to backoffice
      *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function loginAction()
     {
@@ -23,7 +30,7 @@ class SecurityController extends Controller
     }
 
     /**
-     * 
+     * Check login
      */
     public function loginCheckAction()
     {
