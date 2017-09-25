@@ -83,8 +83,8 @@ class UserService
     /**
      * Get pagination parameters
      *
-     * @param $users  UserService list
-     * @param $role   UserService role filter (User::ROLE_ADMIN, User::ROLE_NATURALIST, User::ROLE_OBSERVER)
+     * @param $users    UserService list
+     * @param int $page Page to display
      *
      * @return array  Current pagination
      */

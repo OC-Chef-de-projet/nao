@@ -92,12 +92,12 @@ class PostService
     /**
      * Get pagination parameters
      *
-     * @param $posts  Post list
-     * @param $status Post status filter (Post::DRAFT, Post::PUBLISHED)
+     * @param array $posts  Post list
+     * @param $page  int current page
      *
      * @return array  Current pagination
      */
-    public function getPagination($posts,$page)
+    public function getPagination($posts, $page)
     {
 
         $totalPosts = $posts->count();
