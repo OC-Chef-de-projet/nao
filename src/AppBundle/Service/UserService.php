@@ -16,6 +16,15 @@ namespace AppBundle\Service;
 class User
 {
 
+    private $list_limit;
+
+    public function __construct($list_limit)
+    {
+        $this->list_limit = $list_limit;
+    }
+
+
+
     /**
      * Get user index breadcrumb
      *
@@ -70,5 +79,29 @@ class User
         $tabs[$role]['active'] = 1;
         return $tabs;
     }
+
+    /**
+     * Get pagination parameters
+     *
+     * @param $users  User list
+     * @param $role   User role filter (User::ROLE_ADMIN, User::ROLE_NATURALIST, User::ROLE_OBSERVER)
+     *
+     * @return array  Current pagination
+     */
+    public function getPagination($users,$role)
+    {
+
+        $totalUsers = $users->count();
+        $totalDisplayed = $users->getIterator()->count();
+        $maxPages = ceil($users->count() / $this->list_limit);
+
+        return [
+            'totalUsers' => $totalUsers,
+            'totalDisplayed' => $totalDisplayed,
+            'current' => $page,
+            'maxPages' => $maxPages,
+        ];
+    }
+
 }
 
