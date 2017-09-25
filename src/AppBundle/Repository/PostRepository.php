@@ -6,8 +6,22 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use AppBundle\Entity\Post;
 
+/**
+ * Class PostRepository
+ *
+ * @package AppBundle\Repository
+ */
 class PostRepository extends EntityRepository
 {
+    /**
+     * Get posts filtered by status
+     *
+     * @param $currentPage  Current  page
+     * @param $status       Post Status (Post::DRAFT, Post::PUBLISHED)
+     * @param int $limit    Maximum of records by page
+     *
+     * @return Paginator
+     */
     public function getPostsByStatus($currentPage,$status,$limit = 50)
     {
         $query = $this->createQueryBuilder('p')
@@ -27,6 +41,13 @@ class PostRepository extends EntityRepository
     }
 
 
+    /**
+     * Retreive imagelink column
+     *
+     * @param $id   Post ID
+     *
+     * @return mixed
+     */
     public function getSavedImage($id)
     {
         return $this->createQueryBuilder('p')

@@ -3,7 +3,7 @@
 {% block body %}
     {% include '::navbar.html.twig' %}
     <div class="container">
-        {% include '::breadcrumb.html.twig'  with {'breadcrumb':breadcrumb} only %}
+        {% include '::breadcrumb.html.twig'  with {'breadcrumb':header.breadcrumb} only %}
         <h4>{% trans %}rediger_article{% endtrans %}</h4>
         {{ form_start(form) }}
         <div class="card large">

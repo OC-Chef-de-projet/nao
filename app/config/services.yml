@@ -40,7 +40,7 @@ services:
     app.post:
         class: AppBundle\Service\PostService
         public: true
-        arguments: []
+        arguments: ["@doctrine.orm.entity_manager",'%posts_directory%', '%list_limit%']
 
 
     AppBundle\EventListener\UserListener:

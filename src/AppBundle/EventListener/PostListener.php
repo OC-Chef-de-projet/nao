@@ -12,6 +12,11 @@ use AppBundle\Entity\Post;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 
+/**
+ * Class PostListener
+ *
+ * @package AppBundle\EventListener
+ */
 class PostListener
 {
 
@@ -36,6 +41,8 @@ class PostListener
     }
 
     /**
+     * Set createdAt date and publishedAt if needed
+     *
      * @param LifecycleEventArgs $args
      */
     public function prePersist(LifecycleEventArgs $args)

@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     </head>
-    <body {% if bodyClass is defined %}class="{{ bodyClass }}{% endif %}">
+    <body {% if header.bodyClass is defined %}class="{{ header.bodyClass }}{% endif %}">
         {% block body %}{% endblock body %}
         {% block javascripts %}
             <script src="{{ asset('assets/js/core.min.js') }}"></script>
