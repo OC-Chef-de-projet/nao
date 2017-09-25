@@ -169,7 +169,7 @@ class PostService
 
     /**
      * Tabs for admin post index
-     * 
+     *
      * @param $post
      * @return array
      */

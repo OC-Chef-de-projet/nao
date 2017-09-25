@@ -10,12 +10,19 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\UserUpdateType;
 
+/**
+ * Class UserController
+ *
+ * @package AppBundle\Controller\Admin
+ */
 class UserController extends Controller
 {
 
     /**
-     * Lists all user entities.
-     *
+     * @param Request $request
+     * @param int $page
+     * @param string $role
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request, $page = 1, $role = 'ROLE_OBSERVER' )
     {
