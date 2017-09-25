@@ -41,7 +41,6 @@ class UserController extends Controller
         $data = $form->getData();
         if(isset($data['search']) && !empty($data['search'])){
             $pattern = strip_tags($data['search']);
-            //$page = 1;
         }
 
         $pattern = ''; // No filter by default
