@@ -233,9 +233,11 @@ class Post
      */
     public function setImagelink($imagelink)
     {
-        $this->imagelink = $imagelink;
+        if($imagelink !== null) {
+            $this->imagelink = $imagelink;
+            return $this;
+        }
 
-        return $this;
     }
 
     /**

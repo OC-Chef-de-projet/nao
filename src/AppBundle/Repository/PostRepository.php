@@ -27,6 +27,16 @@ class PostRepository extends EntityRepository
     }
 
 
+    public function getSavedImage($id)
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p.imagelink')
+            ->where('p.id = :id')
+            ->setParameter('id',$id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     /**
      * Paginator Helper
      *

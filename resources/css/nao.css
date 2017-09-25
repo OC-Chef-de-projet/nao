@@ -27,6 +27,12 @@ nav {
 input[type="text"] {
     background-color: #FAFAFA !important;
 }
+
+.file-path  {
+    border: none !important;
+}
+
+
 .btn {
     background-color: black;
 }
@@ -102,6 +108,10 @@ label {
 
 .pagination li.active a {
     background-color: #3F51B5;
+}
+
+.post-textarea {
+    height: 14rem !important;
 }
 
 .admin_card {

@@ -32,6 +32,30 @@ class PostService
         return $breadcrumb;
     }
 
+    public function getEditBreadcrumb()
+    {
+        $breadcrumb = [
+            [
+                'href' => '#',
+                'text' => 'Accueil'
+            ],
+            [
+                'href' => '#',
+                'text' => 'Administration'
+            ],
+            [
+                'href' => '#',
+                'text' => 'Gestion des articles'
+            ],
+            [
+                'href' => '#',
+                'text' => 'Rédiger un article'
+            ],
+
+        ];
+        return $breadcrumb;
+    }
+
 
     public function getPostsTabs($post)
     {

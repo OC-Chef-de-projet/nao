@@ -1,0 +1,58 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% include '::navbar.html.twig' %}
+    <div class="container">
+        {% include '::breadcrumb.html.twig'  with {'breadcrumb':breadcrumb} only %}
+        <h4>{% trans %}rediger_article{% endtrans %}</h4>
+        {{ form_start(form) }}
+        <div class="card large">
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="col m8 push-m2">
+                        <div class="input-field col s12">
+                            {{ form_widget(form.title) }}
+                            <label for="first_name">{{ form_label(form.title) }}</label>
+                        </div>
+                        <div class="input-field col s12">
+                            {{ form_widget(form.content) }}
+                            <label for="appbundle_post_content">{{ form_label(form.content) }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="col m8 push-m2">
+                        {{ form_label(form.imagelink) }}
+                        <div class="file-field input-field">
+                            <div class="btn-floating btn-medium waves-effect waves-light">
+                                <i class="material-icons dp48">add_a_photo</i>
+                                {{ form_widget(form.imagelink) }}
+                            </div>
+
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text"/>
+                            </div>
+                        </div>
+                        <img src="{{ asset('images/posts/'~post.imagelink) }}" style="width:100%">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m2"></div>
+                <div class="col s12 m4">
+                    {{ form_widget(form.save_draft) }}
+                </div>
+                <div class="col s12 m4">
+                    {{ form_widget(form.save_published) }}
+                </div>
+                <div class="col s12 m2"></div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+
+{% endblock %}
+

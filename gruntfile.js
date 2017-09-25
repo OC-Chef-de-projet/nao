@@ -91,7 +91,8 @@ module.exports = function (grunt) {
                     // Javascript
                     'web/assets/js/core.min.js': [
                         'resources/vendor/jquery/jquery-3.2.1.min.js',
-                        'resources/vendor/materialize/js/materialize.min.js'
+                        'resources/vendor/materialize/js/materialize.min.js',
+                        'resources/vendor/materialize/js/material-dialog.min.js'
                     ],
 
 

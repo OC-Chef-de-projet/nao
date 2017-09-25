@@ -69,6 +69,30 @@
                 <source>cree_le</source>
                 <target>Créé le</target>
             </trans-unit>
+            <trans-unit id="rediger_article">
+                <source>rediger_article</source>
+                <target>Rédiger un article</target>
+            </trans-unit>
+            <trans-unit id="sauve_brouillon">
+                <source>sauve_brouillon</source>
+                <target>Sauvegarder le brouillon</target>
+            </trans-unit>
+            <trans-unit id="sauve_publie">
+                <source>sauve_publie</source>
+                <target>Publier l'article</target>
+            </trans-unit>
+            <trans-unit id="supprimer_article">
+                <source>supprimer_article</source>
+                <target>Suppression article</target>
+            </trans-unit>
+            <trans-unit id="supprimer_article_confirm">
+                <source>supprimer_article_confirm</source>
+                <target>Etes-vous sur de vouloir supprimer cet article ?</target>
+            </trans-unit>
+
+
+
+
 
 
             <!-- Général -->

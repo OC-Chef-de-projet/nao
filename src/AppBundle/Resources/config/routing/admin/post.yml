@@ -17,7 +17,7 @@ admin_post_show:
 admin_post_delete:
     path:     /{id}/delete
     defaults: { _controller: AppBundle:Admin\Post:delete }
-    methods:  DELETE
+    methods:  [GET]
 
 admin_post_index:
     path:     /{page}/{status}
