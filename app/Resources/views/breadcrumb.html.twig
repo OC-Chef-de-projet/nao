@@ -2,7 +2,7 @@
     <div class="nav-wrapper">
         <div class="col s12">
             {% for bc in breadcrumb %}
-            <a href="{{ bc.href }}" class="breadcrumb">{{ bc.text }}</a>
+            <a href="{{ url(bc.href) }}" class="breadcrumb">{{ bc.text }}</a>
             {% endfor %}
         </div>
     </div>

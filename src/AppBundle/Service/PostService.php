@@ -121,15 +121,15 @@ class PostService
     {
         $breadcrumb = [
             [
-                'href' => '#',
+                'href' => 'admin_homepage',
                 'text' => 'Accueil'
             ],
             [
-                'href' => '#',
+                'href' => 'admin_homepage',
                 'text' => 'Administration'
             ],
             [
-                'href' => '#',
+                'href' => 'admin_post_index',
                 'text' => 'Gestion des articles'
             ],
         ];

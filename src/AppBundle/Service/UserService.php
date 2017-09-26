@@ -36,15 +36,15 @@ class UserService
     {
         $breadcrumb = [
             [
-                'href' => '#',
+                'href' => 'admin_homepage',
                 'text' => 'Accueil'
             ],
             [
-                'href' => '#',
+                'href' => 'admin_homepage',
                 'text' => 'Administration'
             ],
             [
-                'href' => '#',
+                'href' => 'admin_user_index',
                 'text' => 'Gestion des utilisateurs'
             ],
         ];
