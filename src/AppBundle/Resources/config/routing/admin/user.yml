@@ -29,3 +29,4 @@ admin_user_paginate:
     path:     /paginate
     defaults: { _controller: AppBundle:Admin\User:paginate }
     methods:  POST
+
