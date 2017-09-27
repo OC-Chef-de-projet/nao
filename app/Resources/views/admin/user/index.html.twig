@@ -52,7 +52,7 @@
 
                     {% for i in paginate.current..paginate.current+2 %}
                         <li class="waves-effect {{ paginate.current == i ? 'active' }}{{ i > paginate.maxPages ? 'disabled' }}">
-                            <a {{ i > paginate.maxPages ? 'class="not-active' }} href="{{ path('admin_user_index', {page: i }) }}">{{ i }}</a>
+                            <a class="gotopage {{ i > paginate.maxPages ? ' not-active' }}" href="#" data-page="{{ i }}">{{ i }}</a>
                         </li>
                     {% endfor %}
 
@@ -64,6 +64,7 @@
                 </ul>
             </div>
     </div>
+
 {% endblock body %}
 
 

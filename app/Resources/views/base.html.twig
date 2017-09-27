@@ -21,6 +21,26 @@
             $(document).ready(function() {
                 $('select').material_select();
                 $('.modal').modal();
+
+                $('.gotopage').click(function () {
+                    var search = $('#form_search').val();
+
+                    var pageno = $(this).data("page");
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ path('admin_user_paginate')}}",
+                        data: {
+                            page: pageno,
+                            role: 'ROLE_OBSERVER',
+                            search: search
+                        },
+                        cache: false,
+                        success: function(data){
+                            alert(data);
+
+                        }
+                    });
+                });
             });
             function post_delete_confirm(id) {
                 MaterialDialog.dialog(
