@@ -74,6 +74,14 @@ class UserController extends Controller
         ]);
     }
 
+
+    public function paginate(Request $request)
+    {
+        $page = $request->request->get('page');
+        echo json_encode([$page]);
+        exit;
+    }
+
     /**
      * Update user profile (only role and blocked)
      *

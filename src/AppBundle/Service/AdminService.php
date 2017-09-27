@@ -25,11 +25,11 @@ class AdminService
     {
         $breadcrumb = [
             [
-                'href' => '#',
+                'href' => 'admin_homepage',
                 'text' => 'Accueil'
             ],
             [
-                'href' => '#',
+                'href' => 'admin_homepage',
                 'text' => 'Administration'
             ],
         ];
