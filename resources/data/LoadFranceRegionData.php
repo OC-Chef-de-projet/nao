@@ -82,3 +82,4 @@ class LoadFranceRegionData implements FixtureInterface, ContainerAwareInterface
         fclose($csv);
     }
 }
+
