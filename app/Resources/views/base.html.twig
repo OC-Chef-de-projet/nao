@@ -23,27 +23,80 @@
                 $('.modal').modal();
 
                 $('.gotopage').click(function () {
-                    console.log("click");
                     var pageno = $(this).data("page");
-                    console.log("avant ajax");
-                    $.ajax({
-                        url: "{{ path('admin_user_paginate')}}",
-                        type: "POST",
-                        dataType: "json",
-                        data: {
-                            "page": pageno,
-                            "role": "ROLE_OBSERVER",
-                            "search": "search"
-                        },
-                        succes: function(data){
-                            console.log('CLICKJJHJKHJKHJK');
+                    // Search active page
+                    var current = $('.pagination').find('.active').attr('id');
+                    $('#' + current).removeClass('active');
+                    userList(pageno);
+                    $('#p_' + pageno).addClass('active');
+                    if(pageno > 1){
+                        $('#chevron_left').removeClass('disabled');
+                    } else {
+                        $('#chevron_left').addClass('disabled');
+                    }
+                    var maxpage = $('#maxpage').val() - 1;
+                    if(pageno >= maxpage){
+                        $('#chevron_right').addClass('disabled');
 
-                        }
-                    });
-                    console.log("après ajax");
+                    } else {
+                        $('#chevron_right').removeClass('disabled');
+                    }
                 });
 
+                $('#nextpage').click(function () {
+                    var current = $('.pagination').find('.active').attr('id');
+                    $('#' + current).removeClass('active');
+                    var next = parseInt(current.replace('p_','')) + 1
+                    if(next > 1){
+                        $('#chevron_left').removeClass('disabled');
+                    } else {
+                        $('#chevron_left').addClass('disabled');
+                    }
+                    var maxpage = $('#maxpage').val() - 1;
+                    if(next >= maxpage){
+                        next = maxpage;
+                        $('#chevron_right').addClass('disabled');
+
+                    } else {
+                        $('#chevron_right').removeClass('disabled');
+                    }
+                    userList(next);
+                    $('#p_' + next).addClass('active');
+                });
+                $('#prevpage').click(function () {
+                    var current = $('.pagination').find('.active').attr('id');
+                    $('#' + current).removeClass('active');
+                    var prev = parseInt(current.replace('p_','')) - 1
+                    if(prev <= 1){
+                        prev = 1;
+                        $('#chevron_left').addClass('disabled');
+                    } else {
+                        $('#chevron_left').removeClass('disabled');
+                    }
+                    userList(prev);
+                    $('#p_' + prev).addClass('active');
+                });
             });
+
+            function userList(pageno) {
+
+                var role = $('.tab').find('.active').attr('id');
+                var search = $('#form_search').val();
+                $.ajax({
+                    url: "{{ path('admin_user_paginate')}}",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "page": pageno,
+                        "role": role,
+                        "search": search
+                    },
+                    success: function(response){
+                        $('#userList').html(response.html);
+                    }
+                });
+            }
+
             function post_delete_confirm(id) {
                 MaterialDialog.dialog(
                     "{% trans %}supprimer_article_confirm{% endtrans %}",

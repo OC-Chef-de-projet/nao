@@ -4,7 +4,7 @@
 
 
 {% block body %}
-{% include ':admin/user:navbar.html.twig' %}
+    {% include ':admin/user:navbar.html.twig' %}
 
 
     <div class="container">
@@ -13,56 +13,45 @@
         <div class="card-panel">
             <div class="row">
                 <div class="col s12 m6 push-m3 search">
-                        <div class="input-field">
-                            {{ form_start(form) }}
-                            {{ form_widget(form.search) }}
-                            <label for="icon_prefix"><i class="material-icons prefix">search</i><span class="search_name">{% trans %}recherche_par_nom{% endtrans %}</span></label>
-                            {{ form_end(form) }}
-                        </div>
+                    <div class="input-field">
+                        {{ form_start(form) }}
+                        {{ form_widget(form.search) }}
+                        <label for="icon_prefix"><i class="material-icons prefix">search</i><span
+                                    class="search_name">{% trans %}recherche_par_nom{% endtrans %}</span></label>
+                        {{ form_end(form) }}
+                    </div>
                 </div>
             </div>
             <!-- -->
-            <div class="row">
-            {%  for user in users %}
-                <div class="col s12 m6">
-                    <a href="{{ path('admin_user_update', { 'id': user.id}) }}">
-                        <div class="card horizontal z-depth-0">
-                            <div class="card-image roundedImage">
-                                <img src="{{ asset('images/users/'~user.getImagePath) }}">
-                            </div>
-                            <div class="card-stacked">
-                                <b>{{ user.getName }}</b>
-                                <span class="text-grey">{{ user.roleString }}</span>
-                            </div>
-
-                        </div>
-                    </a>
-                </div>
-                {% endfor %}
-            <!-- end user -->
-        </div>
-            <div class="container center-align">
-                <ul class="pagination">
-
-                    <li {{ paginate.current <= 1 ? 'class="disabled"': 'class="waves-effect"' }}>
-                        <a href="{{ path('admin_user_index', {page: paginate.current-1 < 1 ? 1 : paginate.current-1}) }}">
-                            <i class="material-icons">chevron_left</i>
-                        </a>
-                    </li>
-
-                    {% for i in paginate.current..paginate.current+2 %}
-                        <li class="waves-effect {{ paginate.current == i ? 'active' }}{{ i > paginate.maxPages ? 'disabled' }}">
-                            <a class="gotopage {{ i > paginate.maxPages ? ' not-active' }}" href="#!" data-page="{{ i }}">{{ i }}</a>
-                        </li>
-                    {% endfor %}
-
-                    <li {{ paginate.current == paginate.maxPages ? 'class="disabled"': 'class="waves-effect"' }}>
-                        <a href="{{ path('admin_user_index', {page: paginate.current+1 <= paginate.maxPages ? paginate.current+1 : paginate.current}) }}">
-                            <i class="material-icons">chevron_right</i>
-                        </a>
-                    </li>
-                </ul>
+            <div class="row" id="userList">
+                {% include ':admin/user:list.html.twig'  with {'users':users} only %}
             </div>
+        </div>
+        <div class="container center-align">
+            <ul class="pagination">
+                <input type="hidden" id="maxpage" value="{{ paginate.maxPages }}">
+                <li id="chevron_left" {{ paginate.current <= 1 ? 'class="disabled"': 'class="waves-effect"' }}>
+                    <a  id="prevpage" href="#">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+
+                {% for i in paginate.current..paginate.maxPages %}
+                    {% if i < paginate.maxPages  %}
+                    <li id="p_{{ i }}" class="waves-effect {{ paginate.current == i ? 'active' }}{{ i > paginate.maxPages ? 'disabled' }}">
+                        <a class="gotopage {{ i > paginate.maxPages ? ' not-active' }}" href="#"
+                           data-page="{{ i }}">{{ i }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+
+                <li id="chevron_right" {{ paginate.current == paginate.maxPages ? 'class="disabled"': 'class="waves-effect"' }}>
+                    <a id="nextpage" href="#">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 
 {% endblock body %}

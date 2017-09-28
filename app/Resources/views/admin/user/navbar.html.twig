@@ -18,7 +18,7 @@
     <div class="nav-content">
         <ul class="tabs tabs-transparent">
             {% for tab in header.tabs %}
-                <li class="tab"><a target="_self" href="{{ path('admin_user_index', { 'page': '1', 'role': tab.role }) }}" {{ tab.active ? 'class="active"' }}>{{ tab.text }}</a></li>
+                <li class="tab"><a id="{{ tab.role }}" target="_self" href="{{ path('admin_user_index', { 'page': '1', 'role': tab.role }) }}" {{ tab.active ? 'class="active"' }}>{{ tab.text }}</a></li>
             {% endfor %}
         </ul>
     </div>

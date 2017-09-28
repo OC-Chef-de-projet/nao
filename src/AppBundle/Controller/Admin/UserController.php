@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\User;
@@ -39,8 +40,7 @@ class UserController extends Controller
             ->setMethod('POST')
             ->add('search', TextType::class,[
                 'label' => '',
-                'required'   => false,
-                'data' => '_1'
+                'required'   => false
             ])
             ->add('send', SubmitType::class,[
                 'label' => '',
@@ -84,11 +84,22 @@ class UserController extends Controller
     {
         $logger = $this->get('logger');
 
+
+        $em = $this->getDoctrine()->getManager();
+
         if ($request->isXMLHttpRequest()) {
             $page = $request->request->get('page');
+            $role = $request->request->get('role');
+            $search = $request->request->get('search');
+
             $logger->info('I just got the logger '.$page);
-            $response = ['output' => 'here the result!'];
-            return new JsonResponse($response);
+            $users = $em->getRepository('AppBundle:User')->searchUsersByRole($page,$role,$this->getParameter('list_limit'),$search);
+
+            $html = $this->render(':admin/user:list.html.twig', [
+                    'users' => $users
+            ])->getContent();
+
+            return new Response(json_encode(['html' => $html]));
         }
     }
 
