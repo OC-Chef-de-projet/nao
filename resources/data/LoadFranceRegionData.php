@@ -21,17 +21,6 @@ use AppBundle\Entity\FranceRegion;
 class LoadFranceRegionData implements FixtureInterface, ContainerAwareInterface
 {
 
-    private $container;
-
-    /**
-     * Container
-     *
-     * @param ContainerInterface|null $container
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }
 
     /**
      * Create users*
