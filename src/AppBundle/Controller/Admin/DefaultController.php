@@ -14,10 +14,13 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+
         return $this->render('admin\index.html.twig',[
             'header' => [
                 'bodyClass' => 'background-2',
-                'breadcrumb' => $this->container->get('app.admin')->getHomeBreadcrumb()
+                'breadcrumb' => $this->container->get('app.admin')->getHomeBreadcrumb(),
+                'notification' => $this->container->get('app.notification')->count(),
+                'notifications' =>   $this->container->get('app.notification')->getNotifications()
             ]
         ]);
     }

@@ -19,3 +19,4 @@
 /web/.htaccess
 /node_modules
 /web/assets
+/src/AppBundle/Entity/*~

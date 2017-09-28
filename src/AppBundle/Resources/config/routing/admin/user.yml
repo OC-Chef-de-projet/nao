@@ -1,4 +1,7 @@
-
+admin_user_paginate:
+    path:     /paginate
+    defaults: { _controller: AppBundle:Admin\User:paginate }
+    methods:  POST
 
 admin_user_new:
     path:     /new
@@ -25,8 +28,4 @@ admin_user_index:
     defaults: { _controller: AppBundle:Admin\User:index, page: 1, role: 'ROLE_OBSERVER' }
     methods:  [GET, POST]
 
-admin_user_paginate:
-    path:     /paginate
-    defaults: { _controller: AppBundle:Admin\User:paginate }
-    methods:  POST
 

@@ -103,6 +103,8 @@ class User implements UserInterface
     private $inactive;
 
 
+
+
     public function getSalt()
     {
         return null;
@@ -386,7 +388,6 @@ class User implements UserInterface
         $this->plainPassword = $plainPassword;
         return $this;
     }
-
 
     /**
      * Set created

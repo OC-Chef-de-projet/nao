@@ -32,6 +32,10 @@ services:
         public: true
         arguments: []
 
+    app.notification:
+        class: AppBundle\Service\NotificationService
+        public: true
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
     app.user:
         class: AppBundle\Service\UserService
         public: true
@@ -50,5 +54,9 @@ services:
     AppBundle\EventListener\PostListener:
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: prePersist }
+
+    AppBundle\EventListener\NotificationListener:
+        tags:
             - { name: doctrine.event_listener, event: prePersist }
 

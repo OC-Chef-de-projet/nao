@@ -9,6 +9,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\UserUpdateType;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 
 /**
@@ -80,10 +82,14 @@ class UserController extends Controller
 
     public function paginateAction(Request $request)
     {
-        error_log("ttttttttttttttttttttttttttttt");
-        $page = $request->request->get('page');
-        $response = ['output' => 'here the result!'];
-        return new JsonResponse($response);
+        $logger = $this->get('logger');
+
+        if ($request->isXMLHttpRequest()) {
+            $page = $request->request->get('page');
+            $logger->info('I just got the logger '.$page);
+            $response = ['output' => 'here the result!'];
+            return new JsonResponse($response);
+        }
     }
 
     /**
