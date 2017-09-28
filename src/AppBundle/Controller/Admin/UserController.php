@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\UserUpdateType;
 
+
 /**
  * Class UserController
  *
@@ -29,6 +30,8 @@ class UserController extends Controller
      */
     public function indexAction(Request $request, $page = 1, $role = 'ROLE_OBSERVER' )
     {
+
+
         $em = $this->getDoctrine()->getManager();
         $form = $this->createFormBuilder()
             ->setMethod('POST')
@@ -75,11 +78,12 @@ class UserController extends Controller
     }
 
 
-    public function paginate(Request $request)
+    public function paginateAction(Request $request)
     {
+        error_log("ttttttttttttttttttttttttttttt");
         $page = $request->request->get('page');
-        echo json_encode([$page]);
-        exit;
+        $response = ['output' => 'here the result!'];
+        return new JsonResponse($response);
     }
 
     /**
