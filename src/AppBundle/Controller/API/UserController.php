@@ -85,7 +85,6 @@ class UserController extends Controller
             $role = $request->request->get('role');
             $user_id = $request->request->get('user_id');
 
-            //$logger->info('I just got the logger '.$page);
             $users = $em->getRepository('AppBundle:User')->searchUsersByRole($page, $role, $this->getParameter('list_limit'), $user_id);
 
             $html = $this->render(':admin/user:list.html.twig', [
