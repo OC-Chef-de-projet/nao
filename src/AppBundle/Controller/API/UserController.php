@@ -26,7 +26,7 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('AppBundle:User')->findByEmail($request->get('email'));
 
-        //TODO: Check for password
+        // Check for password
 
 
         $response = [];
@@ -36,7 +36,7 @@ class UserController extends Controller
                 'email' => $user[0]->getEmail(),
                 'role' => $user[0]->getRole(),
                 'aboutme' => $user[0]->getAboutme(),
-                'image' => $baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath() . '/images/users/' . $user[0]->getImagePath(),
+                'image' => $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath() . '/images/users/' . $user[0]->getImagePath(),
                 'created' => $user[0]->getCreated(),
                 'roleString' => $user[0]->getRoleString(),
                 'name' => $user[0]->getName(),
