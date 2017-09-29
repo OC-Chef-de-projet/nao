@@ -98,13 +98,7 @@
                                 text: "{% trans %}oui{% endtrans %}",
                                 callback: function () {
 
-                                    var url = '{{ path('
-                        admin_post_delete
-                        ',{ '
-                        id
-                        ':'
-                        post_id
-                        '}) }}';
+                                    var url = '{{ path('admin_post_delete',{ 'id':'post_id'}) }}';
                                     url = url.replace('post_id', id);
                                     window.location.href = url;
                                 }

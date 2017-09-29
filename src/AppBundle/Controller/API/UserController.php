@@ -59,8 +59,6 @@ class UserController extends Controller
      */
     public function searchAction(Request $request)
     {
-        $logger = $this->get('logger');
-        $logger->info('I just got the logger **************************************************************');
 
         $em = $this->getDoctrine()->getManager();
         $search = $request->request->get('search');

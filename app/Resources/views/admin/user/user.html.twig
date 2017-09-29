@@ -2,7 +2,7 @@
 
 {% block body %}
     {% include '::navbar.html.twig' %}
-<div class="container">
+    <div class="container">
     {% include '::breadcrumb.html.twig'  with {'breadcrumb':header.breadcrumb} only %}
     <h4>{% trans %}gestion_utilisateurs{% endtrans %}</h4>
     <div class="card large row">
@@ -50,3 +50,12 @@
 
     {% endblock %}
 
+    {% block javascripts %}
+        {{ parent() }}
+        <script>
+            $(function () {
+                $('select').material_select();
+                $('.modal').modal();
+            });
+        </script>
+    {% endblock %}
