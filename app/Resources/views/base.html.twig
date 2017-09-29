@@ -22,6 +22,9 @@
                 $('select').material_select();
                 $('.modal').modal();
 
+                /**
+                 *
+                 */
                 $('.gotopage').click(function () {
                     var pageno = $(this).data("page");
                     // Search active page
@@ -43,6 +46,9 @@
                     }
                 });
 
+                /**
+                 *
+                 */
                 $('#nextpage').click(function () {
                     var current = $('.pagination').find('.active').attr('id');
                     $('#' + current).removeClass('active');
@@ -53,6 +59,8 @@
                         $('#chevron_left').addClass('disabled');
                     }
                     var maxpage = $('#maxpage').val() - 1;
+                    var maxcurrent = $('#maxcurrent').val();
+
                     if(next >= maxpage){
                         next = maxpage;
                         $('#chevron_right').addClass('disabled');
@@ -62,7 +70,22 @@
                     }
                     userList(next);
                     $('#p_' + next).addClass('active');
+
+                    /*
+                    if(next >= maxcurrent){
+                        maxcurrent++;
+                        $('#maxcurrent').val(maxcurrent);
+                        var prevnumber =  maxcurrent - 11;
+                        console.log(prevnumber);
+                        $('#p_' + prevnumber).remove();
+                        addPage(maxcurrent);
+                    }
+                    */
                 });
+
+                /**
+                 *
+                 */
                 $('#prevpage').click(function () {
                     var current = $('.pagination').find('.active').attr('id');
                     $('#' + current).removeClass('active');
@@ -78,6 +101,14 @@
                 });
             });
 
+            function addPage(page)
+            {
+                html= '<li id="p_'+ page +'" class="waves-effect ">' +
+                        '<a class="gotopage " href="#" data-page="' + page + '">' + page +'</a>' +
+                    '</li>';
+                $(html).insertBefore('.pagination>li:last');;
+
+            }
             function userList(pageno) {
 
                 var role = $('.tab').find('.active').attr('id');

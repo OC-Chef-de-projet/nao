@@ -30,13 +30,14 @@
         <div class="container center-align">
             <ul class="pagination">
                 <input type="hidden" id="maxpage" value="{{ paginate.maxPages }}">
+                <input type="hidden" id="maxcurrent" value="{{ paginate.current + 10 }}">
                 <li id="chevron_left" {{ paginate.current <= 1 ? 'class="disabled"': 'class="waves-effect"' }}>
                     <a  id="prevpage" href="#">
                         <i class="material-icons">chevron_left</i>
                     </a>
                 </li>
 
-                {% for i in paginate.current..paginate.maxPages %}
+                {% for i in paginate.current..paginate.current + 10 %}
                     {% if i < paginate.maxPages  %}
                     <li id="p_{{ i }}" class="waves-effect {{ paginate.current == i ? 'active' }}{{ i > paginate.maxPages ? 'disabled' }}">
                         <a class="gotopage {{ i > paginate.maxPages ? ' not-active' }}" href="#"

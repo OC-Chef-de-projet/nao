@@ -104,6 +104,5 @@ class UserService
             'maxPages' => $maxPages,
         ];
     }
-
 }
 

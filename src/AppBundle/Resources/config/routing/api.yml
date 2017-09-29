@@ -1,0 +1,5 @@
+api_userinfo:
+    type:     rest
+    host:     nao.lignedemire.eu
+    resource: AppBundle\Controller\API\UserController
+    methods: [POST, GET]
