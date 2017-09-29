@@ -15,11 +15,15 @@
                 <div class="col s12 m6 push-m3 search">
                     <div class="autocomplete" id="single">
                         <div class="ac-input">
+
                             <input type="text" id="searchuser" placeholder="Please input some letters"
                                    data-activates="singleDropdown" data-beloworigin="true" autocomplete="off">
+                            <sup><a href="#" id="clearsearch">{% trans %}effacer_recherche{% endtrans %}</a></sup>
                         </div>
+
                         <ul id="singleDropdown" class="dropdown-content ac-dropdown"></ul>
                     </div>
+
                 </div>
             </div>
             <!-- -->
@@ -94,6 +98,11 @@
                         $('.pagination').hide();
                     }
                 });
+
+                $("#clearsearch").click(function(){
+                    location.reload();
+                });
+
                 /**
                  *
                  */

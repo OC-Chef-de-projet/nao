@@ -55,6 +55,10 @@
                 <source>utilisateur_bloque</source>
                 <target>Utilisateur bloqué</target>
             </trans-unit>
+            <trans-unit id="effacer_recherche">
+                <source>effacer_recherche</source>
+                <target>Effacer la recherche</target>
+            </trans-unit>
 
             <!-- Gestion des articles -->
             <trans-unit id="gestion_articles">
