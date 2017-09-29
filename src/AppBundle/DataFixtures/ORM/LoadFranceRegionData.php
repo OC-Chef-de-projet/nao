@@ -6,7 +6,7 @@
  * Time: 22:04
  */
 
-namespace AppBundle\DataFixtures\ORM\data;
+namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -18,7 +18,7 @@ use AppBundle\Entity\FranceRegion;
  * Class LoadUserData
  * @package AppBundle\DataFixtures\ORM
  */
-class LoadFranceRegionData implements FixtureInterface, ContainerAwareInterface
+class LoadFranceRegionData
 {
 
 
@@ -31,7 +31,7 @@ class LoadFranceRegionData implements FixtureInterface, ContainerAwareInterface
     {
         // bin/console doctrine:fixtures:load
 
-        $csv = fopen(dirname(__FILE__).'/FranceRegion.csv', 'r');
+        $csv = fopen('./src/AppBundle/DataFixtures/ORM/FranceRegion.csv', 'r');
 
         $first = true;
         $count = 0;
@@ -66,8 +66,8 @@ class LoadFranceRegionData implements FixtureInterface, ContainerAwareInterface
             $franceRegion->setDistance($line[13]);
 
             $manager->persist($franceRegion);
-            $manager->flush();
         }
+        $manager->flush();
         fclose($csv);
     }
 }

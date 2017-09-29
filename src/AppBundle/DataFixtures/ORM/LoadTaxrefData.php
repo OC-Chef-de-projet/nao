@@ -6,32 +6,22 @@
  * Time: 22:04
  */
 
-namespace AppBundle\DataFixtures\ORM\data;
+namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use AppBundle\Entity\Taxref;
 
 /**
  * Class LoadUserData
  * @package AppBundle\DataFixtures\ORM
  */
-class LoadTaxrefData implements FixtureInterface, ContainerAwareInterface
+class LoadTaxrefData extends Fixture implements FixtureInterface, ContainerAwareInterface
 {
 
-    private $container;
-
-    /**
-     * Container
-     *
-     * @param ContainerInterface|null $container
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }
 
     /**
      * Create users*
@@ -40,9 +30,11 @@ class LoadTaxrefData implements FixtureInterface, ContainerAwareInterface
      */
     public function load(ObjectManager $manager)
     {
+
+
         // bin/console doctrine:fixtures:load
 
-        $csv = fopen(dirname(__FILE__).'/TAXREF.csv', 'r');
+        $csv = fopen('./src/AppBundle/DataFixtures/ORM/TAXREF.csv', 'r');
 
         $first = true;
         $count = 0;
@@ -53,7 +45,6 @@ class LoadTaxrefData implements FixtureInterface, ContainerAwareInterface
                 $first = false;
                 continue;
             }
-            echo "$count\n";
             $count++;
             if($count >= 100)break;
             $line = fgetcsv($csv,0,';');
@@ -95,10 +86,13 @@ class LoadTaxrefData implements FixtureInterface, ContainerAwareInterface
             $taxref->setPolynesieFrancaise($line[31]);
             $taxref->setClipperton($line[32]);
 
+            if($taxref->getScientificId() == 416687){
+                $this->addReference('416687', $taxref);
+            }
             $manager->persist($taxref);
-            $manager->flush();
         }
         fclose($csv);
+        $manager->flush();
     }
 }
 
