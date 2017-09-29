@@ -20,6 +20,12 @@ nav {
     background-color: rgba(0,150,136,0.3);
 }
 
+input#searchuser {
+    background-position: left center;
+    background-image: url(../../assets/img/magnify.png);
+    background-repeat: no-repeat;
+    text-indent: 35px;
+}
 
 .search_name {
     margin-left: 40px;

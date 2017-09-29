@@ -26,7 +26,7 @@ class UserRepository extends EntityRepository
     {
         $query = $this->createQueryBuilder('u')
             ->where('u.role = :role')
-            ->setParameter('role',$role)
+            ->setParameter('role', $role)
             ->orderBy('u.name', 'ASC')
             ->getQuery();
 
@@ -72,18 +72,29 @@ class UserRepository extends EntityRepository
      *
      * @return Paginator
      */
-    public function searchUsersByRole($currentPage,$role,$limit = 50,$pattern = '')
+    public function searchUsersByRole($currentPage, $role, $limit = 50, $user_id = 0)
     {
         $query = $this->createQueryBuilder('u');
-        $query->where('u.role = :role')->setParameter('role',$role);
+        $query->where('u.role = :role')->setParameter('role', $role);
 
-        if($pattern){
-            $query->andWhere('u.name LIKE :pattern')->setParameter('pattern','%'.$pattern.'%');
+        if ($user_id) {
+            $query->andWhere('u.id = :user_id')->setParameter('user_id', $user_id);
         }
         $query->orderBy('u.name', 'ASC')->getQuery();
 
         $paginator = $this->paginate($query, $currentPage, $limit);
         return $paginator;
+    }
+
+    public function autocompleteUsersByRole($role, $pattern = '')
+    {
+
+         return $this->createQueryBuilder('u')
+            ->select('u.id', 'u.name AS text')
+            ->where('u.role = :role')->setParameter('role', $role)
+            ->andWhere('u.name LIKE :pattern')->setParameter('pattern', '%'.$pattern.'%')
+            ->getQuery()
+            ->getResult();
     }
 
     /**

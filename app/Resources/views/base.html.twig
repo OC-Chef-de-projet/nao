@@ -1,161 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Nos Amis les Oiseaux{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('assets/css/core.min.css') }}"/>
-            <link rel="stylesheet" href="{{ asset('assets/css/custom.min.css') }}"/>
-        {% endblock stylesheets %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Nos Amis les Oiseaux{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/core.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/css/custom.min.css') }}"/>
+    {% endblock stylesheets %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    </head>
-    <body {% if header.bodyClass is defined %}class="{{ header.bodyClass }}{% endif %}">
-        {% block body %}{% endblock body %}
-        {% block javascripts %}
-            <script src="{{ asset('assets/js/core.min.js') }}"></script>
-            <!--<script src="{{ asset('assets/js/custom.min.js') }}"></script>-->
-        {% endblock javascripts%}
-        <script>
-            $(document).ready(function() {
-                $('select').material_select();
-                $('.modal').modal();
+</head>
+<body {% if header.bodyClass is defined %}class="{{ header.bodyClass }}{% endif %}">
 
-                /**
-                 *
-                 */
-                $('.gotopage').click(function () {
-                    var pageno = $(this).data("page");
-                    // Search active page
-                    var current = $('.pagination').find('.active').attr('id');
-                    $('#' + current).removeClass('active');
-                    userList(pageno);
-                    $('#p_' + pageno).addClass('active');
-                    if(pageno > 1){
-                        $('#chevron_left').removeClass('disabled');
-                    } else {
-                        $('#chevron_left').addClass('disabled');
-                    }
-                    var maxpage = $('#maxpage').val() - 1;
-                    if(pageno >= maxpage){
-                        $('#chevron_right').addClass('disabled');
+{% block body %}{% endblock body %}
 
-                    } else {
-                        $('#chevron_right').removeClass('disabled');
-                    }
-                });
-
-                /**
-                 *
-                 */
-                $('#nextpage').click(function () {
-                    var current = $('.pagination').find('.active').attr('id');
-                    $('#' + current).removeClass('active');
-                    var next = parseInt(current.replace('p_','')) + 1
-                    if(next > 1){
-                        $('#chevron_left').removeClass('disabled');
-                    } else {
-                        $('#chevron_left').addClass('disabled');
-                    }
-                    var maxpage = $('#maxpage').val() - 1;
-                    var maxcurrent = $('#maxcurrent').val();
-
-                    if(next >= maxpage){
-                        next = maxpage;
-                        $('#chevron_right').addClass('disabled');
-
-                    } else {
-                        $('#chevron_right').removeClass('disabled');
-                    }
-                    userList(next);
-                    $('#p_' + next).addClass('active');
-
-                    /*
-                    if(next >= maxcurrent){
-                        maxcurrent++;
-                        $('#maxcurrent').val(maxcurrent);
-                        var prevnumber =  maxcurrent - 11;
-                        console.log(prevnumber);
-                        $('#p_' + prevnumber).remove();
-                        addPage(maxcurrent);
-                    }
-                    */
-                });
-
-                /**
-                 *
-                 */
-                $('#prevpage').click(function () {
-                    var current = $('.pagination').find('.active').attr('id');
-                    $('#' + current).removeClass('active');
-                    var prev = parseInt(current.replace('p_','')) - 1
-                    if(prev <= 1){
-                        prev = 1;
-                        $('#chevron_left').addClass('disabled');
-                    } else {
-                        $('#chevron_left').removeClass('disabled');
-                    }
-                    userList(prev);
-                    $('#p_' + prev).addClass('active');
-                });
-            });
-
-            function addPage(page)
-            {
-                html= '<li id="p_'+ page +'" class="waves-effect ">' +
-                        '<a class="gotopage " href="#" data-page="' + page + '">' + page +'</a>' +
-                    '</li>';
-                $(html).insertBefore('.pagination>li:last');;
-
-            }
-            function userList(pageno) {
-
-                var role = $('.tab').find('.active').attr('id');
-                var search = $('#form_search').val();
-                $.ajax({
-                    url: "{{ path('admin_user_paginate')}}",
-                    type: "POST",
-                    dataType: "json",
-                    data: {
-                        "page": pageno,
-                        "role": role,
-                        "search": search
-                    },
-                    success: function(response){
-                        $('#userList').html(response.html);
-                    }
-                });
-            }
-
-            function post_delete_confirm(id) {
-                MaterialDialog.dialog(
-                    "{% trans %}supprimer_article_confirm{% endtrans %}",
-                    {
-                        title: "{% trans %}supprimer_article{% endtrans %}",
-                        modalType: "modal-fixed-footer", // Can be empty, modal-fixed-footer or bottom-sheet
-                        buttons: {
-                            // Use by default close and confirm buttons
-                            confirm: {
-                                className: "btn-validate",
-                                text: "{% trans %}oui{% endtrans %}",
-                                callback: function () {
-
-                                    var url = '{{ path('admin_post_delete',{ 'id':'post_id'}) }}';
-                                    url = url.replace('post_id',id);
-                                    window.location.href = url;
-                                }
-                            },
-                            close: {
-                                className: "btn-cancel",
-                                text: "{% trans %}non{% endtrans %}",
-                                modalClose: true
-                            }
-                        }
-                    }
-                )
-            }
-
-        </script>
-    </body>
+{% block javascripts %}
+    <script src="{{ asset('assets/js/core.min.js') }}"></script>
+    <script src="{{ asset('assets/js/nao.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').material_select();
+            $('.modal').modal();
+        });
+    </script>
+{% endblock javascripts %}
+</body>
 </html>

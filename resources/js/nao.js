@@ -1,30 +1,65 @@
-// New file
+function removePage(page) {
+    $('#p_' + page).remove();
+}
 
-function post_delete_confirm() {
+function addPage(page) {
+    html = '<li id="p_' + page + '" class="waves-effect ">' +
+        '<a class="gotopage" href="#" data-page="' + page + '">' + page + '</a>' +
+        '</li>';
+    $(html).insertBefore('.pagination>li:last');
+    ;
+
+}
+
+function userList(pageno, user_id) {
+    console.log("PP " + pageno);
+    var role = $('.tab').find('.active').attr('id');
+    var search = $('#form_search').val();
+    $.ajax({
+        url: "{{ path('admin_user_paginate')}}",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "page": pageno,
+            "role": role,
+            "user_id": user_id
+        },
+        success: function (response) {
+            $('#userList').html(response.html);
+        }
+    });
+}
+
+function post_delete_confirm(id) {
     MaterialDialog.dialog(
-        "Text here",
+        "{% trans %}supprimer_article_confirm{% endtrans %}",
         {
-            title: "Dialog Title",
+            title: "{% trans %}supprimer_article{% endtrans %}",
             modalType: "modal-fixed-footer", // Can be empty, modal-fixed-footer or bottom-sheet
             buttons: {
                 // Use by default close and confirm buttons
-                close: {
-                    className: "red",
-                    text: "closed",
+                confirm: {
+                    className: "btn-validate",
+                    text: "{% trans %}oui{% endtrans %}",
                     callback: function () {
-                        alert("closed!");
+
+                        var url = '{{ path('
+                        admin_post_delete
+                        ',{ '
+                        id
+                        ':'
+                        post_id
+                        '}) }}';
+                        url = url.replace('post_id', id);
+                        window.location.href = url;
                     }
                 },
-                confirm: {
-                    className: "blue",
-                    text: "confirmed",
-                    modalClose: false,
-                    callback: function () {
-                        console.log("confirmed");
-                    }
+                close: {
+                    className: "btn-cancel",
+                    text: "{% trans %}non{% endtrans %}",
+                    modalClose: true
                 }
             }
         }
     )
 }
-

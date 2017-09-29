@@ -1,3 +1,8 @@
+admin_user_search:
+    path:     /search
+    defaults: { _controller: AppBundle:Admin\User:search }
+    methods:  POST
+
 admin_user_paginate:
     path:     /paginate
     defaults: { _controller: AppBundle:Admin\User:paginate }

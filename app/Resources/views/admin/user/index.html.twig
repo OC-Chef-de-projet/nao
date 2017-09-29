@@ -57,6 +57,134 @@
 
 {% endblock body %}
 
+    {% block javascripts %}
+        {{ parent() }}
+        <script>
+            fucntion doigt(){
+                console.log("POUCE");
+            }
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                var single = $('#searchuser').materialize_autocomplete({
+                    limit: 10,
+                    cacheable: false,
+                    multiple: {
+                        enable: false
+                    },
+                    dropdown: {
+                        el: '#singleDropdown'
+                    },
+                    getData: function (value, callback) {
+                        console.log("getData " + value);
+                        var data = [];
+                        var role = $('.tab').find('.active').attr('id');
+                        $.ajax({
+                            url: "{{ path('admin_user_search') }}",
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+                                "role": role,
+                                "search": value
+                            },
+                            success: function (response) {
+                                callback(value, response);
+                            }
+                        });
+                    },
+                    onSelect: function (item) {
+                        console.log("ONSELECT");
+                        userList(1, item.id);
+                        $('.pagination').hide();
+                    }
+
+
+                });
+
+                /**
+                 *
+                 */
+                $('.gotopage').click(function () {
+                    var pageno = $(this).data("page");
+                    // Search active page
+                    var current = $('.pagination').find('.active').attr('id');
+                    $('#' + current).removeClass('active');
+                    userList(pageno, 0);
+                    $('#p_' + pageno).addClass('active');
+                    if (pageno > 1) {
+                        $('#chevron_left').removeClass('disabled');
+                    } else {
+                        $('#chevron_left').addClass('disabled');
+                    }
+                    var maxpage = $('#maxpage').val() - 1;
+                    if (pageno >= maxpage) {
+                        $('#chevron_right').addClass('disabled');
+
+                    } else {
+                        $('#chevron_right').removeClass('disabled');
+                    }
+                });
+
+                /**
+                 *
+                 */
+                $('#nextpage').click(function () {
+                    var current = $('.pagination').find('.active').attr('id');
+                    $('#' + current).removeClass('active');
+                    var next = parseInt(current.replace('p_', '')) + 1
+                    if (next > 1) {
+                        $('#chevron_left').removeClass('disabled');
+                    } else {
+                        $('#chevron_left').addClass('disabled');
+                    }
+                    var maxpage = $('#maxpage').val() - 1;
+                    var maxcurrent = $('#maxcurrent').val();
+                    if (next >= maxpage) {
+                        //next = maxpage;
+                        $('#chevron_right').addClass('disabled');
+                    } else {
+                        $('#chevron_right').removeClass('disabled');
+                    }
+                    if (next > maxpage) {
+                        console.log('#p_' + maxpage);
+                        $('#p_' + maxpage).addClass('active');
+                        return true;
+                        ;
+                    }
+                    if (next > maxcurrent) {
+                        maxcurrent = next;
+                        addPage(next);
+                        removePage(next - 11);
+                    }
+                    userList(next, 0);
+                    $('#p_' + next).addClass('active');
+                });
+
+                /**
+                 *
+                 */
+                $('#prevpage').click(function () {
+                    var current = $('.pagination').find('.active').attr('id');
+                    $('#' + current).removeClass('active');
+                    var prev = parseInt(current.replace('p_', '')) - 1
+                    if (prev <= 1) {
+                        prev = 1;
+                        $('#chevron_left').addClass('disabled');
+                    } else {
+                        $('#chevron_left').removeClass('disabled');
+                    }
+                    console.log("PREV " + prev);
+                    console.log("CURR " + current);
+                    userList(prev, 0);
+                    $('#p_' + prev).addClass('active');
+                });
+            });
+        </script>
+    {% endblock %}
+
+
+
 
 
 
