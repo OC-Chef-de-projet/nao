@@ -77,12 +77,10 @@ class UserController extends Controller
      */
     public function paginateAction(Request $request)
     {
-        //$logger = $this->get('logger');
 
 
         $em = $this->getDoctrine()->getManager();
 
-        //if ($request->isXMLHttpRequest()) {
             $page = $request->request->get('page');
             $role = $request->request->get('role');
             $user_id = $request->request->get('user_id');
@@ -95,7 +93,6 @@ class UserController extends Controller
             ])->getContent();
 
             return new JsonResponse(['html' => $html]);
-        //}
     }
 
 }
