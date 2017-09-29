@@ -15,3 +15,4 @@ api_userinfo:
     host:     nao.lignedemire.eu
     resource: AppBundle\Controller\API\UserController
     methods:  POST
+
