@@ -1,5 +1,17 @@
+
+
+api_user_paginate:
+    path:     /paginate
+    defaults: { _controller: AppBundle:API\User:paginate }
+    methods:  POST
+
+api_user_search:
+    path:     /search
+    defaults: { _controller: AppBundle:API\User:search }
+    methods:  POST
+
 api_userinfo:
     type:     rest
     host:     nao.lignedemire.eu
     resource: AppBundle\Controller\API\UserController
-    methods: [POST, GET]
+    methods:  POST

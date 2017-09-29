@@ -11,12 +11,19 @@ function addPage(page) {
 
 }
 
+/**
+ * Get user list
+ *
+ * @param pageno
+ * @param user_id
+ */
+/*
+
 function userList(pageno, user_id) {
-    console.log("PP " + pageno);
     var role = $('.tab').find('.active').attr('id');
     var search = $('#form_search').val();
     $.ajax({
-        url: "{{ path('admin_user_paginate')}}",
+        url: "{{ path('api_user_paginate')}}",
         type: "POST",
         dataType: "json",
         data: {
@@ -29,7 +36,13 @@ function userList(pageno, user_id) {
         }
     });
 }
-
+*/
+/**
+ * Confirm deletion of post
+ *
+ * @param id
+ */
+/*
 function post_delete_confirm(id) {
     MaterialDialog.dialog(
         "{% trans %}supprimer_article_confirm{% endtrans %}",
@@ -63,3 +76,4 @@ function post_delete_confirm(id) {
         }
     )
 }
+*/

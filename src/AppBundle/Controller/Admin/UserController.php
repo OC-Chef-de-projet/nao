@@ -80,45 +80,6 @@ class UserController extends Controller
     }
 
 
-    public function searchAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        if ($request->isXMLHttpRequest()) {
-             $search = $request->request->get('search');
-             $role = $request->request->get('role');
-             $autocomplete = $em->getRepository('AppBundle:User')->autocompleteUsersByRole($role, $search);
-             if(empty($autocomplete)){
-                $autocomplete[0] = [
-                    'id' => 0,
-                    'Text' => '...'
-                ];
-             }
-             return new Response(json_encode($autocomplete));
-        }
-    }
-    public function paginateAction(Request $request)
-    {
-        //$logger = $this->get('logger');
-
-
-        $em = $this->getDoctrine()->getManager();
-
-        if ($request->isXMLHttpRequest()) {
-            $page = $request->request->get('page');
-            $role = $request->request->get('role');
-            $user_id = $request->request->get('user_id');
-
-            //$logger->info('I just got the logger '.$page);
-            $users = $em->getRepository('AppBundle:User')->searchUsersByRole($page, $role, $this->getParameter('list_limit'), $user_id);
-
-            $html = $this->render(':admin/user:list.html.twig', [
-                    'users' => $users
-            ])->getContent();
-
-            return new Response(json_encode(['html' => $html]));
-        }
-    }
-
     /**
      * Update user profile (only role and blocked)
      *

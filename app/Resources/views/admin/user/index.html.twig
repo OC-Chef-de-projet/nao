@@ -13,12 +13,12 @@
         <div class="card-panel">
             <div class="row">
                 <div class="col s12 m6 push-m3 search">
-                    <div class="input-field">
-                        {{ form_start(form) }}
-                        {{ form_widget(form.search) }}
-                        <label for="icon_prefix"><i class="material-icons prefix">search</i><span
-                                    class="search_name">{% trans %}recherche_par_nom{% endtrans %}</span></label>
-                        {{ form_end(form) }}
+                    <div class="autocomplete" id="single">
+                        <div class="ac-input">
+                            <input type="text" id="searchuser" placeholder="Please input some letters"
+                                   data-activates="singleDropdown" data-beloworigin="true" autocomplete="off">
+                        </div>
+                        <ul id="singleDropdown" class="dropdown-content ac-dropdown"></ul>
                     </div>
                 </div>
             </div>
@@ -32,17 +32,18 @@
                 <input type="hidden" id="maxpage" value="{{ paginate.maxPages }}">
                 <input type="hidden" id="maxcurrent" value="{{ paginate.current + 10 }}">
                 <li id="chevron_left" {{ paginate.current <= 1 ? 'class="disabled"': 'class="waves-effect"' }}>
-                    <a  id="prevpage" href="#">
+                    <a id="prevpage" href="#">
                         <i class="material-icons">chevron_left</i>
                     </a>
                 </li>
 
                 {% for i in paginate.current..paginate.current + 10 %}
-                    {% if i < paginate.maxPages  %}
-                    <li id="p_{{ i }}" class="waves-effect {{ paginate.current == i ? 'active' }}{{ i > paginate.maxPages ? 'disabled' }}">
-                        <a class="gotopage {{ i > paginate.maxPages ? ' not-active' }}" href="#"
-                           data-page="{{ i }}">{{ i }}</a>
-                    </li>
+                    {% if i < paginate.maxPages %}
+                        <li id="p_{{ i }}"
+                            class="waves-effect {{ paginate.current == i ? 'active' }}{{ i > paginate.maxPages ? 'disabled' }}">
+                            <a class="gotopage {{ i > paginate.maxPages ? ' not-active' }}" href="#"
+                               data-page="{{ i }}">{{ i }}</a>
+                        </li>
                     {% endif %}
                 {% endfor %}
 
@@ -60,16 +61,10 @@
     {% block javascripts %}
         {{ parent() }}
         <script>
-            fucntion doigt(){
-                console.log("POUCE");
-            }
-        </script>
-
-        <script>
-            $(document).ready(function () {
+            $(function () {
                 var single = $('#searchuser').materialize_autocomplete({
                     limit: 10,
-                    cacheable: false,
+                    cacheable: true,
                     multiple: {
                         enable: false
                     },
@@ -81,7 +76,7 @@
                         var data = [];
                         var role = $('.tab').find('.active').attr('id');
                         $.ajax({
-                            url: "{{ path('admin_user_search') }}",
+                            url: "{{ url('api_user_search') }}",
                             type: "POST",
                             dataType: "json",
                             data: {
@@ -98,10 +93,7 @@
                         userList(1, item.id);
                         $('.pagination').hide();
                     }
-
-
                 });
-
                 /**
                  *
                  */
@@ -180,6 +172,30 @@
                     $('#p_' + prev).addClass('active');
                 });
             });
+
+            /**
+             * Get user list
+             *
+             * @param pageno
+             * @param user_id
+             */
+            function userList(pageno, user_id) {
+                var role = $('.tab').find('.active').attr('id');
+                var search = $('#form_search').val();
+                $.ajax({
+                    url: "{{ url('api_user_paginate') }}",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "page": pageno,
+                        "role": role,
+                        "user_id": user_id
+                    },
+                    success: function (response) {
+                        $('#userList').html(response.html);
+                    }
+                });
+            }
         </script>
     {% endblock %}
 

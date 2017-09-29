@@ -34,7 +34,8 @@
                                 </p>
                             </div>
                             <div class="card-action right-align">
-                                <a class="waves-effect modal-trigger" href="#" onclick="post_delete_confirm('{{ post.id }}')">
+                                <a class="waves-effect modal-trigger" href="#"
+                                   onclick="post_delete_confirm('{{ post.id }}')">
                                     <i class="material-icons left post-icon">delete</i>
                                     {% trans %}supprimer{% endtrans %}
                                 </a>
@@ -74,3 +75,48 @@
         </div>
     </div>
 {% endblock body %}
+
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script>
+            /**
+             * Confirm deletion of post
+             *
+             * @param id
+             */
+            function post_delete_confirm(id) {
+                MaterialDialog.dialog(
+                    "{% trans %}supprimer_article_confirm{% endtrans %}",
+                    {
+                        title: "{% trans %}supprimer_article{% endtrans %}",
+                        modalType: "modal-fixed-footer", // Can be empty, modal-fixed-footer or bottom-sheet
+                        buttons: {
+                            // Use by default close and confirm buttons
+                            confirm: {
+                                className: "btn-validate",
+                                text: "{% trans %}oui{% endtrans %}",
+                                callback: function () {
+
+                                    var url = '{{ path('
+                        admin_post_delete
+                        ',{ '
+                        id
+                        ':'
+                        post_id
+                        '}) }}';
+                                    url = url.replace('post_id', id);
+                                    window.location.href = url;
+                                }
+                            },
+                            close: {
+                                className: "btn-cancel",
+                                text: "{% trans %}non{% endtrans %}",
+                                modalClose: true
+                            }
+                        }
+                    }
+                )
+            }
+        </script>
+    {% endblock %}

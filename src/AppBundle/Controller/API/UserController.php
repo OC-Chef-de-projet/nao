@@ -36,7 +36,7 @@ class UserController extends Controller
                 'email' => $user[0]->getEmail(),
                 'role' => $user[0]->getRole(),
                 'aboutme' => $user[0]->getAboutme(),
-                'image' => $baseurl = $request->getScheme().'://'.$request->getHttpHost().$request->getBasePath().'/images/users/'.$user[0]->getImagePath(),
+                'image' => $baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath() . '/images/users/' . $user[0]->getImagePath(),
                 'created' => $user[0]->getCreated(),
                 'roleString' => $user[0]->getRoleString(),
                 'name' => $user[0]->getName(),
@@ -49,19 +49,55 @@ class UserController extends Controller
         $view->setFormat('json');
         return $viewHandler->handle($view);
     }
-}
-/*
-        "id": 1080,
-        "name": "Bobby",
-        "email": "admin@test.com",
-        "role": "ROLE_ADMIN",
-        "newsletter": false,
-        "token": null,
-        "aboutme": null,
-        "imagePath": "bobby.jpg",
-        "inactive": false,
-        "roleString": "Administrateur",
-        "plainPassword": null,
-        "created": "2017-09-28T19:26:44+02:00"
 
-        */
+
+    /**
+     * Search user (ajax)
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function searchAction(Request $request)
+    {
+        $logger = $this->get('logger');
+        $logger->info('I just got the logger **************************************************************');
+
+        $em = $this->getDoctrine()->getManager();
+        $search = $request->request->get('search');
+        $role = $request->request->get('role');
+        $autocomplete = $em->getRepository('AppBundle:User')->autocompleteUsersByRole($role, $search);
+        return new JsonResponse($autocomplete);
+
+    }
+
+
+    /**
+     * Paginate user list (ajax)
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function paginateAction(Request $request)
+    {
+        //$logger = $this->get('logger');
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        //if ($request->isXMLHttpRequest()) {
+            $page = $request->request->get('page');
+            $role = $request->request->get('role');
+            $user_id = $request->request->get('user_id');
+
+            //$logger->info('I just got the logger '.$page);
+            $users = $em->getRepository('AppBundle:User')->searchUsersByRole($page, $role, $this->getParameter('list_limit'), $user_id);
+
+            $html = $this->render(':admin/user:list.html.twig', [
+                'users' => $users
+            ])->getContent();
+
+            return new JsonResponse(['html' => $html]);
+        //}
+    }
+
+}
