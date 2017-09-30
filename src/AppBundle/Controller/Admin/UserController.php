@@ -34,54 +34,26 @@ class UserController extends Controller
     public function indexAction(Request $request, $page = 1, $role = 'ROLE_OBSERVER' )
     {
 
-
         $em = $this->getDoctrine()->getManager();
-        $form = $this->createFormBuilder()
-            ->setMethod('POST')
-            ->add('search', TextType::class,[
-                'label' => '',
-                'required'   => false
-            ])
-            ->add('send', SubmitType::class,[
-                'label' => '',
-                'attr' => [
-                    'class' => 'hide'
-                ]
-            ])
-            ->getForm();
 
-        $form->handleRequest($request);
-        $data = $form->getData();
-        if(isset($data['search']) && !empty($data['search'])){
-            $pattern = strip_tags($data['search']);
-        }
-
-        $pattern = ''; // No filter by default
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            if(isset($data['search']) && !empty($data['search'])){
-                $pattern = strip_tags($data['search']);
-                $page = 1;
-            }
-        }
-
-        $users = $em->getRepository('AppBundle:User')->searchUsersByRole($page,$role,$this->getParameter('list_limit'),$pattern);
+        $c = $this->get('security.token_storage')->getToken()->getUser();
+        $users = $em->getRepository('AppBundle:User')->searchUsersByRole($page,$role,$this->getParameter('list_limit'));
 
         return $this->render('@AdminUser/index.html.twig', [
             'header' => [
                 'bodyClass' => 'background-2',
                 'tabs' => $this->container->get('app.user')->getUsersTabs($role),
-                'breadcrumb' => $this->container->get('app.user')->getIndexBreadcrumb()
+                'breadcrumb' => $this->container->get('app.user')->getIndexBreadcrumb(),
+                'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($c)
             ],
             'paginate' => $this->container->get('app.user')->getPagination($users,$page),
             'users' => $users->getIterator(),
-            'form' => $form->createView()
         ]);
     }
 
 
     /**
-     * Update user profile (only role and blocked)
+     * Update user profile (only role and blocked status)
      *
      * @param Request $request  Http request
      * @param User $user        User entity

@@ -77,11 +77,10 @@
                         el: '#singleDropdown'
                     },
                     getData: function (value, callback) {
-                        console.log("getData " + value);
                         var data = [];
                         var role = $('.tab').find('.active').attr('id');
                         $.ajax({
-                            url: "{{ url('api_user_search') }}",
+                            url: "{{ url('api_user_search') }}?bearer={{ header.token }}",
                             type: "POST",
                             dataType: "json",
                             data: {
@@ -94,7 +93,6 @@
                         });
                     },
                     onSelect: function (item) {
-                        console.log("ONSELECT");
                         userList(1, item.id);
                         $('.pagination').hide();
                     }
@@ -193,7 +191,7 @@
                 var role = $('.tab').find('.active').attr('id');
                 var search = $('#form_search').val();
                 $.ajax({
-                    url: "{{ url('api_user_paginate') }}",
+                    url: "{{ url('api_user_paginate') }}?bearer={{ header.token }}",
                     type: "POST",
                     dataType: "json",
                     data: {

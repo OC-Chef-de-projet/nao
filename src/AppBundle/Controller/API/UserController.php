@@ -17,10 +17,14 @@ class UserController extends Controller
 {
 
 
+    /**
+     * Get user info
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function userinfoAction(Request $request)
     {
-
-
         $url = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
         $response = $this->container->get('app.user')->getUserInfo($url);
 
@@ -58,20 +62,20 @@ class UserController extends Controller
     public function paginateAction(Request $request)
     {
 
-
         $em = $this->getDoctrine()->getManager();
 
-            $page = $request->request->get('page');
-            $role = $request->request->get('role');
-            $user_id = $request->request->get('user_id');
+        $users = $em->getRepository('AppBundle:User')->searchUsersByRole(
+            $request->request->get('page'),
+            $request->request->get('role'),
+            $this->getParameter('list_limit'),
+            $request->request->get('user_id')
+        );
 
-            $users = $em->getRepository('AppBundle:User')->searchUsersByRole($page, $role, $this->getParameter('list_limit'), $user_id);
+        $html = $this->render(':admin/user:list.html.twig', [
+            'users' => $users
+        ])->getContent();
 
-            $html = $this->render(':admin/user:list.html.twig', [
-                'users' => $users
-            ])->getContent();
-
-            return new JsonResponse(['html' => $html]);
+        return new JsonResponse(['html' => $html]);
     }
 
 }

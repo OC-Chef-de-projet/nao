@@ -19,7 +19,6 @@ use Doctrine\ORM\EntityManager;
  */
 class UserService
 {
-    private $em;
     private $ts;
     private $list_limit;
 
@@ -31,9 +30,8 @@ class UserService
      *
      * @param $list_limit
      */
-    public function __construct(EntityManager $em,  TokenStorage $ts,$list_limit)
+    public function __construct(TokenStorage $ts,$list_limit)
     {
-        $this->em = $em;
         $this->ts = $ts;
         $this->list_limit = $list_limit;
     }

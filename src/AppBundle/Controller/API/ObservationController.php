@@ -17,6 +17,8 @@ class ObservationController extends Controller
 
 
     /**
+     * Observation list
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -33,6 +35,8 @@ class ObservationController extends Controller
     }
 
     /**
+     * Add an observation
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
