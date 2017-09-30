@@ -1,4 +1,5 @@
-
+api_login_check:
+    path: /login_check
 
 api_user_paginate:
     path:     /paginate

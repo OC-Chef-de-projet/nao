@@ -22,8 +22,9 @@ class ObservationController extends Controller
      */
     public function obslistAction(Request $request)
     {
+
         $url = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
-        $response = $this->container->get('app.obs')->getlist($request->get('email'), $url);
+        $response = $this->container->get('app.obs')->getlist($url);
 
         $viewHandler = $this->get('fos_rest.view_handler');
         $view = View::create($response);
@@ -37,7 +38,7 @@ class ObservationController extends Controller
      */
     public function obsaddAction(Request $request)
     {
-        $response = $this->container->get('app.obs')->add($request->get('email'), $request->get('observation'));
+        $response = $this->container->get('app.obs')->add($request->get('observation'));
 
         $viewHandler = $this->get('fos_rest.view_handler');
         $view = View::create($response);

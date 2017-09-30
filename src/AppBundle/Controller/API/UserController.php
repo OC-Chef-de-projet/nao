@@ -20,29 +20,9 @@ class UserController extends Controller
     public function userinfoAction(Request $request)
     {
 
-        // request->get('email'),
-        // request->get('key')
 
-        $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('AppBundle:User')->findByEmail($request->get('email'));
-
-        // Check for password
-
-
-        $response = [];
-        if ($user) {
-            $response = [
-                'name' => $user[0]->getName(),
-                'email' => $user[0]->getEmail(),
-                'role' => $user[0]->getRole(),
-                'aboutme' => $user[0]->getAboutme(),
-                'image' => $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath() . '/images/users/' . $user[0]->getImagePath(),
-                'created' => $user[0]->getCreated(),
-                'roleString' => $user[0]->getRoleString(),
-                'name' => $user[0]->getName(),
-                'name' => $user[0]->getName(),
-            ];
-        }
+        $url = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
+        $response = $this->container->get('app.user')->getUserInfo($url);
 
         $viewHandler = $this->get('fos_rest.view_handler');
         $view = View::create($response);

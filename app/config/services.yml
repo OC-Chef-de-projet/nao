@@ -40,7 +40,7 @@ services:
     app.user:
         class: AppBundle\Service\UserService
         public: true
-        arguments: ['%list_limit%']
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%']
 
     app.post:
         class: AppBundle\Service\PostService
@@ -50,7 +50,7 @@ services:
     app.obs:
         class: AppBundle\Service\ObservationService
         public: true
-        arguments: ["@doctrine.orm.entity_manager"]
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
 
 
     AppBundle\EventListener\UserListener:

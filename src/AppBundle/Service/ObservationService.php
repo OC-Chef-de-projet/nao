@@ -7,7 +7,7 @@ use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Form;
 use Doctrine\ORM\Tools\Pagination\Paginator;
-
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 /**
  * Class ObservationService
  * @package AppBundle\Service
@@ -16,14 +16,16 @@ class ObservationService
 {
 
     private $em;
+    private $ts;
 
     /**
      * ObservationService constructor.
      * @param EntityManager $em
      */
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $em,  TokenStorage $ts)
     {
         $this->em = $em;
+        $this->ts = $ts;
     }
 
 
@@ -35,10 +37,10 @@ class ObservationService
      *
      * @return array
      */
-    public function getlist($email, $url = '')
+    public function getlist($url = '')
     {
 
-        $user = $this->em->getRepository('AppBundle:User')->findOneByEmail($email);
+        $user = $this->ts->getToken()->getUser();
         if (!$user) {
             return [];
         }
@@ -63,9 +65,10 @@ class ObservationService
      *
      * @return array
      */
-    public function add($email, $observation)
+    public function add($observation)
     {
-        $user = $this->em->getRepository('AppBundle:User')->findOneByEmail($email);
+        $user = $this->ts->getToken()->getUser();
+
         if (!$user) {
             return [];
         }

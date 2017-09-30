@@ -24,4 +24,3 @@ admin_import:
 api_import:
   resource: "@AppBundle/Resources/config/routing/api.yml"
   prefix: /API
-
