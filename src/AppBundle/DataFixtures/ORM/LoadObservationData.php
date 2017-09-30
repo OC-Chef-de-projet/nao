@@ -47,6 +47,21 @@ class LoadObservationData extends Fixture implements FixtureInterface, Container
 
         $obs = new Observation();
         $obs->setStatus(Observation::VALIDATED);
+        $obs->setValidated(new \DateTime('-20 days'));
+        $obs->setComments('Observation faite par un particulier et validée');
+        $obs->setWatched(new \DateTime('-30 days'));
+        $obs->setIndividuals(32);
+        $obs->setLatitude(48.84736638904716);
+        $obs->setLongitude(2.2899627685546875);
+        $obs->setImagePath('buse-feroce.jpg');
+        $obs->setPlace('Rue de Lourmel');
+        $obs->setUser($this->getReference('observer'));
+        $obs->setTaxref($this->getReference('416687'));
+        $obs->setNaturalist($this->getReference('naturalist'));
+        $manager->persist($obs);
+
+        $obs = new Observation();
+        $obs->setStatus(Observation::VALIDATED);
         $obs->setComments('Observation faite par un naturalist');
         $obs->setWatched(new \DateTime('yesterday'));
         $obs->setValidated(new \DateTime('now'));

@@ -36,6 +36,7 @@ services:
         class: AppBundle\Service\NotificationService
         public: true
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
+
     app.user:
         class: AppBundle\Service\UserService
         public: true
@@ -45,6 +46,11 @@ services:
         class: AppBundle\Service\PostService
         public: true
         arguments: ["@doctrine.orm.entity_manager",'%posts_directory%', '%list_limit%']
+
+    app.obs:
+        class: AppBundle\Service\ObservationService
+        public: true
+        arguments: ["@doctrine.orm.entity_manager"]
 
 
     AppBundle\EventListener\UserListener:

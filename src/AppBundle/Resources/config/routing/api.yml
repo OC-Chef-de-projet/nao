@@ -10,9 +10,15 @@ api_user_search:
     defaults: { _controller: AppBundle:API\User:search }
     methods:  POST
 
+
+api_observation:
+    type:     rest
+    host:     nao.lignedemire.eu
+    resource: AppBundle\Controller\API\ObservationController
+    methods:  POST
+
 api_userinfo:
     type:     rest
     host:     nao.lignedemire.eu
     resource: AppBundle\Controller\API\UserController
     methods:  POST
-

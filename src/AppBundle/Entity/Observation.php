@@ -406,4 +406,24 @@ class Observation
     {
         return $this->taxref;
     }
+
+    public function getStatusString(){
+        return self::statusToString($this->status);
+    }
+
+    public static function statusToString($status){
+        switch ($status){
+            case self::VALIDATED:
+                return 'Validée';
+
+            case self::WAITING:
+                return 'En attente';
+
+            case self::REFUSED:
+                return 'Refusée';
+
+            default:
+                return 'Erreur';
+        }
+    }
 }
