@@ -28,6 +28,8 @@ class ObservationService
 
 
     /**
+     * Get observation list
+     *
      * @param $email
      * @param string $url
      *
@@ -53,6 +55,14 @@ class ObservationService
         return $response;
     }
 
+    /**
+     * Add an observation
+     *
+     * @param $email
+     * @param $observation
+     *
+     * @return array
+     */
     public function add($email, $observation)
     {
         $user = $this->em->getRepository('AppBundle:User')->findOneByEmail($email);
@@ -87,12 +97,6 @@ class ObservationService
         $obs->setStatus(Observation::WAITING);
 
 
-        /*
-        if(isset($observation['image'])){
-            $obs->setImage($observation['image']);
-        }
-        */
-
         // TAXREF
         if(isset($observation['TAXREF_id'])){
             $taxref = $this->em->getRepository('AppBundle:Taxref')->findOneById($observation['TAXREF_id']);
@@ -102,15 +106,32 @@ class ObservationService
         }
         $this->em->persist($obs);
         $this->em->flush();
+
+        // Process image after save, because we need to use the observation id as filename
+        $filename = $obs->getId().'_'.$user->getId().'.jpg';
+
+
+        if(isset($observation['image']) && !empty($observation['image'])){
+            $data = base64_decode($observation['image']);
+            file_put_contents('./images/obs/'.$filename,$data);
+        } else {
+            copy('images/obs/default-image_observation.jpg','images/obs/'.$filename);
+        }
+        $obs->setImagePath($filename);
+        $this->em->persist($obs);
+        $this->em->flush();
         return $this->obsArray($obs);
     }
 
 
-    public function get($id)
-    {
-        return $this->obsArray($this->em->getRepository('AppBundle:Observation')->findOneById($id));
-    }
-
+    /**
+     * Convert an observation entity to an array (not all fields)
+     *
+     * @param Observation $ob
+     * @param string $url
+     *
+     * @return array
+     */
     private function obsArray(Observation $ob,$url = '')
     {
         $naturalist = '';
@@ -155,3 +176,4 @@ class ObservationService
         return $obs;
     }
 }
+
