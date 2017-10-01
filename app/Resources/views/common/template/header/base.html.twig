@@ -1,0 +1,10 @@
+<header {% if page.headerClass is defined %} class="{{ page.headerClass }}" {% endif %}>
+    <!-- NAVIGATION -->
+    {% include 'common/widget/navbar/base.html.twig' %}
+
+    {% if current_route != 'homepage' %}
+        {% include 'common/template/header/slogan.html.twig' %}
+    {% else %}
+        {% include 'common/template/header/normal.html.twig' %}
+    {% endif %}
+</header>
