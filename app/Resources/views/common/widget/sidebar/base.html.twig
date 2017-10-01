@@ -1,0 +1,27 @@
+<div class="side-nav" id="side-menu">
+    <div class="side-profile">
+        <div class="row">
+            <div class="col s7">
+                <div class="logo-medium"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <a href="#" class="dark">S'incrire</a> / <a href="#" class="dark">Se connecter</a>
+            </div>
+        </div>
+    </div>
+    <ul id="main-side-menu">
+        <li><a href="#"><i class="material-icons">home</i>Accueil</a></li>
+        <li><a href="#"><i class="mdi mdi-map-marker-plus"></i>Observer</a></li>
+        <li><a href="#"><i class="material-icons">map</i>Carte</a></li>
+        <li><a href="#"><i class="material-icons">info_outline</i>À propos</a></li>
+        <li><a href="#"><i class="mdi mdi-newspaper"></i>Le blog</a></li>
+        <li><a href="#"><i class="material-icons">supervisor_account</i>Restez connecté</a></li>
+        <li><a href="#"><i class="material-icons">email</i>Contact</a></li>
+    </ul>
+
+    {% if user_is_logged %}
+        {% include 'common/widget/sidebar/connected_zone' %}
+    {% endif %}
+</div>
