@@ -5,17 +5,19 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
- * Class DefaultController
+ * Class HomeController
  *
  * @package AppBundle\Controller
  */
-class DefaultController extends Controller
+class HomeController extends Controller
 {
-
     /**
-     * Start page
+     * HomePage
+     * @Route("/", name="homepage")
+     * @Method({"GET"})
      *
      * @param Request $request  Http request
      *
