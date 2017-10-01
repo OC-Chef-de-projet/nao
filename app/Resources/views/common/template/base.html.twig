@@ -1,8 +1,5 @@
 {% set user_is_logged           = app.user %}
 {% set current_route            = app.request.get('_route') %}
-{% set user_is_admin            = is_granted('ROLE_ADMIN') %}
-{% set user_is_naturalist       = is_granted('ROLE_NATURALIST') %}
-{% set user_is_observer         = is_granted('ROLE_OBSERVER') %}
 
 <!DOCTYPE html>
 <html lang="fr" prefix="og: http://ogp.me/ns#">
