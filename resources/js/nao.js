@@ -1,79 +1,256 @@
-function removePage(page) {
-    $('#p_' + page).remove();
-}
+/* ============================================================
+ NAO <Nos amis les oiseaux> Javascript functions
+ ==================================================================*/
+(function($){
 
-function addPage(page) {
-    html = '<li id="p_' + page + '" class="waves-effect ">' +
-        '<a class="gotopage" href="#" data-page="' + page + '">' + page + '</a>' +
-        '</li>';
-    $(html).insertBefore('.pagination>li:last');
-    ;
+    $(function(){
 
-}
+        /* ==================================================
+         IOS COMPATIBILITY
+         ===========================================================*/
+        /*var _iOSDevice = !!navigator.platform.match(/iPhone|iPod|iPad/);*/
 
-/**
- * Get user list
- *
- * @param pageno
- * @param user_id
- */
-/*
+        /**
+         * safari on iOS >= 9 ignore user-scalable meta
+         */
+        document.documentElement.addEventListener('touchstart', function (event) {
+            if (event.touches.length > 1) { event.preventDefault(); }
+        }, false);
 
-function userList(pageno, user_id) {
-    var role = $('.tab').find('.active').attr('id');
-    var search = $('#form_search').val();
-    $.ajax({
-        url: "{{ path('api_user_paginate')}}",
-        type: "POST",
-        dataType: "json",
-        data: {
-            "page": pageno,
-            "role": role,
-            "user_id": user_id
-        },
-        success: function (response) {
-            $('#userList').html(response.html);
+
+        /* ==================================================
+         NAVIGATION
+         ===========================================================*/
+        var buttonCollapse      = $('.button-collapse');
+        var scrollTo            = $('.scroll-to');
+        var scrollTop           = $('#scroll-top');
+        var header              = $('header');
+        var navbar              = $('header nav');
+        var subSearch           = $('#sub-search');
+        var dropdownControl     = $('.dropdown-button');
+        var navLogo             = $('#nav-logo');
+        var navSmallTitle       = $('#nav-small-title');
+        var tabs                = $('header ul.tabs');
+        var HeaderMainTitle     = $('#header-main-title');
+        var PageTitle           = $('.page-heading h1');
+        var to_top_offset       = 30;
+
+        _init_navigation();
+
+        /**
+         * Let's init navigation system
+         * @private
+         */
+        function _init_navigation(){
+            // side menu
+            buttonCollapse.sideNav();
+
+            // Load navigation style
+            switchNavigationStyle();
+
+            // Dropdown
+            dropdownControl.dropdown({
+                constrainWidth: false,
+                belowOrigin: true
+            });
         }
-    });
-}
-*/
-/**
- * Confirm deletion of post
- *
- * @param id
- */
-/*
-function post_delete_confirm(id) {
-    MaterialDialog.dialog(
-        "{% trans %}supprimer_article_confirm{% endtrans %}",
-        {
-            title: "{% trans %}supprimer_article{% endtrans %}",
-            modalType: "modal-fixed-footer", // Can be empty, modal-fixed-footer or bottom-sheet
-            buttons: {
-                // Use by default close and confirm buttons
-                confirm: {
-                    className: "btn-validate",
-                    text: "{% trans %}oui{% endtrans %}",
-                    callback: function () {
 
-                        var url = '{{ path('
-                        admin_post_delete
-                        ',{ '
-                        id
-                        ':'
-                        post_id
-                        '}) }}';
-                        url = url.replace('post_id', id);
-                        window.location.href = url;
-                    }
-                },
-                close: {
-                    className: "btn-cancel",
-                    text: "{% trans %}non{% endtrans %}",
-                    modalClose: true
+        /**
+         * Go to anchor, he will be apply to all 'scroll-to" class
+         */
+        scrollTo.on('click', function(event) {
+            event.preventDefault();
+            $('html, body').stop().animate({
+                scrollTop: $( $(this).attr('href') ).offset().top - 70
+            }, 700)
+        });
+
+        /**
+         * the navigation style changes when the user scrolls through the page
+         */
+        $(window).scroll(function(){
+            switchNavigationStyle();
+            return false;
+        });
+
+        /**
+         * Switch heading and navigation style
+         */
+        function switchNavigationStyle(){
+
+            var scroll = $(this).scrollTop();
+
+            // Only for collaspse header
+            if(header.hasClass('collapse')){
+
+                var positionMainTitleToTop = HeaderMainTitle.offset().top - $(window).scrollTop();
+
+                /**
+                 * When the title is over the screen
+                 * We can display sub title in the navbar and hide main logo for mobile
+                 */
+                if(positionMainTitleToTop <= 0){
+                    navLogo.addClass('activated');
+                    navSmallTitle.addClass('activated');
+                    PageTitle.addClass('activated');
+                }else{
+                    navLogo.removeClass('activated');
+                    navSmallTitle.removeClass('activated');
+                    PageTitle.removeClass('activated');
                 }
+            }else{
+
+            }
+
+            /**
+             * To do for scroll page
+             */
+            if(scroll > to_top_offset ){
+                navbar.addClass('sticky');
+                if(header.hasClass('collapse'))
+                    header.addClass('sticky');
+            }else{
+                navbar.removeClass('sticky');
+                if(header.hasClass('collapse'))
+                    header.removeClass('sticky');
             }
         }
-    )
-}
-*/
+
+        /**
+         * Prevents search dropdown from disappearing
+         */
+        subSearch.on('click', function(event){
+            event.stopPropagation();
+        });
+
+        /**
+         * Scroll to the top of page
+         */
+        scrollTop.on('click', function(event){
+            event.preventDefault();
+            $('html, body').stop().animate({
+                scrollTop : 0
+            },700);
+        });
+
+        /**
+         * Push tabs in the top of the page after scrolling to this element
+         */
+        if(tabs.length){
+            tabs.pushpin({
+                top: tabs.offset().top,
+                bottom: 10000,
+                offset: 63
+            });
+        }
+
+        /* ==================================================
+         SOCIAL SHARING
+         ===========================================================*/
+        var sharing         = $('.sharing');
+        var sharingBox      = $('#sharingBox');
+        var socialLink      = $('.share-link');
+        var offsetToElement = 5;
+
+        /**
+         * Control the display to the social sharing box
+         * it will be show below parent element
+         */
+        sharing.on('click', function(event){
+            event.preventDefault();
+            event.stopPropagation();
+
+            var origin  = $(this);
+            var data    = origin.data();
+
+            // inject social url
+            $('#sharingBox li a').each(function(){
+                $(this).data('link', data.link);
+            });
+
+            if(data.role === 'dropdown'){
+
+                // keep socialBox inside fixed navbar
+                origin.after(sharingBox);
+                var leftPosition    = $(window).width() - 160;
+                var topPosition     = navbar.height();
+
+                // Close materialize Dropdown
+                dropdownControl.dropdown('close');
+
+            }else{
+                header.before(sharingBox);
+                var leftPosition    = origin.offset().left - offsetToElement;
+                var topPosition     = origin.offset().top + offsetToElement;
+            }
+            sharingBox.hide().css({
+                top : topPosition + 'px',
+                left: leftPosition + 'px'
+            }).slideDown('fast');
+        });
+
+        /**
+         * Hide the box if focus page
+         */
+        $(document).on('click', sharingBox ,function() {
+            sharingBox.fadeOut();
+        });
+
+        /**
+         * displays a social sharing window depending on the provider and input parameters
+         */
+        socialLink.on('click', function(event){
+            event.preventDefault();
+            var origin   = $(this);
+            var data    = origin.data();
+
+            switch(data.social) {
+                case 'facebook':
+                    var href    = 'https://www.facebook.com/sharer.php?u='+ data.link + '&t=' + data.title;
+                    var height  = 400;
+                    var width   = 700;
+                    break;
+                case 'google':
+                    var href    = 'https://plus.google.com/share?url=' + data.link + '&hl=fr';
+                    var height  = 400;
+                    var width   = 700;
+                    break;
+                case 'twitter':
+                    var href= 'https://twitter.com/share?url='+ data.link + '&text=' + data.title + '&via=Nos amis les oiseaux';
+                    var height  = 300;
+                    var width   = 700;
+                    break;
+                default:
+                    console.log('Provider not found.')
+            }
+
+            window.open(href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height='+ height +',width='+ width +'');;
+            return false;
+        });
+
+        /* ==================================================
+         PAGINATE
+         ===========================================================*/
+
+        /**
+         * Remove page into pagination
+         * @param page
+         */
+        function removePage(page) {
+            $('#p_' + page).remove();
+        }
+
+        /**
+         * Add a new page into pagination
+         * @param page
+         */
+        function addPage(page) {
+            html = '<li id="p_' + page + '" class="waves-effect ">' +
+                '<a class="gotopage" href="#" data-page="' + page + '">' + page + '</a>' +
+                '</li>';
+            $(html).insertBefore('.pagination>li:last');
+            ;
+        }
+
+    });
+})(jQuery);
