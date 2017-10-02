@@ -5,18 +5,15 @@
             <div id="nav-logo" class="brand-logo"></div>
             <div id="nav-small-title"></div>
             <ul class="right static-menu">
-                <li><a href="#" class="sharing" data-role="dropdown" data-link="#"><i class="material-icons">share</i></a></li>
+                <li><a href="javascript:void(0)" class="sharing" data-role="dropdown" data-link="{{ url(current_route)|trim('/') }}"><i class="material-icons">share</i></a></li>
+                {% if user_is_logged %}
+                    <li><a href="#"><i class="material-icons">notifications</i></a></li>
+                {% endif %}
                 <li><a href="javascript:void(0)" class="dropdown-button" data-activates="dropdown-search"><i class="material-icons">search</i></a></li>
             </ul>
             <ul class="right hide-on-med-and-down">
-                <li class="active"><a href="index.html">Accueil</a></li>
-                <li><a href="observer.html">Observer</a></li>
-                <li><a href="carte.html">Carte</a></li>
-                <li><a href="a-propos.html">À propos</a></li>
-                <li><a href="blog.html">Le blog</a></li>
-                <li><a href="restez-connecte.html">Restez connecté</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="connexion.html" class="btn waves-effect">connexion</a></li>
+                {% include 'common/widget/navbar/main_section.html.twig' %}
+                {% include 'common/widget/navbar/secondary_section.html.twig' %}
             </ul>
         </div>
     </nav>

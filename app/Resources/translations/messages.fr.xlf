@@ -21,14 +21,18 @@
             </trans-unit>
 
             <!-- NAVIGATION / MENU / SIDEBAR -->
-             <trans-unit id="sign_in">
+            <trans-unit id="sign_in">
                 <source>sign_in</source>
                 <target>S'incrire</target>
-             </trans-unit>
-             <trans-unit id="sign_up">
+            </trans-unit>
+            <trans-unit id="sign_up">
                 <source>sign_up</source>
                 <target>Se connecter</target>
-             </trans-unit>
+            </trans-unit>
+            <trans-unit id="connexion">
+                <source>connexion</source>
+                <target>connexion</target>
+            </trans-unit>
             <trans-unit id="home">
                 <source>home</source>
                 <target>Accueil</target>
@@ -56,6 +60,10 @@
             <trans-unit id="contact">
                 <source>contact</source>
                 <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="your_account">
+                <source>your_account</source>
+                <target>Votre espace</target>
             </trans-unit>
 
             <!-- SEARCH / DROPDOWN -->

@@ -1,0 +1,4 @@
+<li {% if current_route == 'homepage' %} class="active" {% endif %}><a href="{{ path('homepage') }}">{{ 'home'|trans }}</a></li>
+<li {% if current_route == 'observation' %} class="active" {% endif %}><a href="observer.html">{{ 'observer'|trans }}</a></li>
+<li {% if current_route == 'map' %} class="active" {% endif %}><a href="carte.html">{{ 'map'|trans }}</a></li>
+<li {% if current_route == 'about-us' %} class="active" {% endif %}><a href="a-propos.html">{{ 'about'|trans }}</a></li>
