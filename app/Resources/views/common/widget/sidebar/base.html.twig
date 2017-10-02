@@ -7,18 +7,18 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <a href="#" class="dark">S'incrire</a> / <a href="#" class="dark">Se connecter</a>
+                <a href="#" class="dark">{{ 'sign_in'|trans }}</a> / <a href="#" class="dark">{{ 'sign_up'|trans }}</a>
             </div>
         </div>
     </div>
     <ul id="main-side-menu">
-        <li><a href="#"><i class="material-icons">home</i>Accueil</a></li>
-        <li><a href="#"><i class="mdi mdi-map-marker-plus"></i>Observer</a></li>
-        <li><a href="#"><i class="material-icons">map</i>Carte</a></li>
-        <li><a href="#"><i class="material-icons">info_outline</i>À propos</a></li>
-        <li><a href="#"><i class="mdi mdi-newspaper"></i>Le blog</a></li>
-        <li><a href="#"><i class="material-icons">supervisor_account</i>Restez connecté</a></li>
-        <li><a href="#"><i class="material-icons">email</i>Contact</a></li>
+        <li><a href="#"><i class="material-icons">home</i>{{ 'home'|trans }}</a></li>
+        <li><a href="#"><i class="mdi mdi-map-marker-plus"></i>{{ 'observer'|trans }}</a></li>
+        <li><a href="#"><i class="material-icons">map</i>{{ 'map'|trans }}</a></li>
+        <li><a href="#"><i class="material-icons">info_outline</i>{{ 'about'|trans }}</a></li>
+        <li><a href="#"><i class="mdi mdi-newspaper"></i>{{ 'blog'|trans }}</a></li>
+        <li><a href="#"><i class="material-icons">supervisor_account</i>{{ 'stay_connected'|trans }}</a></li>
+        <li><a href="#"><i class="material-icons">email</i>{{ 'contact'|trans }}</a></li>
     </ul>
 
     {% if user_is_logged %}

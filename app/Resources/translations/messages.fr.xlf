@@ -2,10 +2,64 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
         <body>
+            <!-- WEBSITE TITLE -->
             <trans-unit id="NAO">
                 <source>NAO</source>
                 <target>Nos Amis les Oiseaux</target>
             </trans-unit>
+
+            <!-- PAGE TITLE -->
+            <trans-unit id="homepage_title">
+                <source>homepage_title</source>
+                <target>Accueil</target>
+            </trans-unit>
+
+            <!-- PAGE META -->
+            <trans-unit id="homepage_meta_description">
+                <source>homepage_meta_description</source>
+                <target></target>
+            </trans-unit>
+
+            <!-- NAVIGATION / MENU / SIDEBAR -->
+             <trans-unit id="sign_in">
+                <source>sign_in</source>
+                <target>S'incrire</target>
+             </trans-unit>
+             <trans-unit id="sign_up">
+                <source>sign_up</source>
+                <target>Se connecter</target>
+             </trans-unit>
+            <trans-unit id="home">
+                <source>home</source>
+                <target>Accueil</target>
+            </trans-unit>
+            <trans-unit id="observer">
+                <source>observer</source>
+                <target>Observer</target>
+            </trans-unit>
+            <trans-unit id="map">
+                <source>map</source>
+                <target>Carte</target>
+            </trans-unit>
+            <trans-unit id="about">
+                <source>about</source>
+                <target>À propos</target>
+            </trans-unit>
+            <trans-unit id="blog">
+                <source>blog</source>
+                <target>Le blog</target>
+            </trans-unit>
+            <trans-unit id="stay_connected">
+                <source>stay_connected</source>
+                <target>Restez connecté</target>
+            </trans-unit>
+            <trans-unit id="contact">
+                <source>contact</source>
+                <target>Contact</target>
+            </trans-unit>
+
+
+
 
             <!-- Dashboard -->
             <trans-unit id="admin_dashboard">
@@ -94,12 +148,7 @@
                 <target>Etes-vous sur de vouloir supprimer cet article ?</target>
             </trans-unit>
 
-
-
-
-
-
-            <!-- Général -->
+            <!-- ACTION -->
             <trans-unit id="annuler">
                 <source>annuler</source>
                 <target>Annuler</target>
@@ -109,7 +158,7 @@
                 <target>Enregistrer</target>
             </trans-unit>
 
-            <!-- roles -->
+            <!-- ROLES -->
             <trans-unit id="ROLE_ADMIN">
                 <source>ROLE_ADMIN</source>
                 <target>Administrateur</target>
