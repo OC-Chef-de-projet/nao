@@ -58,7 +58,11 @@
                 <target>Contact</target>
             </trans-unit>
 
-
+            <!-- SEARCH / DROPDOWN -->
+            <trans-unit id="search">
+                <source>search</source>
+                <target>Rechercher</target>
+            </trans-unit>
 
 
             <!-- Dashboard -->
