@@ -10,15 +10,7 @@
         <title>{{ page.title }} - {{ 'NAO'|trans }}</title>
 
         <!-- META -->
-        {% if page.meta is defined %}
-            <meta name="description" content="{{ page.meta.description }}">
-            <meta property="og:title" content="{{ page.title }}" />
-            <meta property="og:type" content="website" />
-            <meta property="og:url" content="{{ url(current_route) }}" />
-            <meta property="og:image" content="" />
-            <meta property="og:locale" content="fr_FR">
-            <meta property="og:site_name" content="{{ 'NAO'|trans }}">
-        {% endif %}
+        {% include 'common/template/meta/base.html.twig' with { 'meta' : page.meta, 'title' : page.title, 'current_route' : current_route } only %}
 
         <!-- APPLE TOUCH -->
         <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
