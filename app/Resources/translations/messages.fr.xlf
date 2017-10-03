@@ -2,11 +2,16 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
         <body>
-            <!-- WEBSITE TITLE -->
+            <!-- WEBSITE INFORMATIONS -->
             <trans-unit id="NAO">
                 <source>NAO</source>
                 <target>Nos Amis les Oiseaux</target>
             </trans-unit>
+            <trans-unit id="Powered_by_agency">
+                <source>Powered_by_agency</source>
+                <target>Propulsé par Dot.coM</target>
+            </trans-unit>
+
 
             <!-- PAGE TITLE -->
             <trans-unit id="homepage_title">
@@ -14,13 +19,15 @@
                 <target>Accueil</target>
             </trans-unit>
 
+
             <!-- PAGE META -->
             <trans-unit id="homepage_meta_description">
                 <source>homepage_meta_description</source>
                 <target></target>
             </trans-unit>
 
-            <!-- NAVIGATION / MENU / SIDEBAR -->
+
+            <!-- LINK NAVIGATION -->
             <trans-unit id="sign_in">
                 <source>sign_in</source>
                 <target>S'incrire</target>
@@ -53,6 +60,14 @@
                 <source>blog</source>
                 <target>Le blog</target>
             </trans-unit>
+            <trans-unit id="faq">
+                <source>faq</source>
+                <target>faq</target>
+            </trans-unit>
+            <trans-unit id="legacy">
+                <source>legacy</source>
+                <target>Mentions légales</target>
+            </trans-unit>
             <trans-unit id="stay_connected">
                 <source>stay_connected</source>
                 <target>Restez connecté</target>
@@ -66,14 +81,135 @@
                 <target>Votre espace</target>
             </trans-unit>
 
-            <!-- SEARCH / DROPDOWN -->
+
+            <!-- ALT IMAGE -->
+            <trans-unit id="alt_big_logo_white">
+                <source>alt_big_logo_white</source>
+                <target>Grand logo blanc nos amis les oiseaux</target>
+            </trans-unit>
+
+
+            <!-- FORMS / BUTTON -->
             <trans-unit id="search">
                 <source>search</source>
                 <target>Rechercher</target>
             </trans-unit>
+            <trans-unit id="cancel">
+                <source>cancel</source>
+                <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="save">
+                <source>save</source>
+                <target>Enregistrer</target>
+            </trans-unit>
+            <trans-unit id="label_email">
+                <source>label_email</source>
+                <target>Email</target>
+            </trans-unit>
 
 
-            <!-- Dashboard -->
+            <!-- ROLES -->
+            <trans-unit id="ROLE_ADMIN">
+                <source>ROLE_ADMIN</source>
+                <target>Administrateur</target>
+            </trans-unit>
+            <trans-unit id="ROLE_NATURALIST">
+                <source>ROLE_NATURALIST</source>
+                <target>Naturaliste</target>
+            </trans-unit>
+            <trans-unit id="ROLE_OBSERVER">
+                <source>ROLE_OBSERVER</source>
+                <target>Particulier</target>
+            </trans-unit>
+            <trans-unit id="profil_ROLE_ADMIN">
+                <source>profil_ROLE_ADMIN</source>
+                <target>profil administrateur</target>
+            </trans-unit>
+            <trans-unit id="profil_ROLE_NATURALIST">
+                <source>profil_ROLE_NATURALIST</source>
+                <target>Profil naturaliste</target>
+            </trans-unit>
+            <trans-unit id="profil_ROLE_OBSERVER">
+                <source>profil_ROLE_OBSERVER</source>
+                <target>Profil particulier</target>
+            </trans-unit>
+
+
+            <!-- ARTICLES (POSTS) -->
+            <trans-unit id="last_article">
+                <source>last_article</source>
+                <target>Dernière actualité</target>
+            </trans-unit>
+            <trans-unit id="no_article_for_moment">
+                <source>no_article_for_moment</source>
+                <target>Il n'y a pas encore d'actualité</target>
+            </trans-unit>
+            <trans-unit id="published_at">
+                <source>published_at</source>
+                <target>posté le %date%</target>
+            </trans-unit>
+            <trans-unit id="created_at">
+                <source>created_at</source>
+                <target>créé le %date%</target>
+            </trans-unit>
+            <trans-unit id="article_management">
+                <source>article_management</source>
+                <target>Gestion des articles</target>
+            </trans-unit>
+            <trans-unit id="writing_article">
+                <source>writing_article</source>
+                <target>Rédiger un article</target>
+            </trans-unit>
+            <trans-unit id="saving_draft">
+                <source>saving_draft</source>
+                <target>Sauvegarder le brouillon</target>
+            </trans-unit>
+            <trans-unit id="publish_article">
+                <source>publish_article</source>
+                <target>Publier l'article</target>
+            </trans-unit>
+            <trans-unit id="delete_article">
+                <source>delete_article</source>
+                <target>Suppression article</target>
+            </trans-unit>
+            <trans-unit id="delete_article_confirmation">
+                <source>delete_article_confirmation</source>
+                <target>Etes-vous sur de vouloir supprimer cet article ?</target>
+            </trans-unit>
+
+
+            <!-- HOMEPAGE -->
+            <trans-unit id="homepage_main_title">
+                <source>homepage_main_title</source>
+                <target>Vous avez l'oeil ?</target>
+            </trans-unit>
+            <trans-unit id="homepage_secondary_title">
+                <source>homepage_secondary_title</source>
+                <target>Envolez-vous avec</target>
+            </trans-unit>
+            <trans-unit id="homepage_know_more">
+                <source>homepage_know_more</source>
+                <target>En savoir plus</target>
+            </trans-unit>
+            <trans-unit id="homepage_submit_observation">
+                <source>homepage_submit_observation</source>
+                <target>Soumettre une observation</target>
+            </trans-unit>
+
+
+            <!-- FOOTER -->
+            <trans-unit id="stay_inform">
+                <source>stay_inform</source>
+                <target>Restez informé</target>
+            </trans-unit>
+            <trans-unit id="subscribe_to_newsletter">
+                <source>subscribe_to_newsletter</source>
+                <target>S'inscrire à la newsletter</target>
+            </trans-unit>
+
+
+
+            <!-- DASHBORAD -->
             <trans-unit id="admin_dashboard">
                 <source>admin_dashboard</source>
                 <target>Administration - Tableau de bord</target>
@@ -104,7 +240,7 @@
                 <target>Accepter ou refuser les commentaires des internautes</target>
             </trans-unit>
 
-            <!-- Gestion des utilisateurs -->
+            <!-- USER MANAGEMENT -->
             <trans-unit id="gestion_utilisateurs">
                 <source>gestion_utilisateurs</source>
                 <target>Gestion des utilisateurs</target>
@@ -126,81 +262,9 @@
                 <target>Effacer la recherche</target>
             </trans-unit>
 
-            <!-- Gestion des articles -->
-            <trans-unit id="gestion_articles">
-                <source>gestion_articles</source>
-                <target>Gestion des articles</target>
-            </trans-unit>
-            <trans-unit id="poste_le">
-                <source>poste_le</source>
-                <target>Posté le</target>
-            </trans-unit>
-            <trans-unit id="cree_le">
-                <source>cree_le</source>
-                <target>Créé le</target>
-            </trans-unit>
-            <trans-unit id="rediger_article">
-                <source>rediger_article</source>
-                <target>Rédiger un article</target>
-            </trans-unit>
-            <trans-unit id="sauve_brouillon">
-                <source>sauve_brouillon</source>
-                <target>Sauvegarder le brouillon</target>
-            </trans-unit>
-            <trans-unit id="sauve_publie">
-                <source>sauve_publie</source>
-                <target>Publier l'article</target>
-            </trans-unit>
-            <trans-unit id="supprimer_article">
-                <source>supprimer_article</source>
-                <target>Suppression article</target>
-            </trans-unit>
-            <trans-unit id="supprimer_article_confirm">
-                <source>supprimer_article_confirm</source>
-                <target>Etes-vous sur de vouloir supprimer cet article ?</target>
-            </trans-unit>
-
-            <!-- ACTION -->
-            <trans-unit id="annuler">
-                <source>annuler</source>
-                <target>Annuler</target>
-            </trans-unit>
-            <trans-unit id="enregistrer">
-                <source>enregistrer</source>
-                <target>Enregistrer</target>
-            </trans-unit>
-
-            <!-- ROLES -->
-            <trans-unit id="ROLE_ADMIN">
-                <source>ROLE_ADMIN</source>
-                <target>Administrateur</target>
-            </trans-unit>
-            <trans-unit id="ROLE_NATURALIST">
-                <source>ROLE_NATURALIST</source>
-                <target>Naturaliste</target>
-            </trans-unit>
-            <trans-unit id="ROLE_OBSERVER">
-                <source>ROLE_OBSERVER</source>
-                <target>Particulier</target>
-            </trans-unit>
-
-            <trans-unit id="profil_ROLE_ADMIN">
-                <source>profil_ROLE_ADMIN</source>
-                <target>profil administrateur</target>
-            </trans-unit>
-            <trans-unit id="profil_ROLE_NATURALIST">
-                <source>profil_ROLE_NATURALIST</source>
-                <target>Profil naturaliste</target>
-            </trans-unit>
-            <trans-unit id="profil_ROLE_OBSERVER">
-                <source>profil_ROLE_OBSERVER</source>
-                <target>Profil particulier</target>
-            </trans-unit>
-
         </body>
     </file>
 </xliff>
-
 
         <!--
         {% trans %}{% endtrans %}
