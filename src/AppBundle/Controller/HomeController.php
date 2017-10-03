@@ -26,17 +26,7 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        dump($request->getUriForPath('/uploads/myimage.jpg'));
-
-        return $this->render('homepage.html.twig', [
-            'page' => [
-                'title'         => $this->get('translator')->trans('homepage_title'),
-                'meta'          => [
-                    'description'   => $this->get('translator')->trans('homepage_meta_description'),
-                ],
-                'headerClass'   => 'full-height bg2',
-            ]
-        ]);
+        return $this->render('homepage.html.twig');
     }
 }
 
