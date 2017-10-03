@@ -212,8 +212,8 @@
                     break;
                 case 'google':
                     var href    = 'https://plus.google.com/share?url=' + data.link + '&hl=fr';
-                    var height  = 400;
-                    var width   = 700;
+                    var height  = 650;
+                    var width   = 400;
                     break;
                 case 'twitter':
                     var href= 'https://twitter.com/share?url='+ data.link + '&text=' + data.title + '&via=Nos amis les oiseaux';
