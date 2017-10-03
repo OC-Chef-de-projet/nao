@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Form;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+
 /**
  * Class ObservationService
  * @package AppBundle\Service
@@ -22,7 +23,7 @@ class ObservationService
      * ObservationService constructor.
      * @param EntityManager $em
      */
-    public function __construct(EntityManager $em,  TokenStorage $ts)
+    public function __construct(EntityManager $em, TokenStorage $ts)
     {
         $this->em = $em;
         $this->ts = $ts;
@@ -52,80 +53,10 @@ class ObservationService
 
         $response = [];
         foreach ($obs as $ob) {
-            $response[] = $this->obsArray($ob,$url);
+            $response[] = $this->obsArray($ob, $url);
         }
         return $response;
     }
-
-    /**
-     * Add an observation
-     *
-     * @param $email
-     * @param $observation
-     *
-     * @return array
-     */
-    public function add($observation)
-    {
-        $user = $this->ts->getToken()->getUser();
-
-        if (!$user) {
-            return [];
-        }
-
-        $obs = new Observation();
-
-        $obs->setUser($user);
-
-        if(isset($observation['place'])){
-            $obs->setPlace($observation['place']);
-        }
-        if(isset($observation['watched'])){
-
-            $obs->setWatched(new \DateTime($observation['watched']));
-        }
-        if(isset($observation['latitude'])){
-            $obs->setLatitude($observation['latitude']);
-        }
-        if(isset($observation['longitude'])){
-            $obs->setLongitude($observation['longitude']);
-        }
-        if(isset($observation['comments'])){
-            $obs->setComments($observation['comments']);
-        }
-        if(isset($observation['individuals'])){
-            $obs->setIndividuals($observation['individuals']);
-        }
-
-        $obs->setStatus(Observation::WAITING);
-
-
-        // TAXREF
-        if(isset($observation['TAXREF_id'])){
-            $taxref = $this->em->getRepository('AppBundle:Taxref')->findOneById($observation['TAXREF_id']);
-            if($taxref) {
-                $obs->setTaxref($taxref);
-            }
-        }
-        $this->em->persist($obs);
-        $this->em->flush();
-
-        // Process image after save, because we need to use the observation id as filename
-        $filename = $obs->getId().'_'.$user->getId().'.jpg';
-
-
-        if(isset($observation['image']) && !empty($observation['image'])){
-            $data = base64_decode($observation['image']);
-            file_put_contents('./images/obs/'.$filename,$data);
-        } else {
-            copy('images/obs/default-image_observation.jpg','images/obs/'.$filename);
-        }
-        $obs->setImagePath($filename);
-        $this->em->persist($obs);
-        $this->em->flush();
-        return $this->obsArray($obs);
-    }
-
 
     /**
      * Convert an observation entity to an array (not all fields)
@@ -135,7 +66,7 @@ class ObservationService
      *
      * @return array
      */
-    private function obsArray(Observation $ob,$url = '')
+    private function obsArray(Observation $ob, $url = '')
     {
         $naturalist = '';
         $n = $ob->getNaturalist();
@@ -144,7 +75,7 @@ class ObservationService
         }
 
         $image = $ob->getImagePath();
-        if($image) {
+        if ($image) {
             $image = $url . '/images/obs/' . $image;
         }
         $obs = [
@@ -177,6 +108,75 @@ class ObservationService
             ]
         ];
         return $obs;
+    }
+
+    /**
+     * Add an observation
+     *
+     * @param $email
+     * @param $observation
+     *
+     * @return array
+     */
+    public function add($observation)
+    {
+        $user = $this->ts->getToken()->getUser();
+
+        if (!$user) {
+            return [];
+        }
+
+        $obs = new Observation();
+
+        $obs->setUser($user);
+
+        if (isset($observation['place'])) {
+            $obs->setPlace($observation['place']);
+        }
+        if (isset($observation['watched'])) {
+
+            $obs->setWatched(new \DateTime($observation['watched']));
+        }
+        if (isset($observation['latitude'])) {
+            $obs->setLatitude($observation['latitude']);
+        }
+        if (isset($observation['longitude'])) {
+            $obs->setLongitude($observation['longitude']);
+        }
+        if (isset($observation['comments'])) {
+            $obs->setComments($observation['comments']);
+        }
+        if (isset($observation['individuals'])) {
+            $obs->setIndividuals($observation['individuals']);
+        }
+
+        $obs->setStatus(Observation::WAITING);
+
+
+        // TAXREF
+        if (isset($observation['TAXREF_id'])) {
+            $taxref = $this->em->getRepository('AppBundle:Taxref')->findOneById($observation['TAXREF_id']);
+            if ($taxref) {
+                $obs->setTaxref($taxref);
+            }
+        }
+        $this->em->persist($obs);
+        $this->em->flush();
+
+        // Process image after save, because we need to use the observation id as filename
+        $filename = $obs->getId() . '_' . $user->getId() . '.jpg';
+
+
+        if (isset($observation['image']) && !empty($observation['image'])) {
+            $data = base64_decode($observation['image']);
+            file_put_contents('./images/obs/' . $filename, $data);
+        } else {
+            copy('images/obs/default-image_observation.jpg', 'images/obs/' . $filename);
+        }
+        $obs->setImagePath($filename);
+        $this->em->persist($obs);
+        $this->em->flush();
+        return $this->obsArray($obs);
     }
 }
 
