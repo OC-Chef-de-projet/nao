@@ -7,10 +7,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-        <title>{{ page.title }} - {{ 'NAO'|trans }}</title>
+        <title>{% block title %}{% endblock %} - {{ 'NAO'|trans }}</title>
 
         <!-- META -->
-        {% include 'common/template/meta/base.html.twig' with { 'meta' : page.meta, 'title' : page.title, 'current_route' : current_route } only %}
+        {% block meta %}{% endblock %}
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="1200" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ url(current_route)|trim('/') }}" />
+        <meta property="og:locale" content="fr_FR">
+        <meta property="og:site_name" content="{{ 'NAO'|trans }}">
+
 
         <!-- APPLE TOUCH -->
         <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
@@ -40,21 +47,13 @@
         {% include 'common/widget/social/socialbox.html.twig' only %}
 
         <!-- HEADER -->
-        {% include 'common/template/header/base.html.twig' with { 'current_route' : current_route, 'page' : page } %}
-
-        <!-- PAGE HEADING -->
-        {% if current_route != 'homepage' %}
-        <section class="page-heading container hide-on-med-and-down">
-            {% include 'common/widget/breadcrumb/base.html.twig' with { 'breadcrum' : page.breadcrum } only %}
-            <h1>{{ page.title }}</h1>
-        </section>
-        {% endif %}
+        {% block header %}{% endblock %}
 
         <!-- PAGE CONTENT -->
         {% block body %}{% endblock %}
 
         <!-- FOOTER -->
-        {% include 'common/template/footer/base.html.twig'%}
+        {% include 'common/template/footer.html.twig'%}
 
         <!---------- JAVASCRIPT ---------->
         <!-- Google Analytics -->
