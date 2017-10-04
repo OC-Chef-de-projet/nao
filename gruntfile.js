@@ -138,9 +138,9 @@ module.exports = function (grunt) {
                     require('postcss-flexbugs-fixes')
                 ]
             },
-	    compressed: {
-		src: 'web/assets/css/custom.min.css'
-	    }
+            compressed: {
+                src: 'web/assets/css/custom.min.css'
+            }
         },
 
         // Minify CSS files
@@ -179,7 +179,7 @@ module.exports = function (grunt) {
     grunt.registerTask('dist',
         [
             'clean:before_copy',
-	    'dev',
+            'dev',
             'imagemin'
         ]
     );
@@ -194,4 +194,3 @@ module.exports = function (grunt) {
         ]
     );
 };
-

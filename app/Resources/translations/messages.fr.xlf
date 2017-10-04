@@ -18,6 +18,10 @@
                 <source>homepage_title</source>
                 <target>Accueil</target>
             </trans-unit>
+            <trans-unit id="registration_title">
+                <source>registration_title</source>
+                <target>Inscription</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -25,12 +29,19 @@
                 <source>homepage_meta_description</source>
                 <target></target>
             </trans-unit>
-
+            <trans-unit id="registration_meta_description">
+                <source>registration_meta_description</source>
+                <target></target>
+            </trans-unit>
 
             <!-- LINK NAVIGATION -->
             <trans-unit id="sign_in">
                 <source>sign_in</source>
                 <target>S'incrire</target>
+            </trans-unit>
+            <trans-unit id="register">
+                <source>register</source>
+                <target>Inscription</target>
             </trans-unit>
             <trans-unit id="sign_up">
                 <source>sign_up</source>
@@ -262,7 +273,15 @@
                 <target>S'inscrire à la newsletter</target>
             </trans-unit>
 
-
+            <!-- REGISTRATION PAGE -->
+            <trans-unit id="registration_main_title">
+                <source>registration_main_title</source>
+                <target>inscription</target>
+            </trans-unit>
+            <trans-unit id="registration_secondary_title">
+                <source>registration_secondary_title</source>
+                <target>Rejoignez la communauté</target>
+            </trans-unit>
 
             <!-- DASHBORAD -->
             <trans-unit id="admin_dashboard">
