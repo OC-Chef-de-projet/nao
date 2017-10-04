@@ -29,6 +29,30 @@ class ObservationService
         $this->ts = $ts;
     }
 
+    /**
+     * Return X last observation
+     *
+     * @param  int $max Number of observation
+     *
+     * @return Array      Array of Observation
+     */
+    public function getLastObersations($max)
+    {
+        $obs = $this->em->getRepository('AppBundle:Observation')->findBy(
+            [
+                'status' => Observation::VALIDATED
+            ],
+            [
+                'validated' => 'DESC'
+            ],
+            $max
+        );
+        $response = [];
+        foreach ($obs as $ob) {
+            $response[] = $this->obsArray($ob, '');
+        }
+        return $response;
+    }
 
     /**
      * Get observation list
