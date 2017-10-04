@@ -47,11 +47,7 @@ class ObservationService
             ],
             $max
         );
-        $response = [];
-        foreach ($obs as $ob) {
-            $response[] = $this->obsArray($ob, '');
-        }
-        return $response;
+        return $obs;
     }
 
     /**
