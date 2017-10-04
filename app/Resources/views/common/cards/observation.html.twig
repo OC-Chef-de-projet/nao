@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="card-content">
+        <div class="row no-pad-bot">
+            <div class="col s6">
+                <span class="card-title">{{ observation.taxref.commonName }}</span>
+                <p class="caption light-2">
+                    {{ 'observe_at'|trans({'%date%': observation.watched|date("d/m/Y")}) }}<br />
+                    {{ 'in_place'|trans({'%place%': observation.place}) }}
+                </p>
+            </div>
+            <div class="col s6">
+                <img src="{{ asset('images/observations/' ~ observation.imagePath ) }}" alt="{{ 'alt_bird'|trans }}">
+            </div>
+        </div>
+    </div>
+    <div class="card-action">
+        <a href="#" class="bleen sharing" data-link="#">{{ 'share'|trans }}</a>
+        <a href="#" class="bleen">{{ 'read'|trans }}</a>
+    </div>
+</div>
