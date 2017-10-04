@@ -761,7 +761,8 @@ footer ul.social > li:not(:first-child){
     opacity:1;
 }
 
-a.breadcrumb{
+a.breadcrumb,
+span.breadcrumb{
     color: #009688;
     font-size: 12px;
 }
