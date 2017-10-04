@@ -48,7 +48,6 @@ class Observation
      */
     private $watched;
 
-
     /**
      * @var string
      *
@@ -92,19 +91,19 @@ class Observation
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", fetch="EAGER")
      * @ORM\JoinColumn(nullable=true)
      */
     private $naturalist;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Taxref")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Taxref", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $taxref;

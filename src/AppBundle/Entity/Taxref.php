@@ -21,7 +21,6 @@ class Taxref
      */
     private $id;
 
-
     /**
      * @var string
      *
