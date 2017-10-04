@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-image">
+        <img src="{{ asset('images/posts/' ~ article.imageLink ) }}" alt="{{ 'alt_actuality'|trans }}">
+    </div>
+    <div class="card-content">
+        <p class="caption light-2">{{ 'published_at'|trans({'%date%': article.publishedAt|date("d/m/Y")}) }}</p>
+        <span class="card-title">{{ article.title }}</span>
+        <p>{{ article.content }}</p>
+    </div>
+    <div class="card-action">
+        <a href="#" class="bleen sharing" data-link="#">{{ 'share'|trans }}</a>
+        <a href="#" class="bleen">{{ 'read'|trans }}</a>
+    </div>
+</div>
