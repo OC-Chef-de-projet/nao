@@ -26,7 +26,9 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('homepage.html.twig');
+        return $this->render('homepage.html.twig', array(
+            'observations'   => $this->container->get('app.obs')->getLastObersations(3)
+        ));
     }
 }
 

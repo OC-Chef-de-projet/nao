@@ -87,7 +87,14 @@
                 <source>alt_big_logo_white</source>
                 <target>Grand logo blanc nos amis les oiseaux</target>
             </trans-unit>
-
+            <trans-unit id="alt_bird">
+                <source>alt_bird</source>
+                <target>Image d'un oiseaux</target>
+            </trans-unit>
+            <trans-unit id="alt_actuality">
+                <source>alt_actuality</source>
+                <target>Image d'une actualité</target>
+            </trans-unit>
 
             <!-- FORMS / BUTTON -->
             <trans-unit id="search">
@@ -176,7 +183,20 @@
                 <source>delete_article_confirmation</source>
                 <target>Etes-vous sur de vouloir supprimer cet article ?</target>
             </trans-unit>
+            <trans-unit id="read">
+                <source>read</source>
+                <target>Lire</target>
+            </trans-unit>
 
+            <!-- OBSERVATIONS -->
+            <trans-unit id="observe_at">
+                <source>observe_at</source>
+                <target>observé le %date%</target>
+            </trans-unit>
+            <trans-unit id="in_place">
+                <source>in_place</source>
+                <target>à %place%</target>
+            </trans-unit>
 
             <!-- HOMEPAGE -->
             <trans-unit id="homepage_main_title">
@@ -195,7 +215,42 @@
                 <source>homepage_submit_observation</source>
                 <target>Soumettre une observation</target>
             </trans-unit>
-
+            <trans-unit id="collaborative_project_title">
+                <source>collaborative_project_title</source>
+                <target>Un projet collaboratif engagé</target>
+            </trans-unit>
+            <trans-unit id="collaborative_project_explain">
+                <source>collaborative_project_explain</source>
+                <target> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida, elit at placerat bibendum, risus neque volutpat purus,ut auctor quam neque vitae sapien.</target>
+            </trans-unit>
+            <trans-unit id="observe">
+                <source>observe</source>
+                <target>Observer</target>
+            </trans-unit>
+            <trans-unit id="photographed">
+                <source>photographed</source>
+                <target>Photographier</target>
+            </trans-unit>
+            <trans-unit id="share">
+                <source>share</source>
+                <target>Partager</target>
+            </trans-unit>
+            <trans-unit id="do_validate">
+                <source>do_validate</source>
+                <target>Faire valider</target>
+            </trans-unit>
+            <trans-unit id="last_observation">
+                <source>last_observation</source>
+                <target>Dernières observations</target>
+            </trans-unit>
+            <trans-unit id="last_actuality_of_nao">
+                <source>last_actuality_of_nao</source>
+                <target>Dernières actualités de NAO</target>
+            </trans-unit>
+            <trans-unit id="no_observation_for_moment">
+                <source>no_observation_for_moment</source>
+                <target>Il n'y a pas encore d'observations</target>
+            </trans-unit>
 
             <!-- FOOTER -->
             <trans-unit id="stay_inform">

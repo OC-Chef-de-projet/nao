@@ -6,7 +6,7 @@
     <meta name="description" content="{{ 'homepage_meta_description'|trans }}">
     <meta name="og:description" content="{{ 'homepage_meta_description'|trans }}">
     <meta name="og:title" content="{{ 'homepage_title'|trans }}">
-    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}" />
+    <meta property="og:image" content="{{ url('homepage') ~ asset('images/default_sharer.png') }}" />
 {% endblock %}
 
 {% block header %}
@@ -35,6 +35,66 @@
 {% endblock %}
 
 {% block body %}
-    Homepage
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section id="more">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m8 push-m2">
+                                    <span class="card-title">{{ 'collaborative_project_title'|trans }}</span>
+                                    <p>{{ 'collaborative_project_explain'|trans }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m8 push-m2">
+                                    <ul id="stepbar">
+                                        <li>{{ 'observe'|trans }}</li>
+                                        <li>{{ 'photographed'|trans }}</li>
+                                        <li>{{ 'share'|trans }}</li>
+                                        <li>{{ 'do_validate'|trans }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAST OBSERVATIONS -->
+        <section>
+            <h2>{{ 'last_observation'|trans }}</h2>
+            {% if observations|length > 0 %}
+            <div class="row">
+                {% for observation in observations %}
+                    <div {% if loop.index < 3 %} class="col s12 m6 l4" {% else %} class="col s12 m6 offset-m3 l4" {% endif %}>
+                        {% include 'common/cards/observation.html.twig' with {'observation':observation } only %}
+                    </div>
+                {% endfor %}
+            </div>
+            {% else %}
+                {{ 'no_observation_for_moment'|trans }}
+            {% endif %}
+        </section>
+
+        <!-- LAST ACTUALITY -->
+        <section>
+            <h2>{{ 'last_actuality_of_nao'|trans }}</h2>
+            {% if posts.getLastPosts(3)|length > 0 %}
+                <div class="row">
+                    {% for article in posts.getLastPosts(3) %}
+                        <div {% if loop.index < 3 %} class="col s12 m6 l4" {% else %} class="col s12 m6 offset-m3 l4" {% endif %}>
+                            {% include 'common/cards/article.html.twig' with {'article':article } only %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ 'no_article_for_moment'|trans }}
+            {% endif %}
+        </section>
+    </main>
 {% endblock %}
 
