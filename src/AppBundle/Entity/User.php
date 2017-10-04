@@ -60,13 +60,6 @@ class User implements UserInterface
     private $role;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="newsletter", type="boolean")
-     */
-    private $newsletter;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="token", type="string", length=255, nullable=true)
