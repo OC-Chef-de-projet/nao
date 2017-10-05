@@ -3,7 +3,7 @@
         <div class="nav-wrapper">
             <a href="#" data-activates="side-menu" class="button-collapse"><i class="material-icons">menu</i></a>
             <div id="nav-logo" class="brand-logo"></div>
-            <div id="nav-small-title"></div>
+            <div id="nav-small-title">{% if navtitle is defined %}{{ navtitle|trans }}{% endif %}</div>
             <ul class="right static-menu">
                 <li><a href="javascript:void(0)" class="sharing" data-role="dropdown" data-link="{{ url(current_route)|trim('/') }}"><i class="material-icons">share</i></a></li>
                 {% if user_is_logged %}
