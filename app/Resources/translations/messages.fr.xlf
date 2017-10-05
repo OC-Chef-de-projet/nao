@@ -46,6 +46,10 @@
                 <source>blog_page_title</source>
                 <target>Le blog</target>
             </trans-unit>
+            <trans-unit id="stay_connected_page_title">
+                <source>stay_connected_page_title</source>
+                <target>Restez connecté</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -81,6 +85,11 @@
                 <source>blog_page_meta_description</source>
                 <target></target>
             </trans-unit>
+            <trans-unit id="stay_connected_page_meta_description">
+                <source>stay_connected_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+
 
             <!-- LINK NAVIGATION -->
             <trans-unit id="sign_in">
@@ -387,6 +396,17 @@
             <trans-unit id="blog_secondary_title">
                 <source>blog_secondary_title</source>
                 <target>Rédigé avec notre plus belle plume</target>
+            </trans-unit>
+
+
+            <!-- STAY CONNECTED PAGE -->
+            <trans-unit id="stay_connected_main_title">
+                <source>stay_connected_main_title</source>
+                <target>Restez connecté</target>
+            </trans-unit>
+            <trans-unit id="stay_connected_secondary_title">
+                <source>stay_connected_secondary_title</source>
+                <target>Restez près du nid</target>
             </trans-unit>
 
 
