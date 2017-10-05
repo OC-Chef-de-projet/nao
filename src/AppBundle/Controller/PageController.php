@@ -23,7 +23,7 @@ class PageController extends Controller
      * @Route("/restez-connecte", name="stay.connected")
      * @Method({"GET"})
      */
-    public function StayConnectShowAction()
+    public function stayConnectShowAction()
     {
         return $this->render('stay-connected.html.twig');
     }
