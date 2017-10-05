@@ -12,7 +12,7 @@
 {% block header %}
     <header class="collapse bg11">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' %}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'registration_title' }%}
         <section>
             <div class="container">
                 <div class="row">
@@ -34,7 +34,7 @@
         <nav>
             <div class="nav-wrapper">
                 <div class="col s12">
-                    <a href="#!" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
                     <span class="breadcrumb">{{ 'register'|trans }}</span>
                 </div>
             </div>
