@@ -1,0 +1,14 @@
+<section>
+    <h2>{{ 'last_actuality_of_nao'|trans }}</h2>
+    {% if posts.getLastPosts(3)|length > 0 %}
+        <div class="row">
+            {% for article in posts.getLastPosts(3) %}
+                <div {% if loop.index < 3 %} class="col s12 m6 l4" {% else %} class="col s12 m6 offset-m3 l4" {% endif %}>
+                    {% include 'common/cards/article.html.twig' with {'article':article } only %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        {{ 'no_article_for_moment'|trans }}
+    {% endif %}
+</section>
