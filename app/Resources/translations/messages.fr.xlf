@@ -22,6 +22,22 @@
                 <source>registration_title</source>
                 <target>Inscription</target>
             </trans-unit>
+            <trans-unit id="observation_create_title">
+                <source>observation_create_title</source>
+                <target>Nouvelle observation</target>
+            </trans-unit>
+            <trans-unit id="observation_map_title">
+                <source>observation_map_title</source>
+                <target>Carte des observations</target>
+            </trans-unit>
+            <trans-unit id="observation_list_title">
+                <source>observation_list_title</source>
+                <target>Liste des observations</target>
+            </trans-unit>
+            <trans-unit id="observation_detail_title">
+                <source>observation_detail_title</source>
+                <target>Fiche d'observation</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -33,6 +49,23 @@
                 <source>registration_meta_description</source>
                 <target></target>
             </trans-unit>
+            <trans-unit id="observation_create_meta_description">
+                <source>observation_create_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="observation_map_meta_description">
+                <source>observation_map_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="observation_list_meta_description">
+                <source>observation_list_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="observation_detail_meta_description">
+                <source>observation_detail_meta_description</source>
+                <target></target>
+            </trans-unit>
+
 
             <!-- LINK NAVIGATION -->
             <trans-unit id="sign_in">
@@ -62,6 +95,10 @@
             <trans-unit id="map">
                 <source>map</source>
                 <target>Carte</target>
+            </trans-unit>
+            <trans-unit id="list">
+                <source>list</source>
+                <target>Liste</target>
             </trans-unit>
             <trans-unit id="about">
                 <source>about</source>
@@ -200,6 +237,14 @@
             </trans-unit>
 
             <!-- OBSERVATIONS -->
+            <trans-unit id="observations">
+                <source>observations</source>
+                <target>Observations</target>
+            </trans-unit>
+            <trans-unit id="observation">
+                <source>observation</source>
+                <target>Observation</target>
+            </trans-unit>
             <trans-unit id="observe_at">
                 <source>observe_at</source>
                 <target>observé le %date%</target>
@@ -208,6 +253,27 @@
                 <source>in_place</source>
                 <target>à %place%</target>
             </trans-unit>
+            <trans-unit id="observation_create_main_title">
+                <source>observation_create_main_title</source>
+                <target>Nouvelle observation</target>
+            </trans-unit>
+            <trans-unit id="observation_create_secondary_title">
+                <source>observation_create_secondary_title</source>
+                <target>Ayer l'oeil</target>
+            </trans-unit>
+            <trans-unit id="observation_map_main_title">
+                <source>observation_map_main_title</source>
+                <target>Carte des observations</target>
+            </trans-unit>
+            <trans-unit id="observation_map_secondary_title">
+                <source>observation_map_secondary_title</source>
+                <target>A vol d'oiseau</target>
+            </trans-unit>
+            <trans-unit id="observation_list_main_title">
+                <source>observation_list_main_title</source>
+                <target>Liste des observations</target>
+            </trans-unit>
+
 
             <!-- HOMEPAGE -->
             <trans-unit id="homepage_main_title">
