@@ -791,6 +791,10 @@ span.breadcrumb{
     position: absolute;
     bottom: 1px;
     height: 3px;
+    background-color: #FFFFFF !important;
+}
+
+header.sticky .tabs .indicator{
     background-color: #FF3D00 !important;
 }
 
