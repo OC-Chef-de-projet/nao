@@ -270,6 +270,14 @@ header.bg13{
     background: linear-gradient(rgba(0,0,0,0.4), rgba(84,84,84,0)), url('../img/header/bg13.jpg') center/cover no-repeat;
 }
 
+header.bg14{
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(84,84,84,0)), url('../img/header/bg14.jpg') center/cover no-repeat;
+}
+
+header.bg15{
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(84,84,84,0)), url('../img/header/bg15.jpg') center/cover no-repeat;
+}
+
 header.collapse.bg1,
 header.collapse.bg2,
 header.collapse.bg3,
