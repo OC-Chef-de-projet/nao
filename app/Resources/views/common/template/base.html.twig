@@ -14,7 +14,7 @@
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="1200" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="{{ url(current_route)|trim('/') }}" />
+        <meta property="og:url" content="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}" />
         <meta property="og:locale" content="fr_FR">
         <meta property="og:site_name" content="{{ 'NAO'|trans }}">
 

@@ -5,7 +5,9 @@
             <div id="nav-logo" class="brand-logo"></div>
             <div id="nav-small-title">{% if navtitle is defined %}{{ navtitle|trans }}{% endif %}</div>
             <ul class="right static-menu">
-                <li><a href="javascript:void(0)" class="sharing" data-role="dropdown" data-link="{{ url(current_route)|trim('/') }}"><i class="material-icons">share</i></a></li>
+                <li>
+                    <a href="javascript:void(0)" class="sharing" data-role="dropdown" data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}"><i class="material-icons">share</i></a>
+                </li>
                 {% if user_is_logged %}
                     <li><a href="#"><i class="material-icons">notifications</i></a></li>
                 {% endif %}
