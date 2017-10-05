@@ -13,7 +13,7 @@ class ObservationController extends Controller
      * @Route("/observation/creation", name="observation.create")
      * @Method({"GET","POST"})
      */
-    public function CreateAction(Request $request)
+    public function createAction(Request $request)
     {
         return $this->render('observation/create.html.twig');
     }
