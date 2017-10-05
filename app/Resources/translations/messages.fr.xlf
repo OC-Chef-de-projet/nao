@@ -42,6 +42,10 @@
                 <source>about_page_title</source>
                 <target>À propos</target>
             </trans-unit>
+            <trans-unit id="blog_page_title">
+                <source>blog_page_title</source>
+                <target>Le blog</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -73,7 +77,10 @@
                 <source>about_page_meta_description</source>
                 <target></target>
             </trans-unit>
-
+            <trans-unit id="blog_page_meta_description">
+                <source>blog_page_meta_description</source>
+                <target></target>
+            </trans-unit>
 
             <!-- LINK NAVIGATION -->
             <trans-unit id="sign_in">
@@ -360,6 +367,7 @@
                 <target>Rejoignez la communauté</target>
             </trans-unit>
 
+
             <!-- ABOUT US PAGE -->
             <trans-unit id="about_main_title">
                 <source>about_main_title</source>
@@ -368,6 +376,17 @@
             <trans-unit id="about_secondary_title">
                 <source>about_secondary_title</source>
                 <target>L'association NAO</target>
+            </trans-unit>
+
+
+            <!-- BLOG -->
+            <trans-unit id="blog_main_title">
+                <source>blog_main_title</source>
+                <target>Le blog</target>
+            </trans-unit>
+            <trans-unit id="blog_secondary_title">
+                <source>blog_secondary_title</source>
+                <target>Rédigé avec notre plus belle plume</target>
             </trans-unit>
 
 
@@ -392,7 +411,6 @@
                 <source>gerer_articles_contenu</source>
                 <target>Ajouter/modifier/supprimer des articles</target>
             </trans-unit>
-
             <trans-unit id="moderer_commentaires_titre">
                 <source>moderer_commentaires_titre</source>
                 <target>Modérer les commentaires</target>

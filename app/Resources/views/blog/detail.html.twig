@@ -1,0 +1,52 @@
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}Titre article{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Contenu article troncate 200">
+    <meta name="og:description" content="Contenu article troncate 200">
+    <meta name="og:title" content="Titre article">
+    <meta property="og:image" content="Image article" />
+{% endblock %}
+
+{% block header %}
+    <header class="collapse bg4">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'blog_page_title'}%}
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <div id="header-main-title">
+                            <h1>TITRE ARTICLE</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <a href="{{ path('blog') }}" class="breadcrumb">{{ 'blog'|trans }}</a>
+                    <span class="breadcrumb">Titre article seul</span>
+                </div>
+            </div>
+        </nav>
+        <h1>{{ 'blog_page_title'|trans }}</h1>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section>
+
+        </section>
+    </main>
+{% endblock %}
+
