@@ -33,7 +33,7 @@
         var tabs                = $('header ul.tabs');
         var HeaderMainTitle     = $('#header-main-title');
         var PageTitle           = $('.page-heading h1');
-        var to_top_offset       = 30;
+        var to_top_offset       = 5;
 
         _init_navigation();
 
@@ -98,8 +98,6 @@
                     navSmallTitle.removeClass('activated');
                     PageTitle.removeClass('activated');
                 }
-            }else{
-
             }
 
             /**
@@ -107,12 +105,23 @@
              */
             if(scroll > to_top_offset ){
                 navbar.addClass('sticky');
-                if(header.hasClass('collapse'))
+                if(header.hasClass('collapse')){
                     header.addClass('sticky');
+                }
+                if(header.hasClass('classic')){
+                    navLogo.addClass('activated');
+                    navSmallTitle.addClass('activated');
+                }
+
             }else{
                 navbar.removeClass('sticky');
-                if(header.hasClass('collapse'))
+                if(header.hasClass('collapse')){
                     header.removeClass('sticky');
+                }
+                if(header.hasClass('classic')){
+                    navLogo.removeClass('activated');
+                    navSmallTitle.removeClass('activated');
+                }
             }
         }
 

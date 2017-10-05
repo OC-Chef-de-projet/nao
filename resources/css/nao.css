@@ -295,6 +295,11 @@ header.collapse.bg13{
     background-size: cover;
 }
 
+header.classic{
+    height: 64px;
+    background : #009688 !important;
+}
+
 header.full-height{
     min-height: 100%;
 }
@@ -406,6 +411,11 @@ header nav .static-menu li a:hover{
 }
 
 header nav #nav-small-title{
+    max-width: 120px;
+    max-height: 64px;
+    line-height: 17px;
+    margin-top: 18px;
+    overflow: hidden;
     display: none;
 }
 
