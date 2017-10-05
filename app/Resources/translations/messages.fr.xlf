@@ -38,6 +38,10 @@
                 <source>observation_detail_title</source>
                 <target>Fiche d'observation</target>
             </trans-unit>
+            <trans-unit id="about_page_title">
+                <source>about_page_title</source>
+                <target>À propos</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -63,6 +67,10 @@
             </trans-unit>
             <trans-unit id="observation_detail_meta_description">
                 <source>observation_detail_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="about_page_meta_description">
+                <source>about_page_meta_description</source>
                 <target></target>
             </trans-unit>
 
@@ -236,6 +244,7 @@
                 <target>Lire</target>
             </trans-unit>
 
+
             <!-- OBSERVATIONS -->
             <trans-unit id="observations">
                 <source>observations</source>
@@ -329,6 +338,7 @@
                 <target>Il n'y a pas encore d'observations</target>
             </trans-unit>
 
+
             <!-- FOOTER -->
             <trans-unit id="stay_inform">
                 <source>stay_inform</source>
@@ -339,6 +349,7 @@
                 <target>S'inscrire à la newsletter</target>
             </trans-unit>
 
+
             <!-- REGISTRATION PAGE -->
             <trans-unit id="registration_main_title">
                 <source>registration_main_title</source>
@@ -348,6 +359,17 @@
                 <source>registration_secondary_title</source>
                 <target>Rejoignez la communauté</target>
             </trans-unit>
+
+            <!-- ABOUT US PAGE -->
+            <trans-unit id="about_main_title">
+                <source>about_main_title</source>
+                <target>À propos</target>
+            </trans-unit>
+            <trans-unit id="about_secondary_title">
+                <source>about_secondary_title</source>
+                <target>L'association NAO</target>
+            </trans-unit>
+
 
             <!-- DASHBORAD -->
             <trans-unit id="admin_dashboard">
@@ -379,6 +401,7 @@
                 <source>moderer_commentaires_contenu</source>
                 <target>Accepter ou refuser les commentaires des internautes</target>
             </trans-unit>
+
 
             <!-- USER MANAGEMENT -->
             <trans-unit id="gestion_utilisateurs">
