@@ -91,10 +91,12 @@
                  */
                 if(positionMainTitleToTop <= 0){
                     navLogo.addClass('activated');
+                    navSmallTitle.html(PageTitle.html());
                     navSmallTitle.addClass('activated');
                     PageTitle.addClass('activated');
                 }else{
                     navLogo.removeClass('activated');
+                    navSmallTitle.html('');
                     navSmallTitle.removeClass('activated');
                     PageTitle.removeClass('activated');
                 }
