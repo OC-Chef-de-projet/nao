@@ -66,6 +66,10 @@
                 <source>legacy_page_title</source>
                 <target>Mentions légales</target>
             </trans-unit>
+            <trans-unit id="faq_page_title">
+                <source>faq_page_title</source>
+                <target>Foire aux questions</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -119,6 +123,10 @@
             </trans-unit>
             <trans-unit id="legacy_page_meta_description">
                 <source>legacy_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="faq_page_meta_description">
+                <source>faq_page_meta_description</source>
                 <target></target>
             </trans-unit>
 
@@ -460,6 +468,21 @@
             <trans-unit id="contact_secondary_title">
                 <source>contact_secondary_title</source>
                 <target>Notre équipe vole à votre secours</target>
+            </trans-unit>
+
+
+            <!-- FAQ PAGE -->
+            <trans-unit id="faq_main_title">
+                <source>faq_main_title</source>
+                <target>Foire aux questions</target>
+            </trans-unit>
+            <trans-unit id="faq_secondary_title">
+                <source>faq_secondary_title</source>
+                <target>Pour les "têtes de linotte"</target>
+            </trans-unit>
+            <trans-unit id="faq_full">
+                <source>faq_full</source>
+                <target>Foire aux questions</target>
             </trans-unit>
 
 
