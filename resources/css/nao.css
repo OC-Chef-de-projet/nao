@@ -405,6 +405,20 @@ header nav .static-menu li > a{
     float: left;
 }
 
+header nav .static-menu li > a > span.badge{
+    border-radius: 50%;
+    min-width: 0rem;
+    font-size: 11px;
+    min-width: 20px !important;
+    height: 20px !important;
+    background-color: #FF3D00;
+    color: #fff;
+    position: absolute;
+    top:10px;
+    right: 50px;
+    font-weight: 500;
+}
+
 header nav .static-menu li a:hover{
     background: none;
     color : rgba(255, 255, 255, 0.85);
