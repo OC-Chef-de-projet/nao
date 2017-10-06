@@ -14,7 +14,7 @@ class PageController extends Controller
      * @Route("/a-propos", name="about")
      * @Method({"GET"})
      */
-    public function aboutShowAction()
+    public function aboutAction()
     {
         return $this->render('about.html.twig');
     }
@@ -23,9 +23,26 @@ class PageController extends Controller
      * @Route("/restez-connecte", name="stay.connected")
      * @Method({"GET"})
      */
-    public function stayConnectShowAction()
+    public function stayConnectAction()
     {
         return $this->render('stay-connected.html.twig');
     }
 
+    /**
+     * @Route("/mentions-legales", name="legacy")
+     * @Method({"GET"})
+     */
+    public function legacyAction()
+    {
+        return $this->render('legacy.html.twig');
+    }
+
+    /**
+     * @Route("/faq", name="faq")
+     * @Method({"GET"})
+     */
+    public function faqAction()
+    {
+        return $this->render('stay-connected.html.twig');
+    }
 }

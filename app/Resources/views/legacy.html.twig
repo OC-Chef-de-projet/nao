@@ -1,0 +1,40 @@
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'legacy_page_title'|trans }}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ 'legacy_page_meta_description'|trans }}">
+    <meta name="og:description" content="{{ 'legacy_page_meta_description'|trans }}">
+    <meta name="og:title" content="{{ 'legacy_page_title'|trans }}">
+    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="classic">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'legacy_page_title'} %}
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <span class="breadcrumb">{{ 'legacy'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <h1 class="activated">{{ 'legacy_page_title'|trans }}</h1>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section>
+
+        </section>
+    </main>
+{% endblock %}
+

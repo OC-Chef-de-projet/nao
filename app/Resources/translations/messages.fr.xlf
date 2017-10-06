@@ -62,6 +62,10 @@
                 <source>dashboard_page_title</source>
                 <target>Votre tableau de board</target>
             </trans-unit>
+            <trans-unit id="legacy_page_title">
+                <source>legacy_page_title</source>
+                <target>Mentions légales</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -113,6 +117,11 @@
                 <source>dashboard_page_meta_description</source>
                 <target></target>
             </trans-unit>
+            <trans-unit id="legacy_page_meta_description">
+                <source>legacy_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+
 
             <!-- LINK NAVIGATION -->
             <trans-unit id="sign_in">
