@@ -18,11 +18,9 @@ class SecurityController extends Controller
 {
     /**
      * @Route("/connexion", name="login")
-     * @Method({"GET", "POST"})
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Method({"GET"})
      */
-    public function loginAction(Request $request)
+    public function loginAction()
     {
         $helper = $this->get('security.authentication_utils');
 
