@@ -4,7 +4,10 @@ parameters:
     #parameter_name: value
 
 services:
-
+    twig.extension.text:
+            class: Twig_Extensions_Extension_Text
+            tags:
+                - { name: twig.extension }
     form_authenticator:
         class: AppBundle\Security\FormAuthenticator
         arguments: ['@router', '@form.factory', '@security.user_password_encoder.generic']
