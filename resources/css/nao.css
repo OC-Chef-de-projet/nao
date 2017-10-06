@@ -289,9 +289,9 @@ header.collapse.bg8,
 header.collapse.bg9,
 header.collapse.bg10,
 header.collapse.bg12,
-header.collapse.bg13{
-    background-attachment: fixed;
-    background-position: 0px -250px;
+header.collapse.bg13,
+header.collapse.bg14,
+header.collapse.bg15{
     background-size: cover;
 }
 
