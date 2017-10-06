@@ -1053,7 +1053,7 @@ header.sticky .tabs .indicator{
     header nav #nav-small-title.activated{
         display: block;
         position: absolute;
-        top: 18px;
+        top: 17px;
         left: 50px;
         font-size: 18px;
         font-weight: 500;
@@ -1096,7 +1096,7 @@ header.sticky .tabs .indicator{
     header nav #nav-small-title.activated{
         display: block;
         position: absolute;
-        top: 18px;
+        top: 17px;
         left: 50px;
         font-size: 18px;
         font-weight: 500;
