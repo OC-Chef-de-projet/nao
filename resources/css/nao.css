@@ -414,7 +414,6 @@ header nav #nav-small-title{
     max-width: 40%;
     max-height: 64px;
     line-height: 22px;
-    margin-top: 15px;
     overflow: hidden;
     display: none;
 }
@@ -1053,8 +1052,10 @@ header.sticky .tabs .indicator{
 
     header nav #nav-small-title.activated{
         display: block;
-        float: left;
-        font-size: 20px;
+        position: absolute;
+        top: 18px;
+        left: 50px;
+        font-size: 18px;
         font-weight: 500;
     }
 }
@@ -1094,8 +1095,10 @@ header.sticky .tabs .indicator{
 
     header nav #nav-small-title.activated{
         display: block;
-        float: left;
-        font-size: 20px;
+        position: absolute;
+        top: 18px;
+        left: 50px;
+        font-size: 18px;
         font-weight: 500;
     }
 }
