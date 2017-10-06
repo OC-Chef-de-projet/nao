@@ -411,10 +411,10 @@ header nav .static-menu li a:hover{
 }
 
 header nav #nav-small-title{
-    max-width: 120px;
+    max-width: 40%;
     max-height: 64px;
-    line-height: 17px;
-    margin-top: 20px;
+    line-height: 22px;
+    margin-top: 15px;
     overflow: hidden;
     display: none;
 }
