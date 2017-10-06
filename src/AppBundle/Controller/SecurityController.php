@@ -18,6 +18,7 @@ class SecurityController extends Controller
 {
     /**
      * @Route("/connexion", name="login")
+     * @Method({"GET","POST"})
      */
     public function loginAction()
     {
