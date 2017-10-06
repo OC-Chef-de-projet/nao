@@ -7,7 +7,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\Post;
 use AppBundle\Form\Type\PostType;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 /**
  * Class PostController
  *
@@ -18,6 +19,9 @@ class PostController extends Controller
 
     /**
      * List posts
+     *
+     * @Route("/post", name="admin_post_index")
+     * @Method({"GET"})
      *
      * @param Request $request  Httpd request
      * @param int $page         Page number

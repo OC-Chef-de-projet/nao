@@ -11,11 +11,13 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\UserUpdateType;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 
 /**
  * Class UserController
+ * @Route("/admin/user")
  *
  * @package AppBundle\Controller\Admin
  */
@@ -24,6 +26,9 @@ class UserController extends Controller
 
     /**
      * Admin user menu
+     *
+     * @Route("/", name="admin_user_index")
+     * @Method({"GET"})
      *
      * @param Request $request  Http request
      * @param int $page         Page to display
@@ -40,12 +45,7 @@ class UserController extends Controller
         $users = $em->getRepository('AppBundle:User')->searchUsersByRole($page,$role,$this->getParameter('list_limit'));
 
         return $this->render('@AdminUser/index.html.twig', [
-            'header' => [
-                'bodyClass' => 'background-2',
-                'tabs' => $this->container->get('app.user')->getUsersTabs($role),
-                'breadcrumb' => $this->container->get('app.user')->getIndexBreadcrumb(),
-                'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($c)
-            ],
+            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($c),
             'paginate' => $this->container->get('app.user')->getPagination($users,$page),
             'users' => $users->getIterator(),
         ]);
@@ -55,6 +55,8 @@ class UserController extends Controller
     /**
      * Update user profile (only role and blocked status)
      *
+     * @Route("/admin/user/{id}/edit",  requirements={"id" = "\d+"}, name="admin_user_update")
+     * @Method({"GET"})
      * @param Request $request  Http request
      * @param User $user        User entity
      *
