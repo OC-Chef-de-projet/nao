@@ -18,7 +18,8 @@ class SecurityController extends Controller
 {
     /**
      * @Route("/connexion", name="login")
-     * @method({"GET", "POST"})
+     * @Method({"GET", "POST"})
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function loginAction(Request $request)
     {
