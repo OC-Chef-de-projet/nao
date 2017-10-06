@@ -58,6 +58,10 @@
                 <source>login_page_title</source>
                 <target>Connexion</target>
             </trans-unit>
+            <trans-unit id="dashboard_page_title">
+                <source>dashboard_page_title</source>
+                <target>Votre tableau de board</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -105,7 +109,10 @@
                 <source>login_page_meta_description</source>
                 <target></target>
             </trans-unit>
-
+            <trans-unit id="dashboard_page_meta_description">
+                <source>dashboard_page_meta_description</source>
+                <target></target>
+            </trans-unit>
 
             <!-- LINK NAVIGATION -->
             <trans-unit id="sign_in">
@@ -447,7 +454,33 @@
             </trans-unit>
 
 
-            <!-- DASHBORAD -->
+            <!-- USERS DASHBOARD -->
+            <trans-unit id="dashboard_main_title">
+                <source>dashboard_main_title</source>
+                <target>Votre tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="dashboard_secondary_title">
+                <source>dashboard_secondary_title</source>
+                <target> </target>
+            </trans-unit>
+            <trans-unit id="dashboard">
+                <source>dashboard</source>
+                <target>Tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="account">
+                <source>account</source>
+                <target>Compte</target>
+            </trans-unit>
+            <trans-unit id="profil">
+                <source>profil</source>
+                <target>profil</target>
+            </trans-unit>
+            <trans-unit id="notifications">
+                <source>notifications</source>
+                <target>notifications</target>
+            </trans-unit>
+
+            <!-- ADMIN DASHBOARD -->
             <trans-unit id="admin_dashboard">
                 <source>admin_dashboard</source>
                 <target>Administration - Tableau de bord</target>
