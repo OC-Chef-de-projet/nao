@@ -54,6 +54,11 @@
                 <source>contact_page_title</source>
                 <target>Contact</target>
             </trans-unit>
+            <trans-unit id="login_page_title">
+                <source>login_page_title</source>
+                <target>Connexion</target>
+            </trans-unit>
+
 
             <!-- PAGE META -->
             <trans-unit id="homepage_meta_description">
@@ -96,6 +101,11 @@
                 <source>contact_page_meta_description</source>
                 <target></target>
             </trans-unit>
+            <trans-unit id="login_page_meta_description">
+                <source>login_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+
 
             <!-- LINK NAVIGATION -->
             <trans-unit id="sign_in">
@@ -380,6 +390,17 @@
             <trans-unit id="registration_secondary_title">
                 <source>registration_secondary_title</source>
                 <target>Rejoignez la communauté</target>
+            </trans-unit>
+
+
+            <!-- LOGIN PAGE -->
+            <trans-unit id="login_main_title">
+                <source>login_main_title</source>
+                <target>Connexion</target>
+            </trans-unit>
+            <trans-unit id="login_secondary_title">
+                <source>login_secondary_title</source>
+                <target>On vous attendait</target>
             </trans-unit>
 
 

@@ -5,5 +5,5 @@
 {% if user_is_logged %}
     <li><a href="#" class="btn white waves-effect">{{ 'your_account'|trans }}</a></li>
 {% else %}
-    <li><a href="#" class="btn waves-effect">{{ 'connexion'|trans }}</a></li>
+    <li><a href="{{ path('login') }}" class="btn waves-effect">{{ 'connexion'|trans }}</a></li>
 {% endif %}

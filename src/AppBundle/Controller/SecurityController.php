@@ -3,7 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Form\Type\LoginType;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * Class SecurityController
@@ -13,9 +17,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class SecurityController extends Controller
 {
     /**
-     * Login to backoffice
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/connexion", name="login")
+     * @Method({"GET","POST"})
      */
     public function loginAction()
     {

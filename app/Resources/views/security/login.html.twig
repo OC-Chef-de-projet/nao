@@ -1,7 +1,53 @@
-{% extends "base.html.twig" %}
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'login_page_title'|trans }}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ 'login_page_meta_description'|trans }}">
+    <meta name="og:description" content="{{ 'login_page_meta_description'|trans }}">
+    <meta name="og:title" content="{{ 'login_page_title'|trans }}">
+    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="collapse bg7">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'login_page_title'}%}
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <div id="header-main-title">
+                            <h1>{{ 'login_main_title'|trans }}</h1>
+                            <h2>{{ 'login_secondary_title'|trans }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+{% endblock %}
 
 {% block body %}
-{{ form_start(form_login) }}
-{{ form_widget(form_login) }}
-{{ form_end(form_login) }}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <span class="breadcrumb">{{ 'connexion'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <h1>{{ 'login_page_title'|trans }}</h1>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section>
+            {{ form_start(form_login) }}
+            {{ form_widget(form_login) }}
+            {{ form_end(form_login) }}
+        </section>
+    </main>
 {% endblock %}
