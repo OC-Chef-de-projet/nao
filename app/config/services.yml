@@ -66,3 +66,7 @@ services:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
 
+    AppBundle\EventListener\CommentListener:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+

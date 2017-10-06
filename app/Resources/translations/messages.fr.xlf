@@ -490,39 +490,43 @@
             </trans-unit>
 
             <!-- ADMIN DASHBOARD -->
+            <trans-unit id="admin">
+                <source>admin</source>
+                <target>Administration</target>
+            </trans-unit>
             <trans-unit id="admin_dashboard">
                 <source>admin_dashboard</source>
                 <target>Administration - Tableau de bord</target>
             </trans-unit>
-            <trans-unit id="gerer_utilisateurs_titre">
-                <source>gerer_utilisateurs_titre</source>
+            <trans-unit id="admin_user_title">
+                <source>admin_user_title</source>
                 <target>Gérer les utilisateurs</target>
             </trans-unit>
-            <trans-unit id="gerer_utilisateurs_contenu">
-                <source>gerer_utilisateurs_contenu</source>
+            <trans-unit id="admin_user_explain">
+                <source>admin_user_explain</source>
                 <target>Attribuer ou retirer des droits aux utilisateurs</target>
             </trans-unit>
-            <trans-unit id="gerer_articles_titre">
-                <source>gerer_articles_titre</source>
+            <trans-unit id="admin_post_title">
+                <source>admin_post_title</source>
                 <target>Gérer les articles</target>
             </trans-unit>
-            <trans-unit id="gerer_articles_contenu">
-                <source>gerer_articles_contenu</source>
+            <trans-unit id="admin_post_explain">
+                <source>admin_post_explain</source>
                 <target>Ajouter/modifier/supprimer des articles</target>
             </trans-unit>
-            <trans-unit id="moderer_commentaires_titre">
-                <source>moderer_commentaires_titre</source>
+            <trans-unit id="admin_comment_title">
+                <source>admin_comment_title</source>
                 <target>Modérer les commentaires</target>
             </trans-unit>
-            <trans-unit id="moderer_commentaires_contenu">
-                <source>moderer_commentaires_contenu</source>
+            <trans-unit id="admin_comment_explain">
+                <source>admin_comment_explain</source>
                 <target>Accepter ou refuser les commentaires des internautes</target>
             </trans-unit>
 
 
             <!-- USER MANAGEMENT -->
-            <trans-unit id="gestion_utilisateurs">
-                <source>gestion_utilisateurs</source>
+            <trans-unit id="admin_user">
+                <source>admin_user</source>
                 <target>Gestion des utilisateurs</target>
             </trans-unit>
             <trans-unit id="recherche_par_nom">

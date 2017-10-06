@@ -1,211 +1,64 @@
-{% extends 'base.html.twig' %}
+{% extends "common/template/base.html.twig" %}
 
+{% block title %}{{ 'admin_user'|trans }}{% endblock %}
 
-
+{% block header %}
+    <header class="collapse admin">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_user' }%}
+    </header>
+{% endblock %}
 
 {% block body %}
-    {% include ':admin/user:navbar.html.twig' %}
-
-
-    <div class="container">
-        {% include '::breadcrumb.html.twig'  with {'breadcrumb':header.breadcrumb} only %}
-        <h4>{% trans %}gestion_utilisateurs{% endtrans %}</h4>
-        <div class="card-panel">
-            <div class="row">
-                <div class="col s12 m6 push-m3 search">
-                    <div class="autocomplete" id="single">
-                        <div class="ac-input">
-
-                            <input type="text" id="searchuser" placeholder="Please input some letters"
-                                   data-activates="singleDropdown" data-beloworigin="true" autocomplete="off">
-                            <sup><a href="#" id="clearsearch">{% trans %}effacer_recherche{% endtrans %}</a></sup>
-                        </div>
-
-                        <ul id="singleDropdown" class="dropdown-content ac-dropdown"></ul>
-                    </div>
-
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down admin">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <a href="{{ path('admin_homepage') }}" class="breadcrumb" >{{ 'admin'|trans }}</a>
+                    <span class="breadcrumb">{{ 'admin_user'|trans }}</span>
                 </div>
             </div>
-            <!-- -->
-            <div class="row" id="userList">
-                {% include ':admin/user:list.html.twig'  with {'users':users} only %}
+        </nav>
+        <h1 class="activated">{{ 'admin_user'|trans }}</h1>
+        <div class="row">
+            <div class="col s12">
+                <div class="card medium">
+                    <div class="card-content">
+                        <!-- search -->
+                        <div class="row">
+
+                        <div class="col s12 m6 push-m3 search">
+                            <div class="autocomplete" id="single">
+                                <div class="ac-input">
+
+                                    <input type="text" id="searchuser" placeholder="Please input some letters"
+                                           data-activates="singleDropdown" data-beloworigin="true" autocomplete="off">
+                                    <sup><a href="#" id="clearsearch">{% trans %}effacer_recherche{% endtrans %}</a></sup>
+                                </div>
+
+                                <ul id="singleDropdown" class="dropdown-content ac-dropdown"></ul>
+                            </div>
+                        </div>
+                        </div>
+                        <!-- user list -->
+                        <ul class="collection row">
+                        {%  for user in users %}
+                            <li class="collection-item avatar col s12 m6">
+                                <img src="{{ asset('images/users/'~user.getImagePath) }}" class="circle">
+                                <span class="title">{{ user.getName }}</span>
+                                <p  class="caption light-2">{{ user.roleString }}</p>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="container center-align">
-            <ul class="pagination">
-                <input type="hidden" id="maxpage" value="{{ paginate.maxPages }}">
-                <input type="hidden" id="maxcurrent" value="{{ paginate.current + 10 }}">
-                <li id="chevron_left" {{ paginate.current <= 1 ? 'class="disabled"': 'class="waves-effect"' }}>
-                    <a id="prevpage" href="#">
-                        <i class="material-icons">chevron_left</i>
-                    </a>
-                </li>
+    </section>
 
-                {% for i in paginate.current..paginate.current + 10 %}
-                    {% if i < paginate.maxPages %}
-                        <li id="p_{{ i }}"
-                            class="waves-effect {{ paginate.current == i ? 'active' }}{{ i > paginate.maxPages ? 'disabled' }}">
-                            <a class="gotopage {{ i > paginate.maxPages ? ' not-active' }}" href="#"
-                               data-page="{{ i }}">{{ i }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-
-                <li id="chevron_right" {{ paginate.current == paginate.maxPages ? 'class="disabled"': 'class="waves-effect"' }}>
-                    <a id="nextpage" href="#">
-                        <i class="material-icons">chevron_right</i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-{% endblock body %}
-
-    {% block javascripts %}
-        {{ parent() }}
-        <script>
-            $(function () {
-
-                var single = $('#searchuser').materialize_autocomplete({
-                    limit: 10,
-                    cacheable: true,
-                    multiple: {
-                        enable: false
-                    },
-                    dropdown: {
-                        el: '#singleDropdown'
-                    },
-                    getData: function (value, callback) {
-                        var data = [];
-                        var role = $('.tab').find('.active').attr('id');
-                        $.ajax({
-                            url: "{{ url('api_user_search') }}?bearer={{ header.token }}",
-                            type: "POST",
-                            dataType: "json",
-                            data: {
-                                "role": role,
-                                "search": value
-                            },
-                            success: function (response) {
-                                callback(value, response);
-                            }
-                        });
-                    },
-                    onSelect: function (item) {
-                        userList(1, item.id);
-                        $('.pagination').hide();
-                    }
-                });
-
-                $("#clearsearch").click(function(){
-                    location.reload();
-                });
-
-                /**
-                 *
-                 */
-                $('.gotopage').click(function () {
-                    var pageno = $(this).data("page");
-                    // Search active page
-                    var current = $('.pagination').find('.active').attr('id');
-                    $('#' + current).removeClass('active');
-                    userList(pageno, 0);
-                    $('#p_' + pageno).addClass('active');
-                    if (pageno > 1) {
-                        $('#chevron_left').removeClass('disabled');
-                    } else {
-                        $('#chevron_left').addClass('disabled');
-                    }
-                    var maxpage = $('#maxpage').val() - 1;
-                    if (pageno >= maxpage) {
-                        $('#chevron_right').addClass('disabled');
-
-                    } else {
-                        $('#chevron_right').removeClass('disabled');
-                    }
-                });
-
-                /**
-                 *
-                 */
-                $('#nextpage').click(function () {
-                    var current = $('.pagination').find('.active').attr('id');
-                    $('#' + current).removeClass('active');
-                    var next = parseInt(current.replace('p_', '')) + 1
-                    if (next > 1) {
-                        $('#chevron_left').removeClass('disabled');
-                    } else {
-                        $('#chevron_left').addClass('disabled');
-                    }
-                    var maxpage = $('#maxpage').val() - 1;
-                    var maxcurrent = $('#maxcurrent').val();
-                    if (next >= maxpage) {
-                        //next = maxpage;
-                        $('#chevron_right').addClass('disabled');
-                    } else {
-                        $('#chevron_right').removeClass('disabled');
-                    }
-                    if (next > maxpage) {
-                        console.log('#p_' + maxpage);
-                        $('#p_' + maxpage).addClass('active');
-                        return true;
-                        ;
-                    }
-                    if (next > maxcurrent) {
-                        maxcurrent = next;
-                        addPage(next);
-                        removePage(next - 11);
-                    }
-                    userList(next, 0);
-                    $('#p_' + next).addClass('active');
-                });
-
-                /**
-                 *
-                 */
-                $('#prevpage').click(function () {
-                    var current = $('.pagination').find('.active').attr('id');
-                    $('#' + current).removeClass('active');
-                    var prev = parseInt(current.replace('p_', '')) - 1
-                    if (prev <= 1) {
-                        prev = 1;
-                        $('#chevron_left').addClass('disabled');
-                    } else {
-                        $('#chevron_left').removeClass('disabled');
-                    }
-                    console.log("PREV " + prev);
-                    console.log("CURR " + current);
-                    userList(prev, 0);
-                    $('#p_' + prev).addClass('active');
-                });
-            });
-
-            /**
-             * Get user list
-             *
-             * @param pageno
-             * @param user_id
-             */
-            function userList(pageno, user_id) {
-                var role = $('.tab').find('.active').attr('id');
-                var search = $('#form_search').val();
-                $.ajax({
-                    url: "{{ url('api_user_paginate') }}?bearer={{ header.token }}",
-                    type: "POST",
-                    dataType: "json",
-                    data: {
-                        "page": pageno,
-                        "role": role,
-                        "user_id": user_id
-                    },
-                    success: function (response) {
-                        $('#userList').html(response.html);
-                    }
-                });
-            }
-        </script>
-    {% endblock %}
+{% endblock %}
 
 
 
