@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="card-action">
-        <a href="#" class="bleen sharing" data-link="#">{{ 'share'|trans }}</a>
-        <a href="#" class="bleen">{{ 'read'|trans }}</a>
+        <a href="#" class="bleen sharing" data-link="{{ url('observation.detail', {'id' : observation.id}) }}">{{ 'share'|trans }}</a>
+        <a href="{{ path('observation.detail', {'id' : observation.id}) }}" class="bleen">{{ 'read'|trans }}</a>
     </div>
 </div>
