@@ -33,6 +33,15 @@ class SecurityController extends Controller
     }
 
     /**
+     * @Route("/logout", name="logout")
+     * @Method({"GET"})
+     */
+    public function logoutAction()
+    {
+
+    }
+
+    /**
      * Check login
      */
     public function loginCheckAction()

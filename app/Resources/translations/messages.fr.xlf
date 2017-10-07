@@ -74,14 +74,6 @@
                 <source>search_page_title</source>
                 <target>Votre recherche</target>
             </trans-unit>
-            <trans-unit id="observation_me_page_title">
-                <source>observation_me_page_title</source>
-                <target>Vos observation</target>
-            </trans-unit>
-            <trans-unit id="observation_validation_page_title">
-                <source>observation_validation_page_title</source>
-                <target>Valider une observation</target>
-            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -143,14 +135,6 @@
             </trans-unit>
             <trans-unit id="search_page_meta_description">
                 <source>search_page_meta_description</source>
-                <target></target>
-            </trans-unit>
-            <trans-unit id="observation_me_page_meta_description">
-                <source>observation_me_page_meta_description</source>
-                <target></target>
-            </trans-unit>
-            <trans-unit id="observation_validation_page_meta_description">
-                <source>observation_validation_page_meta_description</source>
                 <target></target>
             </trans-unit>
 
@@ -216,30 +200,6 @@
                 <source>your_account</source>
                 <target>Votre espace</target>
             </trans-unit>
-            <trans-unit id="your_dashboard">
-                <source>your_dashboard</source>
-                <target>Votre tableau de bord</target>
-            </trans-unit>
-            <trans-unit id="admin_panel">
-                <source>admin_panel</source>
-                <target>Administration</target>
-            </trans-unit>
-            <trans-unit id="your_observation">
-                <source>your_observation</source>
-                <target>Vos observations</target>
-            </trans-unit>
-            <trans-unit id="validate_observation">
-                <source>validate_observation</source>
-                <target>Valider une observation</target>
-            </trans-unit>
-            <trans-unit id="your_notifications">
-                <source>your_notifications</source>
-                <target>Vos notifications</target>
-            </trans-unit>
-            <trans-unit id="sign_out">
-                <source>sign_out</source>
-                <target>Se déconnecter</target>
-            </trans-unit>
 
 
             <!-- ALT IMAGE -->
@@ -255,11 +215,6 @@
                 <source>alt_actuality</source>
                 <target>Image d'une actualité</target>
             </trans-unit>
-            <trans-unit id="alt_profil">
-                <source>alt_profil</source>
-                <target>Image de profil</target>
-            </trans-unit>
-
 
             <!-- FORMS / BUTTON -->
             <trans-unit id="search">
@@ -391,38 +346,6 @@
                 <source>observation_list_main_title</source>
                 <target>Liste des observations</target>
             </trans-unit>
-            <trans-unit id="observation_me_main_title">
-                <source>observation_me_main_title</source>
-                <target>Vos observations</target>
-            </trans-unit>
-            <trans-unit id="draft">
-                <source>draft</source>
-                <target>brouillons</target>
-            </trans-unit>
-            <trans-unit id="validated">
-                <source>validated</source>
-                <target>validées</target>
-            </trans-unit>
-            <trans-unit id="waiting">
-                <source>waiting</source>
-                <target>en attente</target>
-            </trans-unit>
-            <trans-unit id="observation_validation_main_title">
-                <source>observation_validation_main_title</source>
-                <target>Valider une observation</target>
-            </trans-unit>
-            <trans-unit id="your_validation">
-                <source>your_validation</source>
-                <target>Vos validations</target>
-            </trans-unit>
-            <trans-unit id="your_refuse">
-                <source>your_refuse</source>
-                <target>Vos refus</target>
-            </trans-unit>
-            <trans-unit id="waiting_validation">
-                <source>waiting_validation</source>
-                <target>Validation en attente</target>
-            </trans-unit>
 
 
             <!-- HOMEPAGE -->
@@ -545,7 +468,6 @@
                 <target>Restez près du nid</target>
             </trans-unit>
 
-
             <!-- STAY CONNECTED PAGE -->
             <trans-unit id="contact_main_title">
                 <source>contact_main_title</source>
@@ -571,13 +493,11 @@
                 <target>Foire aux questions</target>
             </trans-unit>
 
-
             <!-- GLOBAL SEARCH PAGE -->
             <trans-unit id="search_min">
                 <source>search_min</source>
                 <target>Recherche</target>
             </trans-unit>
-
 
             <!-- USERS DASHBOARD -->
             <trans-unit id="dashboard_main_title">
@@ -653,12 +573,12 @@
                 <source>search_by_name</source>
                 <target>Rechercher par nom</target>
             </trans-unit>
-            <trans-unit id="inscrit_depuis">
-                <source>inscrit_depuis</source>
+            <trans-unit id="enrolled_since">
+                <source>enrolled_since</source>
                 <target>Inscrit depuis le</target>
             </trans-unit>
-            <trans-unit id="utilisateur_bloque">
-                <source>utilisateur_bloque</source>
+            <trans-unit id="bloqued_user">
+                <source>bloqued_user</source>
                 <target>Utilisateur bloqué</target>
             </trans-unit>
             <trans-unit id="clear_search">

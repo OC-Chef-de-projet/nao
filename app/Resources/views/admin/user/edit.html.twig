@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="col s7">
                                         <h4>{{ user.name }}</h4>
-                                        <p>{% trans %}inscrit_depuis{% endtrans %} {{ user.created|date('d/m/Y') }}</p>
+                                        <p>{% trans %}enrolled_since{% endtrans %} {{ user.created|date('d/m/Y') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                                 <label>
                                     {{ form_widget(form.inactive) }}
                                     <span class="lever"></span>
-                                    {% trans %}utilisateur_bloque{% endtrans %}
+                                    {% trans %}bloqued_user{% endtrans %}
                                 </label>
                             </div>
                             <!-- action -->
