@@ -82,6 +82,10 @@
                 <source>observation_validation_page_title</source>
                 <target>Valider une observation</target>
             </trans-unit>
+            <trans-unit id="404_page_title">
+                <source>404_page_title</source>
+                <target>Page 404</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -578,6 +582,27 @@
                 <target>Recherche</target>
             </trans-unit>
 
+
+            <!-- 404 PAGE -->
+            <trans-unit id="404_main_title">
+                <source>404_main_title</source>
+                <target>OUPS !</target>
+            </trans-unit>
+            <trans-unit id="404_secondary_title">
+                <source>404_secondary_title</source>
+                <target>Vous êtes perdu(e) ?</target>
+            </trans-unit>
+            <trans-unit id="404_explain">
+                <source>404_explain</source>
+                <target>
+                La page que vous recherchez n'existe pas ou plus
+                Nous en sommes désolés
+                </target>
+            </trans-unit>
+            <trans-unit id="back_to_homepage">
+                <source>back_to_homepage</source>
+                <target>Retour à l'accueil</target>
+            </trans-unit>
 
             <!-- USERS DASHBOARD -->
             <trans-unit id="dashboard_main_title">

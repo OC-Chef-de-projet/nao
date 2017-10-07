@@ -308,6 +308,19 @@ header.full-height #nav-logo{
     display: none;
 }
 
+header.full-height.error #nav-logo{
+    display: block;
+    left: 50px;
+}
+
+header.full-height.error div.explain{
+    margin-top: 15%;
+}
+
+header.full-height.error div.explain h1{
+    text-align: left;
+}
+
 header section{
     color: #ffffff;
 }
@@ -937,7 +950,7 @@ header.sticky .tabs .indicator{
     }
 
     header #nav-logo{
-        left: 100px;
+        left: 100px !important;
     }
 
     header #header-main-title{
@@ -987,6 +1000,15 @@ header.sticky .tabs .indicator{
         float: left;
         font-size: 20px;
         font-weight: 500;
+    }
+
+    header.full-height.error div.explain{
+        margin-top: 20%;
+        text-align: right;
+    }
+
+    header.full-height.error div.explain h1{
+        text-align: right;
     }
 }
 
@@ -1046,7 +1068,7 @@ header.sticky .tabs .indicator{
     }
 
     header #nav-logo{
-        left: 100px;
+        left: 100px !important;
     }
 
     header #header-main-title{
@@ -1088,6 +1110,21 @@ header.sticky .tabs .indicator{
         font-size: 18px;
         font-weight: 500;
     }
+
+    header.full-height.error div.explain{
+        margin-top: 20%;
+        text-align: right;
+    }
+
+    header.full-height.error div.explain h1{
+        text-align: right;
+    }
+
+    header.full-height.error div.explain a{
+        position: absolute;
+        bottom: 40px;
+        right: 10%;
+    }
 }
 
 /*
@@ -1117,7 +1154,7 @@ header.sticky .tabs .indicator{
     }
 
     header #nav-logo{
-        left: 100px;
+        left: 100px !important;
     }
     header #nav-logo.activated{
         display: none;
@@ -1130,5 +1167,14 @@ header.sticky .tabs .indicator{
         left: 50px;
         font-size: 18px;
         font-weight: 500;
+    }
+
+    header.full-height.error div.explain{
+        margin-top: 8%;
+        text-align: right;
+    }
+
+    header.full-height.error div.explain h1{
+        text-align: right;
     }
 }
