@@ -70,6 +70,10 @@
                 <source>faq_page_title</source>
                 <target>Foire aux questions</target>
             </trans-unit>
+            <trans-unit id="search_page_title">
+                <source>search_page_title</source>
+                <target>Votre recherche</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -127,6 +131,10 @@
             </trans-unit>
             <trans-unit id="faq_page_meta_description">
                 <source>faq_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="search_page_meta_description">
+                <source>search_page_meta_description</source>
                 <target></target>
             </trans-unit>
 
@@ -485,6 +493,11 @@
                 <target>Foire aux questions</target>
             </trans-unit>
 
+            <!-- GLOBAL SEARCH PAGE -->
+            <trans-unit id="search_min">
+                <source>search_min</source>
+                <target>Recherche</target>
+            </trans-unit>
 
             <!-- USERS DASHBOARD -->
             <trans-unit id="dashboard_main_title">

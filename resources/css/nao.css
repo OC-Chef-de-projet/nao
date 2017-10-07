@@ -555,7 +555,8 @@ nav.nav-extended .nav-wrapper{
     color: #00675B;
 }
 
-#main-side-menu li > a{
+#main-side-menu li > a,
+#secondary-side-menu li > a{
     color: rgba(0,0,0,0.87);
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -564,7 +565,8 @@ nav.nav-extended .nav-wrapper{
     transition: all 0.4s ease;
 }
 
-#main-side-menu li > a i{
+#main-side-menu li > a i,
+#secondary-side-menu li > a i{
     color: rgba(0,0,0,0.54);
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -574,9 +576,15 @@ nav.nav-extended .nav-wrapper{
 }
 
 #main-side-menu li > a:hover,
-#main-side-menu li > a:hover i{
+#main-side-menu li > a:hover i,
+#secondary-side-menu li > a:hover,
+#secondary-side-menu li > a:hover i{
     background: none;
     color: #009688;
+}
+
+#secondary-side-menu{
+    border-top: 1px solid rgba(0,0,0,.54);
 }
 
 /* ====================================

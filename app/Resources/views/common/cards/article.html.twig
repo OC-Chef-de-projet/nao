@@ -5,10 +5,10 @@
     <div class="card-content">
         <p class="caption light-2">{{ 'published_at'|trans({'%date%': article.publishedAt|date("d/m/Y")}) }}</p>
         <span class="card-title">{{ article.title }}</span>
-        <p>{{ article.content }}</p>
+        <p>{{ article.content|truncate(120) }}</p>
     </div>
     <div class="card-action">
-        <a href="#" class="bleen sharing" data-link="#">{{ 'share'|trans }}</a>
-        <a href="#" class="bleen">{{ 'read'|trans }}</a>
+        <a href="#" class="bleen sharing" data-link="{{ url('blog.detail', {'id' : article.id, 'slug' : article.slug }) }}">{{ 'share'|trans }}</a>
+        <a href="{{ path('blog.detail', {'id' : article.id, 'slug' : article.slug }) }}" class="bleen">{{ 'read'|trans }}</a>
     </div>
 </div>
