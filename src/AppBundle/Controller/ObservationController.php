@@ -42,6 +42,60 @@ class ObservationController extends Controller
      */
     public function showListAction()
     {
-        return $this->render('observation/list.html.twig');
+        return $this->render('observation/me/list.html.twig');
+    }
+
+    /**
+     * @Route("/observation/mes-observations/brouillon", name="observation.me.draft")
+     * @Method({"GET"})
+     */
+    public function showDraftAction()
+    {
+        return $this->render('observation/me/draft.html.twig');
+    }
+
+    /**
+     * @Route("/observation/mes-observations/valide", name="observation.me.validate")
+     * @Method({"GET"})
+     */
+    public function showValidateAction()
+    {
+        return $this->render('observation/me/validate.html.twig');
+    }
+
+    /**
+     * @Route("/observation/mes-observations/en-attente", name="observation.me.waiting")
+     * @Method({"GET"})
+     */
+    public function showWaitingAction()
+    {
+        return $this->render('observation/me/waiting.html.twig');
+    }
+
+    /**
+     * @Route("/observation/validation/en-attente", name="observation.validation.waiting")
+     * @Method({"GET"})
+     */
+    public function showWaitingValidationAction()
+    {
+        return $this->render('observation/validation/waiting.html.twig');
+    }
+
+    /**
+     * @Route("/observation/validation/vos-validations", name="observation.validation.validate")
+     * @Method({"GET"})
+     */
+    public function showValidateValidationAction()
+    {
+        return $this->render('observation/validation/validate.html.twig');
+    }
+
+    /**
+     * @Route("/observation/validation/vos-refus", name="observation.validation.decline")
+     * @Method({"GET"})
+     */
+    public function showDeclineValidationAction()
+    {
+        return $this->render('observation/validation/refuse.html.twig');
     }
 }
