@@ -78,6 +78,10 @@
                 <source>observation_me_page_title</source>
                 <target>Vos observation</target>
             </trans-unit>
+            <trans-unit id="observation_validation_page_title">
+                <source>observation_validation_page_title</source>
+                <target>Valider une observation</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -143,6 +147,10 @@
             </trans-unit>
             <trans-unit id="observation_me_page_meta_description">
                 <source>observation_me_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="observation_validation_page_meta_description">
+                <source>observation_validation_page_meta_description</source>
                 <target></target>
             </trans-unit>
 
@@ -395,6 +403,23 @@
                 <source>waiting</source>
                 <target>en attente</target>
             </trans-unit>
+            <trans-unit id="observation_validation_main_title">
+                <source>observation_validation_main_title</source>
+                <target>Valider une observation</target>
+            </trans-unit>
+            <trans-unit id="your_validation">
+                <source>your_validation</source>
+                <target>Vos validations</target>
+            </trans-unit>
+            <trans-unit id="your_refuse">
+                <source>your_refuse</source>
+                <target>Vos refus</target>
+            </trans-unit>
+            <trans-unit id="waiting_validation">
+                <source>waiting_validation</source>
+                <target>Validation en attente</target>
+            </trans-unit>
+
 
             <!-- HOMEPAGE -->
             <trans-unit id="homepage_main_title">

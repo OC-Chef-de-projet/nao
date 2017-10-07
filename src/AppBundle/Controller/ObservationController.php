@@ -64,11 +64,38 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observation/mes-observations/attente", name="observation.me.waiting")
+     * @Route("/observation/mes-observations/en-attente", name="observation.me.waiting")
      * @Method({"GET"})
      */
-    public function showWaintingAction()
+    public function showWaitingAction()
     {
         return $this->render('observation/me/waiting.html.twig');
+    }
+
+    /**
+     * @Route("/observation/validation/en-attente", name="observation.validation.waiting")
+     * @Method({"GET"})
+     */
+    public function showWaitingValidationAction()
+    {
+        return $this->render('observation/validation/waiting.html.twig');
+    }
+
+    /**
+     * @Route("/observation/validation/vos-validations", name="observation.validation.validate")
+     * @Method({"GET"})
+     */
+    public function showValidateValidationAction()
+    {
+        return $this->render('observation/validation/validate.html.twig');
+    }
+
+    /**
+     * @Route("/observation/validation/vos-refus", name="observation.validation.decline")
+     * @Method({"GET"})
+     */
+    public function showDeclineValidationAction()
+    {
+        return $this->render('observation/validation/refuse.html.twig');
     }
 }

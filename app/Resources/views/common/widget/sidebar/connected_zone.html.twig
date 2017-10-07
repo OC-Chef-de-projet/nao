@@ -5,7 +5,7 @@
     {% endif %}
     <li><a href="{{ path('observation.me.validate') }}"><i class="material-icons">visibility</i>{{ 'your_observation'|trans }}</a></li>
     {% if is_granted('ROLE_NATURALIST') %}
-        <li><a href="#"><i class="mdi mdi-check"></i>{{ 'validate_observation'|trans }}</a></li>
+        <li><a href="{{ path('observation.validation.waiting') }}"><i class="mdi mdi-check"></i>{{ 'validate_observation'|trans }}</a></li>
     {% endif %}
     <li><a href="{{ path('dashboard.notification') }}"><i class="material-icons">notifications</i>{{ 'your_notifications'|trans }}</a></li>
     <li><a href="{{ path('logout') }}"><i class="material-icons">exit_to_app</i>{{ 'sign_out'|trans }}</a></li>
