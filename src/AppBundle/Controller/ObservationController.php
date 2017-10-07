@@ -42,6 +42,33 @@ class ObservationController extends Controller
      */
     public function showListAction()
     {
-        return $this->render('observation/list.html.twig');
+        return $this->render('observation/me/list.html.twig');
+    }
+
+    /**
+     * @Route("/observation/mes-observations/brouillon", name="observation.me.draft")
+     * @Method({"GET"})
+     */
+    public function showDraftAction()
+    {
+        return $this->render('observation/me/draft.html.twig');
+    }
+
+    /**
+     * @Route("/observation/mes-observations/valide", name="observation.me.validate")
+     * @Method({"GET"})
+     */
+    public function showValidateAction()
+    {
+        return $this->render('observation/me/validate.html.twig');
+    }
+
+    /**
+     * @Route("/observation/mes-observations/attente", name="observation.me.waiting")
+     * @Method({"GET"})
+     */
+    public function showWaintingAction()
+    {
+        return $this->render('observation/me/waiting.html.twig');
     }
 }
