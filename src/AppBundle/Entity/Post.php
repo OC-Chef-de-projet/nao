@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Cocur\Slugify\Slugify;
 
 /**
  * Post Entity
@@ -13,7 +14,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Post
 {
-
 
     const DRAFT = 1;
     const PUBLISHED = 2;
@@ -248,5 +248,14 @@ class Post
     public function getImagelink()
     {
         return $this->imagelink;
+    }
+
+    /**
+     * Get Slug for pretty URL
+     * @return string
+     */
+    public function getSlug(){
+        $slugify = new Slugify();
+        return $slugify->slugify($this->getTitle());
     }
 }

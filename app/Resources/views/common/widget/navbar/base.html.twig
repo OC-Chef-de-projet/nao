@@ -9,7 +9,12 @@
                     <a href="javascript:void(0)" class="sharing" data-role="dropdown" data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}"><i class="material-icons">share</i></a>
                 </li>
                 {% if user_is_logged %}
-                    <li><a href="#"><i class="material-icons">notifications</i></a></li>
+                    <li>
+                        <a href="{{ path('dashboard.notification') }}">
+                            <i class="material-icons">notifications</i>
+                            {% if notifs.count > 0 %}<span class="badge">{{ notifs.count }}</span>{% endif %}
+                        </a>
+                    </li>
                 {% endif %}
                 <li><a href="javascript:void(0)" class="dropdown-button" data-activates="dropdown-search"><i class="material-icons">search</i></a></li>
             </ul>

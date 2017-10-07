@@ -43,6 +43,6 @@ class PageController extends Controller
      */
     public function faqAction()
     {
-        return $this->render('stay-connected.html.twig');
+        return $this->render('faq.html.twig');
     }
 }

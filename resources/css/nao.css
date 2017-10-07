@@ -298,9 +298,9 @@ header.collapse.bg8,
 header.collapse.bg9,
 header.collapse.bg10,
 header.collapse.bg12,
-header.collapse.bg13{
-    background-attachment: fixed;
-    background-position: 0px -250px;
+header.collapse.bg13,
+header.collapse.bg14,
+header.collapse.bg15{
     background-size: cover;
 }
 
@@ -414,6 +414,20 @@ header nav .static-menu li > a{
     float: left;
 }
 
+header nav .static-menu li > a > span.badge{
+    border-radius: 50%;
+    min-width: 0rem;
+    font-size: 11px;
+    min-width: 20px !important;
+    height: 20px !important;
+    background-color: #FF3D00;
+    color: #fff;
+    position: absolute;
+    top:10px;
+    right: 50px;
+    font-weight: 500;
+}
+
 header nav .static-menu li a:hover{
     background: none;
     color : rgba(255, 255, 255, 0.85);
@@ -423,7 +437,6 @@ header nav #nav-small-title{
     max-width: 40%;
     max-height: 64px;
     line-height: 22px;
-    margin-top: 15px;
     overflow: hidden;
     display: none;
 }
@@ -1063,8 +1076,10 @@ header.sticky .tabs .indicator{
 
     header nav #nav-small-title.activated{
         display: block;
-        float: left;
-        font-size: 20px;
+        position: absolute;
+        top: 17px;
+        left: 50px;
+        font-size: 18px;
         font-weight: 500;
     }
 }
@@ -1104,8 +1119,10 @@ header.sticky .tabs .indicator{
 
     header nav #nav-small-title.activated{
         display: block;
-        float: left;
-        font-size: 20px;
+        position: absolute;
+        top: 17px;
+        left: 50px;
+        font-size: 18px;
         font-weight: 500;
     }
 }

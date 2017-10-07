@@ -1,25 +1,25 @@
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'contact_page_title'|trans }}{% endblock %}
+{% block title %}{{ 'faq_page_title'|trans }}{% endblock %}
 
 {% block meta %}
-    <meta name="description" content="{{ 'contact_page_meta_description'|trans }}">
-    <meta name="og:description" content="{{ 'contact_page_meta_description'|trans }}">
-    <meta name="og:title" content="{{ 'contact_page_title'|trans }}">
+    <meta name="description" content="{{ 'faq_page_meta_description'|trans }}">
+    <meta name="og:description" content="{{ 'faq_page_meta_description'|trans }}">
+    <meta name="og:title" content="{{ 'faq_page_title'|trans }}">
     <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}" />
 {% endblock %}
 
 {% block header %}
-    <header class="collapse bg12">
+    <header class="collapse bg8">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'contact_page_title'}%}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'faq_full'}%}
         <section>
             <div class="container">
                 <div class="row">
                     <div class="col s12 center-align">
                         <div id="header-main-title">
-                            <h1>{{ 'contact_main_title'|trans }}</h1>
-                            <h2>{{ 'contact_secondary_title'|trans }}</h2>
+                            <h1>{{ 'faq_main_title'|trans }}</h1>
+                            <h2>{{ 'faq_secondary_title'|trans }}</h2>
                             <br />
                         </div>
                     </div>
@@ -36,11 +36,11 @@
             <div class="nav-wrapper">
                 <div class="col s12">
                     <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
-                    <span class="breadcrumb">{{ 'contact'|trans }}</span>
+                    <span class="breadcrumb">{{ 'faq_full'|trans }}</span>
                 </div>
             </div>
         </nav>
-        <h1>{{ 'contact_page_title'|trans }}</h1>
+        <h1>{{ 'faq_page_title'|trans }}</h1>
     </section>
 
     <!-- PAGE CONTENT -->

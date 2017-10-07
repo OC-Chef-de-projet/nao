@@ -6,7 +6,7 @@
                     <div class="col s12">
                         <h2>{{ 'last_article'|trans }}</h2>
                         {% if posts.getLastPost |length > 0 %}
-                            <span class="title"><a href="#">{{ posts.getLastPost.title }}</a></span>,
+                            <span class="title"><a href="{{ path('blog.detail', {'id': posts.getLastPost.id, 'slug' : posts.getLastPost.slug }) }}">{{ posts.getLastPost.title }}</a></span>,
                             <span class="date">{{ 'published_at' |trans ({'%date%': posts.getLastPost.publishedAt|date("d/m/Y")}) }}</span>
                         {% else %}
                             {{ 'no_article_for_moment'|trans }}
