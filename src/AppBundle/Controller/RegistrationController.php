@@ -15,6 +15,11 @@ class RegistrationController extends Controller
      */
     public function registrationAction(Request $request)
     {
+        // Only for user not logged
+        if($this->getUser()){
+            return $this->redirectToRoute('homepage');
+        }
+
         return $this->render('registration.html.twig');
     }
 }
