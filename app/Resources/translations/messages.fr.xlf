@@ -12,6 +12,12 @@
                 <target>Propulsé par Dot.coM</target>
             </trans-unit>
 
+            <!-- ERROR MESSAGE -->
+            <trans-unit id="error_email_format">
+                <source>error_email_format</source>
+                <target>Veuillez fournir une adresse email valide.</target>
+            </trans-unit>
+
 
             <!-- PAGE TITLE -->
             <trans-unit id="homepage_title">
