@@ -7,10 +7,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
+/**
+ * Class DashboardController
+ * @package AppBundle\Controller
+ * @Route("/dashboard")
+ */
 class DashboardController extends Controller
 {
     /**
-     * @Route("/dashboard/compte", name="dashboard.account")
+     * @Route("/compte", name="dashboard.account")
      * @Method({"GET","POST"})
      */
     public function accountAction(Request $request)
@@ -19,7 +24,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * @Route("/dashboard/profil", name="dashboard.profil")
+     * @Route("/profil", name="dashboard.profil")
      * @Method({"GET"})
      */
     public function profilAction()
@@ -28,7 +33,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * @Route("/dashboard/notification", name="dashboard.notification")
+     * @Route("/notification", name="dashboard.notification")
      * @Method({"GET"})
      */
     public function notificationAction()
