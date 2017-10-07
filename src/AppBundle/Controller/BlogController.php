@@ -7,11 +7,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
+/**
+ * Class BlogController
+ * @package AppBundle\Controller
+ * @Route("/blog")
+ */
 class BlogController extends Controller
 {
 
     /**
-     * @Route("/blog", name="blog")
+     * @Route("/", name="blog")
      * @Method({"GET"})
      */
     public function indexAction()
@@ -20,7 +25,7 @@ class BlogController extends Controller
     }
 
     /**
-     * @Route("/blog/{id}/{slug}", name="blog.detail", requirements={"id": "\d+"})
+     * @Route("/{id}/{slug}", name="blog.detail", requirements={"id": "\d+"})
      * @Method({"GET"})
      */
     public function showDetailAction()
