@@ -6,11 +6,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Class DashboardController
  * @package AppBundle\Controller
  * @Route("/dashboard")
+ * @Security("is_granted('ROLE_OBSERVER')")
  */
 class DashboardController extends Controller
 {
