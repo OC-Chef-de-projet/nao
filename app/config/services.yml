@@ -55,6 +55,10 @@ services:
         public: true
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
 
+    app.news:
+        class: AppBundle\Service\NewsletterService
+        public: true
+        arguments: ["@doctrine.orm.entity_manager"]
 
     AppBundle\EventListener\UserListener:
         tags:
