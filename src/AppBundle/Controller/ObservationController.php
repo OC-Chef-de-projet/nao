@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Class ObservationController
@@ -16,6 +17,7 @@ class ObservationController extends Controller
 {
     /**
      * @Route("/creation", name="observation.create")
+     * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET","POST"})
      */
     public function createAction(Request $request)
@@ -47,11 +49,12 @@ class ObservationController extends Controller
      */
     public function showListAction()
     {
-        return $this->render('observation/me/list.html.twig');
+        return $this->render('observation/list.html.twig');
     }
 
     /**
      * @Route("/mes-observations/brouillon", name="observation.me.draft")
+     * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET"})
      */
     public function showDraftAction()
@@ -61,6 +64,7 @@ class ObservationController extends Controller
 
     /**
      * @Route("/mes-observations/valide", name="observation.me.validate")
+     * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET"})
      */
     public function showValidateAction()
@@ -70,6 +74,7 @@ class ObservationController extends Controller
 
     /**
      * @Route("/mes-observations/en-attente", name="observation.me.waiting")
+     * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET"})
      */
     public function showWaitingAction()
@@ -79,6 +84,7 @@ class ObservationController extends Controller
 
     /**
      * @Route("/validation/en-attente", name="observation.validation.waiting")
+     * @Security("is_granted('ROLE_NATURALIST')")
      * @Method({"GET"})
      */
     public function showWaitingValidationAction()
@@ -88,6 +94,7 @@ class ObservationController extends Controller
 
     /**
      * @Route("/validation/vos-validations", name="observation.validation.validate")
+     * @Security("is_granted('ROLE_NATURALIST')")
      * @Method({"GET"})
      */
     public function showValidateValidationAction()
@@ -97,6 +104,7 @@ class ObservationController extends Controller
 
     /**
      * @Route("/validation/vos-refus", name="observation.validation.decline")
+     * @Security("is_granted('ROLE_NATURALIST')")
      * @Method({"GET"})
      */
     public function showDeclineValidationAction()
