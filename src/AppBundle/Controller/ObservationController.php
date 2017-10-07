@@ -7,10 +7,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
+/**
+ * Class ObservationController
+ * @package AppBundle\Controller
+ * @Route("/observation")
+ */
 class ObservationController extends Controller
 {
     /**
-     * @Route("/observation/creation", name="observation.create")
+     * @Route("/creation", name="observation.create")
      * @Method({"GET","POST"})
      */
     public function createAction(Request $request)
@@ -19,7 +24,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observation/carte", name="observation.map")
+     * @Route("/carte", name="observation.map")
      * @Method({"GET"})
      */
     public function showMapAction()
@@ -28,7 +33,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observation/carte/{id}", name="observation.detail", requirements={"id": "\d+"})
+     * @Route("/carte/{id}", name="observation.detail", requirements={"id": "\d+"})
      * @Method({"GET"})
      */
     public function showDetailAction(Request $request)
@@ -37,7 +42,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observation/liste", name="observation.list")
+     * @Route("/liste", name="observation.list")
      * @Method({"GET"})
      */
     public function showListAction()
@@ -46,7 +51,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observation/mes-observations/brouillon", name="observation.me.draft")
+     * @Route("/mes-observations/brouillon", name="observation.me.draft")
      * @Method({"GET"})
      */
     public function showDraftAction()
@@ -55,7 +60,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observation/mes-observations/valide", name="observation.me.validate")
+     * @Route("/mes-observations/valide", name="observation.me.validate")
      * @Method({"GET"})
      */
     public function showValidateAction()
@@ -64,7 +69,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observation/mes-observations/en-attente", name="observation.me.waiting")
+     * @Route("/mes-observations/en-attente", name="observation.me.waiting")
      * @Method({"GET"})
      */
     public function showWaitingAction()
@@ -73,7 +78,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observation/validation/en-attente", name="observation.validation.waiting")
+     * @Route("/validation/en-attente", name="observation.validation.waiting")
      * @Method({"GET"})
      */
     public function showWaitingValidationAction()
@@ -82,7 +87,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observation/validation/vos-validations", name="observation.validation.validate")
+     * @Route("/validation/vos-validations", name="observation.validation.validate")
      * @Method({"GET"})
      */
     public function showValidateValidationAction()
@@ -91,7 +96,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observation/validation/vos-refus", name="observation.validation.decline")
+     * @Route("/validation/vos-refus", name="observation.validation.decline")
      * @Method({"GET"})
      */
     public function showDeclineValidationAction()
