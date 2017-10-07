@@ -22,6 +22,11 @@ class SecurityController extends Controller
      */
     public function loginAction()
     {
+        // Only for user not logged
+        if($this->getUser()){
+            return $this->redirectToRoute('homepage');
+        }
+
         $helper = $this->get('security.authentication_utils');
 
         $formLogin = $this->createForm(LoginType::class, ['_email' => $helper->getLastUsername()]);
