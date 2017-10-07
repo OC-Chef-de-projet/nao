@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 /**
  * Class DefaultController
  *
- * @Route("/API")
+ * @Route("/API/user")
  *
  * @package AppBundle\Controller
  */

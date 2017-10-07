@@ -23,7 +23,11 @@ class PostRepository extends EntityRepository
      * @return Paginator
      */
     public function getPostsByStatus($currentPage,$status,$limit = 50)
+
     {
+        error_log("PARE ".$currentPage);
+        error_log("STATS ".$status );
+
         $query = $this->createQueryBuilder('p')
             ->where('p.status = :status')
             ->setParameter('status',$status);
@@ -37,6 +41,7 @@ class PostRepository extends EntityRepository
 
         $query->getQuery();
         $paginator = $this->paginate($query, $currentPage, $limit);
+        dump($paginator);
         return $paginator;
     }
 
@@ -71,6 +76,7 @@ class PostRepository extends EntityRepository
     {
         $paginator = new Paginator($dql);
 
+        error_log("PAGE ".$limit * ($page - 1));
         $paginator->getQuery()
             ->setFirstResult($limit * ($page - 1)) // Offset
             ->setMaxResults($limit); // Limit

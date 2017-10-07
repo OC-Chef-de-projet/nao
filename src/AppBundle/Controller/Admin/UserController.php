@@ -39,13 +39,10 @@ class UserController extends Controller
      */
     public function indexAction(Request $request, $page = 1, $role = 'ROLE_OBSERVER')
     {
-
         $em = $this->getDoctrine()->getManager();
-
         $c = $this->get('security.token_storage')->getToken()->getUser();
         $users = $em->getRepository('AppBundle:User')->searchUsersByRole($page, $role, $this->getParameter('list_limit'));
 
-        dump($this->container->get('app.user')->getPagination($users, $page));
         return $this->render('@AdminUser/index.html.twig', [
             'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($c),
             'paginate' => $this->container->get('app.user')->getPagination($users, $page),

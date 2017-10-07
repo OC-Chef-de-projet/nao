@@ -1,12 +1,21 @@
+{% extends "common/template/base.html.twig" %}
 
-{% extends 'base.html.twig' %}
+{% block title %}{{ 'admin_user'|trans }}{% endblock %}
+
+{% block header %}
+    <header class="collapse admin">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_user' } %}
+    </header>
+{% endblock %}
+
 
 {% block body %}
+<style>
 
-    {% include '::navbar.html.twig' %}
+</style>
     <div class="container">
-        {% include '::breadcrumb.html.twig'  with {'breadcrumb':header.breadcrumb} only %}
-        <h4>{% trans %}rediger_article{% endtrans %}</h4>
+        <h4>{{  'writing_article' | trans }}</h4>
         {{ form_start(form) }}
         <div class="card large">
             <div class="row">
@@ -40,14 +49,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s12 m2"></div>
-                <div class="col s12 m4">
+                <div class="col s12 m6 center">
                     {{ form_widget(form.save_draft) }}
                 </div>
-                <div class="col s12 m4">
+                <div class="col s12 m6">
                     {{ form_widget(form.save_published) }}
                 </div>
-                <div class="col s12 m2"></div>
             </div>
             {{ form_end(form) }}
         </div>

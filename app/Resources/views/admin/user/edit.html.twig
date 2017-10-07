@@ -6,28 +6,6 @@
     <header class="collapse admin">
         <!-- NAVIGATION -->
         {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_user' } %}
-        <ul class="tabs tabs-transparent">
-            <li class="tab">
-                <a target="_self" id="ROLE_OBSERVER"
-                   href="{{ path('admin_user_index', {page: 1, role: 'ROLE_OBSERVER'}) }}"
-                        {{ (app.request.attributes.get('role') == 'ROLE_OBSERVER') ? ' class="active"' }}
-                >{{ 'ROLE_OBSERVER'|trans }}</a>
-            </li>
-            <!-- Naturalist -->
-            <li class="tab">
-                <a target="_self" id="ROLE_NATURALIST"
-                   href="{{ path('admin_user_index', {page: 1, role: 'ROLE_NATURALIST'}) }}"
-                        {{ (app.request.attributes.get('role') == 'ROLE_NATURALIST') ? ' class="active"' }}
-                >{{ 'ROLE_NATURALIST'|trans }}</a>
-            </li>
-            <!-- Admin -->
-            <li class="tab">
-                <a target="_self" id="ROLE_ADMIN"
-                   href="{{ path('admin_user_index', {page: 1, role: 'ROLE_ADMIN'}) }}"
-                        {{ (app.request.attributes.get('role') == 'ROLE_ADMIN') ? ' class="active"' }}
-                >{{ 'ROLE_ADMIN'|trans }}</a>
-            </li>
-        </ul>
     </header>
 {% endblock %}
 

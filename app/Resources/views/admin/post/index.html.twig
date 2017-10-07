@@ -1,117 +1,154 @@
-{% extends 'base.html.twig' %}
+{% extends "common/template/base.html.twig" %}
 
+{% block title %}{{ 'admin_user'|trans }}{% endblock %}
 
-
+{% block header %}
+    <header class="collapse admin">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_post_title' } %}
+        <ul class="tabs tabs-transparent">
+            <!-- Draft -->
+            <li class="tab">
+                <a target="_self" id="{{ constant('AppBundle\\Entity\\Post::DRAFT') }}"
+                   href="{{ path('admin_post_index', {page: 1, status: constant('AppBundle\\Entity\\Post::DRAFT')}) }}"
+                        {{ (app.request.attributes.get('status') == constant('AppBundle\\Entity\\Post::DRAFT')) ? ' class="active"' }}
+                >{{ 'draft'|trans }}</a>
+            </li>
+            <!-- Publisehd -->
+            <li class="tab">
+                <a target="_self" id="{{ constant('AppBundle\\Entity\\Post::PUBLISHED') }}"
+                   href="{{ path('admin_post_index', {page: 1, status: constant('AppBundle\\Entity\\Post::PUBLISHED')}) }}"
+                        {{ (app.request.attributes.get('status') == constant('AppBundle\\Entity\\Post::PUBLISHED')) ? ' class="active"' }}
+                >{{ 'published'|trans }}</a>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
 
 {% block body %}
-    {% include ':admin/post:navbar.html.twig' %}
-
-    <div class="container">
-        {% include '::breadcrumb.html.twig'  with {'breadcrumb':header.breadcrumb} only %}
-        <h4>{% trans %}gestion_articles{% endtrans %}</h4>
-
-
-        <!-- -->
-
-        <div class="row">
-            {% for post in posts %}
-
-                <div class="col s12 m6">
-                    <div class="card horizontal card-post">
-                        <div class="card-image card-post">
-                            <img src="{{ asset('images/posts/'~post.imagelink) }}"
-                                 style="top:5%;left:5%;height:80%;width:80%">
-                        </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <b>{{ post.title }}</b>
-                                <p>
-                                    {% if post.publishedAt != null %}
-                                        {% trans %}poste_le{% endtrans %} {{ post.publishedAt | date('d/m/Y') }}
-                                    {% else %}
-                                        {% trans %}cree_le{% endtrans %} {{ post.createdAt | date('d/m/Y') }}
-                                    {% endif %}
-                                </p>
-                            </div>
-                            <div class="card-action right-align">
-                                <a class="waves-effect modal-trigger" href="#"
-                                   onclick="post_delete_confirm('{{ post.id }}')">
-                                    <i class="material-icons left post-icon">delete</i>
-                                    {% trans %}supprimer{% endtrans %}
-                                </a>
-                                <a class="waves-effect" href="{{ path('admin_post_edit', { 'id': post.id }) }}">
-                                    <i class="material-icons left post-icon">edit</i>
-                                    {% trans %}editer{% endtrans %}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down admin">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <a href="{{ path('admin_homepage') }}" class="breadcrumb">{{ 'admin'|trans }}</a>
+                    <span class="breadcrumb">{{ 'admin_post'|trans }}</span>
                 </div>
-            {% endfor %}
+            </div>
+        </nav>
+        <h1 class="activated">{{ 'admin_post'|trans }}</h1>
+        <div class="row">
+            <div id="postList">
+                {% include 'admin/post/list.html.twig' %}
+            </div>
+            {% include 'admin/paginate.html.twig' %}
         </div>
-        <!-- end user -->
-        <div class="container center-align">
-            <ul class="pagination">
+    </section>
+{% endblock %}
 
-                <li {{ paginate.current <= 1 ? 'class="disabled"': 'class="waves-effect"' }}>
-                    <a href="{{ path('admin_post_index', {page: paginate.current-1 < 1 ? 1 : paginate.current-1}) }}">
-                        <i class="material-icons">chevron_left</i>
-                    </a>
-                </li>
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
 
-                {% for i in paginate.current..paginate.current+2 %}
-                    <li class="waves-effect {{ paginate.current == i ? 'active' }}{{ i > paginate.maxPages ? 'disabled' }}">
-                        <a {{ i > paginate.maxPages ? 'class="not-active' }}
-                                href="{{ path('admin_post_index', {page: i }) }}">{{ i }}</a>
-                    </li>
-                {% endfor %}
+            // Next page for pagination
+            $('#nextpage').click(function () {
+                var current = $('.pages').find('.active').attr('id').replace('p_', '');
+                current = parseInt(current) + 1;
+                checkLastpage(current);
+                checkFirstpage(current);
+                if (current <= {{ paginate.maxPages }}) {
+                    displayPage(current);
+                }
 
-                <li {{ paginate.current == paginate.maxPages ? 'class="disabled"': 'class="waves-effect"' }}>
-                    <a href="{{ path('admin_post_index', {page: paginate.current+1 <= paginate.maxPages ? paginate.current+1 : paginate.current}) }}">
-                        <i class="material-icons">chevron_right</i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-{% endblock body %}
+            });
+
+            // Previous page for pagination
+            $('#prevpage').click(function () {
+                var current = $('.pages').find('.active').attr('id').replace('p_', '');
+                current = parseInt(current) - 1;
+                checkLastpage(current);
+                checkFirstpage(current);
+                if (current >= 1) {
+                    displayPage(current);
+                }
+            });
+
+            $('.gotopage').click(function () {
+                var pageno = $(this).data("page");
+                // Search active page
+                var current = $('.pagination').find('.active').attr('id');
+                checkFirstpage(pageno);
+                checkLastpage(pageno);
+                displayPage(current);
+
+            });
+        });
+
+        /**
+         *
+         * @param pageno
+         * @param user_id
+         */
+        function postList(pageno) {
+            var status = $('.tab').find('.active').attr('id');
+            $.ajax({
+                url: "{{ path('api_post_paginate') }}?bearer={{ token }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "page": pageno,
+                    "status": status
+                },
+                success: function (response) {
+                    $('#postList').html(response.html);
+                }
+            });
+        }
 
 
-    {% block javascripts %}
-        {{ parent() }}
-        <script>
-            /**
-             * Confirm deletion of post
-             *
-             * @param id
-             */
-            function post_delete_confirm(id) {
-                MaterialDialog.dialog(
-                    "{% trans %}supprimer_article_confirm{% endtrans %}",
-                    {
-                        title: "{% trans %}supprimer_article{% endtrans %}",
-                        modalType: "modal-fixed-footer", // Can be empty, modal-fixed-footer or bottom-sheet
-                        buttons: {
-                            // Use by default close and confirm buttons
-                            confirm: {
-                                className: "btn-validate",
-                                text: "{% trans %}oui{% endtrans %}",
-                                callback: function () {
+        /**
+         * Display page
+         */
+        function displayPage(page) {
+            // Remove active classes
+            $(".pages li").removeClass("active");
+            postList(page);
+            $('#p_' + page).addClass('active');
+        }
 
-                                    var url = '{{ path('admin_post_delete',{ 'id':'post_id'}) }}';
-                                    url = url.replace('post_id', id);
-                                    window.location.href = url;
-                                }
-                            },
-                            close: {
-                                className: "btn-cancel",
-                                text: "{% trans %}non{% endtrans %}",
-                                modalClose: true
-                            }
-                        }
-                    }
-                )
+        /**
+         * Check page number to active next icon
+         *
+         * @param pageno
+         */
+        function checkLastpage(pageno) {
+            var maxpage = {{ paginate.maxPages }} ;
+            if (pageno >= maxpage) {
+                $('#chevron_right').addClass('disabled');
+
+            } else {
+                $('#chevron_right').removeClass('disabled');
             }
-        </script>
-    {% endblock %}
+        }
+
+        /**
+         * Check page number to active previous icon
+         *
+         * @param pageno
+         */
+        function checkFirstpage(pageno) {
+            if (pageno <= 1) {
+                $('#chevron_left').addClass('disabled');
+
+            } else {
+                $('#chevron_left').removeClass('disabled');
+            }
+        }
+    </script>
+{% endblock %}
+
+
+
 

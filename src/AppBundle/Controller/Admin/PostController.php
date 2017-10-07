@@ -9,8 +9,12 @@ use AppBundle\Entity\Post;
 use AppBundle\Form\Type\PostType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+
+
 /**
  * Class PostController
+ *
+ * @Route("/admin/post")
  *
  * @package AppBundle\Controller\Admin
  */
@@ -20,7 +24,7 @@ class PostController extends Controller
     /**
      * List posts
      *
-     * @Route("/post", name="admin_post_index")
+     * @Route("/{page}/{status}", requirements={"page" = "\d+"} , defaults={"page" = 1, "status" = Post::PUBLISHED}, name="admin_post_index")
      * @Method({"GET"})
      *
      * @param Request $request  Httpd request
@@ -29,27 +33,24 @@ class PostController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request, $page = 1, $status = Post::DRAFT )
+    public function indexAction(Request $request, $page = 1, $status = Post::PUBLISHED )
     {
-
         $em = $this->getDoctrine()->getManager();
-
+        $c = $this->get('security.token_storage')->getToken()->getUser();
         $posts = $em->getRepository('AppBundle:Post')->getPostsByStatus($page,$status,$this->getParameter('list_limit'));
 
-
         return $this->render('@AdminPost/index.html.twig', [
-            'header' => [
-                'bodyClass' => 'background-2',
-                'tabs' => $this->container->get('app.post')->getPostsTabs($status),
-                'breadcrumb' => $this->container->get('app.post')->getIndexBreadcrumb()
-            ],
+            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($c),
             'paginate' => $this->container->get('app.post')->getPagination($posts,$page),
-            'posts' => $posts->getIterator()
+            'postlist' => $posts->getIterator()
         ]);
     }
 
     /**
      * Edit post
+     *
+     * @Route("/edit/{id}",  requirements={"id" = "\d+"}, name="admin_post_edit")
+     * @Method({"GET","POST"})
      *
      * @param Request $request  Http request
      * @param Post $post        Post
@@ -66,11 +67,6 @@ class PostController extends Controller
         }
 
         return $this->render('@AdminPost/edit.html.twig', [
-            'header' => [
-                'bodyClass' => 'background-2',
-                'tabs' => $this->container->get('app.post')->getPostsTabs(Post::DRAFT),
-                'breadcrumb' => $this->container->get('app.post')->getIndexBreadcrumb()
-            ],
             'post' => $post,
             'form' => $form->createView(),
         ]);

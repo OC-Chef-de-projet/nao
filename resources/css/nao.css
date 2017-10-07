@@ -32,6 +32,9 @@ header.admin {
 .card:hover {
     z-index: 1 !important;
 }
+.input-field label {
+    width:100%;
+}
 
 
 /* ====================================

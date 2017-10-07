@@ -307,6 +307,19 @@
                 <source>read</source>
                 <target>Lire</target>
             </trans-unit>
+            <trans-unit id="article_title">
+                <source>article_title</source>
+                <target>Titre de l'article</target>
+            </trans-unit>
+            <trans-unit id="article_content">
+                <source>article_content</source>
+                <target>Contenu de l'article</target>
+            </trans-unit>
+            <trans-unit id="featured_image">
+                <source>featured_image</source>
+                <target>Image à la une</target>
+            </trans-unit>
+
 
 
             <!-- OBSERVATIONS -->
@@ -534,6 +547,10 @@
                 <source>admin_dashboard</source>
                 <target>Administration - Tableau de bord</target>
             </trans-unit>
+            <trans-unit id="admin_post">
+                <source>admin_post</source>
+                <target>Gestion des articles</target>
+            </trans-unit>
             <trans-unit id="admin_user_title">
                 <source>admin_user_title</source>
                 <target>Gérer les utilisateurs</target>
@@ -558,6 +575,16 @@
                 <source>admin_comment_explain</source>
                 <target>Accepter ou refuser les commentaires des internautes</target>
             </trans-unit>
+            <trans-unit id="published">
+                <source>published</source>
+                <target>Publiés</target>
+            </trans-unit>
+            <trans-unit id="draft">
+                <source>draft</source>
+                <target>Brouillons</target>
+            </trans-unit>
+
+
 
 
             <!-- USER MANAGEMENT -->
