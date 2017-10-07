@@ -255,7 +255,10 @@
                 <source>alt_actuality</source>
                 <target>Image d'une actualité</target>
             </trans-unit>
-
+            <trans-unit id="alt_profil">
+                <source>alt_profil</source>
+                <target>Image de profil</target>
+            </trans-unit>
 
             <!-- FORMS / BUTTON -->
             <trans-unit id="search">
