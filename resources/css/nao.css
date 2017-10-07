@@ -11,6 +11,39 @@ header.admin {
     background-color: #3F51B5;
 }
 
+#searchuser,
+#searchuser.active {
+    border-bottom: none;
+    box-shadow: none;
+}
+
+.pagination li.active {
+    background-color: #3F51B5;
+}
+
+.input-field .prefix.active{
+    color: #3F51B5;
+}
+
+.dropdown-content li > a {
+    color:black;
+}
+
+.card:hover {
+    z-index: 1 !important;
+}
+
+
+/* ====================================
+    Materialize checkbox
+    =============================================*/
+
+.switch label input[type="checkbox"]:checked + .lever {
+    background-color: #DD2C00;
+}
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #DD2C00;
+}
 
 *, *:before, *:after {
     -moz-box-sizing:border-box;

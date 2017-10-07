@@ -236,30 +236,5 @@
             window.open(href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height='+ height +',width='+ width +'');;
             return false;
         });
-
-        /* ==================================================
-         PAGINATE
-         ===========================================================*/
-
-        /**
-         * Remove page into pagination
-         * @param page
-         */
-        function removePage(page) {
-            $('#p_' + page).remove();
-        }
-
-        /**
-         * Add a new page into pagination
-         * @param page
-         */
-        function addPage(page) {
-            html = '<li id="p_' + page + '" class="waves-effect ">' +
-                '<a class="gotopage" href="#" data-page="' + page + '">' + page + '</a>' +
-                '</li>';
-            $(html).insertBefore('.pagination>li:last');
-            ;
-        }
-
     });
 })(jQuery);

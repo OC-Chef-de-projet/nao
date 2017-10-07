@@ -28,14 +28,14 @@ class UserUpdateType extends AbstractType
                 ]
             )->add('cancel', SubmitType::class,
                 [
-                    'attr' => array('class' => 'btn waves-effect waves-light btn-cancel'),
+                    'attr' => array('class' => 'btn white scroll-to waves-effect'),
                     'label' => 'annuler',
                     'translation_domain' => 'messages',
                 ]
             )
             ->add('save', SubmitType::class,
                 [
-                    'attr' => array('class' => 'btn waves-effect waves-light btn-validate'),
+                    'attr' => array('class' => 'btn waves-effect'),
                     'label' => 'enregistrer',
                     'translation_domain' => 'messages',
                 ]

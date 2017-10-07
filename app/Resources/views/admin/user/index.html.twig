@@ -6,6 +6,28 @@
     <header class="collapse admin">
         <!-- NAVIGATION -->
         {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_user' } %}
+        <ul class="tabs tabs-transparent">
+            <li class="tab">
+                <a target="_self" id="ROLE_OBSERVER"
+                   href="{{ path('admin_user_index', {page: 1, role: 'ROLE_OBSERVER'}) }}"
+                        {{ (app.request.attributes.get('role') == 'ROLE_OBSERVER') ? ' class="active"' }}
+                >{{ 'ROLE_OBSERVER'|trans }}</a>
+            </li>
+            <!-- Naturalist -->
+            <li class="tab">
+                <a target="_self" id="ROLE_NATURALIST"
+                   href="{{ path('admin_user_index', {page: 1, role: 'ROLE_NATURALIST'}) }}"
+                        {{ (app.request.attributes.get('role') == 'ROLE_NATURALIST') ? ' class="active"' }}
+                >{{ 'ROLE_NATURALIST'|trans }}</a>
+            </li>
+            <!-- Admin -->
+            <li class="tab">
+                <a target="_self" id="ROLE_ADMIN"
+                   href="{{ path('admin_user_index', {page: 1, role: 'ROLE_ADMIN'}) }}"
+                        {{ (app.request.attributes.get('role') == 'ROLE_ADMIN') ? ' class="active"' }}
+                >{{ 'ROLE_ADMIN'|trans }}</a>
+            </li>
+        </ul>
     </header>
 {% endblock %}
 
@@ -24,38 +46,37 @@
         <h1 class="activated">{{ 'admin_user'|trans }}</h1>
         <div class="row">
             <div class="col s12">
-                <div class="card medium">
-                    <div class="card-content">
+                <div class="card large">
+                    <div class="card-content row">
                         <!-- search -->
-                        <div class="row">
-
-                            <div class="col s12 m6 push-m3 search">
-                                <div class="autocomplete" id="single">
-                                    <div class="ac-input">
-
-                                        <input type="text" id="searchuser" placeholder="Please input some letters"
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="col s5 push-s3">
+                                    <div class="card input-field" style="min-height: 0;">
+                                        <i class="material-icons prefix" style="margin-top:10px;margin-left:5px">search</i>
+                                        <input type="text" id="searchuser"
                                                data-activates="singleDropdown" data-beloworigin="true"
                                                autocomplete="off">
-                                        <sup><a href="#" id="clearsearch">{% trans %}effacer_recherche{% endtrans %}</a></sup>
+                                        <label for="searchuser">{{ 'search_by_name' | trans }}</label>
                                     </div>
-
-                                    <ul id="singleDropdown" class="dropdown-content ac-dropdown"></ul>
                                 </div>
+                                <div class="col s2 push-s3">
+                                    <div class="card z-depth-0" style="min-height: 70px;line-height:70px">
+                                        <a class="caption light-2" href="#" id="clearsearch">{{ 'clear_search' | trans }}</a>
+                                    </div>
+                                </div>
+
                             </div>
+                            <ul id="singleDropdown" class="dropdown-content ac-dropdown"></ul>
                         </div>
+
                         <!-- user list -->
-                        <ul class="collection row" style="border-bottom: none">
-                            {% for user in users %}
-                                <li class="collection-item avatar col s12 m4" style="border-bottom: none">
-                                    <a class="dark" href="{{ path('admin_user_update', { 'id': user.id}) }}">
-                                        <img src="{{ asset('images/users/'~user.getImagePath) }}" class="circle">
-                                        <span class="title">{{ user.getName }}</span>
-                                        <p class="caption light-2">{{ user.roleString }}</p>
-                                    </a>
-                                </li>
-                            {% endfor %}
+                        <ul class="collection col s12" style="border-bottom: none;" id="userList">
+                            {% include 'admin/user/list.html.twig' %}
                         </ul>
+                        {% include 'admin/paginate.html.twig' %}
                     </div>
+
                 </div>
             </div>
         </div>
@@ -63,7 +84,144 @@
 
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            // Search form
+            var single = $('#searchuser').materialize_autocomplete({
+                limit: 6,
+                cacheable: true,
+                multiple: {
+                    enable: false
+                },
+                dropdown: {
+                    el: '#singleDropdown'
+                },
+                getData: function (value, callback) {
+                    var data = [];
+                    var role = $('.tab').find('.active').attr('id');
+                    $.ajax({
+                        url: "{{ url('api_user_search') }}?bearer={{ token }}",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            "role": role,
+                            "search": value
+                        },
+                        success: function (response) {
+                            callback(value, response);
+                        }
+                    });
+                },
+                onSelect: function (item) {
+                    userList(1, item.id);
+                    $('.pagination').hide();
+                }
+            });
 
+            // Clear search by reloading page
+            $("#clearsearch").click(function () {
+                location.reload();
+            });
+
+            // Next page for pagination
+            $('#nextpage').click(function () {
+                var current = $('.pages').find('.active').attr('id').replace('p_', '');
+                current = parseInt(current) + 1;
+                checkLastpage(current);
+                checkFirstpage(current);
+                if (current <= {{ paginate.maxPages }}) {
+                    displayPage(current);
+                }
+
+            });
+            // Previous page for pagination
+            $('#prevpage').click(function () {
+                var current = $('.pages').find('.active').attr('id').replace('p_', '');
+                current = parseInt(current) - 1;
+                checkLastpage(current);
+                checkFirstpage(current);
+                if (current >= 1) {
+                    displayPage(current);
+                }
+            });
+            $('.gotopage').click(function () {
+                var pageno = $(this).data("page");
+                // Search active page
+                var current = $('.pagination').find('.active').attr('id');
+                checkFirstpage(pageno);
+                checkLastpage(pageno);
+                displayPage(current);
+
+            });
+        });
+
+        /**
+         *
+         * @param pageno
+         * @param user_id
+         */
+        function userList(pageno, user_id) {
+            var role = $('.tab').find('.active').attr('id');
+            var search = $('#form_search').val();
+            $.ajax({
+                url: "{{ path('api_user_paginate') }}?bearer={{ token }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "page": pageno,
+                    "role": role,
+                    "user_id": user_id
+                },
+                success: function (response) {
+                    console.log(response);
+                    $('#userList').html(response.html);
+                }
+            });
+        }
+
+
+        /**
+         * Display page
+         */
+        function displayPage(page) {
+            // Remove active classes
+            $(".pages li").removeClass("active");
+            userList(page, 0);
+            $('#p_' + page).addClass('active');
+        }
+
+        /**
+         * Check page number to active next icon
+         *
+         * @param pageno
+         */
+        function checkLastpage(pageno) {
+            var maxpage = {{ paginate.maxPages }} ;
+            if (pageno >= maxpage) {
+                $('#chevron_right').addClass('disabled');
+
+            } else {
+                $('#chevron_right').removeClass('disabled');
+            }
+        }
+
+        /**
+         * Check page number to active previous icon
+         *
+         * @param pageno
+         */
+        function checkFirstpage(pageno) {
+            if (pageno <= 1) {
+                $('#chevron_left').addClass('disabled');
+
+            } else {
+                $('#chevron_left').removeClass('disabled');
+            }
+        }
+    </script>
+{% endblock %}
 
 
 

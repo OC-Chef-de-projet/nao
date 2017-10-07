@@ -38,61 +38,6 @@ class UserService
 
 
     /**
-     * Get user index breadcrumb
-     *
-     * @return array
-     */
-    public function getIndexBreadcrumb()
-    {
-        $breadcrumb = [
-            [
-                'href' => 'admin_homepage',
-                'text' => 'Accueil'
-            ],
-            [
-                'href' => 'admin_homepage',
-                'text' => 'Administration'
-            ],
-            [
-                'href' => 'admin_user_index',
-                'text' => 'Gestion des utilisateurs'
-            ],
-        ];
-        return $breadcrumb;
-    }
-
-
-    /**
-     * Tabs form admin user index
-     * @param $role
-     * @return array
-     */
-    public function getUsersTabs($role)
-    {
-        $tabs = [
-            'ROLE_OBSERVER' => [
-                'role' => 'ROLE_OBSERVER',
-                'text' => 'Particuliers',
-                'active' => 0,
-                'href' => ''
-            ],
-            'ROLE_NATURALIST' => [
-                'role' => 'ROLE_NATURALIST',
-                'text' => 'Naturalistes',
-                'active' => 0,
-                'href' => ''
-            ],
-            'ROLE_ADMIN' => [
-                'role' => 'ROLE_ADMIN',
-                'text' => 'Administrateurs',
-                'active' => 0
-            ],
-        ];
-        $tabs[$role]['active'] = 1;
-        return $tabs;
-    }
-
-    /**
      * Get pagination parameters
      *
      * @param $users    UserService list
@@ -111,7 +56,7 @@ class UserService
             'totalUsers' => $totalUsers,
             'totalDisplayed' => $totalDisplayed,
             'current' => $page,
-            'maxPages' => $maxPages,
+            'maxPages' => (int)$maxPages,
         ];
     }
 
