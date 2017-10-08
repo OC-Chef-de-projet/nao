@@ -2,9 +2,7 @@
 
 namespace AppBundle\Service;
 
-use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Doctrine\ORM\EntityManager;
 
 
 /**
@@ -28,7 +26,12 @@ class JwtService{
      * @return mixed
      */
     public function getToken(){
-        $client  = $this->ts->getToken()->getUser();
-        return $this->jwtManager->create($client);
+        $user  = $this->ts->getToken()->getUser();
+
+        if (is_object($user)) {
+            return $this->jwtManager->create($user);
+        }
+
+        return null;
     }
 }
