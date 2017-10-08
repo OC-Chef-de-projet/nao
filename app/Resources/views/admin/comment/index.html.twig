@@ -11,6 +11,7 @@
 
 {% block body %}
     <!-- PAGE HEADING -->
+    
     <section class="page-heading container hide-on-med-and-down admin">
         <nav>
             <div class="nav-wrapper">
@@ -24,11 +25,14 @@
         <h1 class="activated">{{ 'admin_comment_title'|trans }}</h1>
         <div class="row">
             <!-- user list -->
-            <ul class="collection col s12" style="border: 1px solid white !important;" id="userList">
+            <ul class="collection col s12" style="border: 1px solid white !important;" id="cmtlist">
                 {% include 'admin/comment/list.html.twig' %}
             </ul>
             {% include 'admin/paginate.html.twig' %}
         </div>
+
+
+
     </section>
 {% endblock %}
 
@@ -36,6 +40,22 @@
     {{ parent() }}
     <script>
         $(function () {
+
+            $('.modal').modal();
+
+
+            $('.confirm').click(function(){
+                var modal_title = "";
+                if($(this).data("cmtaction") == "authorize"){
+                    modal_title = '{{ 'accept_comment_confirmation' | trans }}';
+                }
+                if($(this).data("cmtaction") == "delete"){
+                    modal_title = '{{ 'delete_comment_confirmation' | trans }}';
+                }
+                $('#modalTitle').html(modal_title);
+                $('#comment_confirm_action').val($(this).data("cmtaction"));
+                $('#comment_confirm_id').val($(this).data("cmtid"));
+            });
 
             // Next page for pagination
             $('#nextpage').click(function () {
@@ -83,7 +103,7 @@
                     "page": pageno,
                 },
                 success: function (response) {
-                    $('#cmtList').html(response.html);
+                    $('#cmtlist').html(response.html);
                 }
             });
         }

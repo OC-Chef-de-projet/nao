@@ -32,13 +32,17 @@ header.admin {
 .card:hover {
     z-index: 1 !important;
 }
-.input-field label {
-    width:100%;
+
+a.btn-link,
+a:hover.btn-link
+{
+    color: #FF3D00;
+    text-transform: uppercase;
+}
+btn-link-icon {
+    margin-top: 10px;
 }
 
-.modal.modal-fixed-footer {
-    height: 25%;
-}
 
 
 /* ====================================

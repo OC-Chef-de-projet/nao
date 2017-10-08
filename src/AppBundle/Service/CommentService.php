@@ -6,6 +6,7 @@ use AppBundle\Entity\Comment;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Form;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 /**
  * Class CommentService
@@ -53,6 +54,32 @@ class CommentService
             'current' => $page,
             'maxPages' => $maxPages
         ];
+    }
+
+
+    /**
+     * Set comment status to ACCEPTED or REFUSED
+     *
+     * @param $data
+     */
+    public function modifyComment($data)
+    {
+
+        $comment = $this->em->getRepository('AppBundle:Comment')->findOneById($data['id']);
+        if(!$comment)return;
+
+        switch($data['action']){
+            case 'authorize' :
+                $comment->setStatus(Comment::ACCEPTED);
+                break;
+            case 'delete':
+                $comment->setStatus(Comment::REFUSED);
+                break;
+            default:
+                return;
+        }
+        $this->em->persist($comment);
+        $this->em->flush();
     }
 }
 

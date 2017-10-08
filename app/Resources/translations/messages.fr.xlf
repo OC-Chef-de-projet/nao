@@ -623,8 +623,14 @@
                 <source>draft</source>
                 <target>Brouillons</target>
             </trans-unit>
-
-
+            <trans-unit id="delete_comment_confirmation">
+                <source>delete_comment_confirmation</source>
+                <target>Etes-vous sur de vouloir supprimer ce commentaire ?</target>
+            </trans-unit>
+            <trans-unit id="accept_comment_confirmation">
+                <source>accept_comment_confirmation</source>
+                <target>Etes-vous sur de vouloir authoriser ce commentaire ?</target>
+            </trans-unit>
 
 
             <!-- USER MANAGEMENT -->
@@ -661,6 +667,14 @@
             <trans-unit id="no">
                 <source>no</source>
                 <target>Non</target>
+            </trans-unit>
+            <trans-unit id="delete">
+                <source>delete</source>
+                <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="authorize">
+                <source>authorize</source>
+                <target>Autoriser</target>
             </trans-unit>
 
         </body>
