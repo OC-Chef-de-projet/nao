@@ -221,6 +221,30 @@
                 <source>your_account</source>
                 <target>Votre espace</target>
             </trans-unit>
+            <trans-unit id="your_dashboard">
+                <source>your_dashboard</source>
+                <target>Votre tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="admin_panel">
+                <source>admin_panel</source>
+                <target>Administration</target>
+            </trans-unit>
+            <trans-unit id="your_observation">
+                <source>your_observation</source>
+                <target>Vos observations</target>
+            </trans-unit>
+            <trans-unit id="validate_observation">
+                <source>validate_observation</source>
+                <target>Valider une observation</target>
+            </trans-unit>
+            <trans-unit id="your_notifications">
+                <source>your_notifications</source>
+                <target>Vos notifications</target>
+            </trans-unit>
+            <trans-unit id="sign_out">
+                <source>sign_out</source>
+                <target>Se déconnecter</target>
+            </trans-unit>
 
 
             <!-- ALT IMAGE -->
@@ -236,6 +260,11 @@
                 <source>alt_actuality</source>
                 <target>Image d'une actualité</target>
             </trans-unit>
+            <trans-unit id="alt_profil">
+                <source>alt_profil</source>
+                <target>Photo de profil</target>
+            </trans-unit>
+
 
             <!-- FORMS / BUTTON -->
             <trans-unit id="search">
