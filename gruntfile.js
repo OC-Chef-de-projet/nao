@@ -80,6 +80,11 @@ module.exports = function (grunt) {
                 files: [
                     {expand: true, cwd: 'resources/images', src: ['**/*.jpg'], dest: 'web/assets/img/'}
                 ]
+            },
+            fixtures: {
+                files: [
+                    {expand: true, cwd: 'resources/fixtures', src: ['**/*.jpg'], dest: 'web/images/'}
+                ]
             }
         },
 
@@ -190,6 +195,7 @@ module.exports = function (grunt) {
         [
             'copy:font',
             'copy:jpg',
+            'copy:fixtures',
             'concat',
             'uglify',
             'cssmin',
