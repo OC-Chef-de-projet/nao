@@ -67,7 +67,7 @@ class FormAuthenticator extends AbstractGuardAuthenticator
      */
     public function start(Request $request, AuthenticationException $authException = null)
     {
-        return new RedirectResponse($this->router->generate('security_login'));
+        return new RedirectResponse($this->router->generate('login'));
     }
 
     /**
@@ -177,7 +177,7 @@ class FormAuthenticator extends AbstractGuardAuthenticator
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
         $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
-        return new RedirectResponse($this->router->generate('security_login'));
+        return new RedirectResponse($this->router->generate('login'));
     }
 
     /**
