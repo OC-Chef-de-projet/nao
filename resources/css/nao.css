@@ -223,6 +223,14 @@ a.bleen:hover {
     font-size: 12px;
 }
 
+form div.error{
+    position: relative;
+    top: -1rem;
+    left: 0rem;
+    font-size: 0.8rem;
+    color: #F44336;
+}
+
 /* ====================================
     Heading
     =============================================*/
