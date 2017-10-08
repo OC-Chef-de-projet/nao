@@ -1,0 +1,24 @@
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ '404_page_title'|trans }}{% endblock %}
+
+{% block header %}
+    <header class="full-height error bg14">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' %}
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s10 m6 right explain">
+                        <h1 class="slogan">{{ '404_main_title'|trans }} <br /> {{ '404_secondary_title'|trans }}</h1>
+                        <h2>{{ '404_explain'|trans|nl2br }}</h2>
+                        <div class="col s12 right explain center-align">
+                            <a href="{{ path('homepage') }}" class="btn waves-effect full">{{ 'back_to_homepage'|trans }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+{% endblock %}
+

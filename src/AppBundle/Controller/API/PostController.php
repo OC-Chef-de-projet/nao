@@ -49,6 +49,5 @@ class PostController extends Controller
 
         return new JsonResponse(['html' => $html]);
     }
-
 }
 

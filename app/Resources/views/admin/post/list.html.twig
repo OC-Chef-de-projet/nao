@@ -1,32 +1,34 @@
-
 {% for post in postlist %}
     <div class="col m6">
-    <div class="card horizontal">
-        <div class="card-image" style="width:150px;">
-            <img src="{{ asset('images/posts/'~post.imagelink) }}" style="top:5%;left:5%;height:80%;width:80%">
-        </div>
-        <div class="card-stacked">
-            <div class="card-content">
-                <span class="title">{{ post.title }}</span>
-                {% if post.publishedAt != null %}
-                    <p class="caption light-2">{{ 'published_at'|trans({'%date%': post.publishedAt|date("d/m/Y")}) }}</p>
-                {% else %}
-                    <p class="caption light-2">{{ 'created_at'|trans({'%date%': post.createdAt|date("d/m/Y")}) }}</p>
-                {% endif %}
+        <div class="card horizontal">
+            <div class="card-image" style="width:150px;">
+                <img src="{{ asset('images/posts/'~post.imagelink) }}" style="top:5%;left:5%;height:80%;width:80%">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <span class="title">{{ post.title }}</span>
+                    {% if post.publishedAt != null %}
+                        <p class="caption light-2">{{ 'published_at'|trans({'%date%': post.publishedAt|date("d/m/Y")}) }}</p>
+                    {% else %}
+                        <p class="caption light-2">{{ 'created_at'|trans({'%date%': post.createdAt|date("d/m/Y")}) }}</p>
+                    {% endif %}
 
-            </div>
-            <div class="card-action">
-                <a class="waves-effect modal-trigger" href="#"
-                   onclick="post_delete_confirm('{{ post.id }}')">
-                    <i class="material-icons left post-icon">delete</i>
-                    {% trans %}supprimer{% endtrans %}
-                </a>
-                <a class="waves-effect" href="{{ path('admin_post_edit', { 'id': post.id }) }}">
-                    <i class="material-icons left post-icon">edit</i>
-                    {% trans %}editer{% endtrans %}
-                </a>
+                </div>
+                <div class="card-action">
+                    <a class="waves-effect modal-trigger delete" href="#"
+                       data-postid="{{ post.id }}">
+                        <i class="material-icons left post-icon">delete</i>
+                        {% trans %}supprimer{% endtrans %}
+                    </a>
+                    <a class="waves-effect" href="{{ path('admin_post_edit', { 'id': post.id }) }}">
+                        <i class="material-icons left post-icon">edit</i>
+                        {% trans %}editer{% endtrans %}
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    </div>
+
+
+
 {% endfor %}

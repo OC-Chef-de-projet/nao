@@ -105,21 +105,43 @@ class PostController extends Controller
     /**
      * Delete post
      *
+     * @Route("/delete/{id}",  requirements={"id" = "\d+"}, name="admin_post_delete")
+     * @Method({"DELETE"})
+     *
      * @param $id   Post id
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteAction($id)
+    public function deleteAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('AppBundle:Post')->find($id);
 
+        $form = $this->createDeleteForm($entity);
+        if ($request->getMethod() == 'DELETE') {
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($entity);
+                $em->flush();
+                // Get response ready as per your need.
+                $response['success'] = true;
+                $response['message'] = 'Deleted Successfully!';
+            } else {
+                $response['success'] = false;
+                $response['message'] = 'Sorry category could not be deleted!';
+            }
+            return new JsonResponse($response);
+        }
+
+        /*
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Post');
         }
         $em->remove($entity);
         $em->flush();
         return $this->redirectToRoute('admin_post_index');
+        */
     }
 
 }
