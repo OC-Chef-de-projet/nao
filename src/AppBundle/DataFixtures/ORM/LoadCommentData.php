@@ -31,36 +31,41 @@ class LoadCommentData extends Fixture implements FixtureInterface, ContainerAwar
         // bin/console doctrine:fixtures:load
 
         $cmt = new Comment();
-        $cmt->setAuthor('ME');
+        $cmt->setUser($this->getReference('naturalist'));
         $cmt->setStatus(Comment::WAITING);
         $cmt->setContent('My comment');
-        $cmt->setEmail('methefirst@nowhere.com');
         $cmt->setPost($this->getReference('post1'));
         $manager->persist($cmt);
 
         $cmt = new Comment();
-        $cmt->setAuthor('ME AGAIN');
+        $cmt->setUser($this->getReference('observer'));
         $cmt->setStatus(Comment::WAITING);
         $cmt->setContent('My second comment');
-        $cmt->setEmail('meagain@nowhere.com');
         $cmt->setPost($this->getReference('post1'));
         $manager->persist($cmt);
 
         $cmt = new Comment();
-        $cmt->setAuthor('ME THE THIRD');
         $cmt->setStatus(Comment::WAITING);
         $cmt->setContent('My third comment');
-        $cmt->setEmail('meathethird@nowhere.com');
+        $cmt->setUser($this->getReference('naturalist'));
         $cmt->setPost($this->getReference('post2'));
         $manager->persist($cmt);
 
         $cmt = new Comment();
-        $cmt->setAuthor('ME THE LAST');
+        $cmt->setUser($this->getReference('observer'));
         $cmt->setStatus(Comment::WAITING);
         $cmt->setContent('My last comment');
-        $cmt->setEmail('methelast@nowhere.com');
         $cmt->setPost($this->getReference('post3'));
         $manager->persist($cmt);
+
+        for($i = 0 ; $i < 25 ; $i++) {
+            $cmt = new Comment();
+            $cmt->setUser($this->getReference('observer'));
+            $cmt->setStatus(Comment::WAITING);
+            $cmt->setContent('My last comment');
+            $cmt->setPost($this->getReference('post3'));
+            $manager->persist($cmt);
+        }
 
         $manager->flush();
     }
@@ -68,7 +73,8 @@ class LoadCommentData extends Fixture implements FixtureInterface, ContainerAwar
     public function getDependencies()
     {
         return array(
-            LoadPostData::class
+            LoadPostData::class,
+            LoadUserData::class
         );
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -14,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 /**
  * Class CommentController
  *
- * @Route("/admin/coment")
+ * @Route("/admin/comment")
  *
  * @package AppBundle\Controller\Admin
  */
@@ -27,24 +28,24 @@ class CommentController extends Controller
      * @Route("/{page}", requirements={"page" = "\d+"} , defaults={"page" = 1}, name="admin_comment_index")
      * @Method({"GET"})
      *
-     * @param Request $request  Httpd request
-     * @param int $page         Page number
+     * @param Request $request Httpd request
+     * @param int $page Page number
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request, $page = 1)
     {
-        /*
+
         $em = $this->getDoctrine()->getManager();
         $c = $this->get('security.token_storage')->getToken()->getUser();
-        $posts = $em->getRepository('AppBundle:Post')->getPostsByStatus($page,$status,$this->getParameter('list_limit'));
+        $comments = $em->getRepository('AppBundle:Comment')->getCommentsToModerate($page, $this->getParameter('list_limit'));
 
-        return $this->render('@AdminPost/index.html.twig', [
+        return $this->render('@Admin/comment/index.html.twig', [
             'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($c),
-            'paginate' => $this->container->get('app.post')->getPagination($posts,$page),
-            'postlist' => $posts->getIterator()
+            'paginate' => $this->container->get('app.cmt')->getPagination($comments, $page),
+            'cmtlist' => $comments->getIterator()
         ]);
-        */
+
     }
 
 

@@ -31,22 +31,6 @@ class Comment
     /**
      * @var string
      *
-     * @ORM\Column(name="author", type="string", length=255)
-     */
-    private $author;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
-     *
-     * @Assert\Email(message = "The email '{{ value }}' is not a valid email.", checkMX = true)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -74,6 +58,12 @@ class Comment
      */
     private $post;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
 
     /**
      * Get id
@@ -85,53 +75,7 @@ class Comment
         return $this->id;
     }
 
-    /**
-     * Set author
-     *
-     * @param string $author
-     *
-     * @return Comment
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
 
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Comment
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
 
     /**
      * Set content
@@ -227,5 +171,29 @@ class Comment
     public function getPost()
     {
         return $this->post;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Comment
+     */
+    public function setUser(\AppBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

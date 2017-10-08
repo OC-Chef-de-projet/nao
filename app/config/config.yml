@@ -46,6 +46,7 @@ twig:
         "%kernel.root_dir%/Resources/views/admin": Admin
         "%kernel.root_dir%/Resources/views/admin/user": AdminUser
         "%kernel.root_dir%/Resources/views/admin/post": AdminPost
+        "%kernel.root_dir%/Resources/views/admin/comment": AdminComment
     globals:
         posts: "@app.post"
         notifs: "@app.notification"

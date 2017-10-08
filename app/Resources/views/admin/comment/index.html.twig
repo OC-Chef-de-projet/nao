@@ -5,23 +5,7 @@
 {% block header %}
     <header class="collapse admin">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_post_title' } %}
-        <ul class="tabs tabs-transparent">
-            <!-- Draft -->
-            <li class="tab">
-                <a target="_self" id="{{ constant('AppBundle\\Entity\\Post::DRAFT') }}"
-                   href="{{ path('admin_post_index', {page: 1, status: constant('AppBundle\\Entity\\Post::DRAFT')}) }}"
-                        {{ (app.request.attributes.get('status') == constant('AppBundle\\Entity\\Post::DRAFT')) ? ' class="active"' }}
-                >{{ 'draft'|trans }}</a>
-            </li>
-            <!-- Publisehd -->
-            <li class="tab">
-                <a target="_self" id="{{ constant('AppBundle\\Entity\\Post::PUBLISHED') }}"
-                   href="{{ path('admin_post_index', {page: 1, status: constant('AppBundle\\Entity\\Post::PUBLISHED')}) }}"
-                        {{ (app.request.attributes.get('status') == constant('AppBundle\\Entity\\Post::PUBLISHED')) ? ' class="active"' }}
-                >{{ 'published'|trans }}</a>
-            </li>
-        </ul>
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_comment_title' } %}
     </header>
 {% endblock %}
 
@@ -33,15 +17,16 @@
                 <div class="col s12">
                     <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
                     <a href="{{ path('admin_homepage') }}" class="breadcrumb">{{ 'admin'|trans }}</a>
-                    <span class="breadcrumb">{{ 'admin_post'|trans }}</span>
+                    <span class="breadcrumb">{{ 'admin_comment_title'|trans }}</span>
                 </div>
             </div>
         </nav>
-        <h1 class="activated">{{ 'admin_post'|trans }}</h1>
+        <h1 class="activated">{{ 'admin_comment_title'|trans }}</h1>
         <div class="row">
-            <div id="postList">
-                {% include 'admin/post/list.html.twig' %}
-            </div>
+            <!-- user list -->
+            <ul class="collection col s12" style="border: 1px solid white !important;" id="userList">
+                {% include 'admin/comment/list.html.twig' %}
+            </ul>
             {% include 'admin/paginate.html.twig' %}
         </div>
     </section>
@@ -63,7 +48,6 @@
                 }
 
             });
-
             // Previous page for pagination
             $('#prevpage').click(function () {
                 var current = $('.pages').find('.active').attr('id').replace('p_', '');
@@ -74,7 +58,6 @@
                     displayPage(current);
                 }
             });
-
             $('.gotopage').click(function () {
                 var pageno = $(this).data("page");
                 // Search active page
@@ -91,18 +74,16 @@
          * @param pageno
          * @param user_id
          */
-        function postList(pageno) {
-            var status = $('.tab').find('.active').attr('id');
+        function cmtList(pageno, user_id) {
             $.ajax({
-                url: "{{ path('api_post_paginate') }}?bearer={{ token }}",
+                url: "{{ path('api_comment_paginate') }}?bearer={{ token }}",
                 type: "POST",
                 dataType: "json",
                 data: {
                     "page": pageno,
-                    "status": status
                 },
                 success: function (response) {
-                    $('#postList').html(response.html);
+                    $('#cmtList').html(response.html);
                 }
             });
         }
@@ -114,7 +95,7 @@
         function displayPage(page) {
             // Remove active classes
             $(".pages li").removeClass("active");
-            postList(page);
+            cmtList(page, 0);
             $('#p_' + page).addClass('active');
         }
 
@@ -148,6 +129,7 @@
         }
     </script>
 {% endblock %}
+
 
 
 

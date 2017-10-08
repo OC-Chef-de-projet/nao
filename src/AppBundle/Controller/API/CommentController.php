@@ -10,20 +10,20 @@ use FOS\RestBundle\View\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
- * Class PostController
+ * Class CommentController
  *
- * @Route("/API/post")
+ * @Route("/API/comment")
  *
  * @package AppBundle\Controller
  */
-class PostController extends Controller
+class CommentController extends Controller
 {
 
 
     /**
-     * Paginate post list (ajax)
+     * Paginate comment list (ajax)
      *
-     * @Route("/paginate", name="api_post_paginate")
+     * @Route("/paginate", name="api_comment_paginate")
      * @Method({"POST"})
      *
      * @param Request $request
@@ -34,17 +34,13 @@ class PostController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-       error_log( $request->request->get('page'));
-        error_log( $request->request->get('status'));
-
-        $posts = $em->getRepository('AppBundle:Post')->getPostsByStatus(
+        $comments = $em->getRepository('AppBundle:Comment')->getCommentsToModerate(
             $request->request->get('page'),
-            $request->request->get('status'),
             $this->getParameter('list_limit')
         );
 
-        $html = $this->render(':admin/post:list.html.twig', [
-            'postlist' => $posts
+        $html = $this->render('admin/comment/list.html.twig', [
+            'cmtlist' => $comments
         ])->getContent();
 
         return new JsonResponse(['html' => $html]);
