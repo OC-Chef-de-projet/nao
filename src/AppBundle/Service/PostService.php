@@ -152,83 +152,23 @@ class PostService
     }
 
     /**
-     * Get breadcrumb elemnts for post admin index
+     * Remove post
      *
-     * @return array
+     * @param $data
      */
-    public function getIndexBreadcrumb()
+    public function modifyPost($data)
     {
-        $breadcrumb = [
-            [
-                'href' => 'admin_homepage',
-                'text' => 'Accueil'
-            ],
-            [
-                'href' => 'admin_homepage',
-                'text' => 'Administration'
-            ],
-            [
-                'href' => 'admin_post_index',
-                'text' => 'Gestion des articles'
-            ],
-        ];
-        return $breadcrumb;
-    }
+        $post = $this->em->getRepository('AppBundle:Post')->findOneById($data['id']);
+        if (!$post) return;
 
-    /**
-     * Get breadcrumb elemnts for post admin edit
-     *
-     * @return array
-     */
-    public function getEditBreadcrumb()
-    {
-        $breadcrumb = [
-            [
-                'href' => '#',
-                'text' => 'Accueil'
-            ],
-            [
-                'href' => '#',
-                'text' => 'Administration'
-            ],
-            [
-                'href' => '#',
-                'text' => 'Gestion des articles'
-            ],
-            [
-                'href' => '#',
-                'text' => 'Rédiger un article'
-            ],
-
-        ];
-        return $breadcrumb;
-    }
-
-
-    /**
-     * Tabs for admin post index
-     *
-     * @param $post
-     * @return array
-     */
-    public function getPostsTabs($post)
-    {
-        $tabs = [
-            Post::DRAFT => [
-                'status' => Post::DRAFT,
-                'text' => 'Brouillons',
-                'active' => 0,
-                'href' => ''
-            ],
-            Post::PUBLISHED => [
-                'status' => Post::PUBLISHED,
-                'text' => 'Publiés',
-                'active' => 0,
-                'href' => ''
-            ]
-        ];
-        $tabs[$post]['active'] = 1;
-        return $tabs;
+        switch ($data['action']) {
+            case 'delete':
+                $this->em->remove($post);
+                $this->em->flush();
+                break;
+            default:
+                return;
+        }
     }
 }
 

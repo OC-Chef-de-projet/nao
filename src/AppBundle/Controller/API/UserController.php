@@ -7,9 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\View\View;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * Class DefaultController
+ *
+ * @Route("/API/user")
  *
  * @package AppBundle\Controller
  */
@@ -38,6 +41,9 @@ class UserController extends Controller
     /**
      * Search user (ajax)
      *
+     * @Route("/search", name="api_user_search")
+     * @Method({"POST"})
+     *
      * @param Request $request
      * @return Response
      */
@@ -55,6 +61,9 @@ class UserController extends Controller
 
     /**
      * Paginate user list (ajax)
+     *
+     * @Route("/paginate", name="api_user_paginate")
+     * @Method({"POST"})
      *
      * @param Request $request
      * @return Response

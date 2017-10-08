@@ -13,26 +13,14 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use AppBundle\Entity\Post;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 /**
  * Class LoadPostData
  * @package AppBundle\DataFixtures\ORM
  */
-class LoadPostData implements FixtureInterface, ContainerAwareInterface
+class LoadPostData extends Fixture implements FixtureInterface, ContainerAwareInterface
 {
-
-
-    private $container;
-
-    /**
-     * Container
-     *
-     * @param ContainerInterface|null $container
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }
 
     /**
      * Create posts
@@ -47,6 +35,7 @@ class LoadPostData implements FixtureInterface, ContainerAwareInterface
             $post->setContent('Contenu');
             $post->setStatus(Post::PUBLISHED);
             $post->setImagelink('annie-spratt-218892.jpg');
+            $this->addReference('post1', $post);
             $manager->persist($post);
 
             $post = new Post();
@@ -54,6 +43,7 @@ class LoadPostData implements FixtureInterface, ContainerAwareInterface
             $post->setContent('Contenu');
             $post->setStatus(Post::PUBLISHED);
             $post->setImagelink('tyler-quiring-21351.jpg');
+            $this->addReference('post2', $post);
             $manager->persist($post);
 
 
@@ -62,6 +52,7 @@ class LoadPostData implements FixtureInterface, ContainerAwareInterface
             $post->setContent('Contenu');
             $post->setStatus(Post::PUBLISHED);
             $post->setImagelink('elliot-cooper-364371.jpg');
+            $this->addReference('post3', $post);
             $manager->persist($post);
 
             $manager->flush();

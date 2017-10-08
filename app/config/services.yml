@@ -55,6 +55,11 @@ services:
         public: true
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
 
+    app.cmt:
+        class: AppBundle\Service\CommentService
+        public: true
+        arguments: ["@doctrine.orm.entity_manager", '%list_limit%']
+
     app.news:
         class: AppBundle\Service\NewsletterService
         public: true
@@ -75,6 +80,10 @@ services:
             - { name: doctrine.event_listener, event: prePersist }
 
     AppBundle\EventListener\NotificationListener:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+
+    AppBundle\EventListener\CommentListener:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
 

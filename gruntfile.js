@@ -80,6 +80,17 @@ module.exports = function (grunt) {
                 files: [
                     {expand: true, cwd: 'resources/images', src: ['**/*.jpg'], dest: 'web/assets/img/'}
                 ]
+            },
+            fixtures: {
+                files: [
+                    {expand: true, cwd: 'resources/fixtures', src: ['**/*.*'], dest: 'web/images/'}
+                ]
+            },
+            js: {
+                files: [
+                    {expand: true, cwd: 'resources/js', src: ['paginate.js'], dest: 'web/assets/js/'}
+                ]
+
             }
         },
 
@@ -115,23 +126,20 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-
         },
 
         // Uglify JS files
         //
         uglify: {
-            options: {
-                mangle          : true,
-                preserveComments: false
-            },
-
-            script : {
-                src : 'resources/js/nao.js',
+            nao : {
+                options: {
+                    mangle: true,
+                    preserveComments: false
+                },
+                src: 'resources/js/nao.js',
                 dest: 'web/assets/js/nao.min.js'
             }
         },
-
 
         // Do some post processing on CSS files
         postcss: {
@@ -188,8 +196,7 @@ module.exports = function (grunt) {
     );
     grunt.registerTask('dev',
         [
-            'copy:font',
-            'copy:jpg',
+            'copy',
             'concat',
             'uglify',
             'cssmin',

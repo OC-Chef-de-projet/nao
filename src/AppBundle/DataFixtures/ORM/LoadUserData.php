@@ -74,7 +74,7 @@ class LoadUserData extends Fixture implements FixtureInterface, ContainerAwareIn
         $manager->persist($user);
         $manager->flush();
 
-        for($i = 0 ; $i < 10 ; $i++ ) {
+        for($i = 0 ; $i < 20 ; $i++ ) {
             // Add admin
             $user = new User();
             $user->setName('Administrateur_'.$i);

@@ -36,7 +36,7 @@ class Post
     private $title;
 
     /**
-     * @var string
+     * @var text
      *
      * @ORM\Column(name="content", type="text")
      */

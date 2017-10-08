@@ -1,0 +1,40 @@
+<div class="card z-depth-0">
+    <ul class="collection">
+        {% for cmt in cmtlist %}
+            <li class="collection-item avatar">
+                <img src="{{ asset('images/users/'~cmt.user.getImagePath) }}" class="circle">
+                <span class="title">{{ cmt.user.name }}</span>
+                <p>{{ cmt.content }}</p>
+                <p class="secondary-content caption light-2">{{ 'published_at' |trans ({'%date%': cmt.created|date("d/m/Y")}) }}</p>
+                <br>
+                <div class="card-action">
+                    <i class="material-icons post-icon prefix light-2">delete</i>
+                    <a class="waves-effect modal-trigger confirm" href="#modal1"
+                       data-cmtid="{{ cmt.id }}" data-cmtaction="delete">
+                        {{ 'delete' | trans }}
+                    </a>
+
+                    <i class="material-icons post-icon prefix light-2">verified_user</i>
+                    <a class="waves-effect modal-trigger confirm" href="#modal1"
+                       data-cmtid="{{ cmt.id }}" data-cmtaction="authorize">
+                        {{ 'authorize' | trans }}
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<!-- MODAL -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h5 id="modalTitle"></h5>
+        <br>
+        {{ form_start(form) }}
+        <div class="center">
+                <button type="reset"   class="modal-action modal-close btn white scroll-to waves-effect">{{ 'no' | trans }}</button>
+                {{ form_widget(form.save) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+

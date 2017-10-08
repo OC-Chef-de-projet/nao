@@ -1,0 +1,28 @@
+<!-- Pagination -->
+<div class="container center-align">
+    <ul class="pagination">
+
+        <!-- previous -->
+        <li id="chevron_left" {{ paginate.current <= 1 ? 'class="disabled"': 'class="waves-effect"' }}>
+            <a id="prevpage" href="#">
+                <i class="material-icons">chevron_left</i>
+            </a>
+        </li>
+
+        <!-- pages -->
+        <span class="pages">
+        {% for i in paginate.current..paginate.maxPages %}
+            <li id="p_{{ i }}"
+                class="waves-effect {{ paginate.current == i ? 'active' }}{{ i > paginate.maxPages ? 'disabled' }}">
+                    <a class="gotopage"  href="#" data-page="{{ i }}">{{ i }}</a>
+            </li>
+        {% endfor %}
+        </span>
+        <!-- Next -->
+        <li id="chevron_right" {{ paginate.current == paginate.maxPages ? 'class="disabled"': 'class="waves-effect"' }}>
+            <a id="nextpage" href="#" data-maxPage="{{ paginate.maxPages }}" >
+                <i class="material-icons">chevron_right</i>
+            </a>
+        </li>
+    </ul>
+</div>

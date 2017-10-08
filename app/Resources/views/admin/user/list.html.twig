@@ -1,16 +1,11 @@
-{%  for user in users %}
-<div class="col s12 m6">
-<a href="{{ path('admin_user_update', { 'id': user.id}) }}">
-    <div class="card horizontal z-depth-0">
-        <div class="card-image roundedImage">
-            <img src="{{ asset('images/users/'~user.getImagePath) }}">
-        </div>
-        <div class="card-stacked">
-            <b>{{ user.getName }}</b>
-            <span class="text-grey">{{ user.roleString }}</span>
-        </div>
-
-    </div>
-</a>
-</div>
+<div class="card z-depth-0">
+{% for user in users %}
+    <li class="collection-item avatar col s12 m4" style="border-bottom: none">
+        <a class="dark" href="{{ path('admin_user_update', { 'id': user.id}) }}">
+            <img src="{{ asset('images/users/'~user.getImagePath) }}" class="circle">
+            <span class="title">{{ user.getName }}</span>
+            <p class="caption light-2">{{ user.roleString }}</p>
+        </a>
+    </li>
 {% endfor %}
+</div>

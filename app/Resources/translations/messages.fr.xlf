@@ -158,14 +158,6 @@
                 <source>search_page_meta_description</source>
                 <target></target>
             </trans-unit>
-            <trans-unit id="observation_me_page_meta_description">
-                <source>observation_me_page_meta_description</source>
-                <target></target>
-            </trans-unit>
-            <trans-unit id="observation_validation_page_meta_description">
-                <source>observation_validation_page_meta_description</source>
-                <target></target>
-            </trans-unit>
 
 
             <!-- LINK NAVIGATION -->
@@ -229,30 +221,6 @@
                 <source>your_account</source>
                 <target>Votre espace</target>
             </trans-unit>
-            <trans-unit id="your_dashboard">
-                <source>your_dashboard</source>
-                <target>Votre tableau de bord</target>
-            </trans-unit>
-            <trans-unit id="admin_panel">
-                <source>admin_panel</source>
-                <target>Administration</target>
-            </trans-unit>
-            <trans-unit id="your_observation">
-                <source>your_observation</source>
-                <target>Vos observations</target>
-            </trans-unit>
-            <trans-unit id="validate_observation">
-                <source>validate_observation</source>
-                <target>Valider une observation</target>
-            </trans-unit>
-            <trans-unit id="your_notifications">
-                <source>your_notifications</source>
-                <target>Vos notifications</target>
-            </trans-unit>
-            <trans-unit id="sign_out">
-                <source>sign_out</source>
-                <target>Se déconnecter</target>
-            </trans-unit>
 
 
             <!-- ALT IMAGE -->
@@ -268,11 +236,6 @@
                 <source>alt_actuality</source>
                 <target>Image d'une actualité</target>
             </trans-unit>
-            <trans-unit id="alt_profil">
-                <source>alt_profil</source>
-                <target>Image de profil</target>
-            </trans-unit>
-
 
             <!-- FORMS / BUTTON -->
             <trans-unit id="search">
@@ -365,6 +328,19 @@
                 <source>read</source>
                 <target>Lire</target>
             </trans-unit>
+            <trans-unit id="article_title">
+                <source>article_title</source>
+                <target>Titre de l'article</target>
+            </trans-unit>
+            <trans-unit id="article_content">
+                <source>article_content</source>
+                <target>Contenu de l'article</target>
+            </trans-unit>
+            <trans-unit id="featured_image">
+                <source>featured_image</source>
+                <target>Image à la une</target>
+            </trans-unit>
+
 
 
             <!-- OBSERVATIONS -->
@@ -403,38 +379,6 @@
             <trans-unit id="observation_list_main_title">
                 <source>observation_list_main_title</source>
                 <target>Liste des observations</target>
-            </trans-unit>
-            <trans-unit id="observation_me_main_title">
-                <source>observation_me_main_title</source>
-                <target>Vos observations</target>
-            </trans-unit>
-            <trans-unit id="draft">
-                <source>draft</source>
-                <target>brouillons</target>
-            </trans-unit>
-            <trans-unit id="validated">
-                <source>validated</source>
-                <target>validées</target>
-            </trans-unit>
-            <trans-unit id="waiting">
-                <source>waiting</source>
-                <target>en attente</target>
-            </trans-unit>
-            <trans-unit id="observation_validation_main_title">
-                <source>observation_validation_main_title</source>
-                <target>Valider une observation</target>
-            </trans-unit>
-            <trans-unit id="your_validation">
-                <source>your_validation</source>
-                <target>Vos validations</target>
-            </trans-unit>
-            <trans-unit id="your_refuse">
-                <source>your_refuse</source>
-                <target>Vos refus</target>
-            </trans-unit>
-            <trans-unit id="waiting_validation">
-                <source>waiting_validation</source>
-                <target>Validation en attente</target>
             </trans-unit>
 
 
@@ -558,7 +502,6 @@
                 <target>Restez près du nid</target>
             </trans-unit>
 
-
             <!-- STAY CONNECTED PAGE -->
             <trans-unit id="contact_main_title">
                 <source>contact_main_title</source>
@@ -583,7 +526,6 @@
                 <source>faq_full</source>
                 <target>Foire aux questions</target>
             </trans-unit>
-
 
             <!-- GLOBAL SEARCH PAGE -->
             <trans-unit id="search_min">
@@ -645,56 +587,106 @@
             </trans-unit>
 
             <!-- ADMIN DASHBOARD -->
+            <trans-unit id="admin">
+                <source>admin</source>
+                <target>Administration</target>
+            </trans-unit>
             <trans-unit id="admin_dashboard">
                 <source>admin_dashboard</source>
                 <target>Administration - Tableau de bord</target>
             </trans-unit>
-            <trans-unit id="gerer_utilisateurs_titre">
-                <source>gerer_utilisateurs_titre</source>
+            <trans-unit id="admin_post">
+                <source>admin_post</source>
+                <target>Gestion des articles</target>
+            </trans-unit>
+            <trans-unit id="admin_user_title">
+                <source>admin_user_title</source>
                 <target>Gérer les utilisateurs</target>
             </trans-unit>
-            <trans-unit id="gerer_utilisateurs_contenu">
-                <source>gerer_utilisateurs_contenu</source>
+            <trans-unit id="admin_user_explain">
+                <source>admin_user_explain</source>
                 <target>Attribuer ou retirer des droits aux utilisateurs</target>
             </trans-unit>
-            <trans-unit id="gerer_articles_titre">
-                <source>gerer_articles_titre</source>
+            <trans-unit id="admin_post_title">
+                <source>admin_post_title</source>
                 <target>Gérer les articles</target>
             </trans-unit>
-            <trans-unit id="gerer_articles_contenu">
-                <source>gerer_articles_contenu</source>
+            <trans-unit id="admin_post_explain">
+                <source>admin_post_explain</source>
                 <target>Ajouter/modifier/supprimer des articles</target>
             </trans-unit>
-            <trans-unit id="moderer_commentaires_titre">
-                <source>moderer_commentaires_titre</source>
+            <trans-unit id="admin_comment_title">
+                <source>admin_comment_title</source>
                 <target>Modérer les commentaires</target>
             </trans-unit>
-            <trans-unit id="moderer_commentaires_contenu">
-                <source>moderer_commentaires_contenu</source>
+            <trans-unit id="admin_comment_explain">
+                <source>admin_comment_explain</source>
                 <target>Accepter ou refuser les commentaires des internautes</target>
+            </trans-unit>
+            <trans-unit id="published">
+                <source>published</source>
+                <target>Publiés</target>
+            </trans-unit>
+            <trans-unit id="draft">
+                <source>draft</source>
+                <target>Brouillons</target>
+            </trans-unit>
+            <trans-unit id="delete_comment_confirmation">
+                <source>delete_comment_confirmation</source>
+                <target>Etes-vous sur de vouloir supprimer ce commentaire ?</target>
+            </trans-unit>
+            <trans-unit id="accept_comment_confirmation">
+                <source>accept_comment_confirmation</source>
+                <target>Etes-vous sur de vouloir authoriser ce commentaire ?</target>
             </trans-unit>
 
 
             <!-- USER MANAGEMENT -->
-            <trans-unit id="gestion_utilisateurs">
-                <source>gestion_utilisateurs</source>
+            <trans-unit id="admin_user">
+                <source>admin_user</source>
                 <target>Gestion des utilisateurs</target>
             </trans-unit>
-            <trans-unit id="recherche_par_nom">
-                <source>recherche_par_nom</source>
+            <trans-unit id="admin_user_edit">
+                <source>admin_user_edit</source>
+                <target>Modification d'un utilisateur</target>
+            </trans-unit>
+            <trans-unit id="search_by_name">
+                <source>search_by_name</source>
                 <target>Rechercher par nom</target>
             </trans-unit>
-            <trans-unit id="inscrit_depuis">
-                <source>inscrit_depuis</source>
+            <trans-unit id="enrolled_since">
+                <source>enrolled_since</source>
                 <target>Inscrit depuis le</target>
             </trans-unit>
-            <trans-unit id="utilisateur_bloque">
-                <source>utilisateur_bloque</source>
+            <trans-unit id="bloqued_user">
+                <source>bloqued_user</source>
                 <target>Utilisateur bloqué</target>
             </trans-unit>
-            <trans-unit id="effacer_recherche">
-                <source>effacer_recherche</source>
+            <trans-unit id="clear_search">
+                <source>clear_search</source>
                 <target>Effacer la recherche</target>
+            </trans-unit>
+
+            <!-- MISC -->
+            <trans-unit id="yes">
+                <source>yes</source>
+                <target>Oui</target>
+            </trans-unit>
+            <trans-unit id="no">
+                <source>no</source>
+                <target>Non</target>
+            </trans-unit>
+            <trans-unit id="delete">
+                <source>delete</source>
+                <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="edit">
+                <source>edit</source>
+                <target>Modifier</target>
+            </trans-unit>
+            <trans-unit id="authorize">
+                <source>authorize</source>
+                <target>Autoriser</target>
             </trans-unit>
 
         </body>

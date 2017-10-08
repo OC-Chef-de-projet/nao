@@ -1,0 +1,46 @@
+{% for post in postlist %}
+    <div class="col m6">
+        <div class="card horizontal">
+            <div class="card-image" style="width:150px;">
+                <img src="{{ asset('images/posts/'~post.imagelink) }}" style="top:5%;left:5%;height:80%;width:80%">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <span class="title">{{ post.title }}</span>
+                    {% if post.publishedAt != null %}
+                        <p class="caption light-2">{{ 'published_at'|trans({'%date%': post.publishedAt|date("d/m/Y")}) }}</p>
+                    {% else %}
+                        <p class="caption light-2">{{ 'created_at'|trans({'%date%': post.createdAt|date("d/m/Y")}) }}</p>
+                    {% endif %}
+
+                </div>
+                <div class="card-action">
+                    <i class="material-icons post-icon prefix light-2">delete</i>
+                    <a class="waves-effect modal-trigger confirm" href="#modal1"
+                       data-postid="{{ post.id }}" data-postaction="delete">
+                        {{ 'delete' | trans }}
+                    </a>
+
+                    <i class="material-icons post-icon prefix light-2">edit</i>
+                    <a class="waves-effect" href="{{ path('admin_post_edit', { 'id': post.id }) }}">
+                        {{ 'edit' | trans }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+<!-- MODAL -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h5 id="modalTitle"></h5>
+        <br>
+        {{ form_start(form) }}
+        <div class="center">
+            <button type="reset"   class="modal-action modal-close btn white scroll-to waves-effect">{{ 'no' | trans }}</button>
+            {{ form_widget(form.save) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
