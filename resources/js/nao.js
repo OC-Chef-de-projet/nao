@@ -83,8 +83,12 @@
             // Only for collaspse header
             if(header.hasClass('collapse')){
 
-                var positionMainTitleToTop = HeaderMainTitle.offset().top - $(window).scrollTop();
-
+                if(HeaderMainTitle.length){
+                    var positionMainTitleToTop = HeaderMainTitle.offset().top - $(window).scrollTop();
+                }else{
+                    var positionMainTitleToTop = tabs.offset().top - $(window).scrollTop();
+                }
+                
                 /**
                  * When the title is over the screen
                  * We can display sub title in the navbar and hide main logo for mobile

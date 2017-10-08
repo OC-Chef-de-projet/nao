@@ -1216,8 +1216,16 @@ header.sticky .tabs .indicator {
 /* ====================================
     Admin
     =============================================*/
-header.admin {
-    background-color: #3F51B5;
+header.admin,
+header.admin nav.sticky,
+header.admin ul.tabs {
+    background-color: #3F51B5 !important;
+    z-index: 997;
+}
+
+header.admin nav.sticky{
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 #searchuser, .header-overlap {
