@@ -24,6 +24,9 @@ class UserController extends Controller
      * Get user info
      * @param Request $request
      *
+     * @Route("/info", name="api_user_info")
+     * @Method({"POST"})
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function userinfoAction(Request $request)
@@ -36,7 +39,6 @@ class UserController extends Controller
         $view->setFormat('json');
         return $viewHandler->handle($view);
     }
-
 
     /**
      * Search user (ajax)

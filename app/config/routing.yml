@@ -5,6 +5,9 @@ app:
     resource: '@AppBundle/Controller/'
     type:     annotation
 
+api_login_check:
+    path: /API/login_check
+
 #security_login:
 #    path:     /login
 #    defaults: { _controller: AppBundle:Security:login }

@@ -25,8 +25,6 @@ class PostRepository extends EntityRepository
     public function getPostsByStatus($currentPage,$status,$limit = 50)
 
     {
-
-        dump($limit);
         $query = $this->createQueryBuilder('p')
             ->where('p.status = :status')
             ->setParameter('status',$status);
