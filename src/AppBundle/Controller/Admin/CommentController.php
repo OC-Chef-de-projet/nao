@@ -64,7 +64,7 @@ class CommentController extends Controller
      */
     public function confirmAction(Request $request, $action, $id)
     {
-        $this->container->get('app.cmt')->modifyComment($request->request->get('comment_confirm'));
+        $this->container->get('app.cmt')->modifyComment($request->request->get('confirm'));
         return $this->redirectToRoute('admin_comment_index');
     }
 }

@@ -150,5 +150,25 @@ class PostService
             'maxPages' => $maxPages
         ];
     }
+
+    /**
+     * Remove post
+     *
+     * @param $data
+     */
+    public function modifyPost($data)
+    {
+        $post = $this->em->getRepository('AppBundle:Post')->findOneById($data['id']);
+        if (!$post) return;
+
+        switch ($data['action']) {
+            case 'delete':
+                $this->em->remove($post);
+                $this->em->flush();
+                break;
+            default:
+                return;
+        }
+    }
 }
 

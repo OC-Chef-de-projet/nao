@@ -9,13 +9,21 @@
     </header>
 {% endblock %}
 
-
 {% block body %}
-<style>
-
-</style>
+    <section class="page-heading container hide-on-med-and-down admin">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <a href="{{ path('admin_homepage') }}" class="breadcrumb">{{ 'admin'|trans }}</a>
+                    <a href="{{ path('admin_post_index') }}" class="breadcrumb">{{ 'admin_post_title'|trans }}</a>
+                    <span class="breadcrumb">{{ 'writing_article'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <h1 class="activated">{{ 'writing_article'|trans }}</h1>
+    </section>
     <div class="container">
-        <h4>{{  'writing_article' | trans }}</h4>
         {{ form_start(form) }}
         <div class="card large">
             <div class="row">
@@ -48,18 +56,20 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col s12 m6 center">
-                    {{ form_widget(form.save_draft) }}
+            <div class="card-action">
+                <div class="row">
+                    <div class="col s12 m6 center">
+                        {{ form_widget(form.save_draft) }}
+                    </div>
+                    <div class="col s12 m6">
+                        {{ form_widget(form.save_published) }}
+                    </div>
                 </div>
-                <div class="col s12 m6">
-                    {{ form_widget(form.save_published) }}
-                </div>
+                {{ form_end(form) }}
             </div>
-            {{ form_end(form) }}
         </div>
     </div>
-
+<!-- #DD2C00; -->
 
 {% endblock %}
 

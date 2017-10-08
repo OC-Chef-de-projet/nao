@@ -54,7 +54,7 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Post")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="post_id", referencedColumnName="id", onDelete="CASCADE",nullable=false)
      */
     private $post;
 

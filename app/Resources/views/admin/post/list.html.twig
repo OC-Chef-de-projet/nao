@@ -15,20 +15,32 @@
 
                 </div>
                 <div class="card-action">
-                    <a class="waves-effect modal-trigger delete" href="#"
-                       data-postid="{{ post.id }}">
-                        <i class="material-icons left post-icon">delete</i>
-                        {% trans %}supprimer{% endtrans %}
+                    <i class="material-icons post-icon prefix light-2">delete</i>
+                    <a class="waves-effect modal-trigger confirm" href="#modal1"
+                       data-postid="{{ post.id }}" data-postaction="delete">
+                        {{ 'delete' | trans }}
                     </a>
+
+                    <i class="material-icons post-icon prefix light-2">edit</i>
                     <a class="waves-effect" href="{{ path('admin_post_edit', { 'id': post.id }) }}">
-                        <i class="material-icons left post-icon">edit</i>
-                        {% trans %}editer{% endtrans %}
+                        {{ 'edit' | trans }}
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
-
-
 {% endfor %}
+
+<!-- MODAL -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h5 id="modalTitle"></h5>
+        <br>
+        {{ form_start(form) }}
+        <div class="center">
+            <button type="reset"   class="modal-action modal-close btn white scroll-to waves-effect">{{ 'no' | trans }}</button>
+            {{ form_widget(form.save) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>

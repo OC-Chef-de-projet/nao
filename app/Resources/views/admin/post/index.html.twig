@@ -6,6 +6,7 @@
     <header class="collapse admin">
         <!-- NAVIGATION -->
         {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_post_title' } %}
+
         <ul class="tabs tabs-transparent">
             <!-- Draft -->
             <li class="tab">
@@ -21,7 +22,9 @@
                         {{ (app.request.attributes.get('status') == constant('AppBundle\\Entity\\Post::PUBLISHED')) ? ' class="active"' }}
                 >{{ 'published'|trans }}</a>
             </li>
+
         </ul>
+            <a class="header-overlap btn-floating waves-effect waves-light" href="{{ url('admin_post_new') }}"><i class="material-icons">note_add</i></a>
     </header>
 {% endblock %}
 
@@ -42,6 +45,8 @@
             <div id="postList">
                 {% include 'admin/post/list.html.twig' %}
             </div>
+        </div>
+        <div class="row">
             {% include 'admin/paginate.html.twig' %}
         </div>
     </section>
@@ -51,6 +56,18 @@
     {{ parent() }}
     <script>
         $(function () {
+
+            $('.modal').modal();
+
+            $('.confirm').click(function(){
+                var modal_title = "";
+                if($(this).data("postaction") == "delete"){
+                    modal_title = '{{ 'delete_article_confirmation' | trans }}';
+                }
+                $('#modalTitle').html(modal_title);
+                $('#confirm_action').val($(this).data("postaction"));
+                $('#confirm_id').val($(this).data("postid"));
+            });
 
             // Next page for pagination
             $('#nextpage').click(function () {

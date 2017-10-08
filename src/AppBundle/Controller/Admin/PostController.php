@@ -9,7 +9,7 @@ use AppBundle\Entity\Post;
 use AppBundle\Form\Type\PostType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-
+use AppBundle\Form\Type\ConfirmType;
 
 /**
  * Class PostController
@@ -38,11 +38,14 @@ class PostController extends Controller
         $em = $this->getDoctrine()->getManager();
         $c = $this->get('security.token_storage')->getToken()->getUser();
         $posts = $em->getRepository('AppBundle:Post')->getPostsByStatus($page,$status,$this->getParameter('list_limit'));
+        $form = $this->createForm(ConfirmType::class,null, ['url' => $this->generateUrl('admin_post_confirmation', array('action' => '--','id' => 0))]);
+        $form->handleRequest($request);
 
         return $this->render('@AdminPost/index.html.twig', [
             'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($c),
             'paginate' => $this->container->get('app.post')->getPagination($posts,$page),
-            'postlist' => $posts->getIterator()
+            'postlist' => $posts->getIterator(),
+            'form' =>  $form->createView()
         ]);
     }
 
@@ -75,6 +78,9 @@ class PostController extends Controller
     /**
      * New Post
      *
+     * @Route("/new", name="admin_post_new")
+     * @Method({"GET","POST"})
+     *
      * @param Request $request  Http request
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -92,56 +98,27 @@ class PostController extends Controller
         }
 
         return $this->render('@AdminPost/new.html.twig', [
-            'header' => [
-                'bodyClass' => 'background-2',
-                'tabs' => $this->container->get('app.post')->getPostsTabs(Post::DRAFT),
-                'breadcrumb' => $this->container->get('app.post')->getEditBreadcrumb()
-            ],
             'post' => $post,
             'form' => $form->createView()
         ]);
     }
 
+
     /**
-     * Delete post
+     * Confirmation of deletion
      *
-     * @Route("/delete/{id}",  requirements={"id" = "\d+"}, name="admin_post_delete")
-     * @Method({"DELETE"})
+     * @Route("/confirm/{action}/{id}", requirements={"id" = "\d+"}, name="admin_post_confirmation")
+     * @Method({"POST"})
      *
-     * @param $id   Post id
+     * @param Request $request Httpd request
+     * @param int $page Page number
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteAction(Request $request, $id)
+    public function confirmAction(Request $request, $action, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('AppBundle:Post')->find($id);
 
-        $form = $this->createDeleteForm($entity);
-        if ($request->getMethod() == 'DELETE') {
-            $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->remove($entity);
-                $em->flush();
-                // Get response ready as per your need.
-                $response['success'] = true;
-                $response['message'] = 'Deleted Successfully!';
-            } else {
-                $response['success'] = false;
-                $response['message'] = 'Sorry category could not be deleted!';
-            }
-            return new JsonResponse($response);
-        }
-
-        /*
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Post');
-        }
-        $em->remove($entity);
-        $em->flush();
+        $this->container->get('app.post')->modifyPost($request->request->get('confirm'));
         return $this->redirectToRoute('admin_post_index');
-        */
     }
-
 }

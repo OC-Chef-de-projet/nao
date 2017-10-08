@@ -672,6 +672,10 @@
                 <source>delete</source>
                 <target>Supprimer</target>
             </trans-unit>
+            <trans-unit id="edit">
+                <source>edit</source>
+                <target>Modifier</target>
+            </trans-unit>
             <trans-unit id="authorize">
                 <source>authorize</source>
                 <target>Autoriser</target>
