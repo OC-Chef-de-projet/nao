@@ -1,0 +1,154 @@
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'admin_user'|trans }}{% endblock %}
+
+{% block header %}
+    <header class="collapse admin">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_post_title' } %}
+        <ul class="tabs tabs-transparent">
+            <!-- Draft -->
+            <li class="tab">
+                <a target="_self" id="{{ constant('AppBundle\\Entity\\Post::DRAFT') }}"
+                   href="{{ path('admin_post_index', {page: 1, status: constant('AppBundle\\Entity\\Post::DRAFT')}) }}"
+                        {{ (app.request.attributes.get('status') == constant('AppBundle\\Entity\\Post::DRAFT')) ? ' class="active"' }}
+                >{{ 'draft'|trans }}</a>
+            </li>
+            <!-- Publisehd -->
+            <li class="tab">
+                <a target="_self" id="{{ constant('AppBundle\\Entity\\Post::PUBLISHED') }}"
+                   href="{{ path('admin_post_index', {page: 1, status: constant('AppBundle\\Entity\\Post::PUBLISHED')}) }}"
+                        {{ (app.request.attributes.get('status') == constant('AppBundle\\Entity\\Post::PUBLISHED')) ? ' class="active"' }}
+                >{{ 'published'|trans }}</a>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down admin">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <a href="{{ path('admin_homepage') }}" class="breadcrumb">{{ 'admin'|trans }}</a>
+                    <span class="breadcrumb">{{ 'admin_post'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <h1 class="activated">{{ 'admin_post'|trans }}</h1>
+        <div class="row">
+            <div id="postList">
+                {% include 'admin/post/list.html.twig' %}
+            </div>
+            {% include 'admin/paginate.html.twig' %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+
+            // Next page for pagination
+            $('#nextpage').click(function () {
+                var current = $('.pages').find('.active').attr('id').replace('p_', '');
+                current = parseInt(current) + 1;
+                checkLastpage(current);
+                checkFirstpage(current);
+                if (current <= {{ paginate.maxPages }}) {
+                    displayPage(current);
+                }
+
+            });
+
+            // Previous page for pagination
+            $('#prevpage').click(function () {
+                var current = $('.pages').find('.active').attr('id').replace('p_', '');
+                current = parseInt(current) - 1;
+                checkLastpage(current);
+                checkFirstpage(current);
+                if (current >= 1) {
+                    displayPage(current);
+                }
+            });
+
+            $('.gotopage').click(function () {
+                var pageno = $(this).data("page");
+                // Search active page
+                var current = $('.pagination').find('.active').attr('id');
+                checkFirstpage(pageno);
+                checkLastpage(pageno);
+                displayPage(current);
+
+            });
+        });
+
+        /**
+         *
+         * @param pageno
+         * @param user_id
+         */
+        function postList(pageno) {
+            var status = $('.tab').find('.active').attr('id');
+            $.ajax({
+                url: "{{ path('api_post_paginate') }}?bearer={{ token }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "page": pageno,
+                    "status": status
+                },
+                success: function (response) {
+                    $('#postList').html(response.html);
+                }
+            });
+        }
+
+
+        /**
+         * Display page
+         */
+        function displayPage(page) {
+            // Remove active classes
+            $(".pages li").removeClass("active");
+            postList(page);
+            $('#p_' + page).addClass('active');
+        }
+
+        /**
+         * Check page number to active next icon
+         *
+         * @param pageno
+         */
+        function checkLastpage(pageno) {
+            var maxpage = {{ paginate.maxPages }} ;
+            if (pageno >= maxpage) {
+                $('#chevron_right').addClass('disabled');
+
+            } else {
+                $('#chevron_right').removeClass('disabled');
+            }
+        }
+
+        /**
+         * Check page number to active previous icon
+         *
+         * @param pageno
+         */
+        function checkFirstpage(pageno) {
+            if (pageno <= 1) {
+                $('#chevron_left').addClass('disabled');
+
+            } else {
+                $('#chevron_left').removeClass('disabled');
+            }
+        }
+    </script>
+{% endblock %}
+
+
+
+
