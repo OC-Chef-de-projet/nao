@@ -20,7 +20,7 @@
         </span>
         <!-- Next -->
         <li id="chevron_right" {{ paginate.current == paginate.maxPages ? 'class="disabled"': 'class="waves-effect"' }}>
-            <a id="nextpage" href="#" >
+            <a id="nextpage" href="#" data-maxPage="{{ paginate.maxPages }}" >
                 <i class="material-icons">chevron_right</i>
             </a>
         </li>

@@ -24,7 +24,8 @@
             </li>
 
         </ul>
-            <a class="header-overlap btn-floating waves-effect waves-light" href="{{ url('admin_post_new') }}"><i class="material-icons">note_add</i></a>
+        <a class="header-overlap btn-floating waves-effect waves-light" href="{{ url('admin_post_new') }}"><i
+                    class="material-icons">note_add</i></a>
     </header>
 {% endblock %}
 
@@ -42,7 +43,7 @@
         </nav>
         <h1 class="activated">{{ 'admin_post'|trans }}</h1>
         <div class="row">
-            <div id="postList">
+            <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
                 {% include 'admin/post/list.html.twig' %}
             </div>
         </div>
@@ -54,14 +55,16 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{ asset('assets/js/paginate.js') }}"></script>
     <script>
+
         $(function () {
 
             $('.modal').modal();
 
-            $('.confirm').click(function(){
+            $('.confirm').click(function () {
                 var modal_title = "";
-                if($(this).data("postaction") == "delete"){
+                if ($(this).data("postaction") == "delete") {
                     modal_title = '{{ 'delete_article_confirmation' | trans }}';
                 }
                 $('#modalTitle').html(modal_title);
@@ -69,37 +72,6 @@
                 $('#confirm_id').val($(this).data("postid"));
             });
 
-            // Next page for pagination
-            $('#nextpage').click(function () {
-                var current = $('.pages').find('.active').attr('id').replace('p_', '');
-                current = parseInt(current) + 1;
-                checkLastpage(current);
-                checkFirstpage(current);
-                if (current <= {{ paginate.maxPages }}) {
-                    displayPage(current);
-                }
-
-            });
-
-            // Previous page for pagination
-            $('#prevpage').click(function () {
-                var current = $('.pages').find('.active').attr('id').replace('p_', '');
-                current = parseInt(current) - 1;
-                checkLastpage(current);
-                checkFirstpage(current);
-                if (current >= 1) {
-                    displayPage(current);
-                }
-            });
-
-            $('.gotopage').click(function () {
-                var pageno = $(this).data("page");
-                // Search active page
-                checkFirstpage(pageno);
-                checkLastpage(pageno);
-                displayPage(pageno);
-
-            });
         });
 
         /**
@@ -107,7 +79,7 @@
          * @param pageno
          * @param user_id
          */
-        function postList(pageno) {
+        function getList(pageno, no) {
             var status = $('.tab').find('.active').attr('id');
             $.ajax({
                 url: "{{ path('api_post_paginate') }}?bearer={{ token }}",
@@ -118,49 +90,10 @@
                     "status": status
                 },
                 success: function (response) {
-                    $('#postList').html(response.html);
+                    console.log("TERYTRy");
+                    $('#eltlist').html(response.html);
                 }
             });
-        }
-
-
-        /**
-         * Display page
-         */
-        function displayPage(page) {
-            // Remove active classes
-            $(".pages li").removeClass("active");
-            postList(page);
-            $('#p_' + page).addClass('active');
-        }
-
-        /**
-         * Check page number to active next icon
-         *
-         * @param pageno
-         */
-        function checkLastpage(pageno) {
-            var maxpage = {{ paginate.maxPages }} ;
-            if (pageno >= maxpage) {
-                $('#chevron_right').addClass('disabled');
-
-            } else {
-                $('#chevron_right').removeClass('disabled');
-            }
-        }
-
-        /**
-         * Check page number to active previous icon
-         *
-         * @param pageno
-         */
-        function checkFirstpage(pageno) {
-            if (pageno <= 1) {
-                $('#chevron_left').addClass('disabled');
-
-            } else {
-                $('#chevron_left').removeClass('disabled');
-            }
         }
     </script>
 {% endblock %}

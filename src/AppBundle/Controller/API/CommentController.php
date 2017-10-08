@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\View\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use AppBundle\Form\Type\ConfirmType;
+
 
 /**
  * Class CommentController
@@ -40,8 +42,13 @@ class CommentController extends Controller
             $this->getParameter('list_limit')
         );
 
+        $form = $this->createForm(ConfirmType::class,null, ['url' => $this->generateUrl('admin_comment_confirmation', array('action' => '--','id' => 0))]);
+        $form->handleRequest($request);
+
+
         $html = $this->render('admin/comment/list.html.twig', [
-            'cmtlist' => $comments
+            'cmtlist' => $comments,
+            'form' =>  $form->createView()
         ])->getContent();
 
         return new JsonResponse(['html' => $html]);

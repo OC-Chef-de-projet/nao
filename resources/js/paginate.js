@@ -1,18 +1,19 @@
+/**
+ * Pagination
+ */
 $(function () {
-
-
-
     // Next page for pagination
     $('#nextpage').click(function () {
         var current = $('.pages').find('.active').attr('id').replace('p_', '');
+        var maxPage = $(this).data('maxpage');
         current = parseInt(current) + 1;
         checkLastpage(current);
         checkFirstpage(current);
-        if (current <= {{ paginate.maxPages }}) {
+        if (current <= maxPage) {
             displayPage(current);
         }
-
     });
+
     // Previous page for pagination
     $('#prevpage').click(function () {
         var current = $('.pages').find('.active').attr('id').replace('p_', '');
@@ -50,8 +51,8 @@ function displayPage(page) {
  * @param pageno
  */
 function checkLastpage(pageno) {
-    var maxpage = {{ paginate.maxPages }} ;
-    if (pageno >= maxpage) {
+    var maxPage = $('#nextpage').data('maxpage');
+    if (pageno >= maxPage) {
         $('#chevron_right').addClass('disabled');
 
     } else {
