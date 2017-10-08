@@ -28,7 +28,7 @@ class JwtService{
     public function getToken(){
         $user  = $this->ts->getToken()->getUser();
 
-        if (is_object($user) && $user instanceof User) {
+        if (is_object($user)) {
             return $this->jwtManager->create($user);
         }
 
