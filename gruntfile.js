@@ -120,7 +120,6 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-
         },
 
         // Uglify JS files
@@ -130,14 +129,13 @@ module.exports = function (grunt) {
                 mangle          : true,
                 preserveComments: false
             },
-
-            script : {
-                src : 'resources/js/nao.js',
-                dest: 'web/assets/js/nao.min.js'
-            }
+            script : [
+                {
+                    src : 'resources/js/nao.js',
+                    dest: 'web/assets/js/nao.min.js'
+                }
+            ]
         },
-
-
         // Do some post processing on CSS files
         postcss: {
             options : {
