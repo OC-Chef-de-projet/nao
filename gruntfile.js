@@ -83,7 +83,7 @@ module.exports = function (grunt) {
             },
             fixtures: {
                 files: [
-                    {expand: true, cwd: 'resources/fixtures', src: ['**/*.jpg'], dest: 'web/images/'}
+                    {expand: true, cwd: 'resources/fixtures', src: ['**/*.*'], dest: 'web/images/'}
                 ]
             },
             js: {
