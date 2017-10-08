@@ -5,7 +5,8 @@
             <div id="nav-logo" class="brand-logo"></div>
             <div id="nav-small-title">{% if navtitle is defined %}{{ navtitle|trans }}{% endif %}</div>
             <ul class="right static-menu">
-                {% if current_route != '' %}
+                {% if admin is defined %}<li><a href="{{ path('admin_homepage') }}"><i class="material-icons">settings</i></a></li>{% endif %}
+                {% if current_route != '' and admin is not defined %}
                 <li>
                     <a href="javascript:void(0)" class="sharing" data-role="dropdown" data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}">
                         <i class="material-icons">share</i>
