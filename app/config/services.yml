@@ -65,6 +65,11 @@ services:
         public: true
         arguments: ["@doctrine.orm.entity_manager", "@translator"]
 
+    app.geoloc:
+        class: AppBundle\Service\GeolocService
+        public: true
+        arguments: ["@doctrine.orm.entity_manager"]
+
     app.jwt:
         class: AppBundle\Service\JwtService
         public: true

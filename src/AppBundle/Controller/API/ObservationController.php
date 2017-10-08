@@ -5,26 +5,25 @@ namespace AppBundle\Controller\API;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\View\View;
 
+
 /**
- * Class ObservationController
- * @package AppBundle\Controller\API
+ * Class BlogController
+ * @package AppBundle\Controller
+ * @Route("/API/observation")
  */
 class ObservationController extends Controller
 {
 
-
     /**
-     * Observation list
-     *
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/list", name="obs.list")
+     * @Method({"POST"})
      */
     public function obslistAction(Request $request)
     {
-
         $url = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
         $response = $this->container->get('app.obs')->getlist($url);
 
@@ -36,6 +35,9 @@ class ObservationController extends Controller
 
     /**
      * Add an observation
+     *
+     * @Route("/add", name="obs.add")
+     * @Method({"POST"})
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -50,5 +52,30 @@ class ObservationController extends Controller
         return $viewHandler->handle($view);
     }
 
-}
+    /**
+     * Get a region from GPS
+     *
+     * @Route("/region", name="obs.region")
+     * @Method({"POST"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function regionAction(Request $request)
+    {
 
+        $latitude =$request->get('latitude');
+        $longitude = $request->get('longitude');
+
+        $response = $this->container->get('app.geoloc')->getFranceRegion($latitude,$longitude);
+
+        $viewHandler = $this->get('fos_rest.view_handler');
+        $view = View::create($response);
+        $view->setFormat('json');
+        return $viewHandler->handle($view);
+
+    }
+
+
+
+}

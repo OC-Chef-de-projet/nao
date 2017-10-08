@@ -57,7 +57,7 @@ class LoadPostData extends Fixture implements FixtureInterface, ContainerAwareIn
 
             $manager->flush();
 
-        for($i = 0 ; $i < 20 ; $i++) {
+        for($i = 0 ; $i < 10 ; $i++) {
             $post = new Post();
             $post->setTitle($i.' - Titre de l\'article');
             $post->setContent('Contenu');

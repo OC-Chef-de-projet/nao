@@ -13,12 +13,13 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use AppBundle\Entity\FranceRegion;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 /**
  * Class LoadUserData
  * @package AppBundle\DataFixtures\ORM
  */
-class LoadFranceRegionData
+class LoadFranceRegionData extends Fixture implements FixtureInterface, ContainerAwareInterface
 {
 
 
@@ -32,19 +33,15 @@ class LoadFranceRegionData
         // bin/console doctrine:fixtures:load
 
         $csv = fopen('./src/AppBundle/DataFixtures/ORM/FranceRegion.csv', 'r');
-
         $first = true;
         $count = 0;
        while (!feof($csv)) {
-
-
             if($first){
                 $first = false;
                 continue;
             }
             echo "$count\n";
             $count++;
-           if($count >= 100)break;
             $line = fgetcsv($csv,0,';');
             if(empty($line)){
                 continue;
