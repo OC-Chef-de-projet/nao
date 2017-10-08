@@ -2,9 +2,7 @@
 
 namespace AppBundle\Service;
 
-use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Doctrine\ORM\EntityManager;
 
 
 /**
