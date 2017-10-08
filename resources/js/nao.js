@@ -236,5 +236,69 @@
             window.open(href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height='+ height +',width='+ width +'');;
             return false;
         });
+
+        /* ==================================================
+         GLOBAL NEWSLETTER
+         ===========================================================*/
+        var globalNewsForm      = $('#global_form_newsletter');
+
+        globalNewsForm.validate({
+            rules: {
+                ng_email: {
+                    required: true,
+                    email: true,
+                }
+            },
+            errorElement : 'div',
+            errorPlacement: function(error, element) {
+                element.removeClass('valid').addClass('invalid');
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            submitHandler: function(form, event) {
+                event.preventDefault();
+                var ajxUrl  = $(form).attr("action");
+                var data    =  $(form).serialize();
+
+                $.post( ajxUrl, data, function( data ) {
+                    var element = $(form).find('input[name=ng_email]');
+                    if(data.status === false){
+                        element.removeClass('valid').addClass('invalid');
+                        element.next('div.error').html(data.message).show();
+                    }else{
+                        Materialize.toast(data.message, 4000);
+                        $(form)[0].reset();
+                    }
+                });
+            }
+        });
+
+        /* ==================================================
+         PAGINATE
+         ===========================================================*/
+        /**
+         * Remove page into pagination
+         * @param page
+         */
+        function removePage(page) {
+            $('#p_' + page).remove();
+        }
+
+        /**
+         * Add a new page into pagination
+         * @param page
+         */
+        function addPage(page) {
+            html = '<li id="p_' + page + '" class="waves-effect ">' +
+                '<a class="gotopage" href="#" data-page="' + page + '">' + page + '</a>' +
+                '</li>';
+            $(html).insertBefore('.pagination>li:last');
+            ;
+        }
+
     });
 })(jQuery);
