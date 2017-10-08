@@ -26,7 +26,12 @@ class JwtService{
      * @return mixed
      */
     public function getToken(){
-        $client  = $this->ts->getToken()->getUser();
-        return $this->jwtManager->create($client);
+        $user  = $this->ts->getToken()->getUser();
+
+        if (is_object($user) && $user instanceof User) {
+            return $this->jwtManager->create($user);
+        }
+
+        return null;
     }
 }
