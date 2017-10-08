@@ -17,15 +17,16 @@
                     <div class="col s12">
                         <h2>{{ 'stay_inform'|trans }}</h2>
                         <div class="row no-pad-bot">
-                            <form id="global_form_newsletter" class="col s12">
+                            <form id="global_form_newsletter" class="col s12" method="post" action="{{ path('newsletter.subscribe') ~ '?bearer=' ~ jwt.token }}">
                                 <div class="row no-pad-bot">
                                     <div class="input-field col s12">
                                         <input style="display:none">
-                                        <input name="ng_email" type="email" data-msg-laxemail="{{ 'error_email_format'|trans }}" autocomplete="off"  class="validate"/>
+                                        <input name="ng_email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" data-msg-pattern="{{ 'error_email_format'|trans }}" autocomplete="off"  class="validate"/>
+                                        <div class="error"></div>
                                         <label>{{ 'label_email'|trans }} *</label>
                                     </div>
                                     <div class="input-field col s12">
-                                        <input type="submit" name="submit" class="btn waves-effect" value="{{ 'subscribe_to_newsletter'|trans }}" />
+                                        <input type="submit" class="btn waves-effect" value="{{ 'subscribe_to_newsletter'|trans }}" />
                                     </div>
                                 </div>
                             </form>
