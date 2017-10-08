@@ -65,6 +65,11 @@ services:
         public: true
         arguments: ["@doctrine.orm.entity_manager"]
 
+    app.jwt:
+        class: AppBundle\Service\JwtService
+        public: true
+        arguments: ["@security.token_storage", "@lexik_jwt_authentication.jwt_manager"]
+
     AppBundle\EventListener\UserListener:
         tags:
             - { name: doctrine.event_listener, event: prePersist }

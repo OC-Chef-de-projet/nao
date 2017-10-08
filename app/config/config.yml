@@ -50,6 +50,7 @@ twig:
     globals:
         posts: "@app.post"
         notifs: "@app.notification"
+        jwt: "@app.jwt"
 
 # Doctrine Configuration
 doctrine:
