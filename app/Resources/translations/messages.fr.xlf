@@ -17,7 +17,10 @@
                 <source>error_email_format</source>
                 <target>Veuillez fournir une adresse email valide.</target>
             </trans-unit>
-
+            <trans-unit id="error_newsletter_already_subscribe">
+                <source>error_newsletter_already_subscribe</source>
+                <target>Cet email recoit déjà les newsletters.</target>
+            </trans-unit>
 
             <!-- PAGE TITLE -->
             <trans-unit id="homepage_title">
@@ -588,6 +591,11 @@
                 <target>Recherche</target>
             </trans-unit>
 
+            <!-- NEWSLETTER SEARCH PAGE -->
+            <trans-unit id="newsletter_subscribe_success">
+                <source>newsletter_subscribe_success</source>
+                <target>Votre inscription à notre newletter a bien été prise en compte, toute l'équipe de NAO vous remercie.</target>
+            </trans-unit>
 
             <!-- 404 PAGE -->
             <trans-unit id="404_main_title">

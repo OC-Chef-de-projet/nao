@@ -58,7 +58,7 @@ services:
     app.news:
         class: AppBundle\Service\NewsletterService
         public: true
-        arguments: ["@doctrine.orm.entity_manager"]
+        arguments: ["@doctrine.orm.entity_manager", "@translator"]
 
     app.jwt:
         class: AppBundle\Service\JwtService

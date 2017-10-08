@@ -22,7 +22,8 @@ class NewsletterController extends Controller
      */
     public function subscribeAction(Request $request)
     {
-        return new JsonResponse(['valid' => false]);
+        $response = $this->container->get('app.news')->subscribe($request);
+        return new JsonResponse($response);
     }
 
 
