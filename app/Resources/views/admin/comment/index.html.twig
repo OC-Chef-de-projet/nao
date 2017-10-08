@@ -80,10 +80,9 @@
             $('.gotopage').click(function () {
                 var pageno = $(this).data("page");
                 // Search active page
-                var current = $('.pagination').find('.active').attr('id');
                 checkFirstpage(pageno);
                 checkLastpage(pageno);
-                displayPage(current);
+                displayPage(pageno);
 
             });
         });

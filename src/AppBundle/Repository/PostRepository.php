@@ -26,6 +26,7 @@ class PostRepository extends EntityRepository
 
     {
 
+        dump($limit);
         $query = $this->createQueryBuilder('p')
             ->where('p.status = :status')
             ->setParameter('status',$status);

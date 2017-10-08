@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\View\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use AppBundle\Form\Type\ConfirmType;
 
 /**
  * Class PostController
@@ -34,8 +35,8 @@ class PostController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-       error_log( $request->request->get('page'));
-        error_log( $request->request->get('status'));
+        $form = $this->createForm(ConfirmType::class,null, ['url' => $this->generateUrl('admin_post_confirmation', array('action' => '--','id' => 0))]);
+        $form->handleRequest($request);
 
         $posts = $em->getRepository('AppBundle:Post')->getPostsByStatus(
             $request->request->get('page'),
@@ -44,10 +45,11 @@ class PostController extends Controller
         );
 
         $html = $this->render(':admin/post:list.html.twig', [
-            'postlist' => $posts
+            'postlist' => $posts,
+            'form' =>  $form->createView()
+
         ])->getContent();
 
         return new JsonResponse(['html' => $html]);
     }
 }
-
