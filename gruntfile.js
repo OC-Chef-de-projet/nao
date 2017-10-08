@@ -93,7 +93,10 @@ module.exports = function (grunt) {
                         'resources/vendor/jquery/jquery-3.2.1.min.js',
                         'resources/vendor/materialize/js/materialize.min.js',
                         'resources/vendor/materialize/js/material-dialog.min.js',
-                        'resources/vendor/materialize-autocomplete/jquery.materialize-autocomplete.min.js'
+                        'resources/vendor/materialize-autocomplete/jquery.materialize-autocomplete.min.js',
+                        'resources/vendor/jquery-validator/jquery.validate.min.js',
+                        'resources/vendor/jquery-validator/additional-methods.min.js',
+                        'resources/vendor/jquery-validator/localization/messages_fr.js'
                     ],
 
 

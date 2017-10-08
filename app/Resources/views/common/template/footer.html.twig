@@ -17,11 +17,12 @@
                     <div class="col s12">
                         <h2>{{ 'stay_inform'|trans }}</h2>
                         <div class="row no-pad-bot">
-                            <form class="col s12" method="post">
+                            <form id="global_form_newsletter" class="col s12">
                                 <div class="row no-pad-bot">
                                     <div class="input-field col s12">
-                                        <input id="news_email" name="news_email" type="email" class="validate">
-                                        <label for="news_email">{{ 'label_email'|trans }}</label>
+                                        <input style="display:none">
+                                        <input name="ng_email" type="email" data-msg-laxemail="{{ 'error_email_format'|trans }}" autocomplete="off"  class="validate"/>
+                                        <label>{{ 'label_email'|trans }} *</label>
                                     </div>
                                     <div class="input-field col s12">
                                         <input type="submit" name="submit" class="btn waves-effect" value="{{ 'subscribe_to_newsletter'|trans }}" />
