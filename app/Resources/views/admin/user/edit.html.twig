@@ -54,11 +54,11 @@
                                 {{ form_widget(form.role) }}
                             </div>
                             <!-- active -->
-                            <div class='switch row'>
+                            <div class='switch row' style="padding-top:150px;margin-bottom:150px;">
                                 <label>
                                     {{ form_widget(form.inactive) }}
                                     <span class="lever"></span>
-                                    {% trans %}bloqued_user{% endtrans %}
+                                    {{  'bloqued_user' | trans }}
                                 </label>
                             </div>
                             <!-- action -->
