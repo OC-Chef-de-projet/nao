@@ -555,6 +555,16 @@
                 <source>faq_full</source>
                 <target>Foire aux questions</target>
             </trans-unit>
+            <trans-unit id="faq_more_question">
+                <source>faq_more_question</source>
+                <target>Vous ne trouvez pas la réponse à votre question ?
+                N'hésitez pas à nous contacter via la </target>
+            </trans-unit>
+            <trans-unit id="faq_contact_page">
+                <source>faq_contact_page</source>
+                <target>page contact</target>
+            </trans-unit>
+
 
             <!-- GLOBAL SEARCH PAGE -->
             <trans-unit id="search_min">
