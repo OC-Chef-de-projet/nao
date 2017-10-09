@@ -281,28 +281,21 @@
             }
         });
 
-        /* ==================================================
-         PAGINATE
-         ===========================================================*/
-        /**
-         * Remove page into pagination
-         * @param page
-         */
-        function removePage(page) {
-            $('#p_' + page).remove();
-        }
+        /* ====================================
+         COLLAPSIBLE ACCORDION
+         =============================================*/
+        var collapsibleHeader   = $('.collapsible-header');
 
-        /**
-         * Add a new page into pagination
-         * @param page
-         */
-        function addPage(page) {
-            html = '<li id="p_' + page + '" class="waves-effect ">' +
-                '<a class="gotopage" href="#" data-page="' + page + '">' + page + '</a>' +
-                '</li>';
-            $(html).insertBefore('.pagination>li:last');
-            ;
-        }
+        $('.collapsible').collapsible({
+            accordion: false,
+            onOpen: function(el) {
+                collapsibleHeader.find('i').html('keyboard_arrow_right');
+                el.find('i').html('keyboard_arrow_down');
+            }, // Callback for Collapsible open
+            onClose: function(el) {
+                el.find('i').html('keyboard_arrow_right');
+            } // Callback for Collapsible close
+        });
 
     });
 })(jQuery);

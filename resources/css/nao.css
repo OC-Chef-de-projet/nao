@@ -951,6 +951,36 @@ header.sticky .tabs .indicator {
 }
 
 /* ====================================
+    collapsible accordion
+    =============================================*/
+
+ul.collapsible{
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+ul.collapsible > li > div.collapsible-header{
+    border: none;
+    color: #009688;
+}
+
+ul.collapsible > li.active > div.collapsible-header{
+    color: #00675B;
+}
+
+ul.collapsible > li > div.collapsible-header i{
+    position: absolute;
+    right: 30px;
+}
+
+ul.collapsible > li > div.collapsible-body{
+    border-bottom: none;
+    padding: 1rem;
+}
+
+
+/* ====================================
     Responsive
     =============================================*/
 
