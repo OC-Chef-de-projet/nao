@@ -45,8 +45,6 @@ class GeolocService
                 break;
             }
             foreach ($regions as $region) {
-                $lt2 = $region->getLatitude();
-                $lg2 = $region->getLongitude();
                 $d = $this->gps->getDistance($region->getLatitude(), $region->getLongitude(), $latitude, $longitude);
                 if ($d < $distance) {
                     $distance = $d;
@@ -81,7 +79,7 @@ class GeolocService
         $result = [];
         foreach($observations as $observation){
             $d = $this->gps->getDistance($observation->getLatitude(), $observation->getLongitude(), $latitude, $longitude);
-            if($d <= 10){
+            if($d <= $distance){
                 $result[] = $observation;
             }
         }
