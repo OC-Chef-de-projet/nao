@@ -39,7 +39,6 @@ class GeolocService
 
         $distance = 10000000;
         $region_id = 0;
-        $count = 0;
         for($i = 1 ; $i < 40000 ; $i += 500){
             $regions = $this->em->getRepository('AppBundle:FranceRegion')->getAll($i, 500);
             if(!$regions){
