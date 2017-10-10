@@ -790,6 +790,10 @@ footer ul.social > li:not(:first-child) {
     margin: 0;
 }
 
+.card .card-content .card-title.less{
+    font-size: 18px;
+}
+
 /* ====================================
     Stepbar
     =============================================*/
@@ -812,11 +816,11 @@ footer ul.social > li:not(:first-child) {
 }
 
 #stepbar li:nth-child(3):before {
-    content: "\f497";
+    content: "\f135";
 }
 
 #stepbar li:last-child:before {
-    content: "\f135";
+    content: "\f497";
 }
 
 #stepbar li:before {
@@ -1238,6 +1242,10 @@ ul.collapsible > li > div.collapsible-body{
         margin: 0;
         padding: 0;
     }
+
+    .card .card-content .card-title.less{
+        font-size: 16px;
+    }
 }
 
 /*
@@ -1302,6 +1310,10 @@ ul.collapsible > li > div.collapsible-body{
         box-shadow: none !important;
         margin: 0;
         padding: 0;
+    }
+
+    .card .card-content .card-title.less{
+        font-size: 16px;
     }
 }
 
