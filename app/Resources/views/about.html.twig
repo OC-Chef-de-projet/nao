@@ -1,3 +1,5 @@
+{% set bgwhite = true %}
+
 {% extends "common/template/base.html.twig" %}
 
 {% block title %}{{ 'about_page_title'|trans }}{% endblock %}
@@ -46,7 +48,66 @@
     <!-- PAGE CONTENT -->
     <main class="container marge-top">
         <section>
-
+            <div class="row">
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m10 push-m1">
+                                    <div class="row">
+                                        <div class="col s12 ">
+                                            <br />
+                                            <span class="card-title less"> {{ 'NAO'|trans }}</span>
+                                            <p>{{ 'about_nao_explain'|trans }}</p>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col s12 center-align">
+                                            <img src="assets/img/logo/logo-NAO-color-3.png" width="280px"/>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <span class="card-title less">{{ 'collaborative_project_title'|trans }}</span>
+                                            <p>{{ 'collaborative_project_explain'|trans }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <ul id="stepbar">
+                                                <li>{{ 'observe'|trans }}</li>
+                                                <li>{{ 'photographed'|trans }}</li>
+                                                <li>{{ 'do_validate'|trans }}</li>
+                                                <li>{{ 'share'|trans }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col s12 m6 right">
+                                            <img src="assets/img/a-shuhani-541.jpg" />
+                                        </div>
+                                        <div class="col s12 m6 right">
+                                            {{ 'about_explain_1'|trans }}
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <img src="assets/img/pawel-janiak-114499.jpg" />
+                                        </div>
+                                        <div class="col s12 m6">
+                                            {{ 'about_explain_2'|trans }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 {% endblock %}

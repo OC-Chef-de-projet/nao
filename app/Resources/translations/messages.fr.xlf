@@ -434,7 +434,7 @@
             </trans-unit>
             <trans-unit id="collaborative_project_explain">
                 <source>collaborative_project_explain</source>
-                <target> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida, elit at placerat bibendum, risus neque volutpat purus,ut auctor quam neque vitae sapien.</target>
+                <target>Dear Mr. President, There are too many states nowadays. Please, eliminate three. P.S. I am not a crackpot. I'm normally not a praying man, but if you're up there, please save me, Superman. But, Aquaman, you cannot marry a woman without gills. You're from two different worlds… Oh, I've wasted my life.</target>
             </trans-unit>
             <trans-unit id="observe">
                 <source>observe</source>
@@ -507,6 +507,18 @@
             <trans-unit id="about_secondary_title">
                 <source>about_secondary_title</source>
                 <target>L'association NAO</target>
+            </trans-unit>
+            <trans-unit id="about_nao_explain">
+                <source>about_nao_explain</source>
+                <target>How could you?! Haven't you learned anything from that guy who gives those sermons at church? Captain Whatshisname? We live in a society of laws! Why do you think I took you to all those Police Academy movies? For fun? Well, I didn't hear anybody laughing, did you? Except at that guy who made sound effects. Makes sound effects and laughs. Where was I? Oh yeah! Stay out of my booze. The Internet King? I wonder if he could provide faster nudity…</target>
+            </trans-unit>
+            <trans-unit id="about_explain_1">
+                <source>about_explain_1</source>
+                <target>Thank you, steal again. Look out, Itchy! He's Irish! Look out, Itchy! He's Irish! Uh, no, they're saying "Boo-urns, Boo-urns." I'll be back. You can't keep the Democrats out of the White House forever, and when they get in, I'm back on the streets, with all my criminal buddies. on, a woman is like a beer. They smell good, they look good, you'd step over your own mother just to get one! But you can't stop at one. You wanna drink another woman! And now, in the spirit of the season: start shopping. And for every dollar of Krusty merchandise you buy, I will be nice to a sick kid. For legal purposes, sick kids may include hookers with a cold.</target>
+            </trans-unit>
+            <trans-unit id="about_explain_2">
+                <source>about_explain_2</source>
+                <target>Thank you, steal again. Look out, Itchy! He's Irish! Look out, Itchy! He's Irish! Uh, no, they're saying "Boo-urns, Boo-urns." I'll be back. You can't keep the Democrats out of the White House forever, and when they get in, I'm back on the streets, with all my criminal buddies. on, a woman is like a beer. They smell good, they look good, you'd step over your own mother just to get one! But you can't stop at one. You wanna drink another woman! And now, in the spirit of the season: start shopping. And for every dollar of Krusty merchandise you buy, I will be nice to a sick kid. For legal purposes, sick kids may include hookers with a cold.</target>
             </trans-unit>
 
 
