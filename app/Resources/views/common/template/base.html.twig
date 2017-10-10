@@ -38,7 +38,7 @@
         {% endblock stylesheets %}
 
     </head>
-    <body>
+    <body {% if bgwhite is defined %} class="bg-white" {% endif %}>
         <!-- SIDE MENU -->
         {% include 'common/widget/sidebar/base.html.twig' with { 'user_is_logged' : user_is_logged } %}
 
