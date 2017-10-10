@@ -9,8 +9,6 @@ use AppBundle\Service\GPS;
 /**
  * Class GeolocService
  *
- * @Route("/api/geoloc")
- *
  * @package AppBundle\Service
  */
 class GeolocService
