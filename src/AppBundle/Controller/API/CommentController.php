@@ -36,7 +36,6 @@ class CommentController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        error_log( $request->request->get('page'));
         $comments = $em->getRepository('AppBundle:Comment')->getCommentsToModerate(
             $request->request->get('page'),
             $this->getParameter('list_limit')

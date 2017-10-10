@@ -63,11 +63,35 @@ class ObservationController extends Controller
      */
     public function regionAction(Request $request)
     {
-
         $latitude =$request->get('latitude');
         $longitude = $request->get('longitude');
 
         $response = $this->container->get('app.geoloc')->getFranceRegion($latitude,$longitude);
+
+        $viewHandler = $this->get('fos_rest.view_handler');
+        $view = View::create($response);
+        $view->setFormat('json');
+        return $viewHandler->handle($view);
+
+    }
+
+    /**
+     * Get all observations from a GPS coordinate
+     *
+     * @Route("/nearest", name="obs.nearest")
+     * @Method({"POST"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function nearestAction(Request $request)
+    {
+
+        $distance = 10;
+        $latitude =$request->get('latitude');
+        $longitude = $request->get('longitude');
+
+        $response = $this->container->get('app.geoloc')->getNearest($latitude,$longitude,$distance);
 
         $viewHandler = $this->get('fos_rest.view_handler');
         $view = View::create($response);

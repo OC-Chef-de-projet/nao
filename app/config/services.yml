@@ -35,6 +35,11 @@ services:
         public: true
         arguments: []
 
+    app.gps:
+        class: AppBundle\Service\GPSService
+        public: true
+        arguments: []
+
     app.notification:
         class: AppBundle\Service\NotificationService
         public: true
@@ -68,7 +73,7 @@ services:
     app.geoloc:
         class: AppBundle\Service\GeolocService
         public: true
-        arguments: ["@doctrine.orm.entity_manager"]
+        arguments: ["@doctrine.orm.entity_manager", "@app.gps"]
 
     app.jwt:
         class: AppBundle\Service\JwtService
