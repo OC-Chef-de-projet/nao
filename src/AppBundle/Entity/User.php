@@ -225,29 +225,7 @@ class User implements UserInterface
         return $this->role;
     }
 
-    /**
-     * Set newsletter
-     *
-     * @param boolean $newsletter
-     *
-     * @return User
-     */
-    public function setNewsletter($newsletter)
-    {
-        $this->newsletter = $newsletter;
 
-        return $this;
-    }
-
-    /**
-     * Get newsletter
-     *
-     * @return boolean
-     */
-    public function getNewsletter()
-    {
-        return $this->newsletter;
-    }
 
     /**
      * Set token
