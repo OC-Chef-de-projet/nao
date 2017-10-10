@@ -9,6 +9,7 @@ parameters:
     locale: fr
     posts_directory: '%kernel.project_dir%/web/images/posts'
     list_limit: 4
+    gps_distance: 10 # Distance between current position and obsersations
 
 framework:
     #esi: ~
