@@ -107,11 +107,15 @@ img {
 }
 
 .light-orange {
-    color: #FF6E40;
+    color: #FF3D00;
 }
 
 .light-orange:hover{
     color: #DD2C00;
+}
+
+.light-orange:visited{
+    color: #FF6E40;
 }
 
 /* ====================================
@@ -782,6 +786,10 @@ footer ul.social > li:not(:first-child) {
     background-color: #FF3D00;
 }
 
+.card h2{
+    margin: 0;
+}
+
 /* ====================================
     Stepbar
     =============================================*/
@@ -972,6 +980,7 @@ ul.collapsible{
 ul.collapsible > li > div.collapsible-header{
     border: none;
     color: #009688;
+    padding: 1rem 0 1rem 0;
 }
 
 ul.collapsible > li.active > div.collapsible-header{
@@ -980,12 +989,12 @@ ul.collapsible > li.active > div.collapsible-header{
 
 ul.collapsible > li > div.collapsible-header i{
     position: absolute;
-    right: 30px;
+    right: 0px;
 }
 
 ul.collapsible > li > div.collapsible-body{
     border-bottom: none;
-    padding: 1rem;
+    padding: 1rem 0 1rem 0;
 }
 
 
@@ -1010,6 +1019,7 @@ ul.collapsible > li > div.collapsible-body{
     Medium screen
  */
 @media all and (min-width: 601px) and (max-width: 992px) {
+
     .no-pad-bot {
         margin-bottom: 10px !important;
     }
@@ -1084,8 +1094,10 @@ ul.collapsible > li > div.collapsible-body{
 
     header nav #nav-small-title.activated {
         display: block;
-        float: left;
-        font-size: 20px;
+        position: absolute;
+        top: 20px;
+        left: 55px;
+        font-size: 18px;
         font-weight: 500;
     }
 
@@ -1097,12 +1109,17 @@ ul.collapsible > li > div.collapsible-body{
     header.full-height.error div.explain h1 {
         text-align: right;
     }
+
 }
 
 /**
     Phone and small screen
  */
 @media all and (max-width: 600px) {
+
+    body.bg-white{
+        background-color: #FFFFFF !important;
+    }
 
     footer h2 {
         font-size: 14px;
@@ -1213,12 +1230,24 @@ ul.collapsible > li > div.collapsible-body{
         bottom: 40px;
         right: 10%;
     }
+
+    .card.no-style{
+        border-radius: 0px;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        margin: 0;
+        padding: 0;
+    }
 }
 
 /*
   Phone (Landscape)
   */
 @media only screen and (min-width: 418px) and (max-width: 767px) and (orientation: landscape) {
+
+    body.bg-white{
+        background-color: #FFFFFF !important;
+    }
 
     header section h1 {
         margin: 5px 0 0 0;
@@ -1266,8 +1295,15 @@ ul.collapsible > li > div.collapsible-body{
     header.full-height.error div.explain h1 {
         text-align: right;
     }
-}
 
+    .card.no-style{
+        border-radius: 0px;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        margin: 0;
+        padding: 0;
+    }
+}
 
 /* ====================================
     Admin

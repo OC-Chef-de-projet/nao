@@ -1,3 +1,5 @@
+{% set bgwhite = true %}
+
 {% extends "common/template/base.html.twig" %}
 
 {% block title %}{{ 'faq_page_title'|trans }}{% endblock %}
@@ -48,25 +50,25 @@
         <section>
             <div class="row">
                 <div class="col s12">
-                    <div class="card">
+                    <div class="card no-style">
                         <div class="card-content">
                             <div class="row">
                                 <div class="col s12 m8 push-m2">
                                     <ul class="collapsible" data-collapsible="accordion">
                                         <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i>1. Que veulent dire les lettres FAQ ?</div>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>1. Que veulent dire les lettres FAQ ?</h2></div>
                                             <div class="collapsible-body">
                                                 <span>Ce sont les initiales des mots « Foire aux Questions » ou « Frequently Asked Questions » en anglais.</span>
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i>2. Qu’est-ce qu’une FAQ ?</div>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>2. Qu’est-ce qu’une FAQ ?</h2></div>
                                             <div class="collapsible-body">
                                                 <span>Une FAQ est une liste de questions/réponses. Présentée sur un site internet, la FAQ a pour vocation de répondre aux questions fréquentes que se pose l’internaute vis-à-vis d’un produit ou d’un service.</span>
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i>3. A quoi sert une FAQ ?</div>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>3. A quoi sert une FAQ ?</h2></div>
                                             <div class="collapsible-body">
                                                 <span>
                                                     <p>Une FAQ présente plusieurs avantages, pour vos clients comme pour vous !</p><br />
@@ -76,13 +78,13 @@
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i>4. Avoir une FAQ, c’est obligatoire ?</div>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>4. Avoir une FAQ, c’est obligatoire ?</h2></div>
                                             <div class="collapsible-body">
                                                 <span>Une FAQ n’a rien d’obligatoire. D’ailleurs, ce n’est pas toujours la stratégie la plus pertinente à mettre en place sur votre site ! Si vos prospects sont obligés de la consulter régulièrement ou que les mêmes questions reviennent souvent, ça peut vouloir dire que votre offre n’est pas présentée de façon suffisamment claire et qu’il y a des lacunes dans les contenus principaux de votre site. Dans ce cas, au lieu de proposer une FAQ, il peut être plus judicieux de retravailler directement vos contenus. En effet, une bonne FAQ intervient en support, en « complément » des contenus proposés sur le site, mais elle ne doit en aucun cas les supplanter…</span>
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i>5. Comment présenter une FAQ ?</div>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>5. Comment présenter une FAQ ?</h2></div>
                                             <div class="collapsible-body">
                                                 <span>
                                                     <p>Il existe deux principaux formats de FAQ :</p><br />
@@ -92,21 +94,19 @@
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i>6. Quelles questions inclure dans une FAQ ?</div>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>6. Quelles sont les questions a inclure  ?</h2></div>
                                             <div class="collapsible-body">
                                                 <span>La principale erreur des entreprises qui rédigent une FAQ est de poser les questions qu’elles aimeraient que les prospects posent et sur lesquelles elles peuvent briller. Seulement voilà, ce sont rarement les mêmes que celles que les prospects posent réellement.</span>
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i>7. Comment optimiser une FAQ pour le référencement web ?</div>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>7. Comment optimiser une FAQ pour le référencement web ?</h2></div>
                                             <div class="collapsible-body">
                                                 <span>Pour booster votre référencement web, vous opterez plutôt pour une FAQ dynamique (à condition que ce soit pertinent avec vos problématiques par ailleurs… !). Vous aurez donc ainsi une nouvelle page de contenu pour chaque couple question/réponse. Ces pages, comme n’importe quelles autres pages de votre site, peuvent être optimisées pour le référencement web. Il faut dans ce cas prendre soin de renseigner le titre de la page et sa méta-description, d’inclure des H1 et H2 pour structurer celle-ci, etc. Bref, du grand classique ! Ca ne vous parle pas du tout ? Vous pouvez demander un coup de pouce à une agence web, elle saura vous aider.</span>
                                             </div>
                                         </li>
                                     </ul>
-                                    <div class="col s12 center-align">
-                                      <p>{{ 'faq_more_question'|trans|nl2br }}<a href="{{ path('contact') }}" class="light-orange">{{ 'faq_contact_page'|trans }}</a></p>
-                                    </div>
+                                      <p class="center-align">{{ 'faq_more_question'|trans|nl2br }}<a href="{{ path('contact') }}" class="light-orange">{{ 'faq_contact_page'|trans }}</a></p>
                                 </div>
                             </div>
                         </div>
