@@ -793,11 +793,35 @@
             <!-- EMAIL -->
             <trans-unit id="email_feedback_subject">
                 <source>email_feedback_subject</source>
-                <target>Remontée</target>
+                <target>NAO - Demande de contact</target>
+            </trans-unit>
+            <trans-unit id="email_feedback_title">
+                <source>email_feedback_title</source>
+                <target>Un oisillon a besoin de votre aide</target>
             </trans-unit>
             <trans-unit id="email_feedback_content">
                 <source>email_feedback_content</source>
-                <target>Voici les infos</target>
+                <target>
+                Bonjour,
+
+                vous recevez cet email car une demande de contact vient d'être faite sur le site.
+                Vous trouverez ci-dessous toutes les informations par laissé l'expéditeur.
+
+                ---------------------------
+
+                Nom : %name%
+
+                Email: %email%
+
+                Objet: %objet%
+
+                Message: %message%
+
+                ---------------------------
+
+                Cet email à été envoyer automatiquement, merci de ne pas y répondre.
+
+                </target>
             </trans-unit>
         </body>
     </file>
