@@ -123,7 +123,8 @@ ul.social > li:not(:first-child) {
     color: rgba(0, 0, 0, 0.54) !important;
 }
 
-.light-2 {
+.light-2,
+.light-2-no-hov {
     color: rgba(0, 0, 0, 0.54) !important;
 }
 
@@ -811,6 +812,10 @@ footer ul.social > li:not(:first-child) {
     margin-top: 6%;
 }
 
+.card .card-content form .secondary-section.v-margin {
+    margin-top: 15%;
+}
+
 .card .card-content form .secondary-section:after {
     background: rgba(0, 0, 0, 0.54);
     content: "";
@@ -1145,6 +1150,29 @@ ul.collapsible > li > div.collapsible-body{
         text-align: right;
     }
 
+    .card .card-content form {
+        padding: 0px;
+        min-height: 150px;
+    }
+
+    .card .card-content form .main-section {
+        padding: 0px;
+    }
+
+    .card .card-content form .secondary-section {
+        padding-left: 0px;
+        height: 100%;
+        margin-top: 5%;
+    }
+
+    .card .card-content form .secondary-section.v-margin {
+        margin-top: 5%;
+    }
+
+    .card .card-content form .secondary-section:after {
+        content: none;
+    }
+
 }
 
 /**
@@ -1232,6 +1260,10 @@ ul.collapsible > li > div.collapsible-body{
     .card .card-content form .secondary-section {
         padding-left: 0px;
         height: 100%;
+        margin-top: 5%;
+    }
+
+    .card .card-content form .secondary-section.v-margin {
         margin-top: 5%;
     }
 
@@ -1363,6 +1395,29 @@ ul.collapsible > li > div.collapsible-body{
 
     form#form_newsletter input[type=submit]{
         float: right;
+    }
+
+    .card .card-content form {
+        padding: 0px;
+        min-height: 150px;
+    }
+
+    .card .card-content form .main-section {
+        padding: 0px;
+    }
+
+    .card .card-content form .secondary-section {
+        padding-left: 0px;
+        height: 100%;
+        margin-top: 5%;
+    }
+
+    .card .card-content form .secondary-section.v-margin {
+        margin-top: 5%;
+    }
+
+    .card .card-content form .secondary-section:after {
+        content: none;
     }
 }
 

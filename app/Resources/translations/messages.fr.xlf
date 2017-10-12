@@ -289,6 +289,14 @@
                 <source>label_name</source>
                 <target>Nom</target>
             </trans-unit>
+            <trans-unit id="label_password">
+                <source>label_password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="label_password_confirmation">
+                <source>label_password_confirmation</source>
+                <target>Confirmer le mot de passe</target>
+            </trans-unit>
             <trans-unit id="label_object">
                 <source>label_object</source>
                 <target>Objet</target>
@@ -502,6 +510,14 @@
             <trans-unit id="registration_secondary_title">
                 <source>registration_secondary_title</source>
                 <target>Rejoignez la communauté</target>
+            </trans-unit>
+            <trans-unit id="registration_newsletter_explain">
+                <source>registration_newsletter_explain</source>
+                <target>Je souhaite être informé des actualités</target>
+            </trans-unit>
+            <trans-unit id="registration_have_account">
+                <source>registration_have_account</source>
+                <target>Déja un compte ?</target>
             </trans-unit>
 
 
