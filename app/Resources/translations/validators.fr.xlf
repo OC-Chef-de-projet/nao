@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+
+
+            <!-- COMMON -->
+            <trans-unit id="not_blank">
+                <source>not_blank</source>
+                <target>Ce champ est obligatoire.</target>
+            </trans-unit>
+            <trans-unit id="format_min_2">
+                <source>format_min_2</source>
+                <target>Veuillez fournir au moins 2 caractères.</target>
+            </trans-unit>
+
+
+            <!-- EMAIL -->
+            <trans-unit id="email_invalid">
+                <source>email_invalid</source>
+                <target>Veuillez fournir une adresse email valide.</target>
+            </trans-unit>
+
+
+            <!-- NAME -->
+            <trans-unit id="name_format">
+                <source>name_format</source>
+                <target>Veuillez fournir un nom valide.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
+        <!--
+        {% trans %}{% endtrans %}
+        -->
