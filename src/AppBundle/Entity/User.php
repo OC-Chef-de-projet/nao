@@ -5,6 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 /**
  * User
  *
@@ -27,6 +28,8 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="not_blank")
+     * @Assert\Regex( pattern="#^(?!-)[\p{L}- ]{2,20}[^\-]$#u", message="name_format")
      */
     private $name;
 
@@ -34,10 +37,18 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
-     *
-     * @Assert\Email(message = "The email '{{ value }}' is not a valid email.", checkMX = true)
+     * @Assert\NotBlank(message="not_blank")
+     * @Assert\Email( message = "email_invalid", checkMX = true)
      */
     private $email;
+
+
+    /**
+     * @var string
+     * @Assert\NotBlank(message="not_blank")
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
 
     /**
      * @var string
@@ -45,12 +56,6 @@ class User implements UserInterface
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
-
-
-    /**
-     * @var string
-     */
-    private $plainPassword;
 
     /**
      * @var string
@@ -95,8 +100,15 @@ class User implements UserInterface
      */
     private $inactive;
 
-
-
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->created      = new \DateTime();
+        $this->role         = 'ROLE_OBSERVER';
+        $this->inactive     = 1;
+    }
 
     public function getSalt()
     {
