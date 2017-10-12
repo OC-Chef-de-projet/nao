@@ -360,8 +360,9 @@
         /* ==================================================
          GLOBAL DIALOGS
          ===========================================================*/
-         if(toastMsg.length){
+         if(typeof toastMsg !== 'undefined'){
              Materialize.toast(toastMsg, 4000);
+             toastMsg = undefined;
          }
 
     });

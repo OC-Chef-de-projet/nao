@@ -92,7 +92,9 @@
         </section>
     </main>
     {% if app.session.flashbag.has("success") %}
-        <script>var toastMessage = "{{ 'contact_success'|trans }}";</script>
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <script>var toastMsg = "{{ 'contact_success'|trans }}";</script>
+        {% endfor %}
     {% endif %}
 
 {% endblock %}
