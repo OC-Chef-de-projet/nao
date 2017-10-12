@@ -635,7 +635,10 @@
                 <source>contact_faq_link</source>
                 <target>foire aux questions</target>
             </trans-unit>
-
+            <trans-unit id="contact_success">
+                <source>contact_success</source>
+                <target>Votre demande de contact à bien été prise en compte.</target>
+            </trans-unit>
 
             <!-- 404 PAGE -->
             <trans-unit id="404_main_title">

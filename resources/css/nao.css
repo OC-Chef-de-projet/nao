@@ -43,6 +43,10 @@ div.center {
     margin: auto;
 }
 
+.lright-scenter{
+    text-align: right;
+}
+
 /* ====================================
     Common / Typography
     =============================================*/
@@ -793,7 +797,7 @@ footer ul.social > li:not(:first-child) {
 }
 
 .card .card-content form {
-    padding: 5px 60px 5px 70px;
+    padding: 5px 60px 5px 60px;
     min-height: 150px;
 }
 
@@ -1119,25 +1123,6 @@ ul.collapsible > li > div.collapsible-body{
         font-size: 22px;
     }
 
-    .card .card-content form {
-        padding: 10px;
-        min-height: 150px;
-    }
-
-    .card .card-content form .main-section {
-        padding-right: 0;
-    }
-
-    .card .card-content form .secondary-section {
-        padding-left: 0px;
-        height: 100%;
-        margin-top: 5%;
-    }
-
-    .card .card-content form .secondary-section:after {
-        content: none;
-    }
-
     header #nav-logo.activated {
         display: none;
     }
@@ -1236,12 +1221,12 @@ ul.collapsible > li > div.collapsible-body{
     }
 
     .card .card-content form {
-        padding: 10px;
+        padding: 0px;
         min-height: 150px;
     }
 
     .card .card-content form .main-section {
-        padding-right: 0;
+        padding: 0px;
     }
 
     .card .card-content form .secondary-section {
@@ -1252,6 +1237,10 @@ ul.collapsible > li > div.collapsible-body{
 
     .card .card-content form .secondary-section:after {
         content: none;
+    }
+
+    .lright-scenter{
+        text-align: center;
     }
 
     header #nav-logo.activated {

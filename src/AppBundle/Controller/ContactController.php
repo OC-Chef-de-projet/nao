@@ -24,6 +24,8 @@ class ContactController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()){
             $this->container->get('app.mailer')->sendFeedback($feeback);
+            $this->addFlash("success", true);
+            return $this->redirectToRoute('contact');
         }
 
         return $this->render('contact.html.twig', array(
