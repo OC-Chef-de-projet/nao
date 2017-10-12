@@ -281,6 +281,14 @@ form#form_newsletter .error{
     text-align: left;
 }
 
+form label{
+    font-size: 1rem;
+}
+
+form textarea.materialize-textarea{
+    min-height: 7rem;
+}
+
 /* ====================================
     Heading
     =============================================*/
@@ -790,13 +798,13 @@ footer ul.social > li:not(:first-child) {
 }
 
 .card .card-content form .main-section {
-    padding-right: 40px;
+    padding-right: 0px;
 }
 
 .card .card-content form .secondary-section {
     padding-left: 90px;
     height: 100%;
-    margin-top: 12%;
+    margin-top: 6%;
 }
 
 .card .card-content form .secondary-section:after {

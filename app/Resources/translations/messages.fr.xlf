@@ -12,6 +12,7 @@
                 <target>Propulsé par Dot.coM</target>
             </trans-unit>
 
+
             <!-- ERROR MESSAGE -->
             <trans-unit id="error_email_format">
                 <source>error_email_format</source>
@@ -21,6 +22,7 @@
                 <source>error_newsletter_already_subscribe</source>
                 <target>Cet email recoit déjà les newsletters.</target>
             </trans-unit>
+
 
             <!-- PAGE TITLE -->
             <trans-unit id="homepage_title">
@@ -283,6 +285,22 @@
                 <source>label_email</source>
                 <target>Email</target>
             </trans-unit>
+            <trans-unit id="label_name">
+                <source>label_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="label_object">
+                <source>label_object</source>
+                <target>Objet</target>
+            </trans-unit>
+            <trans-unit id="label_message">
+                <source>label_message</source>
+                <target>Message</target>
+            </trans-unit>
+            <trans-unit id="send">
+                <source>send</source>
+                <target>Envoyer</target>
+            </trans-unit>
 
 
             <!-- ROLES -->
@@ -369,7 +387,6 @@
                 <source>featured_image</source>
                 <target>Image à la une</target>
             </trans-unit>
-
 
 
             <!-- OBSERVATIONS -->
@@ -601,11 +618,24 @@
                 <target>Recherche</target>
             </trans-unit>
 
+
             <!-- NEWSLETTER SEARCH PAGE -->
             <trans-unit id="newsletter_subscribe_success">
                 <source>newsletter_subscribe_success</source>
                 <target>Votre inscription à notre newletter a bien été prise en compte, toute l'équipe de NAO vous remercie.</target>
             </trans-unit>
+
+
+            <!-- CONTACT PAGE -->
+            <trans-unit id="contact_explain_faq">
+                <source>contact_explain_faq</source>
+                <target>N'hésitez pas à consulter notre</target>
+            </trans-unit>
+            <trans-unit id="contact_faq_link">
+                <source>contact_faq_link</source>
+                <target>foire aux questions</target>
+            </trans-unit>
+
 
             <!-- 404 PAGE -->
             <trans-unit id="404_main_title">
@@ -627,6 +657,7 @@
                 <source>back_to_homepage</source>
                 <target>Retour à l'accueil</target>
             </trans-unit>
+
 
             <!-- USERS DASHBOARD -->
             <trans-unit id="dashboard_main_title">
@@ -653,6 +684,7 @@
                 <source>notifications</source>
                 <target>notifications</target>
             </trans-unit>
+
 
             <!-- ADMIN DASHBOARD -->
             <trans-unit id="admin">
@@ -735,6 +767,7 @@
                 <target>Effacer la recherche</target>
             </trans-unit>
 
+
             <!-- MISC -->
             <trans-unit id="yes">
                 <source>yes</source>
@@ -757,6 +790,15 @@
                 <target>Autoriser</target>
             </trans-unit>
 
+            <!-- EMAIL -->
+            <trans-unit id="email_feedback_subject">
+                <source>email_feedback_subject</source>
+                <target>Remontée</target>
+            </trans-unit>
+            <trans-unit id="email_feedback_content">
+                <source>email_feedback_content</source>
+                <target>Voici les infos</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

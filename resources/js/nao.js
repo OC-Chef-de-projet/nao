@@ -335,5 +335,27 @@
             } // Callback for Collapsible close
         });
 
+        /* ==================================================
+         FEEDBACK FORM
+         ===========================================================*/
+        var feedbackForm      = $('#feedback_form');
+
+         feedbackForm.validate({
+            rules: {
+                'feedback[object]': { minlength: 2 },
+                'feedback[message]': { minlength: 2 }
+            },
+            errorElement : 'div',
+            errorPlacement: function(error, element) {
+                //element.removeClass('valid').addClass('invalid');
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
     });
 })(jQuery);

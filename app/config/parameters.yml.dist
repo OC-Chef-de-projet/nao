@@ -15,6 +15,10 @@ parameters:
     mailer_user: ~
     mailer_password: ~
 
+    mailer_from:  no-reply@nao.fr
+    mailer_to: asso.nao@outlook.fr
+    mailer_name: 'Nos amis les oiseaux'
+
     # A secret key that's used to generate certain security-related tokens
     secret: MySecretStoryIsSoAwesome
 

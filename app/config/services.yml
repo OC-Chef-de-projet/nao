@@ -80,6 +80,10 @@ services:
         public: true
         arguments: ["@security.token_storage", "@lexik_jwt_authentication.jwt_manager"]
 
+    app.mailer:
+        class: AppBundle\Mailer\Mailer
+        arguments: ["@mailer", "@templating", "@translator", "%mailer_from%", "%mailer_to%", "%mailer_name%"]
+
     AppBundle\EventListener\UserListener:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
