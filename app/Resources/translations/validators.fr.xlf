@@ -20,13 +20,24 @@
                 <source>email_invalid</source>
                 <target>Veuillez fournir une adresse email valide.</target>
             </trans-unit>
-
+            <trans-unit id="This email address is already in use">
+                <source>This email address is already in use</source>
+                <target>Cette adresse email est déja utilisé.</target>
+            </trans-unit>
 
             <!-- NAME -->
             <trans-unit id="name_format">
                 <source>name_format</source>
                 <target>Veuillez fournir un nom valide.</target>
             </trans-unit>
+
+            <!-- PASSWORD -->
+            <trans-unit id="password_not_equal">
+                <source>password_not_equal</source>
+                <target>Le mot de passe doit être identique à sa confirmation .</target>
+            </trans-unit>
+
+
         </body>
     </file>
 </xliff>

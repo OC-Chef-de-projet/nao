@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class RegisterType extends AbstractType
 {
@@ -22,8 +23,15 @@ class RegisterType extends AbstractType
             ))
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
+                'invalid_message' => 'password_not_equal',
                 'first_options'  => array('label' => false),
                 'second_options' => array('label' => false),
+            ))
+            ->add('newsletter', CheckboxType::class, array(
+                'mapped'    => false,
+                'label'     => false,
+                'required' => false,
+                'attr'  => array( 'class' => 'filled-in', 'checked' => 'checked')
             ))
         ;
     }

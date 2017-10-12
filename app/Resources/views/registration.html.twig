@@ -80,8 +80,8 @@
                                     </div>
                                     <div class="col s12 l6 secondary-section v-margin center-align">
                                         <div class="col s12">
-                                            <input type="checkbox" class="filled-in" id="newsletter-check" checked="checked" />
-                                            <label for="newsletter-check" class="light-2">{{ 'registration_newsletter_explain'|trans }}</label>
+                                            {{ form_widget(form.newsletter) }}
+                                            <label for="register_newsletter" class="light-2">{{ 'registration_newsletter_explain'|trans }}</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input type="submit" class="btn waves-effect" value="{{ 'sign_in'|trans }}" />
