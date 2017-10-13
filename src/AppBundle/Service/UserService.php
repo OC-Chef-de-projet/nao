@@ -3,8 +3,10 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\User;
+use AppBundle\Mailer\Mailer;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\ORM\EntityManager;
 
 /**
@@ -18,6 +20,8 @@ class UserService
     private $ts;
     private $list_limit;
     private $newsletter;
+    private $passwordEncoder;
+    private $mailer;
 
     /**
      * UserService constructor.
@@ -25,12 +29,14 @@ class UserService
      * @param TokenStorage $ts
      * @param $list_limit
      */
-    public function __construct(EntityManager $em, TokenStorage $ts,$list_limit, NewsletterService $newsletter)
+    public function __construct(EntityManager $em, TokenStorage $ts,$list_limit, NewsletterService $newsletter, UserPasswordEncoderInterface $passwordEncoder, Mailer $mailer)
     {
-        $this->em           = $em;
-        $this->ts           = $ts;
-        $this->list_limit   = $list_limit;
-        $this->newsletter   = $newsletter;
+        $this->em               = $em;
+        $this->ts               = $ts;
+        $this->list_limit       = $list_limit;
+        $this->newsletter       = $newsletter;
+        $this->passwordEncoder  = $passwordEncoder;
+        $this->mailer           = $mailer;
     }
 
     /**
@@ -95,10 +101,25 @@ class UserService
      * Create new user
      *
      * @param User $user
-     * @param $subsribeNewsletter
+     * @param bool $subsribeToNewsletter
      */
-    public function create(User $user, $subsribeToNewsletter){
+    public function create(User $user, $subsribeToNewsletter = false){
 
+        // Encode the password
+        $password = $this->passwordEncoder->encodePassword($user, $user->getPlainPassword());
+        $user->setPassword($password);
+
+        // save the User
+        //$this->em->persist($user);
+        //$this->em->flush();
+
+        // Subscribe to newsletter
+        if($subsribeToNewsletter){
+           // $this->newsletter->subscribe($user->getEmail());
+        }
+
+        // Send mail with activation link
+        $this->mailer->sendActivationAccount($user);
     }
 }
 
