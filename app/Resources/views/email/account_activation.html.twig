@@ -5,17 +5,16 @@
         <tr>
             <td></td>
             <td class="container" bgcolor="#FFFFFF">
-                <div class="content">
+                <div class="content margin">
                     <table>
                         <tr>
                             <td>
                                 <h3>{{ 'email_account_activation_title'|trans }}</h3>
                                 <br />
                                 <table class="summary">
-                                    {{ 'email_account_activation_content'| trans({
-                                        '%name%': user.name ,
-                                        '%confirmationUrl%': absolute_url(path('registration.activation', {'code' : user.token}))
-                                    })| nl2br }}
+                                    {{ 'email_account_activation_content'| trans({ '%name%': user.name })| nl2br }}
+
+                                    <center><a class="button" href="{{ absolute_url(path('registration.activation', {'code' : user.token})) }}">{{ 'activate_account'|trans }}</a></center>
 
                                     {{ 'email_signature'|trans|nl2br }}
                                 </table>

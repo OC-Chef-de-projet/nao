@@ -247,6 +247,10 @@
                 <source>sign_out</source>
                 <target>Se déconnecter</target>
             </trans-unit>
+            <trans-unit id="activate_account">
+                <source>activate_account</source>
+                <target>Activer votre compte</target>
+            </trans-unit>
 
 
             <!-- ALT IMAGE -->
@@ -866,9 +870,8 @@
                 <target>
                 Bonjour %name%,
 
-                Pour valider votre compte utilisateur, merci de valider le lien ci-dessous rendre sur %confirmationUrl%
-
-                Ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.
+                Pour valider votre compte utilisateur, merci de valider le lien ci-dessous.
+                Pour information ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.
 
                 </target>
             </trans-unit>
