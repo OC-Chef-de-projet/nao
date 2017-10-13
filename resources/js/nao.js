@@ -358,6 +358,28 @@
         });
 
         /* ==================================================
+         REGSITER FORM
+         ===========================================================*/
+        var registerForm      = $('#register_form');
+
+        registerForm.validate({
+            rules: {
+                'register[plainPassword][first]': { minlength: 2 },
+                'register[plainPassword][second]': { equalTo: "register[plainPassword][first]" }
+            },
+            errorElement : 'div',
+            errorPlacement: function(error, element) {
+                //element.removeClass('valid').addClass('invalid');
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
+        /* ==================================================
          GLOBAL DIALOGS
          ===========================================================*/
          if(typeof toastMsg !== 'undefined'){
