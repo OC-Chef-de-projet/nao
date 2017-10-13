@@ -109,6 +109,7 @@ class User implements UserInterface
         $this->role         = 'ROLE_OBSERVER';
         $this->inactive     = 1;
         $this->token        = bin2hex(openssl_random_pseudo_bytes(16));
+        $this->image_path   = 'avatar-default.png';
     }
 
     public function getSalt()
