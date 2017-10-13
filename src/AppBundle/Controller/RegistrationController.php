@@ -39,7 +39,7 @@ class RegistrationController extends Controller
 
     /**
      * @Route("/inscription/activation/{code}", name="registration.activation", requirements={"code": "[a-z0-9]+"})
-     * @Method({"GET")
+     * @Method({"GET"})
      */
     public function accountActivationAction(Request $request)
     {
