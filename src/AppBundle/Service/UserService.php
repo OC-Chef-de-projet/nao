@@ -110,12 +110,12 @@ class UserService
         $user->setPassword($password);
 
         // save the User
-        //$this->em->persist($user);
-        //$this->em->flush();
+        $this->em->persist($user);
+        $this->em->flush();
 
         // Subscribe to newsletter
         if($subsribeToNewsletter){
-           // $this->newsletter->subscribe($user->getEmail());
+           $this->newsletter->subscribe($user->getEmail());
         }
 
         // Send mail with activation link
