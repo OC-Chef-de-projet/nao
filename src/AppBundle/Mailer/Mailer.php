@@ -2,6 +2,7 @@
 
 namespace AppBundle\Mailer;
 use AppBundle\Entity\Feedback;
+use AppBundle\Entity\User;
 use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -54,5 +55,14 @@ class Mailer
         $this->sendMail($to, $subject, $body);
     }
 
+    /**
+     * sending activation account
+     */
+    public function sendActivationAccount(User $user){
+        $to         = $user->getEmail();
+        $subject    = $this->translator->trans('email_account_activation_subject');
+        $body       = $this->templating->render('email/account_activation.html.twig', array('user' => $user));
+        $this->sendMail($to, $subject, $body);
+    }
 }
 

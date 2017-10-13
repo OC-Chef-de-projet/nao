@@ -810,6 +810,18 @@
             </trans-unit>
 
             <!-- EMAIL -->
+            <trans-unit id="email_signature">
+                <source>email_signature</source>
+                <target>
+
+                Cet email à été envoyer automatiquement, merci de ne pas y répondre.
+
+                Cordialement,
+                L'équipe NAO
+                </target>
+            </trans-unit>
+
+
             <trans-unit id="email_feedback_subject">
                 <source>email_feedback_subject</source>
                 <target>NAO - Demande de contact</target>
@@ -838,7 +850,25 @@
 
                 ---------------------------
 
-                Cet email à été envoyer automatiquement, merci de ne pas y répondre.
+                </target>
+            </trans-unit>
+
+            <trans-unit id="email_account_activation_subject">
+                <source>email_account_activation_subject</source>
+                <target>NAO - Confirmation d'inscription</target>
+            </trans-unit>
+            <trans-unit id="email_account_activation_title">
+                <source>email_account_activation_title</source>
+                <target>Bienvenue parmi nous</target>
+            </trans-unit>
+            <trans-unit id="email_account_activation_content">
+                <source>email_account_activation_content</source>
+                <target>
+                Bonjour %name%,
+
+                Pour valider votre compte utilisateur, merci de valider le lien ci-dessous rendre sur %confirmationUrl%
+
+                Ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.
 
                 </target>
             </trans-unit>

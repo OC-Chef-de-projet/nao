@@ -108,6 +108,7 @@ class User implements UserInterface
         $this->created      = new \DateTime();
         $this->role         = 'ROLE_OBSERVER';
         $this->inactive     = 1;
+        $this->token        = bin2hex(openssl_random_pseudo_bytes(16));
     }
 
     public function getSalt()

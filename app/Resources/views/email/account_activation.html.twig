@@ -9,14 +9,13 @@
                     <table>
                         <tr>
                             <td>
-                                <h3>{{ 'email_feedback_title'|trans }}</h3>
+                                <h3>{{ 'email_account_activation_title'|trans }}</h3>
                                 <br />
                                 <table class="summary">
-                                    {{ 'email_feedback_content'| trans({
-                                        '%name%': feedback.name,
-                                        '%email%' : feedback.email,
-                                        '%objet%' : feedback.object,
-                                        '%message%' : feedback.message })| nl2br }}
+                                    {{ 'email_account_activation_content'| trans({
+                                        '%name%': user.name ,
+                                        '%confirmationUrl%': absolute_url(path('registration.activation', {'code' : user.token}))
+                                    })| nl2br }}
 
                                     {{ 'email_signature'|trans|nl2br }}
                                 </table>

@@ -27,11 +27,22 @@ class RegistrationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            // GO
+            $wantNewsletter =  isset($request->get('register')['newsletter']) ? true : false;
+            $this->container->get('app.user')->create($user, $wantNewsletter);
+            //return $this->redirectToRoute('registration');
         }
 
         return $this->render('registration.html.twig', array(
             'form'      => $form->createView()
         ));
+    }
+
+    /**
+     * @Route("/inscription/activation/{code}", name="registration.activation", requirements={"code": "[a-z0-9]+"})
+     * @Method({"GET","POST"})
+     */
+    public function AccountActivationAction(Request $request)
+    {
+
     }
 }
