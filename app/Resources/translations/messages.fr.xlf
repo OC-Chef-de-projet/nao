@@ -523,6 +523,10 @@
                 <source>registration_have_account</source>
                 <target>Déja un compte ?</target>
             </trans-unit>
+            <trans-unit id="registration_success">
+                <source>registration_success</source>
+                <target>Votre compte a bien été créer, cependant un email d'activation vous a été envoyer afin de le valider.</target>
+            </trans-unit>
 
 
             <!-- LOGIN PAGE -->

@@ -100,5 +100,10 @@
             </div>
         </section>
     </main>
+    {% if app.session.flashbag.has("success") %}
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <script>var toastMsg = "{{ 'registration_success'|trans }}";</script>
+        {% endfor %}
+    {% endif %}
 {% endblock %}
 

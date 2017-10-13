@@ -29,6 +29,7 @@ class RegistrationController extends Controller
         if ($form->isSubmitted() && $form->isValid()){
             $wantNewsletter =  isset($request->get('register')['newsletter']) ? true : false;
             $this->container->get('app.user')->create($user, $wantNewsletter);
+            $this->addFlash("success", true);
             return $this->redirectToRoute('registration');
         }
 
