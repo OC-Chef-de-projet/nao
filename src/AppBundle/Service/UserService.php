@@ -2,6 +2,7 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\User;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Doctrine\ORM\EntityManager;
@@ -16,6 +17,7 @@ class UserService
     private $em;
     private $ts;
     private $list_limit;
+    private $newsletter;
 
     /**
      * UserService constructor.
@@ -23,11 +25,12 @@ class UserService
      * @param TokenStorage $ts
      * @param $list_limit
      */
-    public function __construct(EntityManager $em, TokenStorage $ts,$list_limit)
+    public function __construct(EntityManager $em, TokenStorage $ts,$list_limit, NewsletterService $newsletter)
     {
         $this->em           = $em;
         $this->ts           = $ts;
         $this->list_limit   = $list_limit;
+        $this->newsletter   = $newsletter;
     }
 
     /**
@@ -86,6 +89,16 @@ class UserService
             ];
         }
         return $response;
+    }
+
+    /**
+     * Create new user
+     *
+     * @param User $user
+     * @param $subsribeNewsletter
+     */
+    public function create(User $user, $subsribeToNewsletter){
+
     }
 }
 
