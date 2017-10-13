@@ -29,11 +29,11 @@ class NewsletterService
     /**
      * Registration to newsletter
      *
-     * @param Request $request
+     * @param $email
      * @return array
      */
-    public function subscribe(request $request){
-        $email = $this->emailClean($request->get('ng_email'));
+    public function subscribe($email){
+        $email = $this->emailClean($email);
 
         // Verify email address first
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
