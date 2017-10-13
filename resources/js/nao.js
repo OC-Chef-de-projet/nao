@@ -365,7 +365,7 @@
         registerForm.validate({
             rules: {
                 'register[plainPassword][first]': { minlength: 2 },
-                'register[plainPassword][second]': { equalTo: "register[plainPassword][first]" }
+                'register[plainPassword][second]': { equalTo: "#register_plainPassword_first" }
             },
             errorElement : 'div',
             errorPlacement: function(error, element) {
