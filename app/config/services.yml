@@ -48,7 +48,7 @@ services:
     app.user:
         class: AppBundle\Service\UserService
         public: true
-        arguments: ["@security.token_storage", '%list_limit%']
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%']
 
     app.post:
         class: AppBundle\Service\PostService

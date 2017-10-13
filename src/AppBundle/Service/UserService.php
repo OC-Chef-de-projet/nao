@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: psa
- * Date: 16/09/17
- * Time: 09:00
- */
 
 namespace AppBundle\Service;
 
@@ -19,31 +13,29 @@ use Doctrine\ORM\EntityManager;
  */
 class UserService
 {
+    private $em;
     private $ts;
     private $list_limit;
 
     /**
      * UserService constructor.
      *
-     * @param EntityManager $em
      * @param TokenStorage $ts
-     *
      * @param $list_limit
      */
-    public function __construct(TokenStorage $ts,$list_limit)
+    public function __construct(EntityManager $em, TokenStorage $ts,$list_limit)
     {
-        $this->ts = $ts;
-        $this->list_limit = $list_limit;
+        $this->em           = $em;
+        $this->ts           = $ts;
+        $this->list_limit   = $list_limit;
     }
-
 
     /**
      * Get pagination parameters
      *
-     * @param $users    UserService list
-     * @param int $page Page to display
-     *
-     * @return array  Current pagination
+     * @param Paginator $users
+     * @param $page
+     * @return array Current pagination
      */
     public function getPagination(Paginator $users,$page)
     {
@@ -60,6 +52,12 @@ class UserService
         ];
     }
 
+    /**
+     * Get user informations
+     *
+     * @param $url
+     * @return array
+     */
     public function getUserInfo($url)
     {
 
