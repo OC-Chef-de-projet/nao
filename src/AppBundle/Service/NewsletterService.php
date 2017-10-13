@@ -4,7 +4,6 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Newsletter;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
