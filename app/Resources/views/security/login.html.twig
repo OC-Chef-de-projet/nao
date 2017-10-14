@@ -55,18 +55,19 @@
                                     <div class="col s12 l6 main-section">
                                         <input style="display:none">
                                         <div class="input-field col s12">
-                                            {{ form_widget(form.email) }}
+                                            {{ form_widget(form._email) }}
                                             <label>{{ 'label_email'|trans }}</label>
+                                            {% if error is defined %}<div class="error">{{ 'login_connexion_error'|trans }}</div>{% endif %}
                                         </div>
                                         <input style="display:none">
                                         <div class="input-field col s12">
-                                            {{ form_widget(form.password) }}
+                                            {{ form_widget(form._password) }}
                                             <label>{{ 'label_password'|trans }}</label>
                                             <p class="right-align"><a href="{{ path('password_lost') }}" class="light-2-no-hov small">{{ 'lost_password'|trans }}</a></p>
                                         </div>
                                         <div class="input-field col s12">
-                                            {{ form_widget(form.remember_me) }}
-                                            <label for="login_remember_me" class="light-2">{{ 'remember_me'|trans }}</label>
+                                            {{ form_widget(form._remember_me) }}
+                                            <label for="login__remember_me" class="light-2">{{ 'remember_me'|trans }}</label>
                                         </div>
                                         <div class="input-field col s12 center-align">
                                             <br />

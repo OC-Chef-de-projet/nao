@@ -568,7 +568,10 @@
                 <source>login_secondary_title</source>
                 <target>On vous attendait</target>
             </trans-unit>
-
+            <trans-unit id="login_connexion_error">
+                <source>login_connexion_error</source>
+                <target>Problème de connexion ! merci de vérifier vos identifiants.</target>
+            </trans-unit>
 
             <!-- ABOUT US PAGE -->
             <trans-unit id="about_main_title">

@@ -380,6 +380,24 @@
         });
 
         /* ==================================================
+         REGSITER FORM
+         ===========================================================*/
+        var loginForm      = $('#login_form');
+
+        loginForm.validate({
+            errorElement : 'div',
+            errorPlacement: function(error, element) {
+                //element.removeClass('valid').addClass('invalid');
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
+        /* ==================================================
          GLOBAL DIALOGS
          ===========================================================*/
          if(typeof toastMsg !== 'undefined'){

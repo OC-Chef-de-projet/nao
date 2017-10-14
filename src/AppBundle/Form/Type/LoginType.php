@@ -17,13 +17,13 @@ class LoginType extends AbstractType
 
     {
         $builder
-            ->add('email', EmailType::class, array(
+            ->add('_email', EmailType::class, array(
                     'attr'  => array( 'class' => '', 'autocomplete' => 'off'),
             ))
-            ->add('password', PasswordType::class,array(
+            ->add('_password', PasswordType::class,array(
                     'attr'  => array( 'class' => '', 'autocomplete' => 'off'),
             ))
-            ->add('remember_me', CheckboxType::class, array(
+            ->add('_remember_me', CheckboxType::class, array(
                 'data' => true,
                 'required' => false,
                 'label'     => false,
