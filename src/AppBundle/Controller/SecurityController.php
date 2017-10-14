@@ -28,11 +28,11 @@ class SecurityController extends Controller
         }
 
         $helper = $this->get('security.authentication_utils');
-        $form= $this->createForm(LoginType::class, ['_email' => $helper->getLastUsername()]);
+        $form = $this->createForm(LoginType::class, ['_email' => $helper->getLastUsername()]);
 
         return $this->render('security/login.html.twig', [
             'form'      => $form->createView(),
-            'error'     => $helper->getLastAuthenticationError(),
+            'error'     => is_null($helper->getLastAuthenticationError()) ? false : true,
         ]);
     }
 

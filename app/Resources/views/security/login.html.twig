@@ -57,7 +57,7 @@
                                         <div class="input-field col s12">
                                             {{ form_widget(form._email) }}
                                             <label>{{ 'label_email'|trans }}</label>
-                                            {% if error is defined %}<div class="error">{{ 'login_connexion_error'|trans }}</div>{% endif %}
+                                            {% if error %}<div class="error">{{ 'login_connexion_error'|trans }}</div>{% endif %}
                                         </div>
                                         <input style="display:none">
                                         <div class="input-field col s12">
