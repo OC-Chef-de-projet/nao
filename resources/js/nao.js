@@ -398,6 +398,24 @@
         });
 
         /* ==================================================
+         RESET PASSWORD FORM
+         ===========================================================*/
+        var resetPasswordForm      = $('#reset_password_form');
+
+        resetPasswordForm.validate({
+            errorElement : 'div',
+            errorPlacement: function(error, element) {
+                //element.removeClass('valid').addClass('invalid');
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
+        /* ==================================================
          GLOBAL DIALOGS
          ===========================================================*/
          if(typeof toastMsg !== 'undefined'){

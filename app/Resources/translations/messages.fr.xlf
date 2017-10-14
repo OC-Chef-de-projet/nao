@@ -97,6 +97,10 @@
                 <source>404_page_title</source>
                 <target>Page 404</target>
             </trans-unit>
+            <trans-unit id="account_recovery_page_title">
+                <source>account_recovery_page_title</source>
+                <target>Mot de passe oublié</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -158,6 +162,10 @@
             </trans-unit>
             <trans-unit id="search_page_meta_description">
                 <source>search_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="account_recovery_page_meta_description">
+                <source>account_recovery_page_meta_description</source>
                 <target></target>
             </trans-unit>
 
@@ -329,7 +337,10 @@
                 <source>connect_with_google</source>
                 <target>se connecter avec google</target>
             </trans-unit>
-
+            <trans-unit id="send_raz_link">
+                <source>send_raz_link</source>
+                <target>Reinitialiser</target>
+            </trans-unit>
 
             <!-- ROLES -->
             <trans-unit id="ROLE_ADMIN">
@@ -544,6 +555,7 @@
                 <target>Votre compte a bien été créer, cependant un email d'activation vous a été envoyer afin de le valider.</target>
             </trans-unit>
 
+
             <!-- ACTIVATION PAGE -->
             <trans-unit id="registration_activation_title">
                 <source>registration_activation_title</source>
@@ -572,6 +584,29 @@
                 <source>login_connexion_error</source>
                 <target>Problème de connexion ! merci de vérifier vos identifiants.</target>
             </trans-unit>
+
+
+            <!-- ACCOUNT RECOVERY PAGE -->
+            <trans-unit id="account_recovery_main_title">
+                <source>account_recovery_main_title</source>
+                <target>Mot de passe oublié</target>
+            </trans-unit>
+            <trans-unit id="account_recovery_secondary_title">
+                <source>account_recovery_secondary_title</source>
+                <target>Pas de panique</target>
+            </trans-unit>
+            <trans-unit id="account_raz_password_title">
+                <source>account_raz_password_title</source>
+                <target>Réinitialisation du mot de passe</target>
+            </trans-unit>
+            <trans-unit id="account_raz_password_explain">
+                <source>account_raz_password_explain</source>
+                <target>
+                Vous avez oublié votre mot de passe ? Indiquez-nous votre adresse email et nous vous enverons un lien par mail afin de le reinitialiser.
+                Pensez à regarder dans votre dossier Spam si vous ne voyez pas arriver notre email.
+                </target>
+            </trans-unit>
+
 
             <!-- ABOUT US PAGE -->
             <trans-unit id="about_main_title">
