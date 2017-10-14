@@ -528,6 +528,20 @@
                 <target>Votre compte a bien été créer, cependant un email d'activation vous a été envoyer afin de le valider.</target>
             </trans-unit>
 
+            <!-- ACTIVATION PAGE -->
+            <trans-unit id="registration_activation_title">
+                <source>registration_activation_title</source>
+                <target>Activation de votre compte</target>
+            </trans-unit>
+            <trans-unit id="registration_activation_success">
+                <source>registration_activation_success</source>
+                <target>Félicitations, votre compte est maintenant activé. Vous pouvez dés à present profitez de toutes les fonctionnalités.</target>
+            </trans-unit>
+            <trans-unit id="registration_activation_fail">
+                <source>registration_activation_fail</source>
+                <target>Nous n'avons pas pu valider votre compte, merci de vous assurer d'avoir cliquez sur le lien d'activation présent dans le mail qui vous a été envoyer et de ne pas avoir pas déjà valider votre compte. </target>
+            </trans-unit>
+
 
             <!-- LOGIN PAGE -->
             <trans-unit id="login_main_title">
@@ -663,6 +677,7 @@
                 <source>contact_success</source>
                 <target>Votre demande de contact à bien été prise en compte.</target>
             </trans-unit>
+
 
             <!-- 404 PAGE -->
             <trans-unit id="404_main_title">

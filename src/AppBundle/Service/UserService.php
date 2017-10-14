@@ -121,5 +121,30 @@ class UserService
         // Send mail with activation link
         $this->mailer->sendActivationAccount($user);
     }
+
+    /**
+     * Activating user account
+     *
+     * @param $token
+     * @return bool
+     */
+    public function activateAccount($token){
+        $user = $this->em->getRepository('AppBundle:User')->findOneBy(array('token' => $token));
+
+        if($user){
+
+            // remove token and activate user account
+            $user->setInactive(false);
+            $user->setToken(null);
+
+            // save the User
+            $this->em->persist($user);
+            $this->em->flush();
+            return true;
+        }
+
+        return false;
+
+    }
 }
 

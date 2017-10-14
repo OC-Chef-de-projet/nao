@@ -33,7 +33,7 @@ class RegistrationController extends Controller
             return $this->redirectToRoute('registration');
         }
 
-        return $this->render('registration.html.twig', array(
+        return $this->render('registration/registration.html.twig', array(
             'form'      => $form->createView()
         ));
     }
@@ -44,6 +44,9 @@ class RegistrationController extends Controller
      */
     public function accountActivationAction(Request $request)
     {
-
+        $result = $this->container->get('app.user')->activateAccount($request->get('code'));
+        return $this->render('registration/activation.html.twig', array(
+            'success'       => $result,
+        ));
     }
 }
