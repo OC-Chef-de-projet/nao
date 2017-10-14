@@ -28,13 +28,24 @@ class SecurityController extends Controller
         }
 
         $helper = $this->get('security.authentication_utils');
-
-        $formLogin = $this->createForm(LoginType::class, ['_email' => $helper->getLastUsername()]);
+        $form= $this->createForm(LoginType::class, ['_email' => $helper->getLastUsername()]);
 
         return $this->render('security/login.html.twig', [
-            'form_login' => $formLogin->createView(),
-            'error' => $helper->getLastAuthenticationError(),
+            'form'      => $form->createView(),
+            'error'     => $helper->getLastAuthenticationError(),
         ]);
+    }
+
+    /**
+     * @Route("/compte/recuperation", name="password_lost")
+     * @Method({"GET"})
+     */
+    public function passwordLostAction()
+    {
+        // Only for user not logged
+        if($this->getUser()){
+            return $this->redirectToRoute('homepage');
+        }
     }
 
     /**

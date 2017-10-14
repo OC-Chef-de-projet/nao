@@ -251,6 +251,10 @@
                 <source>activate_account</source>
                 <target>Activer votre compte</target>
             </trans-unit>
+            <trans-unit id="lost_password">
+                <source>lost_password</source>
+                <target>Mot de passe oublié</target>
+            </trans-unit>
 
 
             <!-- ALT IMAGE -->
@@ -312,6 +316,18 @@
             <trans-unit id="send">
                 <source>send</source>
                 <target>Envoyer</target>
+            </trans-unit>
+            <trans-unit id="remember_me">
+                <source>remember_me</source>
+                <target>Se souvenir de moi</target>
+            </trans-unit>
+            <trans-unit id="connect_with_facebook">
+                <source>connect_with_facebook</source>
+                <target>se connecter avec facebook</target>
+            </trans-unit>
+            <trans-unit id="connect_with_google">
+                <source>connect_with_google</source>
+                <target>se connecter avec google</target>
             </trans-unit>
 
 
