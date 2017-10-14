@@ -101,15 +101,23 @@ class User implements UserInterface
     private $inactive;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="private", type="boolean")
+     */
+    private $private;
+
+    /**
      * User constructor.
      */
     public function __construct()
     {
         $this->created      = new \DateTime();
-        $this->role         = 'ROLE_OBSERVER';
-        $this->inactive     = 1;
         $this->token        = bin2hex(openssl_random_pseudo_bytes(16));
+        $this->role         = 'ROLE_OBSERVER';
         $this->image_path   = 'avatar-default.png';
+        $this->inactive     = true;
+        $this->private      = false;
     }
 
     public function getSalt()
@@ -395,6 +403,29 @@ class User implements UserInterface
     public function getCreated()
     {
         return $this->created;
+    }
+
+    /**
+     * Set private
+     *
+     * @param $private
+     * @return $this
+     */
+    public function setPrivate($private)
+    {
+        $this->private = $private;
+
+        return $this;
+    }
+
+    /**
+     * Get private
+     *
+     * @return boolean
+     */
+    public function getPrivate()
+    {
+        return $this->private;
     }
 
 }
