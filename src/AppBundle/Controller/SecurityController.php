@@ -38,14 +38,22 @@ class SecurityController extends Controller
 
     /**
      * @Route("/compte/recuperation", name="password_lost")
-     * @Method({"GET"})
+     * @Method({"GET", "POST"})
      */
-    public function passwordLostAction()
+    public function passwordLostAction(Request $request)
     {
         // Only for user not logged
         if($this->getUser()){
             return $this->redirectToRoute('homepage');
         }
+
+        if ($request->isMethod('POST')) {
+            $email = $request->get('email');
+            // CHECK IF EMAIL IS VALID AND SEND MAIL FOR RAZ PASSWORD
+            // WHEN FINISH
+        }
+
+        return $this->render('security/password_recovery.html.twig');
     }
 
     /**
