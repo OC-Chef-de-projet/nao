@@ -12,6 +12,7 @@ security:
         - { path: ^/API, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
+
     role_hierarchy:
         ROLE_ADMIN:  [ROLE_EDITOR, ROLE_NATURALIST, ROLE_OBSERVER ]
         ROLE_NATURALIST: [ROLE_NATURALIST,ROLE_OBSERVER]
@@ -39,6 +40,11 @@ security:
                     require_previous_session: false
                     #username_parameter: email
 
+
+        post_paginate:
+            methods: [POST]
+            pattern: ^/API/post/paginate
+            security: false
 
         api:
             pattern:   ^/API
