@@ -42,3 +42,4 @@ class UserChecker implements UserCheckerInterface
        }
     }
 }
+
