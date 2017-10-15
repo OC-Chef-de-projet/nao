@@ -87,7 +87,7 @@ class SecurityController extends Controller
      * @Route("/compte/validation/nouveau-mot-de-passe", name="password_reset_success")
      * @Method({"GET"})
      */
-    public function resetPasswordSuccess()
+    public function resetPasswordSuccessAction()
     {
         return $this->render('security/password_reset_success.html.twig');
     }
