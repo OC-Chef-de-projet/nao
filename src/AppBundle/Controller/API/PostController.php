@@ -32,11 +32,7 @@ class PostController extends Controller
      */
     public function paginateAction(Request $request)
     {
-
         $em = $this->getDoctrine()->getManager();
-
-        $form = $this->createForm(ConfirmType::class,null, ['url' => $this->generateUrl('admin_post_confirmation', array('action' => '--','id' => 0))]);
-        $form->handleRequest($request);
 
         $posts = $em->getRepository('AppBundle:Post')->getPostsByStatus(
             $request->request->get('page'),
@@ -44,12 +40,22 @@ class PostController extends Controller
             $this->getParameter('list_limit')
         );
 
-        $html = $this->render(':admin/post:list.html.twig', [
-            'postlist' => $posts,
-            'form' =>  $form->createView()
+        if(is_null($request->request->get('common'))){
+            $form = $this->createForm(ConfirmType::class,null, ['url' => $this->generateUrl('admin_post_confirmation', array('action' => '--','id' => 0))]);
+            $form->handleRequest($request);
 
-        ])->getContent();
+            $html = $this->render(':admin/post:list.html.twig', [
+                'postlist' => $posts,
+                'form' =>  $form->createView()
+
+            ])->getContent();
+        }else{
+            $html = $this->render('blog/list.html.twig', [
+                'postlist' => $posts->getIterator(),
+            ])->getContent();
+        }
 
         return new JsonResponse(['html' => $html]);
     }
 }
+
