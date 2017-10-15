@@ -52,6 +52,7 @@ twig:
         posts: "@app.post"
         notifs: "@app.notification"
         jwt: "@app.jwt"
+        google: "%google.client_id%"
 
 # Doctrine Configuration
 doctrine:
@@ -113,5 +114,13 @@ lexik_jwt_authentication:
         query_parameter:           # check token in query string parameter
             enabled: true
             name:    bearer
-
-
+hwi_oauth:
+    firewall_names:  [main]
+    resource_owners:
+        google:
+            type:                google
+            client_id:           '%google.client_id%'
+            client_secret:       '%google.client_secret%'
+            scope:               "email profile"
+            options:
+                csrf: true

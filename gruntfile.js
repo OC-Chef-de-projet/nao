@@ -136,9 +136,10 @@ module.exports = function (grunt) {
                     mangle: true,
                     preserveComments: false
                 },
-                src: 'resources/js/nao.js',
-                dest: 'web/assets/js/nao.min.js'
-            }
+                files: {
+                    'web/assets/js/nao.min.js': ['resources/js/nao.js', 'resources/js/social.js']
+                }
+            },
         },
 
         // Do some post processing on CSS files

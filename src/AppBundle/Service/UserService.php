@@ -78,17 +78,12 @@ class UserService
         }
 
         if ($user) {
-            $image = $user->getImagePath();
-            if($image) {
-                $image = $url . '/images/users/' . $image;
-            }
-
             $response = [
                 'name' => $user->getName(),
                 'email' => $user->getEmail(),
                 'role' => $user->getRole(),
                 'aboutme' => $user->getAboutme(),
-                'image' => $image,
+                'image' => $user->getImagePath(),
                 'created' => $user->getCreated(),
                 'roleString' => $user->getRoleString(),
                 'name' => $user->getName()
@@ -96,6 +91,7 @@ class UserService
         }
         return $response;
     }
+
 
     /**
      * Create new user
