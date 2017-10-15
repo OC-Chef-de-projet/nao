@@ -53,6 +53,7 @@ twig:
         notifs: "@app.notification"
         jwt: "@app.jwt"
         google: "%google.client_id%"
+        facebook: "%facebook.client_id%"
 
 # Doctrine Configuration
 doctrine:
@@ -89,6 +90,7 @@ fos_rest:
     routing_loader:
         default_format: json
 
+# JSon Web Token
 lexik_jwt_authentication:
     private_key_path: '%jwt_private_key_path%'
     public_key_path:  '%jwt_public_key_path%'
@@ -114,6 +116,7 @@ lexik_jwt_authentication:
         query_parameter:           # check token in query string parameter
             enabled: true
             name:    bearer
+# OAuth
 
 hwi_oauth:
     firewall_names:  [main]

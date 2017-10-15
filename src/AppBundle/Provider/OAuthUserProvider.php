@@ -11,8 +11,9 @@ namespace AppBundle\Provider;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\EntityUserProvider;
-use Symfony\Component\Security\Core\User\UserChecker;
+use AppBundle\Security\UserChecker;
 use AppBundle\Service\UserService;
+
 
 class OAuthUserProvider extends EntityUserProvider
 {
@@ -21,21 +22,15 @@ class OAuthUserProvider extends EntityUserProvider
     protected $class;
     private $userService;
 
-    public function __construct(ManagerRegistry $registry, $class, $managerName = null, UserService $userService)
+    public function __construct(ManagerRegistry $registry, UserService $userService)
     {
 
         $this->userService = $userService;
-
         $class = "AppBundle\Entity\User";
         $managerName = null;
-        dump($class);
-        dump($managerName);
-        dump($registry->getManager());
 
-        //$class = 'AppBundle:User';
         parent::__construct($registry, $class, [], $managerName);
         $this->repository = $this->em->getRepository($this->class);
-        //$this->repository = $this->em->getRepository('AppBundle:User');
     }
 
     /**
@@ -44,6 +39,7 @@ class OAuthUserProvider extends EntityUserProvider
      */
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
+
 
         $checker = new UserChecker();
 
@@ -54,6 +50,9 @@ class OAuthUserProvider extends EntityUserProvider
         $socialId = $response->getUsername();
         $email = $response->getEmail();
 
+        error_log("propertyName $propertyName");
+        error_log("socialId $socialId");
+
         if (($user = $this->repository->findOneBy([$propertyName => $socialId])) !== null) {
             $checker->checkPreAuth($user);
         } elseif (($user = $this->repository->findOneByEmail($email)) !== null) {
@@ -62,7 +61,7 @@ class OAuthUserProvider extends EntityUserProvider
         } else {
             // Create user
             $user = new $this->class();
-            $user->setName($response->getLastName());
+            $user->setName($response->getNickname());
             $user->setEmail($email);
             $user->setPlainPassword(uniqid());
             $user->setInactive(false);

@@ -6,13 +6,13 @@
     <meta name="description" content="{{ 'login_page_meta_description'|trans }}">
     <meta name="og:description" content="{{ 'login_page_meta_description'|trans }}">
     <meta name="og:title" content="{{ 'login_page_title'|trans }}">
-    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}" />
+    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}"/>
 {% endblock %}
 
 {% block header %}
     <header class="collapse bg7">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'login_page_title'}%}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'login_page_title'} %}
         <section>
             <div class="container">
                 <div class="row">
@@ -20,7 +20,7 @@
                         <div id="header-main-title">
                             <h1>{{ 'login_main_title'|trans }}</h1>
                             <h2>{{ 'login_secondary_title'|trans }}</h2>
-                            <br />
+                            <br/>
                         </div>
                     </div>
                 </div>
@@ -57,33 +57,49 @@
                                         <div class="input-field col s12">
                                             {{ form_widget(form._email) }}
                                             <label>{{ 'label_email'|trans }}</label>
-                                            {% if error %}<div class="error">{{ 'login_connexion_error'|trans }}</div>{% endif %}
+                                            {% if error %}
+                                                <div class="error">{{ 'login_connexion_error'|trans }}</div>{% endif %}
                                         </div>
                                         <input style="display:none">
                                         <div class="input-field col s12">
                                             {{ form_widget(form._password) }}
                                             <label>{{ 'label_password'|trans }}</label>
-                                            <p class="right-align"><a href="{{ path('password_lost') }}" class="light-2-no-hov small">{{ 'lost_password'|trans }}</a></p>
+                                            <p class="right-align"><a href="{{ path('password_lost') }}"
+                                                                      class="light-2-no-hov small">{{ 'lost_password'|trans }}</a>
+                                            </p>
                                         </div>
                                         <div class="input-field col s12">
                                             {{ form_widget(form._remember_me) }}
-                                            <label for="login__remember_me" class="light-2">{{ 'remember_me'|trans }}</label>
+                                            <label for="login__remember_me"
+                                                   class="light-2">{{ 'remember_me'|trans }}</label>
                                         </div>
                                         <div class="input-field col s12 center-align">
-                                            <br />
-                                            <input type="submit" class="btn waves-effect" value="{{ 'sign_up'|trans }}" />
+                                            <br/>
+                                            <input type="submit" class="btn waves-effect"
+                                                   value="{{ 'sign_up'|trans }}"/>
                                         </div>
                                         <div class="input-field col s12 center-align">
-                                            <a href="{{ path('registration') }}" class="light-2-no-hov">{{ 'sign_in'|trans }}</a>
+                                            <a href="{{ path('registration') }}"
+                                               class="light-2-no-hov">{{ 'sign_in'|trans }}</a>
                                         </div>
                                     </div>
                                     <div class="col s12 l6 secondary-section v-margin center-align">
                                         <div class="col s12">
-                                            <a class="waves-effect waves-light btn social facebook"><i class="mdi mdi-facebook"></i> {{ 'connect_with_facebook'|trans }}</a>
+                                            <div id="fb-root"></div>
+                                            <a onclick="fb_login();" class="waves-effect waves-light btn social facebook"><i
+                                                        class="mdi mdi-facebook"></i> {{ 'connect_with_facebook'|trans }}
+                                            </a>
                                         </div>
                                         <div class="col s12">
-                                            <br />
-                                            <a data-onsuccess="GoogleSignIn" class="g-signin2 waves-effect waves-light btn social google"><i class="mdi mdi-google"></i> {{ 'connect_with_google'|trans }}</a>
+                                            <br/>
+                                            <div id="gSignInWrapper">
+                                                <div id="customBtn"
+                                                     class="customGPlusSignIn waves-effect waves-light btn social google">
+                                                    <i class="mdi mdi-google"></i> {{ 'connect_with_google'|trans }}
+                                                </div>
+                                            </div>
+                                            <div id="name"></div>
+                                            <script>startApp();</script>
                                         </div>
                                     </div>
                                     {{ form_end(form) }}
@@ -101,8 +117,35 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
-    function GoogleSignIn(googleUser){
-        document.location = "{{ url("hwi_oauth_service_redirect", {service: "google"}) }}";
-    }
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '145117602767743',
+                xfbml      : true,
+                version    : 'v2.10'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function fb_login() {
+            FB.getLoginStatus(function (response) {
+                console.log(response);
+                if (response.status === 'connected') {
+                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                } else {
+                    FB.login(function(response) {
+                        console.log(response);
+                    }, {scope: 'email'});
+                }
+                //statusChangeCallback(response);
+            });
+        }
     </script>
 {% endblock javascripts %}

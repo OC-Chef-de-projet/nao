@@ -1,12 +1,11 @@
 <?php
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUser;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * User
  *
@@ -14,7 +13,7 @@ use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUser;
  * @UniqueEntity(fields="email", message="This email address is already in use")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User extends OAuthUser implements UserInterface
+class User implements UserInterface
 {
     /**
      * @var int
@@ -46,8 +45,6 @@ class User extends OAuthUser implements UserInterface
 
     /**
      * @var string
-     * @Assert\NotBlank(message="not_blank")
-     * @Assert\Length(min = 2, max=4096, minMessage = "format_min_2")
      */
     private $plainPassword;
 

@@ -15,9 +15,10 @@ parameters:
     mailer_name: 'Nos amis les oiseaux'
     jwt_private_key_path: '%kernel.root_dir%/../jwt/private.pem' # ssh private key path
     jwt_public_key_path:  '%kernel.root_dir%/../jwt/public.pem'  # ssh public key path
-    jwt_key_pass_phrase:  'nosamislesoiseaux'                                         # ssh key pass phrase
+    jwt_key_pass_phrase:  'nosamislesoiseaux'                    # ssh key pass phrase
     jwt_token_ttl:        3600
-    google.client_id:          1074474556883-pk4g2uh55u16qh3b3a9u2hanfaqsm0qm.apps.googleusercontent.com
-    google.client_secret:      g3JBM9HRaFGCIgvR88ibTObL
-    facebook.client_id:        145117602767743
-    facebook.client_secret:    4c20e8126825a275a4d5ec1f0bbbb105
+
+    google.client_id: CLIENTID
+    google.client_secret: SECRET
+    facebook.client_id: CLIENTID
+    facebook.client_secret: SECRET
