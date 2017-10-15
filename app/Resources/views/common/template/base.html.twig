@@ -50,8 +50,8 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
         var googleUser = {};
-        var startApp = function() {
-            gapi.load('auth2', function(){
+        var startApp = function () {
+            gapi.load('auth2', function () {
                 auth2 = gapi.auth2.init({
                     client_id: '{{ google }}',
                     cookiepolicy: 'single_host_origin',
@@ -59,17 +59,28 @@
                 attachSignin(document.getElementById('customBtn'));
             });
         };
+
         function attachSignin(element) {
             console.log(element.id);
             auth2.attachClickHandler(element, {},
-                function(googleUser) {
+                function (googleUser) {
                     document.location = "{{ url("hwi_oauth_service_redirect", {service: "google"}) }}";
-                }, function(error) {
+                }, function (error) {
                     alert(JSON.stringify(error, undefined, 2));
                 });
         }
     </script>
-
+    <!-- Facebook API -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '{{ facebook }}',
+                xfbml: true,
+                version: 'v2.10'
+            });
+            FB.AppEvents.logPageView();
+        };
+    </script>
 
 </head>
 <body {% if bgwhite is defined %} class="bg-white" {% endif %}>

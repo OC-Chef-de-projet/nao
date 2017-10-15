@@ -29,7 +29,7 @@ class User implements UserInterface
      *
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank(message="not_blank")
-     * @Assert\Regex( pattern="#^(?!-)[\p{L}- ]{2,20}[^\-]$#u", message="name_format")
+     * Assert\Regex( pattern="#^(?!-)[\p{L}- ]{2,20}[^\-]$#u", message="name_format")
      */
     private $name;
 

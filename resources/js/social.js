@@ -1,9 +1,17 @@
+
+
+
 /**
  * Google SignOut
  */
 $(function() {
     $('#logout').click(function () {
         g_signOut();
+
+        FB.logout(function(response) {
+            // Person is now logged out
+        });
+
     });
 });
 
@@ -20,3 +28,7 @@ function onLoad() {
         gapi.auth2.init();
     });
 }
+
+
+
+

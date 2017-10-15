@@ -86,7 +86,7 @@
                                     <div class="col s12 l6 secondary-section v-margin center-align">
                                         <div class="col s12">
                                             <div id="fb-root"></div>
-                                            <a onclick="fb_login();" class="waves-effect waves-light btn social facebook"><i
+                                            <a onclick="checkLoginState();" class="waves-effect waves-light btn social facebook"><i
                                                         class="mdi mdi-facebook"></i> {{ 'connect_with_facebook'|trans }}
                                             </a>
                                         </div>
@@ -117,14 +117,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '145117602767743',
-                xfbml      : true,
-                version    : 'v2.10'
-            });
-            FB.AppEvents.logPageView();
-        };
+
 
         (function(d, s, id){
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -134,18 +127,25 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-        function fb_login() {
-            FB.getLoginStatus(function (response) {
-                console.log(response);
-                if (response.status === 'connected') {
-                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
-                } else {
-                    FB.login(function(response) {
-                        console.log(response);
-                    }, {scope: 'email'});
-                }
-                //statusChangeCallback(response);
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
             });
+        }
+
+        function statusChangeCallback(response) {
+            if (response.status === 'connected') {
+                auth();
+            } else {
+                FB.login(function(response) {
+                    auth();
+                }, {scope: 'email'});
+            }
+        }
+
+        function auth()
+        {
+            document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
         }
     </script>
 {% endblock javascripts %}

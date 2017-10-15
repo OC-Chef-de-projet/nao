@@ -2,7 +2,7 @@
     <ul class="collection">
         {% for cmt in cmtlist %}
             <li class="collection-item avatar">
-                <img src="{{ asset('images/users/'~cmt.user.getImagePath) }}" class="circle">
+                <img src="{{ asset('user.getImagePath) }}" class="circle">
                 <span class="title">{{ cmt.user.name }}</span>
                 <p>{{ cmt.content }}</p>
                 <p class="secondary-content caption light-2">{{ 'published_at' |trans ({'%date%': cmt.created|date("d/m/Y")}) }}</p>
