@@ -31,3 +31,4 @@ parameters:
     google.client_secret: SECRET
     facebook.client_id: CLIENTID
     facebook.client_secret: SECRET
+

@@ -117,6 +117,7 @@ lexik_jwt_authentication:
             enabled: true
             name:    bearer
 # OAuth
+
 hwi_oauth:
     firewall_names:  [main]
     resource_owners:
