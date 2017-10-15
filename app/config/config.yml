@@ -54,6 +54,7 @@ twig:
         jwt: "@app.jwt"
         google: "%google.client_id%"
         facebook: "%facebook.client_id%"
+        fbpixel: "%facebook.pixel%"
 
 # Doctrine Configuration
 doctrine:
