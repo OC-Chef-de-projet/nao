@@ -48,6 +48,28 @@
 
     <!-- Google API -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        var googleUser = {};
+        var startApp = function() {
+            gapi.load('auth2', function(){
+                auth2 = gapi.auth2.init({
+                    client_id: '{{ google }}',
+                    cookiepolicy: 'single_host_origin',
+                });
+                attachSignin(document.getElementById('customBtn'));
+            });
+        };
+        function attachSignin(element) {
+            console.log(element.id);
+            auth2.attachClickHandler(element, {},
+                function(googleUser) {
+                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "google"}) }}";
+                }, function(error) {
+                    alert(JSON.stringify(error, undefined, 2));
+                });
+        }
+    </script>
+
 
 </head>
 <body {% if bgwhite is defined %} class="bg-white" {% endif %}>

@@ -49,6 +49,7 @@ security:
 
         main:
             pattern: ^/
+            user_checker: AppBundle\Security\UserChecker
             anonymous: true
             provider: user_provider
             guard:
