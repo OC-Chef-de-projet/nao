@@ -658,7 +658,9 @@ nav.nav-extended .nav-wrapper {
 /* ====================================
     Side menu
     =============================================*/
-
+.side-nav{
+    height: 100% !important;
+}
 .side-nav li > a > i,
 .side-nav li > a > [class^="mdi-"],
 .side-nav li > a li > a > [class*="mdi-"],
