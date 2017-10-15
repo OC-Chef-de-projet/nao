@@ -906,6 +906,15 @@
                 <target>Effacer la recherche</target>
             </trans-unit>
 
+            <!-- Social -->
+            <trans-unit id="cancel_transaction">
+                <source>cancel_transaction</source>
+                <target>Transaction annulée</target>
+            </trans-unit>
+            <trans-unit id="already_connected">
+                <source>already_connected</source>
+                <target>Vous êtes déjà connecté</target>
+            </trans-unit>
 
             <!-- MISC -->
             <trans-unit id="yes">

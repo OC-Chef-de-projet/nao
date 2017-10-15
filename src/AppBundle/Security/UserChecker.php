@@ -20,7 +20,6 @@ class UserChecker implements UserCheckerInterface
 {
     public function checkPreAuth(UserInterface $user)
     {
-
         if (!$user instanceof User) {
             throw new AccountDeletedException('unknown_account');
         }

@@ -17,3 +17,8 @@ parameters:
     jwt_public_key_path:  '%kernel.root_dir%/../jwt/public.pem'  # ssh public key path
     jwt_key_pass_phrase:  'nosamislesoiseaux'                                         # ssh key pass phrase
     jwt_token_ttl:        3600
+
+    google.client_id: CLIENTID
+    google.client_secret: SECRET
+    facebook.client_id: CLIENTID
+    facebook.client_secret: SECRET

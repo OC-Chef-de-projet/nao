@@ -23,3 +23,5 @@ hwi_oauth_login:
 google_login:
     path: /login/check-google
 
+facebook_login:
+    path: /login/check-facebook
