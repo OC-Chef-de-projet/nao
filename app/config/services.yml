@@ -84,6 +84,12 @@ services:
         class: AppBundle\Mailer\Mailer
         arguments: ["@mailer", "@templating", "@translator", "%mailer_from%", "%mailer_to%", "%mailer_name%"]
 
+    app.oauth:
+        class: AppBundle\Provider\OAuthUserProvider
+        public: true
+        arguments: ["@doctrine",'AppBundle:User', {facebook: facebook_id, google: google_id}, "@app.user" ]
+
+
     AppBundle\EventListener\UserListener:
         tags:
             - { name: doctrine.event_listener, event: prePersist }

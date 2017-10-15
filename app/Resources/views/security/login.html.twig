@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="col s12">
                                             <br />
-                                            <a class="waves-effect waves-light btn social google"><i class="mdi mdi-google"></i> {{ 'connect_with_google'|trans }}</a>
+                                            <a data-onsuccess="GoogleSignIn" class="g-signin2 waves-effect waves-light btn social google"><i class="mdi mdi-google"></i> {{ 'connect_with_google'|trans }}</a>
                                         </div>
                                     </div>
                                     {{ form_end(form) }}
@@ -96,3 +96,13 @@
         </section>
     </main>
 {% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+    function GoogleSignIn(googleUser){
+        document.location = "{{ url("hwi_oauth_service_redirect", {service: "google"}) }}";
+    }
+    </script>
+{% endblock javascripts %}
