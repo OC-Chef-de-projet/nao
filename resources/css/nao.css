@@ -829,7 +829,8 @@ footer ul.social > li:not(:first-child) {
     font-size: 14px;
 }
 
-.card .card-content form {
+.card .card-content form,
+.card .card-content .message{
     padding: 5px 60px 5px 60px;
     min-height: 150px;
 }
@@ -1182,7 +1183,8 @@ ul.collapsible > li > div.collapsible-body{
         text-align: right;
     }
 
-    .card .card-content form {
+    .card .card-content form,
+    .card .card-content .message{
         padding: 0px;
         min-height: 150px;
     }
@@ -1440,7 +1442,8 @@ ul.collapsible > li > div.collapsible-body{
         float: right;
     }
 
-    .card .card-content form {
+    .card .card-content form,
+    .card .card-content .message{
         padding: 0px;
         min-height: 150px;
     }

@@ -2,12 +2,15 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
 use AppBundle\Form\Type\LoginType;
+use AppBundle\Form\Type\ChangePasswordType;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * Class SecurityController
@@ -48,12 +51,45 @@ class SecurityController extends Controller
         }
 
         if ($request->isMethod('POST')) {
-            $email = $request->get('email');
-            // CHECK IF EMAIL IS VALID AND SEND MAIL FOR RAZ PASSWORD
-            // WHEN FINISH
+            $result = $this->container->get('app.user')->recoveryAccount($request->get('email'));
+            if($result){
+                $this->addFlash("success", true);
+                return $this->redirectToRoute('password_lost');
+            }
         }
 
-        return $this->render('security/password_recovery.html.twig');
+        return $this->render('security/password_recovery.html.twig', array(
+            'error'     => ( $request->isMethod('POST') && !$result ) ? true :false
+        ));
+    }
+
+    /**
+     * @Route("/compte/nouveau-mot-de-passe/{code}", name="password_reset", requirements={"code": "[a-z0-9]+"})
+     * @Method({"GET", "POST"})
+     * @ParamConverter("user", options={"mapping": {"code": "token"}})
+     */
+    public function resetPasswordAction(User $user, Request $request)
+    {
+        $form = $this->createForm(ChangePasswordType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $this->container->get('app.user')->updatePassword($user);
+            return $this->redirectToRoute('password_reset_success');
+        }
+
+        return $this->render('security/password_reset.html.twig', array(
+            'form'      => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/compte/validation/nouveau-mot-de-passe", name="password_reset_success")
+     * @Method({"GET"})
+     */
+    public function resetPasswordSuccess()
+    {
+        return $this->render('security/password_reset_success.html.twig');
     }
 
     /**
