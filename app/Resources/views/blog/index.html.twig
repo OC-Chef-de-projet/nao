@@ -46,8 +46,46 @@
     <!-- PAGE CONTENT -->
     <main class="container marge-top">
         <section>
-
+            <div class="row">
+                <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
+                    {% include 'blog/list.html.twig' %}
+                </div>
+            </div>
+            <div class="row">
+                {% include 'admin/paginate.html.twig' %}
+            </div>
         </section>
     </main>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/paginate.js') }}"></script>
+    <script>
+
+        /**
+         *
+         * @param pageno
+         * @param user_id
+         */
+        function getList(pageno, no) {
+            $.ajax({
+                url: "{{ path('api_post_paginate') }}?bearer={{ jwt.token }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "page": pageno,
+                    "status": 2,
+                    "common": true,
+                },
+                success: function (response) {
+                    console.log("TERYTRy");
+                    $('#eltlist').html(response.html);
+                }
+            });
+        }
+    </script>
+{% endblock %}
+
+
 

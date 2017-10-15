@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use AppBundle\Entity\Post;
 
 /**
  * Class BlogController
@@ -19,9 +20,14 @@ class BlogController extends Controller
      * @Route("/", name="blog")
      * @Method({"GET"})
      */
-    public function indexAction()
+    public function indexAction(Request $request, $page = 1, $status = Post::PUBLISHED)
     {
-        return $this->render('blog/index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $posts = $em->getRepository('AppBundle:Post')->getPostsByStatus($page,$status,$this->getParameter('list_limit'));
+        return $this->render('blog/index.html.twig', array(
+            'paginate' => $this->container->get('app.post')->getPagination($posts,$page),
+            'postlist' => $posts->getIterator(),
+        ));
     }
 
     /**
