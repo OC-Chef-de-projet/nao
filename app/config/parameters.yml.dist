@@ -29,4 +29,5 @@ parameters:
 
     google.client_id:          1074474556883-pk4g2uh55u16qh3b3a9u2hanfaqsm0qm.apps.googleusercontent.com
     google.client_secret:      g3JBM9HRaFGCIgvR88ibTObL
-
+    facebook.client_id:        145117602767743
+    facebook.client_secret:    4c20e8126825a275a4d5ec1f0bbbb105
