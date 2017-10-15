@@ -101,6 +101,10 @@
                 <source>account_recovery_page_title</source>
                 <target>Mot de passe oublié</target>
             </trans-unit>
+            <trans-unit id="new_password_page_title">
+                <source>new_password_page_title</source>
+                <target>Changement de mot de passe</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -166,6 +170,10 @@
             </trans-unit>
             <trans-unit id="account_recovery_page_meta_description">
                 <source>account_recovery_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="new_password_page_meta_description">
+                <source>new_password_page_meta_description</source>
                 <target></target>
             </trans-unit>
 
@@ -340,6 +348,14 @@
             <trans-unit id="send_raz_link">
                 <source>send_raz_link</source>
                 <target>Reinitialiser</target>
+            </trans-unit>
+            <trans-unit id="new_password">
+                <source>new_password</source>
+                <target>Nouveau mot de passe</target>
+            </trans-unit>
+            <trans-unit id="change_password">
+                <source>change_password</source>
+                <target>Changer le mot de passe</target>
             </trans-unit>
 
             <!-- ROLES -->
@@ -605,6 +621,33 @@
                 Vous avez oublié votre mot de passe ? Indiquez-nous votre adresse email et nous vous enverons un lien par mail afin de le reinitialiser.
                 Pensez à regarder dans votre dossier Spam si vous ne voyez pas arriver notre email.
                 </target>
+            </trans-unit>
+            <trans-unit id="account_recovery_not_found">
+                <source>account_recovery_not_found</source>
+                <target>Cette adresse e-mail n'a pas été reconnue.</target>
+            </trans-unit>
+            <trans-unit id="recovery_account_success">
+                <source>recovery_account_success</source>
+                <target>Nous venons de vous envoyer un email qui va vous permettre de choisir un nouveau mot de passe.</target>
+            </trans-unit>
+
+
+            <!-- CHANGE PASSWORD PAGE -->
+            <trans-unit id="new_password_main_title">
+                <source>new_password_main_title</source>
+                <target>Nouveau mot de passe</target>
+            </trans-unit>
+            <trans-unit id="new_password_secondary_title">
+                <source>new_password_secondary_title</source>
+                <target>La sécurité avant tout</target>
+            </trans-unit>
+            <trans-unit id="new_password_success_title">
+                <source>new_password_success_title</source>
+                <target>Mot de passe modifié</target>
+            </trans-unit>
+            <trans-unit id="new_password_success_explain">
+                <source>new_password_success_explain</source>
+                <target>Le changement de votre mot de passe a bien été fait, vous pouvez dés à présent accéder à votre compte avec vos nouveaux identifiants</target>
             </trans-unit>
 
 
@@ -898,7 +941,6 @@
                 </target>
             </trans-unit>
 
-
             <trans-unit id="email_feedback_subject">
                 <source>email_feedback_subject</source>
                 <target>NAO - Demande de contact</target>
@@ -945,6 +987,25 @@
 
                 Pour valider votre compte utilisateur, merci de valider le lien ci-dessous.
                 Pour information ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.
+
+                </target>
+            </trans-unit>
+
+            <trans-unit id="email_recovery_account_subject">
+                <source>email_recovery_account_subject</source>
+                <target>NAO - reinitialisation de votre mot de passe</target>
+            </trans-unit>
+            <trans-unit id="email_recovery_account_title">
+                <source>email_recovery_account_title</source>
+                <target>Reinitialisation de votre mot de passe</target>
+            </trans-unit>
+            <trans-unit id="email_recovery_account_content">
+                <source>email_recovery_account_content</source>
+                <target>
+                Bonjour %name%,
+
+                Vous avez demandé la modification de votre mot de passe sur notre site Nos amis les oiseaux, pou cela merci de cliquer sur le lien présent ci-dessous.
+                Si vous n'avez pas demandé la modification de votre mot de passe, merci de prendre contact avec notre support.
 
                 </target>
             </trans-unit>

@@ -104,6 +104,7 @@ class UserService
         // Encode the password
         $password = $this->passwordEncoder->encodePassword($user, $user->getPlainPassword());
         $user->setPassword($password);
+        $user->setToken($this->generateToken());
 
         // save the User
         $this->em->persist($user);
@@ -121,13 +122,12 @@ class UserService
     /**
      * Activating user account
      *
-     * @param $token
+     * @param User $user
      * @return bool
      */
-    public function activateAccount($token){
-        $user = $this->em->getRepository('AppBundle:User')->findOneBy(array('token' => $token));
+    public function activateAccount(User $user){
 
-        if($user){
+        if($user->getInactive()){
 
             // remove token and activate user account
             $user->setInactive(false);
@@ -140,7 +140,57 @@ class UserService
         }
 
         return false;
+    }
 
+    /**
+     * Recovery account
+     *
+     * @param $email
+     * @return bool
+     */
+    public function recoveryAccount($email){
+        $user = $this->em->getRepository('AppBundle:User')->findOneBy(array('email' => $email));
+
+        if($user){
+            $user->setToken($this->generateToken());
+
+            // save the User
+            $this->em->persist($user);
+            $this->em->flush();
+
+            // Send mail with reset password link
+            $this->mailer->sendPasswordResetingAccount($user);
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Update user password
+     *
+     * @param User $user
+     */
+    public function updatePassword(User $user){
+
+        // Encode the password
+        $password = $this->passwordEncoder->encodePassword($user, $user->getPlainPassword());
+        $user->setPassword($password);
+        $user->setToken(null);
+
+        // save the User
+        $this->em->persist($user);
+        $this->em->flush();
+    }
+
+
+    /**
+     * Generate random and secure token
+     *
+     * @return string
+     */
+    private function generateToken(){
+        return bin2hex(openssl_random_pseudo_bytes(16));
     }
 }
 

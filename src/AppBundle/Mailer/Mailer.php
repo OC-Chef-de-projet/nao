@@ -64,5 +64,15 @@ class Mailer
         $body       = $this->templating->render('email/account_activation.html.twig', array('user' => $user));
         $this->sendMail($to, $subject, $body);
     }
+
+    /**
+     * sending reset password account
+     */
+    public function sendPasswordResetingAccount(User $user){
+        $to         = $user->getEmail();
+        $subject    = $this->translator->trans('email_recovery_account_subject');
+        $body       = $this->templating->render('email/recovery_password.html.twig', array('user' => $user));
+        $this->sendMail($to, $subject, $body);
+    }
 }
 

@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Form\Type\RegisterType;
 
 class RegistrationController extends Controller
@@ -39,12 +40,13 @@ class RegistrationController extends Controller
     }
 
     /**
-     * @Route("/inscription/activation/{code}", name="registration.activation", requirements={"code": "[a-z0-9]+"})
+     * @Route("/inscription/activation/{code}", name="registration_activation", requirements={"code": "[a-z0-9]+"})
+     * @ParamConverter("user", options={"mapping": {"code": "token"}})
      * @Method({"GET"})
      */
-    public function accountActivationAction(Request $request)
+    public function accountActivationAction(User $user)
     {
-        $result = $this->container->get('app.user')->activateAccount($request->get('code'));
+        $result = $this->container->get('app.user')->activateAccount($user);
         return $this->render('registration/activation.html.twig', array(
             'success'       => $result,
         ));
