@@ -64,10 +64,9 @@ class UserService
     /**
      * Get user informations
      *
-     * @param $url
      * @return array
      */
-    public function getUserInfo($url)
+    public function getUserInfo()
     {
 
         $response = [];
