@@ -27,3 +27,6 @@ parameters:
     jwt_key_pass_phrase:  'SecretForAPI'                         # ssh key pass phrase
     jwt_token_ttl:        3600
 
+    google.client_id:          1074474556883-pk4g2uh55u16qh3b3a9u2hanfaqsm0qm.apps.googleusercontent.com
+    google.client_secret:      g3JBM9HRaFGCIgvR88ibTObL
+

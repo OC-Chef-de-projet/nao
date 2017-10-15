@@ -114,6 +114,7 @@ lexik_jwt_authentication:
         query_parameter:           # check token in query string parameter
             enabled: true
             name:    bearer
+
 hwi_oauth:
     firewall_names:  [main]
     resource_owners:
@@ -124,3 +125,11 @@ hwi_oauth:
             scope:               "email profile"
             options:
                 csrf: true
+        facebook:
+            type:                facebook
+            client_id:           '%facebook.client_id%'
+            client_secret:       '%facebook.client_secret%'
+            scope:               "email"
+            options:
+                csrf: true
+                display: popup
