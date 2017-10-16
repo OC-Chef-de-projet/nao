@@ -482,7 +482,8 @@ header #header-main-title h1 {
     font-weight: 500;
 }
 
-header #header-main-title h2 {
+header #header-main-title h2,
+header #header-main-title span{
     font-size: 24px;
 }
 
@@ -880,8 +881,16 @@ footer ul.social > li:not(:first-child) {
     margin: 0;
 }
 
-.card .card-content .card-title.less{
+.card .card-content h2{
     font-size: 18px;
+    display: block;
+    line-height: 32px;
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.card .card-content h2.big{
+    font-size: 24px;
 }
 
 /* ====================================
@@ -955,7 +964,9 @@ footer ul.social > li:not(:first-child) {
     width: 100%;
 }
 
-.page-heading h1 {
+.page-heading div.heading {
+    font-size: 20px;
+    font-weight: 500;
     opacity: 0;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -964,7 +975,7 @@ footer ul.social > li:not(:first-child) {
     transition: all 0.4s ease;
 }
 
-.page-heading h1.activated {
+.page-heading div.heading.activated {
     opacity: 1;
 }
 
@@ -1151,7 +1162,8 @@ ul.collapsible > li > div.collapsible-body{
         font-size: 20px;
     }
 
-    header #header-main-title h2 {
+    header #header-main-title h2,
+    header #header-main-title span{
         font-size: 16px;
     }
 
@@ -1216,6 +1228,10 @@ ul.collapsible > li > div.collapsible-body{
  */
 @media all and (max-width: 600px) {
 
+    .card .card-content h2.big{
+        font-size: 16px;
+    }
+
     body.bg-white{
         background-color: #FFFFFF !important;
     }
@@ -1267,7 +1283,8 @@ ul.collapsible > li > div.collapsible-body{
         font-size: 20px;
     }
 
-    header #header-main-title h2 {
+    header #header-main-title h2,
+    header #header-main-title span{
         font-size: 16px;
     }
 
@@ -1347,7 +1364,8 @@ ul.collapsible > li > div.collapsible-body{
         padding: 0;
     }
 
-    .card .card-content .card-title.less{
+    .card .card-content .card-title.less,
+    .card .card-content h2{
         font-size: 16px;
     }
 
@@ -1372,6 +1390,10 @@ ul.collapsible > li > div.collapsible-body{
   Phone (Landscape)
   */
 @media only screen and (min-width: 418px) and (max-width: 767px) and (orientation: landscape) {
+
+    .card .card-content h2.big{
+        font-size: 16px;
+    }
 
     body.bg-white{
         background-color: #FFFFFF !important;
@@ -1432,7 +1454,8 @@ ul.collapsible > li > div.collapsible-body{
         padding: 0;
     }
 
-    .card .card-content .card-title.less{
+    .card .card-content .card-title.less
+    .card .card-content h2{
         font-size: 16px;
     }
 

@@ -1,6 +1,6 @@
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'homepage_title'|trans }}{% endblock %}
+{% block title %}{{ 'homepage_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
 
 {% block meta %}
     <meta name="description" content="{{ 'homepage_meta_description'|trans }}">
@@ -46,7 +46,7 @@
                                 <div class="col s12 m8 push-m2">
                                     <br />
                                     <span class="card-title">{{ 'collaborative_project_title'|trans }}</span>
-                                    <p>{{ 'collaborative_project_explain'|trans }}</p>
+                                    <p>{{ 'collaborative_project_explain_2'|trans|nl2br }}</p>
                                 </div>
                             </div>
                             <div class="row">

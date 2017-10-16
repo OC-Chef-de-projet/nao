@@ -14,14 +14,14 @@
 {% block header %}
     <header class="collapse bg13">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'stay_connected_page_title'}%}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'stay_connected_main_title'}%}
         <section>
             <div class="container">
                 <div class="row">
                     <div class="col s12 center-align">
                         <div id="header-main-title">
                             <h1>{{ 'stay_connected_main_title'|trans }}</h1>
-                            <h2>{{ 'stay_connected_secondary_title'|trans }}</h2>
+                            <span>{{ 'stay_connected_secondary_title'|trans }}</span>
                             <br />
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </nav>
-        <h1>{{ 'stay_connected_page_title'|trans }}</h1>
+        <div class="heading">{{ 'stay_connected_page_title'|trans }}</div>
     </section>
 
     <!-- PAGE CONTENT -->
@@ -57,7 +57,7 @@
                                     <br />
                                     <div class="row">
                                         <div class="col s12 m6 right">
-                                            <span class="card-title less"> {{ 'stay_connected_newsletter_title'|trans }}</span>
+                                            <h2> {{ 'stay_connected_newsletter_title'|trans }}</h2>
                                             <p>{{ 'stay_connected_newsletter_explain'|trans }}</p>
                                             <form id="form_newsletter" class="col s12" method="post" action="{{ path('newsletter.subscribe') ~ '?bearer=' ~ jwt.token }}">
                                                 <div class="row no-pad-bot">
@@ -82,7 +82,7 @@
                                     <br />
                                     <div class="row">
                                         <div class="col s12 m6">
-                                            <span class="card-title less"> {{ 'stay_connected_share_title'|trans }}</span>
+                                            <h2> {{ 'stay_connected_share_title'|trans }}</h2>
                                             <p>{{ 'stay_connected_share_explain'|trans }}</p>
                                             <ul class="social bottom">
                                                 <li><a class="light-1" href="https://www.facebook.com/Nos-amis-les-oiseaux-709279699264029/" target="_blank"><i class="mdi mdi-facebook"></i></a></li>

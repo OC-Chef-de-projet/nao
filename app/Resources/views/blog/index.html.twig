@@ -1,6 +1,6 @@
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'blog_page_title'|trans }}{% endblock %}
+{% block title %}{{ 'blog_page_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
 
 {% block meta %}
     <meta name="description" content="{{ 'blog_page_meta_description'|trans }}">
@@ -12,14 +12,14 @@
 {% block header %}
     <header class="collapse bg4">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'blog_page_title'}%}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'blog_main_title'}%}
         <section>
             <div class="container">
                 <div class="row">
                     <div class="col s12 center-align">
                         <div id="header-main-title">
                             <h1>{{ 'blog_main_title'|trans }}</h1>
-                            <h2>{{ 'blog_secondary_title'|trans }}</h2>
+                            <span>{{ 'blog_secondary_title'|trans }}</span>
                             <br />
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </nav>
-        <h1>{{ 'blog_page_title'|trans }}</h1>
+        <div class="heading">{{ 'blog_main_title'|trans }}</div>
     </section>
 
     <!-- PAGE CONTENT -->

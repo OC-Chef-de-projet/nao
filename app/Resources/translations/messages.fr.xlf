@@ -27,7 +27,7 @@
             <!-- PAGE TITLE -->
             <trans-unit id="homepage_title">
                 <source>homepage_title</source>
-                <target>Accueil</target>
+                <target>Observez les oiseaux lors de vos randonnées et balades</target>
             </trans-unit>
             <trans-unit id="registration_title">
                 <source>registration_title</source>
@@ -51,19 +51,19 @@
             </trans-unit>
             <trans-unit id="about_page_title">
                 <source>about_page_title</source>
-                <target>À propos</target>
+                <target>Découvrez l’association NAO regroupant des passionnés d’ornithologie</target>
             </trans-unit>
             <trans-unit id="blog_page_title">
                 <source>blog_page_title</source>
-                <target>Le blog</target>
+                <target>Découvre le blog sur les oiseaux de NAO</target>
             </trans-unit>
             <trans-unit id="stay_connected_page_title">
                 <source>stay_connected_page_title</source>
-                <target>Restez connecté</target>
+                <target>Restez connecté avec l’association Nos Amis les Oiseaux !</target>
             </trans-unit>
             <trans-unit id="contact_page_title">
                 <source>contact_page_title</source>
-                <target>Contact</target>
+                <target>Rentrez en contact avec l'association NAO </target>
             </trans-unit>
             <trans-unit id="login_page_title">
                 <source>login_page_title</source>
@@ -79,7 +79,7 @@
             </trans-unit>
             <trans-unit id="faq_page_title">
                 <source>faq_page_title</source>
-                <target>Foire aux questions</target>
+                <target>Une question sur le projet NAO ? - FAQ </target>
             </trans-unit>
             <trans-unit id="search_page_title">
                 <source>search_page_title</source>
@@ -110,7 +110,7 @@
             <!-- PAGE META -->
             <trans-unit id="homepage_meta_description">
                 <source>homepage_meta_description</source>
-                <target></target>
+                <target>Devenez l'acteur d'un projet collaboratif engagé et environnemental avec NAO ! Joignez-vous aux nombreux passionnés d'ornithologie de France.</target>
             </trans-unit>
             <trans-unit id="registration_meta_description">
                 <source>registration_meta_description</source>
@@ -134,19 +134,19 @@
             </trans-unit>
             <trans-unit id="about_page_meta_description">
                 <source>about_page_meta_description</source>
-                <target></target>
+                <target>Nos amis les oiseaux est une association loi 1901 regroupant de nombreux passionnés d’ornithologie. Elle a été créée dans le but de préserver les oiseaux.</target>
             </trans-unit>
             <trans-unit id="blog_page_meta_description">
                 <source>blog_page_meta_description</source>
-                <target></target>
+                <target>Vous souhaitez rester informé et en apprendre plus sur l'ornithologie ? Retrouvez notre blog des articles sur les oiseaux et ce qui les entourent.</target>
             </trans-unit>
             <trans-unit id="stay_connected_page_meta_description">
                 <source>stay_connected_page_meta_description</source>
-                <target></target>
+                <target>NAO, ce n’est pas que l’observation d’oiseaux ! Nous vous proposons de partager cette passion à travers plusieurs supports comme notre blog sur les oiseaux.</target>
             </trans-unit>
             <trans-unit id="contact_page_meta_description">
                 <source>contact_page_meta_description</source>
-                <target></target>
+                <target>Vous souhaitez contacter l'association Nos Amis les Oiseaux ? Vous êtes au bon endroit ! Depuis cette page, il vous sera possible de nous envoyer un mail.</target>
             </trans-unit>
             <trans-unit id="login_page_meta_description">
                 <source>login_page_meta_description</source>
@@ -162,7 +162,7 @@
             </trans-unit>
             <trans-unit id="faq_page_meta_description">
                 <source>faq_page_meta_description</source>
-                <target></target>
+                <target>Retrouvez les questions fréquemment posées concernant l'utilisation du site pour l'observation des oiseaux et la saisie de celles-ci.</target>
             </trans-unit>
             <trans-unit id="search_page_meta_description">
                 <source>search_page_meta_description</source>
@@ -506,7 +506,15 @@
             </trans-unit>
             <trans-unit id="collaborative_project_explain">
                 <source>collaborative_project_explain</source>
-                <target>Dear Mr. President, There are too many states nowadays. Please, eliminate three. P.S. I am not a crackpot. I'm normally not a praying man, but if you're up there, please save me, Superman. But, Aquaman, you cannot marry a woman without gills. You're from two different worlds… Oh, I've wasted my life.</target>
+                <target>Le projet de NAO a pour objectif de collecter des informations afin d’étudier les effets de l’urbanisation sur les oiseaux. L'érosion de la biodiversité est un problème différent de celui du climat mais néanmoins lié. Elle est tout aussi importante et inquiétante au jour d'aujourd'hui.</target>
+            </trans-unit>
+            <trans-unit id="collaborative_project_explain_2">
+                <source>collaborative_project_explain_2</source>
+                <target>
+                Rejoignez de nombreux passionnés d'ornithologie à travers le projet de Nos Amis les Oiseaux (NAO).
+                Une communauté active et dynamique souhaitant partager cette passion et préserver les oiseaux.
+                N'attendez plus, rejoignez-nous !
+                </target>
             </trans-unit>
             <trans-unit id="observe">
                 <source>observe</source>
@@ -526,11 +534,11 @@
             </trans-unit>
             <trans-unit id="last_observation">
                 <source>last_observation</source>
-                <target>Dernières observations</target>
+                <target>Dernières observations d’oiseaux</target>
             </trans-unit>
             <trans-unit id="last_actuality_of_nao">
                 <source>last_actuality_of_nao</source>
-                <target>Dernières actualités de NAO</target>
+                <target>Notre blog sur les oiseaux</target>
             </trans-unit>
             <trans-unit id="no_observation_for_moment">
                 <source>no_observation_for_moment</source>
@@ -662,15 +670,31 @@
             </trans-unit>
             <trans-unit id="about_nao_explain">
                 <source>about_nao_explain</source>
-                <target>How could you?! Haven't you learned anything from that guy who gives those sermons at church? Captain Whatshisname? We live in a society of laws! Why do you think I took you to all those Police Academy movies? For fun? Well, I didn't hear anybody laughing, did you? Except at that guy who made sound effects. Makes sound effects and laughs. Where was I? Oh yeah! Stay out of my booze. The Internet King? I wonder if he could provide faster nudity…</target>
+                <target>
+                    Qui sommes-nous ?
+                    Nos amis les oiseaux est une association loi 1901 regroupant de nombreux passionnés d’ornithologie.
+                    Elle a été créée en 2001 par Jean DUPONT et Marie DUPONT tous deux naturalistes et passionnés.
+                </target>
             </trans-unit>
             <trans-unit id="about_explain_1">
                 <source>about_explain_1</source>
-                <target>Thank you, steal again. Look out, Itchy! He's Irish! Look out, Itchy! He's Irish! Uh, no, they're saying "Boo-urns, Boo-urns." I'll be back. You can't keep the Democrats out of the White House forever, and when they get in, I'm back on the streets, with all my criminal buddies. on, a woman is like a beer. They smell good, they look good, you'd step over your own mother just to get one! But you can't stop at one. You wanna drink another woman! And now, in the spirit of the season: start shopping. And for every dollar of Krusty merchandise you buy, I will be nice to a sick kid. For legal purposes, sick kids may include hookers with a cold.</target>
+                <target>
+                    Vous n’êtes pas seul ! Vous vous dites peut-être que vous n’y connaissez rien pour identifier les oiseaux ou encore vous n’avez pas l’équipement adéquat. Ne vous en faites pas, nos membres naturalistes sont là pour vous aiguiller et pour vérifier les observations que vous rentrez sur le site.
+
+                    Ne vous mettez pas de barrières, l’observation d’oiseaux et l’inscription sur le site sont ouvertes à tous !
+                </target>
             </trans-unit>
             <trans-unit id="about_explain_2">
                 <source>about_explain_2</source>
-                <target>Thank you, steal again. Look out, Itchy! He's Irish! Look out, Itchy! He's Irish! Uh, no, they're saying "Boo-urns, Boo-urns." I'll be back. You can't keep the Democrats out of the White House forever, and when they get in, I'm back on the streets, with all my criminal buddies. on, a woman is like a beer. They smell good, they look good, you'd step over your own mother just to get one! But you can't stop at one. You wanna drink another woman! And now, in the spirit of the season: start shopping. And for every dollar of Krusty merchandise you buy, I will be nice to a sick kid. For legal purposes, sick kids may include hookers with a cold.</target>
+                <target> Nous comptons au jour d’aujourd’hui plus de 200 adhérents à l’association NAO ainsi que 2 000 membres inscrits sur le site qui effectuent régulièrement des observations lors de leurs balades et randonnées.</target>
+            </trans-unit>
+            <trans-unit id="about_explain_no_waiting">
+                <source>about_explain_no_waiting</source>
+                <target>Alors qu’attendez-vous ?</target>
+            </trans-unit>
+            <trans-unit id="about_explain_2_1">
+                <source>about_explain_2_1</source>
+                <target>Rejoignez une communauté active sur l’ornithologie pour ne plus être simplement un spectateur, devenez l'acteur d'un projet environnemental pour préserver cette si belle nature.</target>
             </trans-unit>
 
 
@@ -700,7 +724,7 @@
             </trans-unit>
             <trans-unit id="stay_connected_newsletter_explain">
                 <source>stay_connected_newsletter_explain</source>
-                <target>The more you tighten your grip, Tarkin, the more star systems will slip through your fingers. Don't be too proud of this technological terror you've constructed. The ability to destroy a planet is insignificant next to the power of the Force.</target>
+                <target>NAO, ce n’est pas que l’observation d’oiseaux ! Nous vous proposons de partager cette passion à travers plusieurs supports comme notre blog sur les oiseaux et de rester informer des rencontres avec nos naturalistes spécialisés sur l’ornithologie lors de randonnées.</target>
             </trans-unit>
             <trans-unit id="stay_connected_share_title">
                 <source>stay_connected_share_title</source>
@@ -708,7 +732,7 @@
             </trans-unit>
             <trans-unit id="stay_connected_share_explain">
                 <source>stay_connected_share_explain</source>
-                <target>Ye-ha! Leave that to me. Send a distress signal, and inform the Senate that all on board were killed. Alderaan? I'm not going to Alderaan. I've got to go home. It's late, I'm in for it as it is. You're all clear, kid. Let's blow this thing and go home!</target>
+                <target>En plus de notre newsletter, vous pouvez nous suivre sur nos réseaux sociaux pour vous tenir informé et pour discuter avec les membres de la communauté NAO. Nous avons mis à disposition un groupe sur Facebook afin de faciliter ces échanges. </target>
             </trans-unit>
 
 

@@ -2,7 +2,7 @@
 
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'about_page_title'|trans }}{% endblock %}
+{% block title %}{{ 'about_page_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
 
 {% block meta %}
     <meta name="description" content="{{ 'about_page_meta_description'|trans }}">
@@ -14,14 +14,14 @@
 {% block header %}
     <header class="collapse bg3">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'about_page_title'}%}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'about_main_title'}%}
         <section>
             <div class="container">
                 <div class="row">
                     <div class="col s12 center-align">
                         <div id="header-main-title">
                             <h1>{{ 'about_main_title'|trans }}</h1>
-                            <h2>{{ 'about_secondary_title'|trans }}</h2>
+                            <span>{{ 'about_secondary_title'|trans }}</span>
                             <br />
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </nav>
-        <h1>{{ 'about_page_title'|trans }}</h1>
+        <div class="heading">{{ 'about_main_title'|trans }}</div>
     </section>
 
     <!-- PAGE CONTENT -->
@@ -57,8 +57,8 @@
                                     <div class="row">
                                         <div class="col s12 ">
                                             <br />
-                                            <span class="card-title less"> {{ 'NAO'|trans }}</span>
-                                            <p>{{ 'about_nao_explain'|trans }}</p>
+                                            <h2 class="big"> {{ 'NAO'|trans }}</h2>
+                                            <p>{{ 'about_nao_explain'|trans|nl2br }}</p>
                                         </div>
                                     </div>
                                     <br />
@@ -70,7 +70,7 @@
                                     <br />
                                     <div class="row">
                                         <div class="col s12">
-                                            <span class="card-title less">{{ 'collaborative_project_title'|trans }}</span>
+                                            <h2 class="big">{{ 'collaborative_project_title'|trans }}</h2>
                                             <p>{{ 'collaborative_project_explain'|trans }}</p>
                                         </div>
                                     </div>
@@ -90,7 +90,7 @@
                                             <img src="assets/img/a-shuhani-541.jpg" />
                                         </div>
                                         <div class="col s12 m6 right">
-                                            {{ 'about_explain_1'|trans }}
+                                            {{ 'about_explain_1'|trans|nl2br }}
                                         </div>
                                     </div>
                                     <br />
@@ -99,7 +99,9 @@
                                             <img src="assets/img/pawel-janiak-114499.jpg" />
                                         </div>
                                         <div class="col s12 m6">
-                                            {{ 'about_explain_2'|trans }}
+                                            {{ 'about_explain_2'|trans }}<br /><br />
+                                            <b>{{ 'about_explain_no_waiting'|trans }}</b><br />
+                                            {{ 'about_explain_2_1'|trans }}
                                         </div>
                                     </div>
                                 </div>

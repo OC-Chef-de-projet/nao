@@ -32,7 +32,7 @@
         var navSmallTitle       = $('#nav-small-title');
         var tabs                = $('header ul.tabs');
         var HeaderMainTitle     = $('#header-main-title');
-        var PageTitle           = $('.page-heading h1');
+        var PageTitle           = $('.page-heading div.heading');
         var to_top_offset       = 5;
 
         _init_navigation();

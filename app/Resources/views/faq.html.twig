@@ -2,7 +2,7 @@
 
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'faq_page_title'|trans }}{% endblock %}
+{% block title %}{{ 'faq_page_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
 
 {% block meta %}
     <meta name="description" content="{{ 'faq_page_meta_description'|trans }}">
@@ -21,7 +21,7 @@
                     <div class="col s12 center-align">
                         <div id="header-main-title">
                             <h1>{{ 'faq_main_title'|trans }}</h1>
-                            <h2>{{ 'faq_secondary_title'|trans }}</h2>
+                            <span>{{ 'faq_secondary_title'|trans }}</span>
                             <br />
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </nav>
-        <h1>{{ 'faq_page_title'|trans }}</h1>
+        <div class="heading">{{ 'faq_main_title'|trans }}</div>
     </section>
 
     <!-- PAGE CONTENT -->
@@ -56,53 +56,39 @@
                                 <div class="col s12 m8 push-m2">
                                     <ul class="collapsible" data-collapsible="accordion">
                                         <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>1. Que veulent dire les lettres FAQ ?</h2></div>
-                                            <div class="collapsible-body">
-                                                <span>Ce sont les initiales des mots « Foire aux Questions » ou « Frequently Asked Questions » en anglais.</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>2. Qu’est-ce qu’une FAQ ?</h2></div>
-                                            <div class="collapsible-body">
-                                                <span>Une FAQ est une liste de questions/réponses. Présentée sur un site internet, la FAQ a pour vocation de répondre aux questions fréquentes que se pose l’internaute vis-à-vis d’un produit ou d’un service.</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>3. A quoi sert une FAQ ?</h2></div>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>1. Comment ajouter une observation d’oiseau ?</h2></div>
                                             <div class="collapsible-body">
                                                 <span>
-                                                    <p>Une FAQ présente plusieurs avantages, pour vos clients comme pour vous !</p><br />
-                                                    <p>De votre côté, la FAQ est un outil au service des ventes, qui permet de se différencier de la concurrence. Avant d’acheter, la plupart des consommateurs font en effet des recherches précises sur internet. En leur fournissant des infos utiles sur votre offre, vous les rendez plus susceptibles d’acheter chez vous que chez un concurrent qui ignore leurs interrogations.</p><br />
-                                                    <p>Enfin, les FAQ sont bénéfiques pour votre référencement web car elles permettent d’ajouter à votre site des contenus intéressants, qui seront pris en compte dans les moteurs de recherche.</p>
+                                                    Pour ajouter une observation, vous devez tout d’abord vous connecter au site puis rendez-vous sur la page de création d’une observation.
+                                                    Il vous suffira simplement d’ajouter le lieu, la date, l’espèce observée ainsi que le nombre d’oiseaux observés.
+                                                    Vous avez aussi la possibilité d’ajouter une photo ainsi qu’une remarque sur le comportement observé mais cela reste facultatif.
+                                                    Enfin après avoir renseigné ces informations, cliquez sur le bouton « Soumettre l’observation ».
                                                 </span>
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>4. Avoir une FAQ, c’est obligatoire ?</h2></div>
-                                            <div class="collapsible-body">
-                                                <span>Une FAQ n’a rien d’obligatoire. D’ailleurs, ce n’est pas toujours la stratégie la plus pertinente à mettre en place sur votre site ! Si vos prospects sont obligés de la consulter régulièrement ou que les mêmes questions reviennent souvent, ça peut vouloir dire que votre offre n’est pas présentée de façon suffisamment claire et qu’il y a des lacunes dans les contenus principaux de votre site. Dans ce cas, au lieu de proposer une FAQ, il peut être plus judicieux de retravailler directement vos contenus. En effet, une bonne FAQ intervient en support, en « complément » des contenus proposés sur le site, mais elle ne doit en aucun cas les supplanter…</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>5. Comment présenter une FAQ ?</h2></div>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>2. Pourquoi mon observation n’est pas publiée ?</h2></div>
                                             <div class="collapsible-body">
                                                 <span>
-                                                    <p>Il existe deux principaux formats de FAQ :</p><br />
-                                                    <p>&bull; le format « statique », qui consiste en une liste de questions/réponses présentées sur une seule et même page. Généralement, seules les questions sont visibles au premier abord. Les réponses apparaissent sous la question concernée lorsque l’internaute clique dessus.</p><br />
-                                                    <p>&bull; le format « dynamique », qui fonctionne comme les moteurs de recherche : l’internaute tape sa question ou un mot-clé, et l’outil lui suggère des réponses appropriées. Lorsque l’internaute clique sur une réponse, il est redirigé vers une page dédiée à celle-ci.</p>
+                                                    Votre observation n’est pas publiée automatiquement, celle-ci requiert la validation d’un naturaliste.
+                                                    Vous pouvez voir vos observations sur votre espace, tant que vos observations sont dans l’onglet « En attente », celles-ci ne sont pas encore publiées.
                                                 </span>
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>6. Quelles sont les questions a inclure  ?</h2></div>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>3. Mon observation a été rejeté, pourquoi ?</h2></div>
                                             <div class="collapsible-body">
-                                                <span>La principale erreur des entreprises qui rédigent une FAQ est de poser les questions qu’elles aimeraient que les prospects posent et sur lesquelles elles peuvent briller. Seulement voilà, ce sont rarement les mêmes que celles que les prospects posent réellement.</span>
+                                                <span>
+                                                     Il s’agit d’un cas assez rare mais un naturaliste peut rejeter votre observation si celui-ci estime que votre observation n’est pas valide.
+                                                    Le naturaliste vous informera de la raison concernant le rejet de celle-ci et votre observation sera remise dans vos brouillons afin que vous puissiez la corriger.
+                                                </span>
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>7. Comment optimiser une FAQ pour le référencement web ?</h2></div>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>4. Je souhaite contribuer à l’évolution du site, comment faire ?</h2></div>
                                             <div class="collapsible-body">
-                                                <span>Pour booster votre référencement web, vous opterez plutôt pour une FAQ dynamique (à condition que ce soit pertinent avec vos problématiques par ailleurs… !). Vous aurez donc ainsi une nouvelle page de contenu pour chaque couple question/réponse. Ces pages, comme n’importe quelles autres pages de votre site, peuvent être optimisées pour le référencement web. Il faut dans ce cas prendre soin de renseigner le titre de la page et sa méta-description, d’inclure des H1 et H2 pour structurer celle-ci, etc. Bref, du grand classique ! Ca ne vous parle pas du tout ? Vous pouvez demander un coup de pouce à une agence web, elle saura vous aider.</span>
+                                                <span>
+                                                    Tout d’abord, merci de l’intérêt que vous portez au projet !  Vous pouvez aider l’association à l’évolution du site en faisant un don sur ce lien.</span>
                                             </div>
                                         </li>
                                     </ul>
