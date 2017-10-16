@@ -3,7 +3,7 @@
         <img src="{{ asset('images/posts/' ~ article.imageLink ) }}" alt="{{ 'alt_actuality'|trans }}">
     </div>
     <div class="card-content">
-        <p class="caption light-2">{{ 'published_at'|trans({'%date%': article.publishedAt|date("d/m/Y")}) }}</p>
+        <p class="caption light-2-no-hov">{{ 'published_at'|trans({'%date%': article.publishedAt|date("d/m/Y")}) }}</p>
         <span class="card-title">{{ article.title }}</span>
         <p>{{ article.content|truncate(120) }}</p>
     </div>

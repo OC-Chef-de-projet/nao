@@ -1,25 +1,27 @@
+{% set bgwhite = true %}
+
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}Titre article{% endblock %}
+{% block title %}{{ article.title }} - Blog - {{ 'NAO'|trans }}{% endblock %}
 
 {% block meta %}
-    <meta name="description" content="Contenu article troncate 200">
-    <meta name="og:description" content="Contenu article troncate 200">
-    <meta name="og:title" content="Titre article">
-    <meta property="og:image" content="Image article" />
+    <meta name="description" content="{{ article.content|truncate(120) }}">
+    <meta name="og:description" content="{{ article.content|truncate(120) }}">
+    <meta name="og:title" content="{{ article.title }}">
+    <meta property="og:image" content="{{ absolute_url(asset('images/posts/' ~ article.imageLink )) }}" />
 {% endblock %}
 
 {% block header %}
-    <header class="collapse bg4">
+    <header class="collapse" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(84, 84, 84, 0)), url('{{ asset('images/posts/' ~ article.imageLink ) }}') center/cover no-repeat">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'blog_page_title'}%}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': article.title }%}
         <section>
             <div class="container">
                 <div class="row">
                     <div class="col s12 center-align">
                         <div id="header-main-title">
-                            <h1>TITRE ARTICLE</h1>
-                            <br />
+                            <h1>{{ article.title }}</h1>
+                            <br /><br />
                         </div>
                     </div>
                 </div>
@@ -36,17 +38,40 @@
                 <div class="col s12">
                     <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
                     <a href="{{ path('blog') }}" class="breadcrumb">{{ 'blog'|trans }}</a>
-                    <span class="breadcrumb">Titre article seul</span>
+                    <span class="breadcrumb">{{ article.title }}</span>
                 </div>
             </div>
         </nav>
-        <h1>{{ 'blog_page_title'|trans }}</h1>
+        <div class="heading">{{ article.title }}</div>
     </section>
 
     <!-- PAGE CONTENT -->
     <main class="container marge-top">
         <section>
-
+            <div class="row">
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m10 push-m1">
+                                    <br />
+                                    <div class="row">
+                                        <div class="col s12 m6 right">
+                                            <p class="caption light-2-no-hov">{{ 'published_at'|trans({'%date%': article.publishedAt|date("d/m/Y")}) }}</p>
+                                            <br />
+                                            <p>{{ article.content }}</p>
+                                            <br />
+                                        </div>
+                                        <div class="col s12 m6 right">
+                                            <img src="{{ asset('images/posts/' ~ article.imageLink ) }}" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 {% endblock %}

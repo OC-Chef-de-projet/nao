@@ -6,7 +6,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Post;
+
 
 /**
  * Class BlogController
@@ -33,10 +35,13 @@ class BlogController extends Controller
     /**
      * @Route("/{id}/{slug}", name="blog.detail", requirements={"id": "\d+"})
      * @Method({"GET"})
+     * @ParamConverter("post", options={"mapping": {"id": "id"}})
      */
-    public function showDetailAction()
+    public function showDetailAction(Post $post)
     {
-        return $this->render('blog/detail.html.twig');
+        return $this->render('blog/detail.html.twig', array(
+            'article'  => $post
+        ));
     }
 
 }
