@@ -210,6 +210,43 @@
         });
 
         /**
+         * Control the display to the social sharing box
+         * after calling ajax function to delagate of parent container
+         */
+        $('#eltlist').on('click', '.sharing', function(e){
+            event.preventDefault();
+            event.stopPropagation();
+
+            var origin  = $(this);
+            var data    = origin.data();
+
+            // inject social url
+            $('#sharingBox li a').each(function(){
+                $(this).data('link', data.link);
+            });
+
+            if(data.role === 'dropdown'){
+
+                // keep socialBox inside fixed navbar
+                origin.after(sharingBox);
+                var leftPosition    = $(window).width() - 160;
+                var topPosition     = navbar.height();
+
+                // Close materialize Dropdown
+                dropdownControl.dropdown('close');
+
+            }else{
+                header.before(sharingBox);
+                var leftPosition    = origin.offset().left - offsetToElement;
+                var topPosition     = origin.offset().top + offsetToElement;
+            }
+            sharingBox.hide().css({
+                top : topPosition + 'px',
+                left: leftPosition + 'px'
+            }).slideDown('fast');
+        });
+
+        /**
          * displays a social sharing window depending on the provider and input parameters
          */
         socialLink.on('click', function(event){
