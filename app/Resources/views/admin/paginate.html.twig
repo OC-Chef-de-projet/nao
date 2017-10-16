@@ -4,7 +4,7 @@
 
         <!-- previous -->
         <li id="chevron_left" {{ paginate.current <= 1 ? 'class="disabled"': 'class="waves-effect"' }}>
-            <a id="prevpage" href="#">
+            <a id="prevpage" href="javascript:void(0)">
                 <i class="material-icons">chevron_left</i>
             </a>
         </li>
@@ -14,13 +14,13 @@
         {% for i in paginate.current..paginate.maxPages %}
             <li id="p_{{ i }}"
                 class="waves-effect {{ paginate.current == i ? 'active' }}{{ i > paginate.maxPages ? 'disabled' }}">
-                    <a class="gotopage"  href="#" data-page="{{ i }}">{{ i }}</a>
+                    <a class="gotopage"  href="javascript:void(0)" data-page="{{ i }}">{{ i }}</a>
             </li>
         {% endfor %}
         </span>
         <!-- Next -->
         <li id="chevron_right" {{ paginate.current == paginate.maxPages ? 'class="disabled"': 'class="waves-effect"' }}>
-            <a id="nextpage" href="#" data-maxPage="{{ paginate.maxPages }}" >
+            <a id="nextpage" href="javascript:void(0)" data-maxPage="{{ paginate.maxPages }}" >
                 <i class="material-icons">chevron_right</i>
             </a>
         </li>
