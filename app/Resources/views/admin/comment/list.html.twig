@@ -2,7 +2,7 @@
     <ul class="collection">
         {% for cmt in cmtlist %}
             <li class="collection-item avatar">
-                <img src="{{ asset('user.getImagePath) }}" class="circle">
+                <img src="{{ asset(user.getImagePath) }}" class="circle">
                 <span class="title">{{ cmt.user.name }}</span>
                 <p>{{ cmt.content }}</p>
                 <p class="secondary-content caption light-2">{{ 'published_at' |trans ({'%date%': cmt.created|date("d/m/Y")}) }}</p>
@@ -31,7 +31,7 @@
         <br>
         {{ form_start(form) }}
         <div class="center">
-                <button type="reset"   class="modal-action modal-close btn white scroll-to waves-effect">{{ 'no' | trans }}</button>
+                <button type="reset" class="modal-action modal-close btn white scroll-to waves-effect">{{ 'no' | trans }}</button>
                 {{ form_widget(form.save) }}
         </div>
         {{ form_end(form) }}
