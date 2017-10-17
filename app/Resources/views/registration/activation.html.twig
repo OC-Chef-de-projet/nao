@@ -2,7 +2,7 @@
 
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'registration_title'|trans }}{% endblock %}
+{% block title %}{{ 'registration_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
 
 {% block meta %}
     <meta name="description" content="{{ 'registration_meta_description'|trans }}">
@@ -14,7 +14,7 @@
 {% block header %}
     <header class="collapse bg11">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'registration_title' }%}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'register' }%}
         <section>
             <div class="container">
                 <div class="row">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </nav>
-        <div class="heading">{{ 'registration_title'|trans }}</div>
+        <div class="heading">{{ 'register'|trans }}</div>
     </section>
 
     <!-- PAGE CONTENT -->

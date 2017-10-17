@@ -2,7 +2,7 @@
 
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'legacy_page_title'|trans }}{% endblock %}
+{% block title %}{{ 'legacy_page_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
 
 {% block meta %}
     <meta name="description" content="{{ 'legacy_page_meta_description'|trans }}">
@@ -14,7 +14,7 @@
 {% block header %}
     <header class="classic">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'legacy_page_title'} %}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'legacy'} %}
     </header>
 {% endblock %}
 
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </nav>
-        <div class=" heading activated">{{ 'legacy_page_title'|trans }}</div>
+        <div class=" heading activated">{{ 'legacy'|trans }}</div>
     </section>
 
     <!-- PAGE CONTENT -->

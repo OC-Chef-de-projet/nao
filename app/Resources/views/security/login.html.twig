@@ -1,6 +1,6 @@
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'login_page_title'|trans }}{% endblock %}
+{% block title %}{{ 'login_page_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
 
 {% block meta %}
     <meta name="description" content="{{ 'login_page_meta_description'|trans }}">
@@ -12,7 +12,7 @@
 {% block header %}
     <header class="collapse bg7">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'login_page_title'} %}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'login_main_title'} %}
         <section>
             <div class="container">
                 <div class="row">
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </nav>
-        <div class="heading">{{ 'login_page_title'|trans }}</div>
+        <div class="heading">{{ 'login_main_title'|trans }}</div>
     </section>
 
     <!-- PAGE CONTENT -->

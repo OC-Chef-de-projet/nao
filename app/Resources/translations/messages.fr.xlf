@@ -31,7 +31,7 @@
             </trans-unit>
             <trans-unit id="registration_title">
                 <source>registration_title</source>
-                <target>Inscription</target>
+                <target>Inscrivez-vous sur le site de l’association NAO</target>
             </trans-unit>
             <trans-unit id="observation_create_title">
                 <source>observation_create_title</source>
@@ -67,7 +67,7 @@
             </trans-unit>
             <trans-unit id="login_page_title">
                 <source>login_page_title</source>
-                <target>Connexion</target>
+                <target>Connectez-vous au site de l’association NAO</target>
             </trans-unit>
             <trans-unit id="dashboard_page_title">
                 <source>dashboard_page_title</source>
@@ -75,7 +75,7 @@
             </trans-unit>
             <trans-unit id="legacy_page_title">
                 <source>legacy_page_title</source>
-                <target>Mentions légales</target>
+                <target>Mentions légales de l’association NAO</target>
             </trans-unit>
             <trans-unit id="faq_page_title">
                 <source>faq_page_title</source>
@@ -114,7 +114,7 @@
             </trans-unit>
             <trans-unit id="registration_meta_description">
                 <source>registration_meta_description</source>
-                <target></target>
+                <target>Rejoignez le projet NAO en vous inscrivant sur le site de l’association et accédez à toutes les fonctionnalités comme l’envoi de vos observations d’oiseaux.</target>
             </trans-unit>
             <trans-unit id="observation_create_meta_description">
                 <source>observation_create_meta_description</source>
@@ -150,7 +150,7 @@
             </trans-unit>
             <trans-unit id="login_page_meta_description">
                 <source>login_page_meta_description</source>
-                <target></target>
+                <target>Rejoignez le projet NAO en vous connectant sur le site de l’association et accédez à toutes les fonctionnalités comme l’envoi de vos observations d’oiseaux.</target>
             </trans-unit>
             <trans-unit id="dashboard_page_meta_description">
                 <source>dashboard_page_meta_description</source>
@@ -158,7 +158,7 @@
             </trans-unit>
             <trans-unit id="legacy_page_meta_description">
                 <source>legacy_page_meta_description</source>
-                <target></target>
+                <target>Retrouvez les Mentions légales de l’association NAO ainsi que les conditions d’utilisation du site sur cette page.</target>
             </trans-unit>
             <trans-unit id="faq_page_meta_description">
                 <source>faq_page_meta_description</source>
