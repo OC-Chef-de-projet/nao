@@ -357,6 +357,15 @@
                 <source>change_password</source>
                 <target>Changer le mot de passe</target>
             </trans-unit>
+            <trans-unit id="sharing">
+                <source>sharing</source>
+                <target>Partager</target>
+            </trans-unit>
+            <trans-unit id="leave_a_comment">
+                <source>leave_a_comment</source>
+                <target>Laisser un commentaire</target>
+            </trans-unit>
+
 
             <!-- ROLES -->
             <trans-unit id="ROLE_ADMIN">
@@ -706,6 +715,26 @@
             <trans-unit id="blog_secondary_title">
                 <source>blog_secondary_title</source>
                 <target>Rédigé avec notre plus belle plume</target>
+            </trans-unit>
+            <trans-unit id="comments">
+                <source>comments</source>
+                <target>Commentaires</target>
+            </trans-unit>
+            <trans-unit id="no_comments_for_moment">
+                <source>no_comments_for_moment</source>
+                <target>Il n'y a pas encore de commentaires pour cet article.</target>
+            </trans-unit>
+            <trans-unit id="leave_comment">
+                <source>leave_comment</source>
+                <target>Laissez un commentaire</target>
+            </trans-unit>
+            <trans-unit id="connected_for_comment">
+                <source>connected_for_comment</source>
+                <target>Vous devez être connecté pour pouvoir laisser un commentaire.</target>
+            </trans-unit>
+            <trans-unit id="connected_to">
+                <source>connected_to</source>
+                <target>Connecté en tant que [%name%]</target>
             </trans-unit>
 
 

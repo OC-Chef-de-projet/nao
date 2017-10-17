@@ -47,6 +47,11 @@ div.center {
     text-align: right;
 }
 
+.top-neg{
+    position:relative;
+    top:-15px;
+}
+
 /* ====================================
     Common / Typography
     =============================================*/
@@ -216,6 +221,13 @@ a.small{
     width: 100%;
 }
 
+.btn.social.less{
+    font-size: 13px;
+    width: auto;
+    padding: 0 10px 0 0;
+    margin-right: 10px;
+}
+
 .facebook {
     background-color: #3b5998 !important;
     color: #fff !important;
@@ -223,6 +235,11 @@ a.small{
 
 .google {
     background-color: #dd4b39 !important;
+    color: #fff !important;
+}
+
+.twitter {
+    background-color: #55acee !important;
     color: #fff !important;
 }
 
@@ -234,6 +251,10 @@ a.small{
     float: left;
     padding: 0 0.5rem;
     margin-right: 0.2rem;
+}
+
+.btn.social.less i{
+    margin-right: 0.5rem;
 }
 
 /* ====================================
@@ -838,6 +859,14 @@ footer ul.social > li:not(:first-child) {
     min-height: 150px;
 }
 
+.card .card-content form.no-pad{
+    padding: 0 !important;
+}
+
+.card .card-content form.no-pad textarea{
+    min-height: 3rem;
+}
+
 .card .card-content form .main-section {
     padding-right: 0px;
 }
@@ -891,6 +920,14 @@ footer ul.social > li:not(:first-child) {
 
 .card .card-content h2.big{
     font-size: 24px;
+}
+
+.card.no-style.all{
+    border-radius: 0px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    margin: 0;
+    padding: 0;
 }
 
 /* ====================================
@@ -1382,6 +1419,16 @@ ul.collapsible > li > div.collapsible-body{
 
     .btn.social:first-child{
         margin-top: 10px;
+    }
+
+    .btn.social.less{
+        margin-right: 20px;
+    }
+
+    .btn.social.less i{
+        float: none;
+        font-size: 26px;
+        border-right: none !important;
     }
 
 }

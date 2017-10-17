@@ -45,4 +45,17 @@ class CommentRepository extends EntityRepository
         return $paginator;
     }
 
+    public function getCommentsValidate()
+    {
+
+        $query = $this->createQueryBuilder('c')
+            ->where('c.status = :status')
+            ->setParameter('status',Comment::ACCEPTED)
+            ->orderBy('c.created', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
+
 }

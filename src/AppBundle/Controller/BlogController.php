@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Post;
-
+use AppBundle\Entity\Comment;
 
 /**
  * Class BlogController
@@ -39,8 +39,11 @@ class BlogController extends Controller
      */
     public function showDetailAction(Post $post)
     {
+        $em = $this->getDoctrine()->getManager();
+
         return $this->render('blog/detail.html.twig', array(
-            'article'  => $post
+            'article'   => $post,
+            'comments'  => $em->getRepository('AppBundle:Comment')->getCommentsValidate()
         ));
     }
 

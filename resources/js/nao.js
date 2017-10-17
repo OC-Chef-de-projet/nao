@@ -460,5 +460,16 @@
              toastMsg = undefined;
          }
 
+        /* ==================================================
+         COMMENT FORM
+         ===========================================================*/
+        var CommentForm      = $('#form_comment');
+        var commentInput     = CommentForm.find('textarea');
+        var countChars       = $('#count_chars');
+
+        commentInput.on('keyup', function(event){
+            countChars.html(commentInput.val().length);
+        });
+
     });
 })(jQuery);

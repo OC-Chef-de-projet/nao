@@ -67,6 +67,53 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col s12 m10 push-m1 center-align">
+                                    <br />
+                                    <a  href="#" class="waves-effect waves-light btn social less facebook share-link" data-social="facebook" data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}">
+                                        <i class="mdi mdi-facebook"></i><span class="hide-on-small-only">{{ 'sharing'|trans }}</span>
+                                    </a>
+                                    <a href="#" class="waves-effect waves-light btn social less google share-link" data-social="google" data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}">
+                                        <i class="mdi mdi-google-plus"></i><span class="hide-on-small-only">{{ 'sharing'|trans }}</span>
+                                    </a>
+                                    <a href="#" class="waves-effect waves-light btn social less twitter share-link" data-social="twitter" data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}">
+                                        <i class="mdi mdi-twitter"></i><span class="hide-on-small-only">{{ 'sharing'|trans }}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="card no-style all">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m10 push-m1">
+                                    <br />
+                                    <h2>{{ 'comments'|trans }}</h2>
+                                    {% if comments|length > 0 %}
+                                    {% else %}
+                                        <p>{{ 'no_comments_for_moment'|trans }}</p>
+                                    {% endif %}
+                                    <br /><br />
+                                    <h2>{{ 'leave_comment'|trans }}</h2>
+                                    {% if user_is_logged %}
+                                        <span class="caption light-2-no-hov top-neg">{{ 'connected_to'|trans({'%name%': app.user.name}) }}</span>
+                                        <form id="form_comment" method="post" class="no-pad">
+                                            <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <textarea  class="materialize-textarea" maxlength="250" required></textarea>
+                                                    <div class="error"></div>
+                                                    <span class="caption light-2-no-hov top-neg right" style="margin-right: 5px;"><span id="count_chars">0</span>/250</span>
+                                                </div>
+                                                <div class="col s12 center-align">
+                                                    <input type="submit" class="btn waves-effect" value="{{ 'leave_a_comment'|trans }}" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    {% else %}
+                                        <p>{{ 'connected_for_comment'|trans }}</p>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>
