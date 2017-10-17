@@ -4,9 +4,7 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Comment;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\Form\Form;
 use Doctrine\ORM\Tools\Pagination\Paginator;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Translation\TranslatorInterface;
 use AppBundle\Entity\Post;
