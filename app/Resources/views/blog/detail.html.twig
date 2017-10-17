@@ -98,10 +98,10 @@
                                     <h2>{{ 'leave_comment'|trans }}</h2>
                                     {% if user_is_logged %}
                                         <span class="caption light-2-no-hov top-neg">{{ 'connected_to'|trans({'%name%': app.user.name}) }}</span>
-                                        <form id="form_comment" method="post" class="no-pad">
+                                        <form id="form_comment" method="post" class="no-pad" action="{{ path('comment_add', {'article' : article.id}) ~ '?bearer=' ~ jwt.token }}">
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <textarea  class="materialize-textarea" maxlength="250" required></textarea>
+                                                    <textarea  name="message" class="materialize-textarea" maxlength="250" required></textarea>
                                                     <div class="error"></div>
                                                     <span class="caption light-2-no-hov top-neg right" style="margin-right: 5px;"><span id="count_chars">0</span>/250</span>
                                                 </div>

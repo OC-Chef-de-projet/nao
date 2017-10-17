@@ -471,5 +471,35 @@
             countChars.html(commentInput.val().length);
         });
 
+        CommentForm.validate({
+            errorElement : 'div',
+            errorPlacement: function(error, element) {
+                element.removeClass('valid').addClass('invalid');
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            submitHandler: function(form, event) {
+                event.preventDefault();
+                var ajxUrl  = $(form).attr("action");
+                var data    =  $(form).serialize();
+
+                $.post( ajxUrl, data, function( data ) {
+                    var element = $(form).find('textarea');
+                    if(data.status === false){
+                        element.removeClass('valid').addClass('invalid');
+                        element.next('div.error').html(data.message).show();
+                    }else{
+                        Materialize.toast(data.message, 4000);
+                        $(form)[0].reset();
+                        $(form).find('label').removeClass('active');
+                    }
+                });
+            }
+        });
+
     });
 })(jQuery);

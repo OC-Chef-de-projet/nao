@@ -7,6 +7,9 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Form;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Translation\TranslatorInterface;
+use AppBundle\Entity\Post;
 
 /**
  * Class CommentService
@@ -18,6 +21,8 @@ class CommentService
 
     private $em;
     private $list_limit;
+    private $ts;
+    private $translator;
 
     /**
      * PostService constructor.
@@ -26,10 +31,12 @@ class CommentService
      * @param $posts_directory
      * @param $list_limit
      */
-    public function __construct(EntityManager $em,  $list_limit)
+    public function __construct(EntityManager $em,  $list_limit, TokenStorage $ts, TranslatorInterface $translator)
     {
         $this->em = $em;
         $this->list_limit = $list_limit;
+        $this->ts = $ts;
+        $this->translator   = $translator;
     }
 
 
@@ -79,6 +86,27 @@ class CommentService
         }
         $this->em->persist($comment);
         $this->em->flush();
+    }
+
+    /**
+     * Add new comment
+     *
+     * @param Post $post
+     * @param $message
+     * @return array
+     */
+    public function add(Post $post, $message){
+
+        if(!empty(trim($message))){
+            $user  = $this->ts->getToken()->getUser();
+
+        }else{
+            $response = array(
+                'status'    => false,
+                'message'   => $this->translator->trans('Ce champ est obligatoire.')
+            );
+        }
+        return $response;
     }
 }
 
