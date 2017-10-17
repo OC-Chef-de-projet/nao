@@ -332,7 +332,7 @@ class User implements UserInterface
      */
     public function getImagePath()
     {
-        return $this->image_path;
+        return 'images/users/' . $this->image_path;
     }
 
     /**
