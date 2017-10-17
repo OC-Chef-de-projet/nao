@@ -451,7 +451,7 @@ class User implements UserInterface
      */
     public function setFacebookId($facebookId)
     {
-        $this->facebook_id = $facebookId;
+        $this->facebookId = $facebookId;
 
         return $this;
     }
@@ -463,7 +463,7 @@ class User implements UserInterface
      */
     public function getFacebookId()
     {
-        return $this->facebook_id;
+        return $this->facebookId;
     }
 
     /**
@@ -475,7 +475,7 @@ class User implements UserInterface
      */
     public function setGoogleId($googleId)
     {
-        $this->google_id = $googleId;
+        $this->googleId = $googleId;
 
         return $this;
     }
@@ -487,7 +487,7 @@ class User implements UserInterface
      */
     public function getGoogleId()
     {
-        return $this->google_id;
+        return $this->googleId;
     }
 
 }
