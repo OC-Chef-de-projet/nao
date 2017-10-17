@@ -18,9 +18,9 @@ class DashboardController extends Controller
 {
     /**
      * @Route("/compte", name="dashboard.account")
-     * @Method({"GET","POST"})
+     * @Method({"GET"})
      */
-    public function accountAction(Request $request)
+    public function accountAction()
     {
         return $this->render('dashboard/account.html.twig');
     }
