@@ -18,9 +18,9 @@ class ObservationController extends Controller
     /**
      * @Route("/creation", name="observation.create")
      * @Security("is_granted('ROLE_OBSERVER')")
-     * @Method({"GET","POST"})
+     * @Method({"GET"})
      */
-    public function createAction(Request $request)
+    public function createAction()
     {
         return $this->render('observation/create.html.twig');
     }
@@ -38,7 +38,7 @@ class ObservationController extends Controller
      * @Route("/carte/{id}", name="observation.detail", requirements={"id": "\d+"})
      * @Method({"GET"})
      */
-    public function showDetailAction(Request $request)
+    public function showDetailAction()
     {
         return $this->render('observation/detail.html.twig');
     }
