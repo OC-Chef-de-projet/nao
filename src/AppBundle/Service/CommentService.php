@@ -23,11 +23,11 @@ class CommentService
     private $translator;
 
     /**
-     * PostService constructor.
-     *
+     * CommentService constructor.
      * @param EntityManager $em
-     * @param $posts_directory
      * @param $list_limit
+     * @param TokenStorage $ts
+     * @param TranslatorInterface $translator
      */
     public function __construct(EntityManager $em,  $list_limit, TokenStorage $ts, TranslatorInterface $translator)
     {
