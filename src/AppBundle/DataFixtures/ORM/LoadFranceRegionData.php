@@ -35,15 +35,14 @@ class LoadFranceRegionData extends Fixture implements FixtureInterface, Containe
         $csv = fopen('./src/AppBundle/DataFixtures/ORM/FranceRegion.csv', 'r');
         $first = true;
         $count = 0;
-       while (!feof($csv)) {
-            if($first){
+        while (!feof($csv)) {
+            if ($first) {
                 $first = false;
                 continue;
             }
-            echo "$count\n";
             $count++;
-            $line = fgetcsv($csv,0,';');
-            if(empty($line)){
+            $line = fgetcsv($csv, 0, ';');
+            if (empty($line)) {
                 continue;
             };
             $franceRegion = new FranceRegion();

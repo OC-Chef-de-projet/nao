@@ -38,17 +38,17 @@ class LoadTaxrefData extends Fixture implements FixtureInterface, ContainerAware
 
         $first = true;
         $count = 0;
-       while (!feof($csv)) {
+        while (!feof($csv)) {
 
 
-            if($first){
+            if ($first) {
                 $first = false;
                 continue;
             }
             $count++;
-            if($count >= 100)break;
-            $line = fgetcsv($csv,0,';');
-            if(empty($line)){
+            if ($count >= 100) break;
+            $line = fgetcsv($csv, 0, ';');
+            if (empty($line)) {
                 continue;
             };
             $taxref = new Taxref();
@@ -86,7 +86,7 @@ class LoadTaxrefData extends Fixture implements FixtureInterface, ContainerAware
             $taxref->setPolynesieFrancaise($line[31]);
             $taxref->setClipperton($line[32]);
 
-            if($taxref->getScientificId() == 416687){
+            if ($taxref->getScientificId() == 416687) {
                 $this->addReference('416687', $taxref);
             }
             $manager->persist($taxref);
