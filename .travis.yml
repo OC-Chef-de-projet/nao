@@ -32,4 +32,4 @@ script:
 notifications:
   email:
     - ps.augereau@gmail.com
-
+    - jeremy.bouhour@gmail.com
