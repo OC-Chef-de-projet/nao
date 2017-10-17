@@ -38,7 +38,6 @@ class LoadUserData extends Fixture implements FixtureInterface, ContainerAwareIn
         $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
         $user->setRole('ROLE_ADMIN');
         $user->setInactive(false);
-        $user->setNewsletter(false);
         $user->setImagePath('bobby.jpg');
         $manager->persist($user);
         $this->addReference('admin', $user);
@@ -52,9 +51,7 @@ class LoadUserData extends Fixture implements FixtureInterface, ContainerAwareIn
         $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
         $user->setRole('ROLE_NATURALIST');
         $user->setInactive(false);
-        $user->setNewsletter(false);
         $user->setImagePath('charlotte.jpg');
-        $user->setNewsletter(false);
         $manager->persist($user);
         $this->addReference('naturalist', $user);
         $manager->flush();
@@ -67,9 +64,7 @@ class LoadUserData extends Fixture implements FixtureInterface, ContainerAwareIn
         $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
         $user->setRole('ROLE_OBSERVER');
         $user->setInactive(false);
-        $user->setNewsletter(false);
         $user->setImagePath('johnny.jpg');
-        $user->setNewsletter(false);
         $this->addReference('observer', $user);
         $manager->persist($user);
         $manager->flush();
@@ -83,8 +78,6 @@ class LoadUserData extends Fixture implements FixtureInterface, ContainerAwareIn
             $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
             $user->setRole('ROLE_ADMIN');
             $user->setInactive(true);
-            $user->setNewsletter(false);
-            $user->setNewsletter(false);
             $user->setImagePath('avatar-default.png');
             $manager->persist($user);
             $manager->flush();
@@ -96,10 +89,8 @@ class LoadUserData extends Fixture implements FixtureInterface, ContainerAwareIn
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
             $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
             $user->setRole('ROLE_NATURALIST');
-            $user->setNewsletter(false);
             $user->setImagePath('avatar-default.png');
             $user->setInactive(true);
-            $user->setNewsletter(false);
 
             $manager->persist($user);
             $manager->flush();
@@ -112,9 +103,7 @@ class LoadUserData extends Fixture implements FixtureInterface, ContainerAwareIn
             $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
             $user->setRole('ROLE_OBSERVER');
             $user->setInactive(true);
-            $user->setNewsletter(false);
             $user->setImagePath('avatar-default.png');
-            $user->setNewsletter(false);
 
 
             $manager->persist($user);
