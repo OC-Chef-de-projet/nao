@@ -114,7 +114,7 @@
                                             </div>
                                         </form>
                                     {% else %}
-                                        <p>{{ 'connected_for_comment'|trans }}</p>
+                                        <p>{{ 'you_should'|trans }} <a href="{{ path('login') }}" class="light-orange">{{ 'be_connected'|trans }}</a> {{ 'to_leave_a_comment'|trans }}</p>
                                     {% endif %}
                                 </div>
                             </div>

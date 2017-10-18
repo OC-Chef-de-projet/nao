@@ -775,9 +775,17 @@
                 <source>leave_comment</source>
                 <target>Laissez un commentaire</target>
             </trans-unit>
-            <trans-unit id="connected_for_comment">
-                <source>connected_for_comment</source>
-                <target>Vous devez être connecté pour pouvoir laisser un commentaire.</target>
+            <trans-unit id="you_should">
+                <source>you_should</source>
+                <target>Vous devez</target>
+            </trans-unit>
+            <trans-unit id="be_connected">
+                <source>be_connected</source>
+                <target>être connecté</target>
+            </trans-unit>
+            <trans-unit id="to_leave_a_comment">
+                <source>to_leave_a_comment</source>
+                <target>pour pouvoir laisser un commentaire.</target>
             </trans-unit>
             <trans-unit id="connected_to">
                 <source>connected_to</source>
