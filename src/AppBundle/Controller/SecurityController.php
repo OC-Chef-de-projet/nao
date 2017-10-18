@@ -70,6 +70,11 @@ class SecurityController extends Controller
      */
     public function resetPasswordAction(User $user, Request $request)
     {
+        // Only for user not logged
+        if($this->getUser()){
+            return $this->redirectToRoute('homepage');
+        }
+
         $form = $this->createForm(ChangePasswordType::class, $user);
         $form->handleRequest($request);
 
