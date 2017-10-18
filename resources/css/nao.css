@@ -259,6 +259,10 @@ a.small{
     margin-right: 0.5rem;
 }
 
+.btn.min-pad{
+    padding: 0 1rem;
+}
+
 /* ====================================
     Link
     =============================================*/
@@ -347,6 +351,10 @@ form label{
 
 form textarea.materialize-textarea{
     min-height: 7rem;
+}
+
+label.push-line{
+    margin-left: 30px;
 }
 
 /* ====================================
@@ -1473,6 +1481,10 @@ ul.collapsible > li > div.collapsible-body{
         float: none;
         font-size: 26px;
         border-right: none !important;
+    }
+
+    label.push-line{
+        margin-left: 0px;
     }
 
 }

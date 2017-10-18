@@ -1,3 +1,5 @@
+{% set bgwhite = true %}
+
 {% extends "common/template/base.html.twig" %}
 
 {% block title %}{{ 'dashboard_page_title'|trans }}{% endblock %}
@@ -50,7 +52,64 @@
     <!-- PAGE CONTENT -->
     <main class="container marge-top">
         <section>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
+                            <form id="account_form" method="post" autocomplete="off">
+                                <div class="row">
+                                    <div class="col s12 l6 main-section">
+                                        <div class="input-field col s12">
+                                            {{ form_widget(form.name) }}
+                                            <label>{{ 'label_name'|trans }}</label>
+                                            <div class="error">{{ form_errors(form.name) }}</div>
+                                        </div>
+                                        <input style="display:none">
+                                        <div class="input-field col s12">
+                                            {{ form_widget(form.email) }}
+                                            <label>{{ 'label_email'|trans }}</label>
+                                            <div class="error">{{ form_errors(form.email) }}</div>
+                                        </div>
+                                        <input style="display:none">
+                                        <div class="input-field col s12">
+                                            {{ form_widget(form.plainPassword.first) }}
+                                            <label>{{ 'new_password'|trans }}</label>
+                                            <div class="error">{{ form_errors(form.plainPassword.first) }}</div>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            {{ form_widget(form.plainPassword.second) }}
+                                            <label>{{ 'new_password_confirmation'|trans }}</label>
+                                            <div class="error">{{ form_errors(form.plainPassword.second) }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col s12 l6 secondary-section v-margin ">
+                                        <div class="col s12">
+                                            {% if subscribe_newsletter %}
+                                                {{ form_widget(form.newsletter, { 'attr': {'checked': 'checked'} } ) }}
+                                            {% else %}
+                                                {{ form_widget(form.newsletter) }}
+                                            {% endif %}
+                                            <label for="account_newsletter" class="light-2 push-line">{{ 'subscribe_newsletter'|trans }}</label>
+                                        </div>
+                                        <div class="col s12">
+                                            <br />
+                                            {{ form_widget(form.private) }}
+                                            <label for="account_private" class="light-2 push-line">{{ 'private_profil'|trans }}</label>
+                                        </div>
+                                        <div class="input-field col s12 center-align">
+                                            <br />
+                                            <input type="reset" class="btn waves-effect white min-pad" value="{{ 'cancel'|trans }}" />&nbsp;&nbsp;
+                                            <input type="submit" class="btn waves-effect min-pad" value="{{ 'save'|trans }}"  />
+                                        </div>
 
+                                    </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 {% endblock %}

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use AppBundle\Form\Type\AccountType;
 
 /**
  * Class DashboardController
@@ -18,11 +19,25 @@ class DashboardController extends Controller
 {
     /**
      * @Route("/compte", name="dashboard.account")
-     * @Method({"GET"})
+     * @Method({"GET","POST"})
      */
-    public function accountAction()
+    public function accountAction(Request $request)
     {
-        return $this->render('dashboard/account.html.twig');
+        $user           = $this->get('security.token_storage')->getToken()->getUser();
+        $newsSubscribe = $this->container->get('app.news')->isSubscribe($user->getEmail());
+
+        $form = $this->createForm(AccountType::class, $user);
+        $form->handleRequest($request);
+        dump($user);
+        if ($form->isSubmitted() && $form->isValid()){
+
+            //return $this->redirectToRoute('dashboard.account');
+        }
+
+        return $this->render('dashboard/account.html.twig', array(
+            'form'                      => $form->createView(),
+            'subscribe_newsletter'    => $newsSubscribe
+        ));
     }
 
     /**

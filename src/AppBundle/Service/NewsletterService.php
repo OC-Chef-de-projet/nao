@@ -72,7 +72,7 @@ class NewsletterService
      * @param $email
      * @return bool
      */
-    private function isSubscribe($email){
+    public function isSubscribe($email){
         $newsletter = $this->em->getRepository('AppBundle:Newsletter')
             ->findOneBy(array('email' => $this->emailClean($email)));
 
