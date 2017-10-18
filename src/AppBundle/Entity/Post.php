@@ -72,6 +72,13 @@ class Post
      */
     private $imagelink;
 
+    /**
+     * Post constructor.
+     */
+    public function __construct()
+    {
+        $this->createdAt      = new \DateTime();
+    }
 
     /**
      * Get id

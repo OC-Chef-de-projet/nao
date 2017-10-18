@@ -90,10 +90,13 @@
                                 <div class="col s12 m10 push-m1">
                                     <br />
                                     <h2>{{ 'comments'|trans }}</h2>
-                                    {% if comments|length > 0 %}
-                                    {% else %}
-                                        <p>{{ 'no_comments_for_moment'|trans }}</p>
-                                    {% endif %}
+                                    {% if comments|length == 0 %} <p id="no-comment">{{ 'no_comments_for_moment'|trans }}</p>{% endif %}
+                                    <div id="cmt-list">
+                                        {% for comment in comments %}
+                                            {% include 'common/cards/comment.html.twig' with {'comment': comment } only %}
+                                        {% endfor %}
+                                        <br />
+                                    </div>
                                     <br /><br />
                                     <h2>{{ 'leave_comment'|trans }}</h2>
                                     {% if user_is_logged %}

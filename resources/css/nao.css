@@ -161,6 +161,8 @@ a.small{
     color: #FF6E40;
 }
 
+
+
 /* ====================================
     Icons
     =============================================*/
@@ -1139,7 +1141,20 @@ ul.collapsible > li > div.collapsible-body{
     padding: 1rem 0 1rem 0;
 }
 
+/* ====================================
+    Comment
+    =============================================*/
+.comment-content{
+    margin-bottom: 40px;
+}
 
+.comment-content img{
+    float: left;
+    width: 50px;
+}
+.comment-detail{
+    padding-left: 60px;
+}
 /* ====================================
     Responsive
     =============================================*/

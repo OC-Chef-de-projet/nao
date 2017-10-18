@@ -256,7 +256,7 @@
 
             switch(data.social) {
                 case 'facebook':
-                    var href    = 'https://www.facebook.com/sharer.php?u='+ data.link + '&t=' + data.title;
+                    var href    = 'https://www.facebook.com/sharer.php?u='+ data.link;
                     var height  = 400;
                     var width   = 700;
                     break;
@@ -266,7 +266,7 @@
                     var width   = 400;
                     break;
                 case 'twitter':
-                    var href= 'https://twitter.com/share?url='+ data.link + '&text=' + data.title + '&via=Nos amis les oiseaux';
+                    var href= 'https://twitter.com/share?url='+ data.link + '&text=' + '&via=Nos amis les oiseaux';
                     var height  = 300;
                     var width   = 700;
                     break;
@@ -463,9 +463,11 @@
         /* ==================================================
          COMMENT FORM
          ===========================================================*/
-        var CommentForm      = $('#form_comment');
-        var commentInput     = CommentForm.find('textarea');
-        var countChars       = $('#count_chars');
+        var CommentForm         = $('#form_comment');
+        var commentInput        = CommentForm.find('textarea');
+        var countChars          = $('#count_chars');
+        var noComment           = $('#no-comment');
+        var commentList         = $('#cmt-list');
 
         commentInput.on('keyup', function(event){
             countChars.html(commentInput.val().length);
@@ -493,7 +495,13 @@
                         element.removeClass('valid').addClass('invalid');
                         element.next('div.error').html(data.message).show();
                     }else{
-                        Materialize.toast(data.message, 4000);
+                        if(data.validate === false){
+                            Materialize.toast(data.message, 4000);
+                        }else{
+                            noComment.remove();
+                            commentList.prepend(data.message);
+                        }
+                        countChars.html(0);
                         $(form)[0].reset();
                         $(form).find('label').removeClass('active');
                     }

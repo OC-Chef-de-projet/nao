@@ -1,0 +1,10 @@
+<div class="col s12">
+    <div class="comment-content">
+        <span><img class="circle" src="{{ asset(comment.user.imagePath ) }}" alt="{{ 'alt_profil'|trans }}" /></span>
+        <div class="comment-detail">
+            <span class="right caption light-2-no-hov">{{ 'published_at'|trans({'%date%': comment.created|date("d/m/Y")}) }}</span>
+            <a href="{{ path('dashboard.user', {'id' : comment.user.id, 'name' : comment.user.slug }) }}" class="bleen">{{ comment.user.name }}</a>
+            <p>{{ comment.content }}</p>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\Templating\EngineInterface;
 use AppBundle\Entity\Post;
 
 /**
@@ -29,12 +30,13 @@ class CommentService
      * @param TokenStorage $ts
      * @param TranslatorInterface $translator
      */
-    public function __construct(EntityManager $em,  $list_limit, TokenStorage $ts, TranslatorInterface $translator)
+    public function __construct(EntityManager $em,  $list_limit, TokenStorage $ts, TranslatorInterface $translator, EngineInterface $templating)
     {
-        $this->em = $em;
-        $this->list_limit = $list_limit;
-        $this->ts = $ts;
+        $this->em           = $em;
+        $this->list_limit   = $list_limit;
+        $this->ts           = $ts;
         $this->translator   = $translator;
+        $this->templating   = $templating;
     }
 
 
@@ -96,12 +98,41 @@ class CommentService
     public function add(Post $post, $message){
 
         if(!empty(trim($message))){
-            $user  = $this->ts->getToken()->getUser();
+            $validate   = false;
+            $user       = $this->ts->getToken()->getUser();
 
+            $comment = new Comment();
+            $comment->setPost($post);
+            $comment->setUser($user);
+            $comment->setContent($message);
+
+            $role = $user->getRole();
+
+            if($role == 'ROLE_ADMIN' || $role == 'ROLE_NATURALIST'){
+                $comment->setStatus($comment::ACCEPTED);
+                $validate = true;
+            }
+
+            $this->em->persist($comment);
+            $this->em->flush();
+
+            if($validate){
+                $response = array(
+                    'status'    => true,
+                    'validate'  => true,
+                    'message'   => $this->templating->render('common/cards/comment.html.twig', ['comment' => $comment ])
+                );
+            }else{
+                $response = array(
+                    'status'    => true,
+                    'validate'  => false,
+                    'message'   => $this->translator->trans('message_need_moderation')
+                );
+            }
         }else{
             $response = array(
                 'status'    => false,
-                'message'   => $this->translator->trans('Ce champ est obligatoire.')
+                'message'   => $this->translator->trans('require_input')
             );
         }
         return $response;

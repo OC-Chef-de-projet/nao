@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Cocur\Slugify\Slugify;
+
 /**
  * User
  *
@@ -488,6 +490,15 @@ class User implements UserInterface
     public function getGoogleId()
     {
         return $this->googleId;
+    }
+
+    /**
+     * Get Slug for pretty URL
+     * @return string
+     */
+    public function getSlug(){
+        $slugify = new Slugify();
+        return $slugify->slugify($this->getName());
     }
 
 }

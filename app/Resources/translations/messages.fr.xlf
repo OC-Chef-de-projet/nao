@@ -365,6 +365,10 @@
                 <source>leave_a_comment</source>
                 <target>Laisser un commentaire</target>
             </trans-unit>
+            <trans-unit id="require_input">
+                <source>require_input</source>
+                <target>Ce champ est obligatoire.</target>
+            </trans-unit>
 
 
             <!-- ROLES -->
@@ -695,7 +699,7 @@
             </trans-unit>
             <trans-unit id="about_explain_2">
                 <source>about_explain_2</source>
-                <target> Nous comptons au jour d’aujourd’hui plus de 200 adhérents à l’association NAO ainsi que 2 000 membres inscrits sur le site qui effectuent régulièrement des observations lors de leurs balades et randonnées.</target>
+                <target>Nous comptons actuellement plus de 200 adhérents à l’association NAO ainsi que 2 000 membres inscrits sur le site qui effectuent régulièrement des observations lors de leurs balades et randonnées.</target>
             </trans-unit>
             <trans-unit id="about_explain_no_waiting">
                 <source>about_explain_no_waiting</source>
@@ -736,7 +740,10 @@
                 <source>connected_to</source>
                 <target>Connecté en tant que [%name%]</target>
             </trans-unit>
-
+            <trans-unit id="message_need_moderation">
+                <source>message_need_moderation</source>
+                <target>Votre commentaire a été prit en compte, cependant il doit être validé par un membre de notre équipe avant d'être publié.</target>
+            </trans-unit>
 
             <!-- STAY CONNECTED PAGE -->
             <trans-unit id="stay_connected_main_title">

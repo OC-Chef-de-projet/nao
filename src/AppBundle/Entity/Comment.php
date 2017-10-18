@@ -15,9 +15,9 @@ class Comment
 {
 
 
-    const WAITING = 1;
-    const ACCEPTED = 2;
-    const REFUSED = 3;
+    const WAITING   = 1;
+    const ACCEPTED  = 2;
+    const REFUSED   = 3;
 
     /**
      * @var int
@@ -64,6 +64,14 @@ class Comment
      */
     private $user;
 
+    /**
+     * Comment constructor.
+     */
+    public function __construct()
+    {
+        $this->created      = new \DateTime();
+        $this->status       = $this::WAITING;
+    }
 
     /**
      * Get id
@@ -74,8 +82,6 @@ class Comment
     {
         return $this->id;
     }
-
-
 
     /**
      * Set content

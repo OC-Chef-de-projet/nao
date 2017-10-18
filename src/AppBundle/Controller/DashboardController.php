@@ -42,5 +42,14 @@ class DashboardController extends Controller
     {
         return $this->render('dashboard/notification.html.twig');
     }
+
+    /**
+     * @Route("/profil/utilisateur/{id}/{name}", name="dashboard.user")
+     * @Method({"GET"})
+     */
+    public function profilUserAction()
+    {
+        return $this->render('dashboard/profil.html.twig');
+    }
 }
 
