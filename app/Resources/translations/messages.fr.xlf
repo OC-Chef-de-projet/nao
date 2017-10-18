@@ -106,7 +106,6 @@
                 <target>Changement de mot de passe</target>
             </trans-unit>
 
-
             <!-- PAGE META -->
             <trans-unit id="homepage_meta_description">
                 <source>homepage_meta_description</source>
@@ -174,6 +173,14 @@
             </trans-unit>
             <trans-unit id="new_password_page_meta_description">
                 <source>new_password_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="observation_me_page_meta_description">
+                <source>observation_me_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="observation_validation_page_meta_description">
+                <source>observation_validation_page_meta_description</source>
                 <target></target>
             </trans-unit>
 
@@ -494,7 +501,30 @@
                 <source>observation_list_main_title</source>
                 <target>Liste des observations</target>
             </trans-unit>
-
+            <trans-unit id="waiting">
+                <source>waiting</source>
+                <target>En attente</target>
+            </trans-unit>
+            <trans-unit id="validated">
+                <source>validated</source>
+                <target>Validées</target>
+            </trans-unit>
+            <trans-unit id="observation_me_main_title">
+                <source>observation_me_main_title</source>
+                <target>Vos observation</target>
+            </trans-unit>
+            <trans-unit id="observation_validation_main_title">
+                <source>observation_validation_main_title</source>
+                <target>Valider une observation</target>
+            </trans-unit>
+            <trans-unit id="your_validation">
+                <source>your_validation</source>
+                <target>Vos validations</target>
+            </trans-unit>
+            <trans-unit id="your_refuse">
+                <source>your_refuse</source>
+                <target>Vos refus</target>
+            </trans-unit>
 
             <!-- HOMEPAGE -->
             <trans-unit id="homepage_main_title">
@@ -744,6 +774,7 @@
                 <source>message_need_moderation</source>
                 <target>Votre commentaire a été prit en compte, cependant il doit être validé par un membre de notre équipe avant d'être publié.</target>
             </trans-unit>
+
 
             <!-- STAY CONNECTED PAGE -->
             <trans-unit id="stay_connected_main_title">
