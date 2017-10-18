@@ -119,6 +119,53 @@ class UserService
     }
 
     /**
+     * Update user account
+     *
+     * @param User $user
+     * @param $subsribeToNewsletter
+     */
+    public function updateAccount(User $user, $subsribeToNewsletter){
+        $this->checkEmailasChange($user);
+
+        // User want to change password
+        if(!is_null($user->getPlainPassword())){
+            $password = $this->passwordEncoder->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+        }
+
+        // Subscribe or unsubscribe to newsletter
+        if($subsribeToNewsletter)
+        {
+            $this->newsletter->subscribe($user->getEmail());
+        }
+        else{
+            $this->newsletter->unsubscribe($user->getEmail());
+        }
+
+        // save the User
+        $this->em->persist($user);
+        $this->em->flush();
+    }
+
+    /**
+     * Called before update user entity
+     * if user change email we need to update her old newsletter email
+     * @param $user
+     */
+    public function checkEmailasChange($user){
+
+        // Check if user as changed spot informations
+        $uow = $this->em->getUnitOfWork();
+        $uow->computeChangeSets();
+        $changeset = $uow->getEntityChangeSet($user);
+
+        if(array_key_exists ("email", $changeset)){
+            $this->newsletter->unsubscribe($changeset['email'][0]);
+            $this->newsletter->subscribe($changeset['email'][1]);
+        }
+    }
+
+    /**
      * Activating user account
      *
      * @param User $user

@@ -28,10 +28,11 @@ class DashboardController extends Controller
 
         $form = $this->createForm(AccountType::class, $user);
         $form->handleRequest($request);
-        dump($user);
-        if ($form->isSubmitted() && $form->isValid()){
 
-            //return $this->redirectToRoute('dashboard.account');
+        if ($form->isSubmitted() && $form->isValid()){
+            $wantNewsletter =  isset($request->get('account')['newsletter']) ? true : false;
+            $this->container->get('app.user')->updateAccount($user, $wantNewsletter);
+            return $this->redirectToRoute('dashboard.account');
         }
 
         return $this->render('dashboard/account.html.twig', array(

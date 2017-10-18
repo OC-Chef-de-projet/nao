@@ -67,6 +67,26 @@ class NewsletterService
     }
 
     /**
+     * Unsubscribe to newsletter
+     *
+     * @param $email
+     */
+    public function unsubscribe($email){
+        $email = $this->emailClean($email);
+
+        // Verify email address first
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $newsletter = $this->em->getRepository('AppBundle:Newsletter')
+                ->findOneBy(array('email' => $this->emailClean($email)));
+
+            if($newsletter){
+                $this->em->remove($newsletter);
+                $this->em->flush();
+            }
+        }
+    }
+
+    /**
      * Determine if an newsletter entity already exist in the database
      *
      * @param $email
