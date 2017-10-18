@@ -1426,6 +1426,8 @@ ul.collapsible > li > div.collapsible-body{
     }
 
     .btn.social.less i{
+        display: inline-block;
+        margin-right: 50%;
         float: none;
         font-size: 26px;
         border-right: none !important;
