@@ -72,6 +72,31 @@ class NotificationService
 
     }
 
+    /**
+     *  Mark all notifications as read
+     */
+    public function setAsReadAll()
+    {
+        foreach($this->getNotifications() as $notification){
+            $notification->setStatus(true);
+            $notification->setWatched(new \DateTime());
+            $this->em->persist($notification);
+        }
+        $this->em->flush();
+    }
+
+    /**
+     * Get lastest notifications of the current logged user
+     *
+     * @return Notification[]|array
+     */
+    public function getLastNotifications($max)
+    {
+        $user = $this->ts->getToken()->getUser();
+        $repository = $this->em->getRepository(Notification::class);
+        return $repository->findBy( ['toUser' => $user], ['created' => 'DESC'], $max);
+
+    }
 
     /**
      * Return count of not readed notifications

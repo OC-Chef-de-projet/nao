@@ -1,0 +1,10 @@
+<div class="col s12">
+    <div class="notification-content">
+        <span><img class="circle" src="{{ asset(notification.fromUser.imagePath ) }}" alt="{{ 'alt_profil'|trans }}" /></span>
+        <div class="notification-detail">
+            <span class="right caption light-2-no-hov">{{ 'received_at'|trans({'%date%': notification.created|date("d/m/Y")}) }}</span>
+            {{ 'from'|trans }} <a href="{{ path('dashboard.user', {'id' : notification.fromUser.id, 'name' : notification.fromUser.slug }) }}" class="bleen">{{ notification.fromUser.name }}</a>
+            <p>{{ notification.content }}</p>
+        </div>
+    </div>
+</div>

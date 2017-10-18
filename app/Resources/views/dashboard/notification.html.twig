@@ -1,3 +1,5 @@
+{% set bgwhite = true %}
+
 {% extends "common/template/base.html.twig" %}
 
 {% block title %}{{ 'dashboard_page_title'|trans }}{% endblock %}
@@ -50,7 +52,26 @@
     <!-- PAGE CONTENT -->
     <main class="container marge-top">
         <section>
-
+            <div class="row">
+                <div class="col s12 no-pad">
+                    <div class="card no-style">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m8 push-m2 no-pad">
+                                    <br />
+                                    {% if notifications|length > 0 %}
+                                        {% for notification in notifications %}
+                                            {% include 'common/cards/notification.hrml.twig' with {'notification' : notification} only %}
+                                        {% endfor %}
+                                    {% else %}
+                                    <p>{{ 'dont_have_notifications'|trans }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 {% endblock %}

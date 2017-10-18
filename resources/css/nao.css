@@ -1144,6 +1144,7 @@ ul.collapsible > li > div.collapsible-body{
 /* ====================================
     Comment
     =============================================*/
+
 .comment-content{
     margin-bottom: 40px;
 }
@@ -1155,6 +1156,32 @@ ul.collapsible > li > div.collapsible-body{
 .comment-detail{
     padding-left: 60px;
 }
+
+/* ====================================
+    Comment
+    =============================================*/
+
+.notification-content{
+    margin: 15px 0 10px 0;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(0,0,0,0.24);
+}
+
+.notification-content img{
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+
+.notification-detail{
+    padding-left: 60px;
+}
+
+.row .col.no-pad{
+    padding-left: 0;
+    padding-right: 0;
+}
+
 /* ====================================
     Responsive
     =============================================*/

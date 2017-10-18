@@ -40,7 +40,10 @@ class DashboardController extends Controller
      */
     public function notificationAction()
     {
-        return $this->render('dashboard/notification.html.twig');
+        $this->container->get('app.notification')->setAsReadAll();
+        return $this->render('dashboard/notification.html.twig', array(
+            'notifications'     => $this->container->get('app.notification')->getLastNotifications(10)
+        ));
     }
 
     /**

@@ -422,6 +422,14 @@
                 <source>created_at</source>
                 <target>créé le %date%</target>
             </trans-unit>
+            <trans-unit id="received_at">
+                <source>received_at</source>
+                <target>reçu le %date%</target>
+            </trans-unit>
+            <trans-unit id="from">
+                <source>from</source>
+                <target>De</target>
+            </trans-unit>
             <trans-unit id="article_management">
                 <source>article_management</source>
                 <target>Gestion des articles</target>
@@ -525,6 +533,11 @@
                 <source>your_refuse</source>
                 <target>Vos refus</target>
             </trans-unit>
+            <trans-unit id="dont_have_notifications">
+                <source>dont_have_notifications</source>
+                <target>Vous n'avez pas de notifications</target>
+            </trans-unit>
+
 
             <!-- HOMEPAGE -->
             <trans-unit id="homepage_main_title">

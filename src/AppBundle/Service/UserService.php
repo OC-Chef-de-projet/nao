@@ -182,7 +182,6 @@ class UserService
         $this->em->flush();
     }
 
-
     /**
      * Generate random and secure token
      *
