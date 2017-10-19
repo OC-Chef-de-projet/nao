@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Templating\EngineInterface;
 use AppBundle\Entity\Post;
+use AppBundle\Entity\User;
 
 /**
  * Class CommentService
@@ -136,6 +137,15 @@ class CommentService
             );
         }
         return $response;
+    }
+
+    /**
+     * Delete all comments for user
+     *
+     * @param User $user
+     */
+    public function deleteCommentsForUser(User $user){
+        $this->em->getRepository(Comment::class)->deleteByUser($user->getId());
     }
 }
 

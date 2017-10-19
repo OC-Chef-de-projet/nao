@@ -45,19 +45,17 @@ class DashboardController extends Controller
      * @Route("/compte/delete", name="dashboard.account.delete")
      * @Method({"GET"})
      */
-    public function accountDeleteAction()
+    public function accountDeleteAction(Request $request)
     {
-        $user           = $this->get('security.token_storage')->getToken()->getUser();
-
-        // unsubscribe news
-        // delete notifications
-        // delete comments
-        // delete post author
-        // delete observation
-        // logout
-
-        //$this->container->get('app.user')->deleteAccount($user);
-        return $this->redirectToRoute('logout');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $this->container->get('app.news')->unsubscribe($user->getEmail());
+        $this->container->get('app.notification')->deleteNotificationsForUser($user);
+        $this->container->get('app.cmt')->deleteCommentsForUser($user);
+        $this->container->get('app.obs')->deleteObservationsForUser($user);
+        $this->container->get('app.user')->deleteAccount($user);
+        $this->container->get('security.token_storage')->setToken(null);
+        $request->getSession()->invalidate();
+        return $this->redirectToRoute('homepage');
     }
 
     /**

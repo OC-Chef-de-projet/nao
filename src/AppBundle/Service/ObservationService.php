@@ -198,5 +198,14 @@ class ObservationService
         $this->em->flush();
         return $this->obsArray($obs);
     }
+
+    /**
+     * Delete all observations for user
+     *
+     * @param User $user
+     */
+    public function deleteObservationsForUser(User $user){
+        $this->em->getRepository(Observation::class)->deleteByUser($user->getId());
+    }
 }
 

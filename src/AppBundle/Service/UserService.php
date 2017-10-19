@@ -229,6 +229,12 @@ class UserService
         $this->em->flush();
     }
 
+    public function deleteAccount(User $user){
+        $user = $this->em->getRepository('AppBundle:User')->findOneBy(array('id' => $user->getId()));
+        $this->em->remove($user);
+        $this->em->flush();
+    }
+
     /**
      * Generate random and secure token
      *

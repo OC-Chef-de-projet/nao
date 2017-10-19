@@ -108,6 +108,15 @@ class NotificationService
         return count($this->getNotifications());
     }
 
+    /**
+     * Delete all notifications for user
+     *
+     * @param User $user
+     */
+    public function deleteNotificationsForUser(User $user){
+        $this->em->getRepository(Notification::class)->deleteByUser($user->getId());
+    }
+
 
 
 

@@ -12,4 +12,15 @@ use AppBundle\Entity\Notification;
  */
 class NotificationRepository extends EntityRepository
 {
+    public function deleteByUser($user_id)
+    {
+        $query = $this->createQueryBuilder('n')
+            ->delete()
+            ->where('n.fromUser = :user_id')
+            ->orWhere('n.toUser = :user_id')
+            ->setParameter('user_id',$user_id)
+            ->getQuery()
+        ;
+        return 1 === $query->getScalarResult();
+    }
 }
