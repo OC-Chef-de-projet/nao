@@ -902,6 +902,20 @@ footer ul.social > li:not(:first-child) {
     height: 75%;
 }
 
+.card .card-content ul.form-link{
+    padding: 0px 0px 0px 70px;
+}
+
+.card .card-content ul.form-link > li{
+    margin-bottom: 10px;
+}
+.card .card-content ul.form-link > li > i{
+    color: rgba(0,0,0,.54)!important;
+    position: relative;
+    top: 6px;
+    margin-right: 15px;
+}
+
 .card .card-content form .input-field label {
     color: rgba(0, 0, 0, 0.54);
 }
@@ -1409,6 +1423,12 @@ ul.collapsible > li > div.collapsible-body{
 
     .card .card-content form .secondary-section:after {
         content: none;
+    }
+
+    .card .card-content ul.form-link{
+        margin-top: 30px;
+        padding: 20px 0 0 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.24);
     }
 
     .lright-scenter{

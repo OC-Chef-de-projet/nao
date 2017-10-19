@@ -101,15 +101,23 @@
                                             <input type="reset" class="btn waves-effect white min-pad" value="{{ 'cancel'|trans }}" />&nbsp;&nbsp;
                                             <input type="submit" class="btn waves-effect min-pad" value="{{ 'save'|trans }}"  />
                                         </div>
-
                                     </div>
                                     {{ form_end(form) }}
+                                </div>
+                                <div class="row no-pad">
+                                    <div class="col s12 form-link">
+                                        <ul class="form-link">
+                                            <li><i class="material-icons">exit_to_app</i><a href="{{ path('logout') }}" class="light-2">{{ 'sign_out'|trans }}</a></li>
+                                            <li><i class="material-icons">delete</i><a href="#delete-account" class="light-2 modal-trigger">{{ 'delete_account'|trans }}</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+            {% include 'common/modal/delete_account.html.twig' only %}
         </section>
     </main>
 {% endblock %}
