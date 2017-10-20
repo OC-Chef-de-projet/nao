@@ -51,11 +51,6 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script>
-        function onSubmit(token) {
-            // Re captcha for newsletter
-            document.getElementById("global_form_newsletter").submit();
-        }
-
         var googleUser = {};
         var startApp = function () {
             gapi.load('auth2', function () {
