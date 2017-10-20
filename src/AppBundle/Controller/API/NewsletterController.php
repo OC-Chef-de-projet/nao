@@ -22,8 +22,12 @@ class NewsletterController extends Controller
      */
     public function subscribeAction(Request $request)
     {
-        $email = $request->get('ng_email');
-        $response = $this->container->get('app.news')->subscribe($email);
+        if($this->container->get('app.captcha')->verify($request)) {
+            $email = $request->get('ng_email');
+            $response = $this->container->get('app.news')->subscribe($email);
+        } else {
+            $response = 'captcha_error';
+        }
         return new JsonResponse($response);
     }
 

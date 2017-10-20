@@ -26,7 +26,9 @@
                                         <label>{{ 'label_email'|trans }} *</label>
                                     </div>
                                     <div class="input-field col s12">
-                                        <input type="submit" class="btn waves-effect" value="{{ 'subscribe_to_newsletter'|trans }}" />
+
+                                        <button class="g-recaptcha" data-sitekey="{{ recaptcha }}" data-callback='onSubmit'>Submit</button>
+
                                     </div>
                                 </div>
                             </form>
