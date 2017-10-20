@@ -79,7 +79,7 @@
                                             <div class="error">{{ form_errors(form.message) }}</div>
                                         </div>
                                         <div class="input-field col s12 center-align">
-                                            <input type="submit" class="btn waves-effect" value="{{ 'send'|trans }}" />
+                                            <button class="g-recaptcha btn waves-effect" data-sitekey="{{ recaptcha }}" data-callback='onSubmitContact'>{{ 'send'|trans }}</button>
                                         </div>
                                     </div>
                                     {{ form_end(form) }}
@@ -99,3 +99,13 @@
 
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        // Re captcha for newsletter
+        function onSubmitContact(token) {
+            // Re captcha for Contact
+            document.getElementById("feedback_form").submit();
+        }
+    </script>
+{% endblock %}
