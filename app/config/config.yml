@@ -55,6 +55,7 @@ twig:
         google: "%google.client_id%"
         facebook: "%facebook.client_id%"
         fbpixel: "%facebook.pixel%"
+        recaptcha: "%captcha.key%"
 
 # Doctrine Configuration
 doctrine:

@@ -63,7 +63,7 @@ services:
     app.cmt:
         class: AppBundle\Service\CommentService
         public: true
-        arguments: ["@doctrine.orm.entity_manager", '%list_limit%', "@security.token_storage", "@translator", "@templating"]
+        arguments: ["@doctrine.orm.entity_manager", '%list_limit%']
 
     app.news:
         class: AppBundle\Service\NewsletterService
@@ -89,6 +89,10 @@ services:
         public: true
         arguments: ["@doctrine", "@app.user" ]
 
+    app.captcha:
+        class: AppBundle\Service\ReCaptchaService
+        public: true
+        arguments: ['%captcha.secret%']
 
     AppBundle\EventListener\UserListener:
         tags:

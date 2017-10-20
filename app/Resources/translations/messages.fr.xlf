@@ -176,14 +176,6 @@
                 <source>new_password_page_meta_description</source>
                 <target></target>
             </trans-unit>
-            <trans-unit id="observation_me_page_meta_description">
-                <source>observation_me_page_meta_description</source>
-                <target></target>
-            </trans-unit>
-            <trans-unit id="observation_validation_page_meta_description">
-                <source>observation_validation_page_meta_description</source>
-                <target></target>
-            </trans-unit>
 
 
             <!-- LINK NAVIGATION -->
@@ -279,10 +271,6 @@
                 <source>lost_password</source>
                 <target>Mot de passe oublié</target>
             </trans-unit>
-            <trans-unit id="delete_account">
-                <source>delete_account</source>
-                <target>Supprimer le compte</target>
-            </trans-unit>
 
 
             <!-- ALT IMAGE -->
@@ -365,44 +353,9 @@
                 <source>new_password</source>
                 <target>Nouveau mot de passe</target>
             </trans-unit>
-            <trans-unit id="new_password_confirmation">
-                <source>new_password_confirmation</source>
-                <target>Confirmer nouveau mot de passe</target>
-            </trans-unit>
             <trans-unit id="change_password">
                 <source>change_password</source>
                 <target>Changer le mot de passe</target>
-            </trans-unit>
-            <trans-unit id="sharing">
-                <source>sharing</source>
-                <target>Partager</target>
-            </trans-unit>
-            <trans-unit id="leave_a_comment">
-                <source>leave_a_comment</source>
-                <target>Laisser un commentaire</target>
-            </trans-unit>
-            <trans-unit id="require_input">
-                <source>require_input</source>
-                <target>Ce champ est obligatoire.</target>
-            </trans-unit>
-            <trans-unit id="confirm">
-                <source>confirm</source>
-                <target>Confirmer</target>
-            </trans-unit>
-             <trans-unit id="give_me_money">
-                 <source>give_me_money</source>
-                 <target>Faire un don a l'association</target>
-             </trans-unit>
-
-
-            <!-- MODAL -->
-            <trans-unit id="modal_confirmation_explain">
-                <source>modal_confirmation_explain</source>
-                <target>
-                Cette décision est irrévocable
-
-                Voulez-vous continuez ?
-                </target>
             </trans-unit>
 
             <!-- ROLES -->
@@ -448,14 +401,6 @@
             <trans-unit id="created_at">
                 <source>created_at</source>
                 <target>créé le %date%</target>
-            </trans-unit>
-            <trans-unit id="received_at">
-                <source>received_at</source>
-                <target>reçu le %date%</target>
-            </trans-unit>
-            <trans-unit id="from">
-                <source>from</source>
-                <target>De</target>
             </trans-unit>
             <trans-unit id="article_management">
                 <source>article_management</source>
@@ -535,34 +480,6 @@
             <trans-unit id="observation_list_main_title">
                 <source>observation_list_main_title</source>
                 <target>Liste des observations</target>
-            </trans-unit>
-            <trans-unit id="waiting">
-                <source>waiting</source>
-                <target>En attente</target>
-            </trans-unit>
-            <trans-unit id="validated">
-                <source>validated</source>
-                <target>Validées</target>
-            </trans-unit>
-            <trans-unit id="observation_me_main_title">
-                <source>observation_me_main_title</source>
-                <target>Vos observation</target>
-            </trans-unit>
-            <trans-unit id="observation_validation_main_title">
-                <source>observation_validation_main_title</source>
-                <target>Valider une observation</target>
-            </trans-unit>
-            <trans-unit id="your_validation">
-                <source>your_validation</source>
-                <target>Vos validations</target>
-            </trans-unit>
-            <trans-unit id="your_refuse">
-                <source>your_refuse</source>
-                <target>Vos refus</target>
-            </trans-unit>
-            <trans-unit id="dont_have_notifications">
-                <source>dont_have_notifications</source>
-                <target>Vous n'avez pas de notifications</target>
             </trans-unit>
 
 
@@ -769,7 +686,7 @@
             </trans-unit>
             <trans-unit id="about_explain_2">
                 <source>about_explain_2</source>
-                <target>Nous comptons actuellement plus de 200 adhérents à l’association NAO ainsi que 2 000 membres inscrits sur le site qui effectuent régulièrement des observations lors de leurs balades et randonnées.</target>
+                <target> Nous comptons au jour d’aujourd’hui plus de 200 adhérents à l’association NAO ainsi que 2 000 membres inscrits sur le site qui effectuent régulièrement des observations lors de leurs balades et randonnées.</target>
             </trans-unit>
             <trans-unit id="about_explain_no_waiting">
                 <source>about_explain_no_waiting</source>
@@ -779,14 +696,7 @@
                 <source>about_explain_2_1</source>
                 <target>Rejoignez une communauté active sur l’ornithologie pour ne plus être simplement un spectateur, devenez l'acteur d'un projet environnemental pour préserver cette si belle nature.</target>
             </trans-unit>
-            <trans-unit id="about_explain_3">
-                <source>about_explain_3</source>
-                <target>
-                    Vous voulez contribuer davantage ou vous n'avez tout simplement pas le temps de soumettre des observations ?
 
-                    Nous soutenir même avec un petit don, c'est aussi être acteur du combat écologique que nous menons.
-                </target>
-            </trans-unit>
 
             <!-- BLOG -->
             <trans-unit id="blog_main_title">
@@ -796,38 +706,6 @@
             <trans-unit id="blog_secondary_title">
                 <source>blog_secondary_title</source>
                 <target>Rédigé avec notre plus belle plume</target>
-            </trans-unit>
-            <trans-unit id="comments">
-                <source>comments</source>
-                <target>Commentaires</target>
-            </trans-unit>
-            <trans-unit id="no_comments_for_moment">
-                <source>no_comments_for_moment</source>
-                <target>Il n'y a pas encore de commentaires pour cet article.</target>
-            </trans-unit>
-            <trans-unit id="leave_comment">
-                <source>leave_comment</source>
-                <target>Laissez un commentaire</target>
-            </trans-unit>
-            <trans-unit id="you_should">
-                <source>you_should</source>
-                <target>Vous devez</target>
-            </trans-unit>
-            <trans-unit id="be_connected">
-                <source>be_connected</source>
-                <target>être connecté</target>
-            </trans-unit>
-            <trans-unit id="to_leave_a_comment">
-                <source>to_leave_a_comment</source>
-                <target>pour pouvoir laisser un commentaire.</target>
-            </trans-unit>
-            <trans-unit id="connected_to">
-                <source>connected_to</source>
-                <target>Connecté en tant que [%name%]</target>
-            </trans-unit>
-            <trans-unit id="message_need_moderation">
-                <source>message_need_moderation</source>
-                <target>Votre commentaire a été prit en compte, cependant il doit être validé par un membre de notre équipe avant d'être publié.</target>
             </trans-unit>
 
 
@@ -969,14 +847,6 @@
                 <source>notifications</source>
                 <target>notifications</target>
             </trans-unit>
-            <trans-unit id="subscribe_newsletter">
-                <source>subscribe_newsletter</source>
-                <target>Je m'inscris à la newsletter</target>
-            </trans-unit>
-            <trans-unit id="private_profil">
-                <source>private_profil</source>
-                <target>Je veux rendre mon profil privé</target>
-            </trans-unit>
 
 
             <!-- ADMIN DASHBOARD -->
@@ -1092,6 +962,12 @@
                 <target>Autoriser</target>
             </trans-unit>
 
+            <trans-unit id="captcha_error">
+                <source>captcha_error</source>
+                <target>Erreur de vérification, veuillez recommencez s'il vous plait</target>
+            </trans-unit>
+
+
             <!-- EMAIL -->
             <trans-unit id="email_signature">
                 <source>email_signature</source>
@@ -1171,6 +1047,7 @@
                 Si vous n'avez pas demandé la modification de votre mot de passe, merci de prendre contact avec notre support.
 
                 </target>
+
             </trans-unit>
         </body>
     </file>
