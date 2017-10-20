@@ -4,6 +4,8 @@
 /**
  * Google SignOut
  */
+
+
 $(function() {
     $('#logout').click(function () {
         g_signOut();
@@ -22,12 +24,6 @@ function g_signOut() {
     });
 }
 
-
-function onLoad() {
-    gapi.load('auth2', function() {
-        gapi.auth2.init();
-    });
-}
 
 
 

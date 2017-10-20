@@ -40,7 +40,6 @@ class LoadFranceRegionData extends Fixture implements FixtureInterface, Containe
                 $first = false;
                 continue;
             }
-            $count++;
             $line = fgetcsv($csv, 0, ';');
             if (empty($line)) {
                 continue;

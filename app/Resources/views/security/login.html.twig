@@ -125,6 +125,7 @@
         }(document, 'script', 'facebook-jssdk'));
 
         function checkLoginState() {
+        	console.log("HERE");
             FB.getLoginStatus(function(response) {
                 statusChangeCallback(response);
             });
@@ -139,6 +140,13 @@
                 }, {scope: 'email'});
             }
         }
+
+		function onLoad() {
+    		gapi.load('auth2', function() {
+        		gapi.auth2.init();
+    		});
+		}
+
 
         function auth()
         {
