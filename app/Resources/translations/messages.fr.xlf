@@ -12,6 +12,19 @@
                 <target>Propulsé par Dot.coM</target>
             </trans-unit>
 
+            <!-- COOKIES BAR -->
+            <trans-unit id="cookies_explain">
+                <source>cookies_explain</source>
+                <target>Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.</target>
+            </trans-unit>
+            <trans-unit id="i_agree">
+                <source>i_agree</source>
+                <target>J'accepte</target>
+            </trans-unit>
+             <trans-unit id="want_to_know_more">
+                 <source>want_to_know_more</source>
+                 <target>En savoir plus</target>
+             </trans-unit>
 
             <!-- ERROR MESSAGE -->
             <trans-unit id="error_email_format">

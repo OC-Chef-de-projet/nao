@@ -1203,6 +1203,27 @@ ul.collapsible > li > div.collapsible-body{
     padding-left: 0;
     padding-right: 0;
 }
+/* ====================================
+    Cookies policy
+    =============================================*/
+.cookie-law {
+    position: fixed;
+    z-index: 20;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    will-change: transform;
+    transition: .7s .2s cubic-bezier(.215,.61,.355,1);
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 1.5em 2em;
+    background: #009688;
+    color: #fff;
+}
 
 /* ====================================
     Responsive
