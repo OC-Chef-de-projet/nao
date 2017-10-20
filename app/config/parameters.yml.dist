@@ -32,3 +32,6 @@ parameters:
     facebook.client_id: CLIENTID
     facebook.client_secret: SECRET
     facebook.pixel: PIXEL
+
+    captcha.key: KEY
+    captcha.secret: SECRET
