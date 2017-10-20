@@ -405,6 +405,7 @@
                 </target>
             </trans-unit>
 
+
             <!-- ROLES -->
             <trans-unit id="ROLE_ADMIN">
                 <source>ROLE_ADMIN</source>
@@ -522,7 +523,7 @@
             </trans-unit>
             <trans-unit id="observation_create_secondary_title">
                 <source>observation_create_secondary_title</source>
-                <target>Ayer l'oeil</target>
+                <target>Ayez l’œil</target>
             </trans-unit>
             <trans-unit id="observation_map_main_title">
                 <source>observation_map_main_title</source>
@@ -562,7 +563,7 @@
             </trans-unit>
             <trans-unit id="dont_have_notifications">
                 <source>dont_have_notifications</source>
-                <target>Vous n'avez pas de notifications</target>
+                <target>Vous n'avez pas de notification</target>
             </trans-unit>
 
 
@@ -589,13 +590,13 @@
             </trans-unit>
             <trans-unit id="collaborative_project_explain">
                 <source>collaborative_project_explain</source>
-                <target>Le projet de NAO a pour objectif de collecter des informations afin d’étudier les effets de l’urbanisation sur les oiseaux. L'érosion de la biodiversité est un problème différent de celui du climat mais néanmoins lié. Elle est tout aussi importante et inquiétante au jour d'aujourd'hui.</target>
+                <target>Le projet de NAO a pour objectif de collecter des informations afin d’étudier les effets de l’urbanisation sur les oiseaux. L'érosion de la biodiversité est un problème différent de celui du climat mais néanmoins lié. Elle est si inquiétante qu'il nous faut agir, et tout de suite.</target>
             </trans-unit>
             <trans-unit id="collaborative_project_explain_2">
                 <source>collaborative_project_explain_2</source>
                 <target>
                 Rejoignez de nombreux passionnés d'ornithologie à travers le projet de Nos Amis les Oiseaux (NAO).
-                Une communauté active et dynamique souhaitant partager cette passion et préserver les oiseaux.
+                Nous formons une communauté active et dynamique souhaitant partager cette passion et préserver les oiseaux.
                 N'attendez plus, rejoignez-nous !
                 </target>
             </trans-unit>
@@ -659,7 +660,7 @@
             </trans-unit>
             <trans-unit id="registration_success">
                 <source>registration_success</source>
-                <target>Votre compte a bien été créer, cependant un email d'activation vous a été envoyer afin de le valider.</target>
+                <target>Votre demande de compte s'est envolée. Un email de confirmation vous a été envoyé.</target>
             </trans-unit>
 
 
@@ -670,7 +671,7 @@
             </trans-unit>
             <trans-unit id="registration_activation_success">
                 <source>registration_activation_success</source>
-                <target>Félicitations, votre compte est maintenant activé. Vous pouvez dés à present profitez de toutes les fonctionnalités.</target>
+                <target>Félicitations, votre compte est maintenant activé. Vous pouvez dès à dès à présent profiter de toutes les fonctionnalités.</target>
             </trans-unit>
             <trans-unit id="registration_activation_fail">
                 <source>registration_activation_fail</source>
@@ -709,8 +710,8 @@
             <trans-unit id="account_raz_password_explain">
                 <source>account_raz_password_explain</source>
                 <target>
-                Vous avez oublié votre mot de passe ? Indiquez-nous votre adresse email et nous vous enverons un lien par mail afin de le reinitialiser.
-                Pensez à regarder dans votre dossier Spam si vous ne voyez pas arriver notre email.
+                Vous avez oublié votre mot de passe ? Indiquez-nous votre adresse email et nous vous enverrons un lien afin de le réinitialiser.
+                Pensez à regarder dans votre dossier Spam si vous ne recevez rien.
                 </target>
             </trans-unit>
             <trans-unit id="account_recovery_not_found">
@@ -738,7 +739,7 @@
             </trans-unit>
             <trans-unit id="new_password_success_explain">
                 <source>new_password_success_explain</source>
-                <target>Le changement de votre mot de passe a bien été fait, vous pouvez dés à présent accéder à votre compte avec vos nouveaux identifiants</target>
+                <target>Votre mot de passe a bien été modifié. Vous pouvez dès à présent accéder à votre compte avec vos nouveaux identifiants.</target>
             </trans-unit>
 
 
@@ -756,7 +757,7 @@
                 <target>
                     Qui sommes-nous ?
                     Nos amis les oiseaux est une association loi 1901 regroupant de nombreux passionnés d’ornithologie.
-                    Elle a été créée en 2001 par Jean DUPONT et Marie DUPONT tous deux naturalistes et passionnés.
+                    Elle a été créée en 2001 par Michel Dujardin et Marie DUPONT tous deux naturalistes passionnés.
                 </target>
             </trans-unit>
             <trans-unit id="about_explain_1">
@@ -803,7 +804,7 @@
             </trans-unit>
             <trans-unit id="no_comments_for_moment">
                 <source>no_comments_for_moment</source>
-                <target>Il n'y a pas encore de commentaires pour cet article.</target>
+                <target>Il n'y a pas encore de commentaire pour cet article.</target>
             </trans-unit>
             <trans-unit id="leave_comment">
                 <source>leave_comment</source>
@@ -903,7 +904,7 @@
             <!-- NEWSLETTER SEARCH PAGE -->
             <trans-unit id="newsletter_subscribe_success">
                 <source>newsletter_subscribe_success</source>
-                <target>Votre inscription à notre newletter a bien été prise en compte, toute l'équipe de NAO vous remercie.</target>
+                <target>Votre inscription à notre newsletter a bien été prise en compte, toute l'équipe de NAO vous remercie.</target>
             </trans-unit>
 
 
@@ -918,7 +919,7 @@
             </trans-unit>
             <trans-unit id="contact_success">
                 <source>contact_success</source>
-                <target>Votre demande de contact à bien été prise en compte.</target>
+                <target>Votre message est bien parti par pigeon voyageur.</target>
             </trans-unit>
 
 
@@ -1097,7 +1098,7 @@
                 <source>email_signature</source>
                 <target>
 
-                Cet email à été envoyer automatiquement, merci de ne pas y répondre.
+                Cet email a été envoyé automatiquement, merci de ne pas y répondre.
 
                 Cordialement,
                 L'équipe NAO

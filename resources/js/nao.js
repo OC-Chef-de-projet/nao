@@ -456,7 +456,7 @@
          GLOBAL DIALOGS
          ===========================================================*/
          if(typeof toastMsg !== 'undefined'){
-             Materialize.toast(toastMsg, 4000);
+             Materialize.toast(toastMsg, 8000);
              toastMsg = undefined;
          }
 
