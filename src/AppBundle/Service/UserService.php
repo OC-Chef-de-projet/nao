@@ -229,6 +229,11 @@ class UserService
         $this->em->flush();
     }
 
+    /**
+     * Delete user account
+     *
+     * @param User $user
+     */
     public function deleteAccount(User $user){
         $user = $this->em->getRepository('AppBundle:User')->findOneBy(array('id' => $user->getId()));
         $this->em->remove($user);

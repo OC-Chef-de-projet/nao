@@ -47,7 +47,7 @@
     {% endblock stylesheets %}
 
     <!-- Google API -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script>
@@ -154,7 +154,6 @@
 {% block javascripts %}
     <script src="{{ asset('assets/js/core.min.js') }}"></script>
     <script src="{{ asset('assets/js/nao.min.js') }}"></script>
-    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 {% endblock javascripts %}
 </body>
 </html>

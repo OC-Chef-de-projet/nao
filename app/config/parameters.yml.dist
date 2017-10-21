@@ -36,3 +36,6 @@ parameters:
     captcha.key: KEY
     captcha.secret: SECRET
 
+    mailchimp.key: KEY
+    mailchimp.list: LIST
+

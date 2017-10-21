@@ -68,7 +68,7 @@ services:
     app.news:
         class: AppBundle\Service\NewsletterService
         public: true
-        arguments: ["@doctrine.orm.entity_manager", "@translator"]
+        arguments: ["@doctrine.orm.entity_manager", "@translator", "@app.mailchimp"]
 
     app.geoloc:
         class: AppBundle\Service\GeolocService
@@ -93,6 +93,11 @@ services:
         class: AppBundle\Service\ReCaptchaService
         public: true
         arguments: ['%captcha.secret%']
+
+    app.mailchimp:
+        class: AppBundle\Service\MailChimpService
+        public: true
+        arguments: ['%mailchimp.key%', '%mailchimp.list%']
 
     AppBundle\EventListener\UserListener:
         tags:

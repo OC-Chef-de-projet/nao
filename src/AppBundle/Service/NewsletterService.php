@@ -20,9 +20,10 @@ class NewsletterService
      * NewsletterService constructor.
      * @param EntityManager $em
      */
-    public function __construct(EntityManager $em, TranslatorInterface $translator){
+    public function __construct(EntityManager $em, TranslatorInterface $translator, $mailchimp){
         $this->em           = $em;
         $this->translator   = $translator;
+        $this->mailchimp    = $mailchimp;
     }
 
     /**
@@ -39,6 +40,16 @@ class NewsletterService
 
             // Check if this email is already use for newsletter
             if(!$this->isSubscribe($email)){
+
+                // subscribe to mailChimp
+                $user = $this->em->getRepository('AppBundle:User')->findOneBy(array('email' => $this->emailClean($email)));
+
+                if($user) {
+                    $this->mailchimp->subscribeToList($user->getEmail(), $user->getName());
+                }else
+                {
+                    $this->mailchimp->subscribeToList($email);
+                }
 
                 // subscribe newsletter
                 $newsletter = new Newsletter();
@@ -82,6 +93,7 @@ class NewsletterService
             if($newsletter){
                 $this->em->remove($newsletter);
                 $this->em->flush();
+                $this->mailchimp->unsubscribeToList($email);
             }
         }
     }
