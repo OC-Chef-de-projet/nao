@@ -456,7 +456,7 @@
          GLOBAL DIALOGS
          ===========================================================*/
          if(typeof toastMsg !== 'undefined'){
-             Materialize.toast(toastMsg, 4000);
+             Materialize.toast(toastMsg, 8000);
              toastMsg = undefined;
          }
 
@@ -513,5 +513,20 @@
          MODAL
          ===========================================================*/
         $('.modal').modal();
+
+        /* ==================================================
+         COOKIE POLICY
+         ===========================================================*/
+        var cookieContent           = $('section.cookie-law');
+        var acceptCookieAction      = $('#accept_cookie_policy');
+        
+        acceptCookieAction.on('click', function (event){
+           event.preventDefault();
+            cookieContent.remove();
+            var date = new Date();
+            date.setTime(date.getTime()+(7*24*60*60*1000));
+            document.cookie = "nao-cookies-policy=1;expires="+date.toGMTString();
+        });
+
     });
 })(jQuery);

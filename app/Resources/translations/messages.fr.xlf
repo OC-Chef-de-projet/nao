@@ -12,6 +12,19 @@
                 <target>Propulsé par Dot.coM</target>
             </trans-unit>
 
+            <!-- COOKIES BAR -->
+            <trans-unit id="cookies_explain">
+                <source>cookies_explain</source>
+                <target>Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.</target>
+            </trans-unit>
+            <trans-unit id="i_agree">
+                <source>i_agree</source>
+                <target>J'accepte</target>
+            </trans-unit>
+             <trans-unit id="want_to_know_more">
+                 <source>want_to_know_more</source>
+                 <target>En savoir plus</target>
+             </trans-unit>
 
             <!-- ERROR MESSAGE -->
             <trans-unit id="error_email_format">
@@ -176,6 +189,14 @@
                 <source>new_password_page_meta_description</source>
                 <target></target>
             </trans-unit>
+            <trans-unit id="observation_me_page_meta_description">
+                <source>observation_me_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="observation_validation_page_meta_description">
+                <source>observation_validation_page_meta_description</source>
+                <target></target>
+            </trans-unit>
 
 
             <!-- LINK NAVIGATION -->
@@ -271,6 +292,10 @@
                 <source>lost_password</source>
                 <target>Mot de passe oublié</target>
             </trans-unit>
+            <trans-unit id="delete_account">
+                <source>delete_account</source>
+                <target>Supprimer le compte</target>
+            </trans-unit>
 
 
             <!-- ALT IMAGE -->
@@ -353,10 +378,46 @@
                 <source>new_password</source>
                 <target>Nouveau mot de passe</target>
             </trans-unit>
+            <trans-unit id="new_password_confirmation">
+                <source>new_password_confirmation</source>
+                <target>Confirmer nouveau mot de passe</target>
+            </trans-unit>
             <trans-unit id="change_password">
                 <source>change_password</source>
                 <target>Changer le mot de passe</target>
             </trans-unit>
+            <trans-unit id="sharing">
+                <source>sharing</source>
+                <target>Partager</target>
+            </trans-unit>
+            <trans-unit id="leave_a_comment">
+                <source>leave_a_comment</source>
+                <target>Laisser un commentaire</target>
+            </trans-unit>
+            <trans-unit id="require_input">
+                <source>require_input</source>
+                <target>Ce champ est obligatoire.</target>
+            </trans-unit>
+            <trans-unit id="confirm">
+                <source>confirm</source>
+                <target>Confirmer</target>
+            </trans-unit>
+             <trans-unit id="give_me_money">
+                 <source>give_me_money</source>
+                 <target>Faire un don a l'association</target>
+             </trans-unit>
+
+
+            <!-- MODAL -->
+            <trans-unit id="modal_confirmation_explain">
+                <source>modal_confirmation_explain</source>
+                <target>
+                Cette décision est irrévocable
+
+                Voulez-vous continuez ?
+                </target>
+            </trans-unit>
+
 
             <!-- ROLES -->
             <trans-unit id="ROLE_ADMIN">
@@ -401,6 +462,14 @@
             <trans-unit id="created_at">
                 <source>created_at</source>
                 <target>créé le %date%</target>
+            </trans-unit>
+            <trans-unit id="received_at">
+                <source>received_at</source>
+                <target>reçu le %date%</target>
+            </trans-unit>
+            <trans-unit id="from">
+                <source>from</source>
+                <target>De</target>
             </trans-unit>
             <trans-unit id="article_management">
                 <source>article_management</source>
@@ -467,7 +536,7 @@
             </trans-unit>
             <trans-unit id="observation_create_secondary_title">
                 <source>observation_create_secondary_title</source>
-                <target>Ayer l'oeil</target>
+                <target>Ayez l’œil</target>
             </trans-unit>
             <trans-unit id="observation_map_main_title">
                 <source>observation_map_main_title</source>
@@ -480,6 +549,34 @@
             <trans-unit id="observation_list_main_title">
                 <source>observation_list_main_title</source>
                 <target>Liste des observations</target>
+            </trans-unit>
+            <trans-unit id="waiting">
+                <source>waiting</source>
+                <target>En attente</target>
+            </trans-unit>
+            <trans-unit id="validated">
+                <source>validated</source>
+                <target>Validées</target>
+            </trans-unit>
+            <trans-unit id="observation_me_main_title">
+                <source>observation_me_main_title</source>
+                <target>Vos observation</target>
+            </trans-unit>
+            <trans-unit id="observation_validation_main_title">
+                <source>observation_validation_main_title</source>
+                <target>Valider une observation</target>
+            </trans-unit>
+            <trans-unit id="your_validation">
+                <source>your_validation</source>
+                <target>Vos validations</target>
+            </trans-unit>
+            <trans-unit id="your_refuse">
+                <source>your_refuse</source>
+                <target>Vos refus</target>
+            </trans-unit>
+            <trans-unit id="dont_have_notifications">
+                <source>dont_have_notifications</source>
+                <target>Vous n'avez pas de notification</target>
             </trans-unit>
 
 
@@ -506,13 +603,13 @@
             </trans-unit>
             <trans-unit id="collaborative_project_explain">
                 <source>collaborative_project_explain</source>
-                <target>Le projet de NAO a pour objectif de collecter des informations afin d’étudier les effets de l’urbanisation sur les oiseaux. L'érosion de la biodiversité est un problème différent de celui du climat mais néanmoins lié. Elle est tout aussi importante et inquiétante au jour d'aujourd'hui.</target>
+                <target>Le projet de NAO a pour objectif de collecter des informations afin d’étudier les effets de l’urbanisation sur les oiseaux. L'érosion de la biodiversité est un problème différent de celui du climat mais néanmoins lié. Elle est si inquiétante qu'il nous faut agir, et tout de suite.</target>
             </trans-unit>
             <trans-unit id="collaborative_project_explain_2">
                 <source>collaborative_project_explain_2</source>
                 <target>
                 Rejoignez de nombreux passionnés d'ornithologie à travers le projet de Nos Amis les Oiseaux (NAO).
-                Une communauté active et dynamique souhaitant partager cette passion et préserver les oiseaux.
+                Nous formons une communauté active et dynamique souhaitant partager cette passion et préserver les oiseaux.
                 N'attendez plus, rejoignez-nous !
                 </target>
             </trans-unit>
@@ -576,7 +673,7 @@
             </trans-unit>
             <trans-unit id="registration_success">
                 <source>registration_success</source>
-                <target>Votre compte a bien été créer, cependant un email d'activation vous a été envoyer afin de le valider.</target>
+                <target>Votre demande de compte s'est envolée. Un email de confirmation vous a été envoyé.</target>
             </trans-unit>
 
 
@@ -587,7 +684,7 @@
             </trans-unit>
             <trans-unit id="registration_activation_success">
                 <source>registration_activation_success</source>
-                <target>Félicitations, votre compte est maintenant activé. Vous pouvez dés à present profitez de toutes les fonctionnalités.</target>
+                <target>Félicitations, votre compte est maintenant activé. Vous pouvez dès à dès à présent profiter de toutes les fonctionnalités.</target>
             </trans-unit>
             <trans-unit id="registration_activation_fail">
                 <source>registration_activation_fail</source>
@@ -626,8 +723,8 @@
             <trans-unit id="account_raz_password_explain">
                 <source>account_raz_password_explain</source>
                 <target>
-                Vous avez oublié votre mot de passe ? Indiquez-nous votre adresse email et nous vous enverons un lien par mail afin de le reinitialiser.
-                Pensez à regarder dans votre dossier Spam si vous ne voyez pas arriver notre email.
+                Vous avez oublié votre mot de passe ? Indiquez-nous votre adresse email et nous vous enverrons un lien afin de le réinitialiser.
+                Pensez à regarder dans votre dossier Spam si vous ne recevez rien.
                 </target>
             </trans-unit>
             <trans-unit id="account_recovery_not_found">
@@ -655,7 +752,7 @@
             </trans-unit>
             <trans-unit id="new_password_success_explain">
                 <source>new_password_success_explain</source>
-                <target>Le changement de votre mot de passe a bien été fait, vous pouvez dés à présent accéder à votre compte avec vos nouveaux identifiants</target>
+                <target>Votre mot de passe a bien été modifié. Vous pouvez dès à présent accéder à votre compte avec vos nouveaux identifiants.</target>
             </trans-unit>
 
 
@@ -673,7 +770,7 @@
                 <target>
                     Qui sommes-nous ?
                     Nos amis les oiseaux est une association loi 1901 regroupant de nombreux passionnés d’ornithologie.
-                    Elle a été créée en 2001 par Jean DUPONT et Marie DUPONT tous deux naturalistes et passionnés.
+                    Elle a été créée en 2001 par Michel Dujardin et Marie DUPONT tous deux naturalistes passionnés.
                 </target>
             </trans-unit>
             <trans-unit id="about_explain_1">
@@ -686,7 +783,7 @@
             </trans-unit>
             <trans-unit id="about_explain_2">
                 <source>about_explain_2</source>
-                <target> Nous comptons au jour d’aujourd’hui plus de 200 adhérents à l’association NAO ainsi que 2 000 membres inscrits sur le site qui effectuent régulièrement des observations lors de leurs balades et randonnées.</target>
+                <target>Nous comptons actuellement plus de 200 adhérents à l’association NAO ainsi que 2 000 membres inscrits sur le site qui effectuent régulièrement des observations lors de leurs balades et randonnées.</target>
             </trans-unit>
             <trans-unit id="about_explain_no_waiting">
                 <source>about_explain_no_waiting</source>
@@ -696,7 +793,14 @@
                 <source>about_explain_2_1</source>
                 <target>Rejoignez une communauté active sur l’ornithologie pour ne plus être simplement un spectateur, devenez l'acteur d'un projet environnemental pour préserver cette si belle nature.</target>
             </trans-unit>
+            <trans-unit id="about_explain_3">
+                <source>about_explain_3</source>
+                <target>
+                    Vous voulez contribuer davantage ou vous n'avez tout simplement pas le temps de soumettre des observations ?
 
+                    Nous soutenir même avec un petit don, c'est aussi être acteur du combat écologique que nous menons.
+                </target>
+            </trans-unit>
 
             <!-- BLOG -->
             <trans-unit id="blog_main_title">
@@ -706,6 +810,38 @@
             <trans-unit id="blog_secondary_title">
                 <source>blog_secondary_title</source>
                 <target>Rédigé avec notre plus belle plume</target>
+            </trans-unit>
+            <trans-unit id="comments">
+                <source>comments</source>
+                <target>Commentaires</target>
+            </trans-unit>
+            <trans-unit id="no_comments_for_moment">
+                <source>no_comments_for_moment</source>
+                <target>Il n'y a pas encore de commentaire pour cet article.</target>
+            </trans-unit>
+            <trans-unit id="leave_comment">
+                <source>leave_comment</source>
+                <target>Laissez un commentaire</target>
+            </trans-unit>
+            <trans-unit id="you_should">
+                <source>you_should</source>
+                <target>Vous devez</target>
+            </trans-unit>
+            <trans-unit id="be_connected">
+                <source>be_connected</source>
+                <target>être connecté</target>
+            </trans-unit>
+            <trans-unit id="to_leave_a_comment">
+                <source>to_leave_a_comment</source>
+                <target>pour pouvoir laisser un commentaire.</target>
+            </trans-unit>
+            <trans-unit id="connected_to">
+                <source>connected_to</source>
+                <target>Connecté en tant que [%name%]</target>
+            </trans-unit>
+            <trans-unit id="message_need_moderation">
+                <source>message_need_moderation</source>
+                <target>Votre commentaire a été prit en compte, cependant il doit être validé par un membre de notre équipe avant d'être publié.</target>
             </trans-unit>
 
 
@@ -781,7 +917,7 @@
             <!-- NEWSLETTER SEARCH PAGE -->
             <trans-unit id="newsletter_subscribe_success">
                 <source>newsletter_subscribe_success</source>
-                <target>Votre inscription à notre newletter a bien été prise en compte, toute l'équipe de NAO vous remercie.</target>
+                <target>Votre inscription à notre newsletter a bien été prise en compte, toute l'équipe de NAO vous remercie.</target>
             </trans-unit>
 
 
@@ -796,7 +932,7 @@
             </trans-unit>
             <trans-unit id="contact_success">
                 <source>contact_success</source>
-                <target>Votre demande de contact à bien été prise en compte.</target>
+                <target>Votre message est bien parti par pigeon voyageur.</target>
             </trans-unit>
 
 
@@ -846,6 +982,14 @@
             <trans-unit id="notifications">
                 <source>notifications</source>
                 <target>notifications</target>
+            </trans-unit>
+            <trans-unit id="subscribe_newsletter">
+                <source>subscribe_newsletter</source>
+                <target>Je m'inscris à la newsletter</target>
+            </trans-unit>
+            <trans-unit id="private_profil">
+                <source>private_profil</source>
+                <target>Je veux rendre mon profil privé</target>
             </trans-unit>
 
 
@@ -973,7 +1117,7 @@
                 <source>email_signature</source>
                 <target>
 
-                Cet email à été envoyer automatiquement, merci de ne pas y répondre.
+                Cet email a été envoyé automatiquement, merci de ne pas y répondre.
 
                 Cordialement,
                 L'équipe NAO

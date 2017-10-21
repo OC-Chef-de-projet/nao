@@ -31,7 +31,7 @@ class RegisterType extends AbstractType
                 'mapped'    => false,
                 'label'     => false,
                 'required' => false,
-                'attr'  => array( 'class' => 'filled-in', 'checked' => 'checked')
+                'attr'  => array( 'class' => 'filled-in')
             ))
         ;
     }
