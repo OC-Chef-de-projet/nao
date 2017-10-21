@@ -44,42 +44,46 @@
             </div>
         </nav>
         <h1 class="activated">{{ 'admin_user'|trans }}</h1>
-        <div class="row">
-            <div class="col s12">
-                <div class="card large">
-                    <div class="card-content row">
-                        <!-- search -->
-                        <div class="col s12">
+    </section>
+    <main class="container marge-top">
+        <section>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
                             <div class="row">
-                                <div class="col s5 push-s3">
-                                    <div class="card input-field" style="min-height: 0;">
-                                        <i class="material-icons prefix" style="margin-top:10px;margin-left:5px">search</i>
-                                        <input type="text" id="searchuser"
-                                               data-activates="singleDropdown" data-beloworigin="true"
-                                               autocomplete="off">
-                                        <label for="searchuser">{{ 'search_by_name' | trans }}</label>
+                                <div class="col s12 m10 push-m1">
+                                    <div class="row">
+                                        <div class="col s12 m5 push-m3">
+                                            <div class="card input-field" style="min-height: 0;">
+                                                <i class="material-icons prefix" style="margin-top:10px;margin-left:5px">search</i>
+                                                <input type="text" id="searchuser"
+                                                       data-activates="singleDropdown" data-beloworigin="true"
+                                                       autocomplete="off">
+                                                <label for="searchuser">{{ 'search_by_name' | trans }}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m2 push-m3">
+                                            <a class="caption light-2" href="#" id="clearsearch">{{ 'clear_search' | trans }}</a>
+                                        </div>
+
                                     </div>
-                                </div>
-                                <div class="col s2 push-s3">
-                                    <div class="card z-depth-0" style="min-height: 70px;line-height:70px">
-                                        <a class="caption light-2" href="#" id="clearsearch">{{ 'clear_search' | trans }}</a>
-                                    </div>
+                                    <ul id="singleDropdown" class="dropdown-content ac-dropdown"></ul>
                                 </div>
 
+                                <!-- user list -->
+                                <ul class="collection col s12" style="border: 1px solid white !important;" id="userList">
+                                    {% include 'admin/user/list.html.twig' %}
+                                </ul>
+                                {% include 'admin/paginate.html.twig' %}
+                                </div>
                             </div>
-                            <ul id="singleDropdown" class="dropdown-content ac-dropdown"></ul>
                         </div>
-
-                        <!-- user list -->
-                        <ul class="collection col s12" style="border: 1px solid white !important;" id="userList">
-                            {% include 'admin/user/list.html.twig' %}
-                        </ul>
-                        {% include 'admin/paginate.html.twig' %}
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
 {% endblock %}
 

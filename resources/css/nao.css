@@ -1735,13 +1735,17 @@ header.admin nav.sticky{
     box-shadow: none;
 }
 
-#searchuser, .header-overlap {
+.header-overlap {
     top: 80px;
     left: 90%;
     position: absolute;
 }
 
-#searchuser.active  {
+#searchuser {
+    border-bottom: none;
+}
+
+#searchuser.active  {
     border-bottom: none;
     box-shadow: none;
 }
@@ -1789,3 +1793,31 @@ btn-link-icon {
     position: absolute;
 }
 
+.grecaptcha-badge {
+    display: none;
+}
+
+.post-card {
+    min-height: 150px;
+    max-height: 150px;
+}
+
+
+@media all and (max-width: 600px) {
+    .post-link {
+        font-size: 14px;
+    }
+
+    .admin-container  {
+        width: 100%;
+    }
+    .col.s12 > .btn {
+        width: 100%;
+    }
+}
+
+
+.fixed-action-btn {
+    bottom: 0px;
+    top: 60px;
+}

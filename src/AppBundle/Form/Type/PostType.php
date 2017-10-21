@@ -51,7 +51,7 @@ class PostType extends AbstractType
             ])
             ->add('save_draft', SubmitType::class,
                 [
-                    'attr' => array('class' => 'btn white scroll-to waves-effect'),
+                    'attr' => array('class' => 'btn white scroll-to waves-effect right'),
                     'label' => 'saving_draft',
                     'translation_domain' => 'messages',
                 ]
