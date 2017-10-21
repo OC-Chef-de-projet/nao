@@ -47,11 +47,6 @@ div.center {
     text-align: right;
 }
 
-.top-neg{
-    position:relative;
-    top:-15px;
-}
-
 /* ====================================
     Common / Typography
     =============================================*/
@@ -161,8 +156,6 @@ a.small{
     color: #FF6E40;
 }
 
-
-
 /* ====================================
     Icons
     =============================================*/
@@ -223,13 +216,6 @@ a.small{
     width: 100%;
 }
 
-.btn.social.less{
-    font-size: 13px;
-    width: auto;
-    padding: 0 10px 0 0;
-    margin-right: 10px;
-}
-
 .facebook {
     background-color: #3b5998 !important;
     color: #fff !important;
@@ -237,11 +223,6 @@ a.small{
 
 .google {
     background-color: #dd4b39 !important;
-    color: #fff !important;
-}
-
-.twitter {
-    background-color: #55acee !important;
     color: #fff !important;
 }
 
@@ -253,14 +234,6 @@ a.small{
     float: left;
     padding: 0 0.5rem;
     margin-right: 0.2rem;
-}
-
-.btn.social.less i{
-    margin-right: 0.5rem;
-}
-
-.btn.min-pad{
-    padding: 0 1rem;
 }
 
 /* ====================================
@@ -351,10 +324,6 @@ form label{
 
 form textarea.materialize-textarea{
     min-height: 7rem;
-}
-
-label.push-line{
-    margin-left: 20%;
 }
 
 /* ====================================
@@ -869,14 +838,6 @@ footer ul.social > li:not(:first-child) {
     min-height: 150px;
 }
 
-.card .card-content form.no-pad{
-    padding: 0 !important;
-}
-
-.card .card-content form.no-pad textarea{
-    min-height: 3rem;
-}
-
 .card .card-content form .main-section {
     padding-right: 0px;
 }
@@ -900,20 +861,6 @@ footer ul.social > li:not(:first-child) {
     position: absolute;
     top: 15%;
     height: 75%;
-}
-
-.card .card-content ul.form-link{
-    padding: 0px 0px 0px 70px;
-}
-
-.card .card-content ul.form-link > li{
-    margin-bottom: 10px;
-}
-.card .card-content ul.form-link > li > i{
-    color: rgba(0,0,0,.54)!important;
-    position: relative;
-    top: 6px;
-    margin-right: 15px;
 }
 
 .card .card-content form .input-field label {
@@ -944,14 +891,6 @@ footer ul.social > li:not(:first-child) {
 
 .card .card-content h2.big{
     font-size: 24px;
-}
-
-.card.no-style.all{
-    border-radius: 0px;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    margin: 0;
-    padding: 0;
 }
 
 /* ====================================
@@ -1163,67 +1102,6 @@ ul.collapsible > li > div.collapsible-body{
     padding: 1rem 0 1rem 0;
 }
 
-/* ====================================
-    Comment
-    =============================================*/
-
-.comment-content{
-    margin-bottom: 40px;
-}
-
-.comment-content img{
-    float: left;
-    width: 50px;
-}
-.comment-detail{
-    padding-left: 60px;
-}
-
-/* ====================================
-    Comment
-    =============================================*/
-
-.notification-content{
-    margin: 15px 0 10px 0;
-    padding-bottom: 25px;
-    border-bottom: 1px solid rgba(0,0,0,0.24);
-}
-
-.notification-content img{
-    float: left;
-    width: 50px;
-    height: 50px;
-}
-
-.notification-detail{
-    padding-left: 60px;
-}
-
-.row .col.no-pad{
-    padding-left: 0;
-    padding-right: 0;
-}
-/* ====================================
-    Cookies policy
-    =============================================*/
-.cookie-law {
-    position: fixed;
-    z-index: 20;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    will-change: transform;
-    transition: .7s .2s cubic-bezier(.215,.61,.355,1);
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 1.5em 2em;
-    background: #009688;
-    color: #fff;
-}
 
 /* ====================================
     Responsive
@@ -1446,12 +1324,6 @@ ul.collapsible > li > div.collapsible-body{
         content: none;
     }
 
-    .card .card-content ul.form-link{
-        margin-top: 30px;
-        padding: 20px 0 0 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.24);
-    }
-
     .lright-scenter{
         text-align: center;
     }
@@ -1510,22 +1382,6 @@ ul.collapsible > li > div.collapsible-body{
 
     .btn.social:first-child{
         margin-top: 10px;
-    }
-
-    .btn.social.less{
-        margin-right: 20px;
-    }
-
-    .btn.social.less i{
-        display: inline-block;
-        margin-right: 50%;
-        float: none;
-        font-size: 26px;
-        border-right: none !important;
-    }
-
-    label.push-line{
-        margin-left: 0px;
     }
 
 }
@@ -1651,10 +1507,9 @@ header.admin nav.sticky{
     box-shadow: none;
 }
 
-#searchuser, .header-overlap {
-    top: 80px;
-    left: 90%;
-    position: absolute;
+
+#searchuser {
+    border-bottom: none ;
 }
 
 #searchuser.active  {
@@ -1704,4 +1559,6 @@ btn-link-icon {
     left:90%;
     position: absolute;
 }
+
+
 

@@ -31,6 +31,8 @@
     </header>
 {% endblock %}
 
+
+
 {% block body %}
     <!-- PAGE HEADING -->
     <section class="page-heading container hide-on-med-and-down admin">
@@ -44,14 +46,16 @@
             </div>
         </nav>
         <h1 class="activated">{{ 'admin_user'|trans }}</h1>
+    </section>
+    <section>
         <div class="row">
             <div class="col s12">
-                <div class="card large">
+                <div class="card">
                     <div class="card-content row">
                         <!-- search -->
                         <div class="col s12">
                             <div class="row">
-                                <div class="col s5 push-s3">
+                                <div class="col s12 m5 push-m3">
                                     <div class="card input-field" style="min-height: 0;">
                                         <i class="material-icons prefix" style="margin-top:10px;margin-left:5px">search</i>
                                         <input type="text" id="searchuser"
@@ -60,10 +64,8 @@
                                         <label for="searchuser">{{ 'search_by_name' | trans }}</label>
                                     </div>
                                 </div>
-                                <div class="col s2 push-s3">
-                                    <div class="card z-depth-0" style="min-height: 70px;line-height:70px">
-                                        <a class="caption light-2" href="#" id="clearsearch">{{ 'clear_search' | trans }}</a>
-                                    </div>
+                                <div class="col s12 m2 push-m3">
+                                    <a class="caption light-2" href="#" id="clearsearch">{{ 'clear_search' | trans }}</a>
                                 </div>
 
                             </div>
