@@ -26,9 +26,14 @@ html, body {
     height: 100%;
 }
 
-body {
+body,
+section.bg-body{
     background: rgba(0, 150, 136, 0.07);
     color: rgba(0, 0, 0, 0.87);
+}
+
+section.bg-body{
+    padding: 20px 0 8px 0;
 }
 
 body:after {
@@ -891,6 +896,10 @@ footer ul.social > li:not(:first-child) {
     margin-top: 120px;
 }
 
+.card .card-content form .secondary-section.v-margin-small {
+    margin-top: 50px;
+}
+
 .card .card-content form .secondary-section:after {
     background: rgba(0, 0, 0, 0.54);
     content: "";
@@ -954,9 +963,36 @@ footer ul.social > li:not(:first-child) {
     padding: 0;
 }
 
+.card ul.profil-details{
+    margin-top: 40px;
+}
+
+
+/* ====================================
+    Image avatar
+    =============================================*/
+.img-container{
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.img-container img{
+    /*
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%)
+    */
+    height: 100%;
+    width: 100%;
+}
+
 /* ====================================
     Stepbar
-    =============================================*/
+=============================================*/
 
 #stepbar > li {
     list-style-type: none;
