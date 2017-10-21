@@ -2,7 +2,7 @@
     <nav class="nav-extended" role="navigation">
         <div class="nav-wrapper">
             <a href="#" data-activates="side-menu" class="button-collapse"><i class="material-icons">menu</i></a>
-            <div id="nav-logo" class="brand-logo"></div>
+            <a href="{{ path('homepage') }}"><div id="nav-logo" class="brand-logo"></div></a>
             <div id="nav-small-title">{% if navtitle is defined %}{{ navtitle|trans }}{% endif %}</div>
             <ul class="right static-menu">
                 {% if admin is defined %}<li><a href="{{ path('admin_homepage') }}"><i class="material-icons">settings</i></a></li>{% endif %}
