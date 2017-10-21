@@ -1721,3 +1721,28 @@ btn-link-icon {
 .grecaptcha-badge {
     display: none;
 }
+
+.post-card {
+    min-height: 150px;
+    max-height: 150px;
+}
+
+
+@media all and (max-width: 600px) {
+    .post-link {
+        font-size: 14px;
+    }
+
+    .admin-container  {
+        width: 100%;
+    }
+    .col.s12 > .btn {
+        width: 100%;
+    }
+}
+
+
+.fixed-action-btn {
+    bottom: 0px;
+    top: 60px;
+}
