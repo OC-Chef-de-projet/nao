@@ -57,6 +57,10 @@ div.center {
     top:-15px;
 }
 
+.grecaptcha-badge{
+    opacity: 0 !important;
+}
+
 /* ====================================
     Common / Typography
     =============================================*/
