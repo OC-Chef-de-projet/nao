@@ -50,9 +50,6 @@ class OAuthUserProvider extends EntityUserProvider
         $socialId = $response->getUsername();
         $email = $response->getEmail();
 
-        error_log("propertyName $propertyName");
-        error_log("socialId $socialId");
-
         if (($user = $this->repository->findOneBy([$propertyName => $socialId])) !== null) {
             $checker->checkPreAuth($user);
         } elseif (($user = $this->repository->findOneByEmail($email)) !== null) {

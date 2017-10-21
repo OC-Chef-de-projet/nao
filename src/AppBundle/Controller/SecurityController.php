@@ -107,6 +107,5 @@ class SecurityController extends Controller
      */
     public function loginCheckAction()
     {
-        error_log("CHECK");
     }
 }

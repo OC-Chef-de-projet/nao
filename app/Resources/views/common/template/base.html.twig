@@ -63,7 +63,6 @@
         };
 
         function attachSignin(element) {
-            console.log(element.id);
             auth2.attachClickHandler(element, {},
                 function (googleUser) {
                     document.location = "{{ url("hwi_oauth_service_redirect", {service: "google"}) }}";
