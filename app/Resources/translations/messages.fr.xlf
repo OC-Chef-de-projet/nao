@@ -305,7 +305,14 @@
                 <source>delete_account</source>
                 <target>Supprimer le compte</target>
             </trans-unit>
-
+            <trans-unit id="need_help">
+                <source>need_help</source>
+                <target>Besoin d'aide ?</target>
+            </trans-unit>
+            <trans-unit id="target_on_map">
+                <source>target_on_map</source>
+                <target>Pointer sur la carte</target>
+            </trans-unit>
 
             <!-- ALT IMAGE -->
             <trans-unit id="alt_big_logo_white">
@@ -414,6 +421,26 @@
             <trans-unit id="give_me_money">
                 <source>give_me_money</source>
                 <target>Faire un don a l'association</target>
+            </trans-unit>
+            <trans-unit id="label_location">
+                <source>label_location</source>
+                <target>Lieux</target>
+            </trans-unit>
+            <trans-unit id="label_date">
+                <source>label_date</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="label_bird_view">
+                <source>label_bird_view</source>
+                <target>Espèce observée</target>
+            </trans-unit>
+            <trans-unit id="label_quota_bird">
+                <source>label_quota_bird</source>
+                <target>Nombre d'individus observés</target>
+            </trans-unit>
+            <trans-unit id="label_more_bird">
+                <source>label_more_bird</source>
+                <target>Comportement observé (facultatif)</target>
             </trans-unit>
 
 

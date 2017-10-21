@@ -1,3 +1,5 @@
+{% set bgwhite = true %}
+
 {% extends "common/template/base.html.twig" %}
 
 {% block title %}{{ 'observation_create_title'|trans }}{% endblock %}
@@ -12,7 +14,7 @@
 {% block header %}
     <header class="collapse bg9">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'observations'}%}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'observation_create_title'}%}
         <section>
             <div class="container">
                 <div class="row">
@@ -46,7 +48,47 @@
     <!-- PAGE CONTENT -->
     <main class="container marge-top">
         <section>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
+                            <form id="register_form" method="post" autocomplete="off">
+                                <div class="row">
+                                    <div class="col s12 l6 main-section">
+                                        <div class="input-field col s12">
+                                            <label>{{ 'label_location'|trans }}</label>
+                                            {{ form_widget(form.place) }}
+                                            <div class="error">{{ form_errors(form.place) }}</div>
+                                            <p class="left-align"><a href="#" class="caption light-2-no-hov small">{{ 'target_on_map'|trans }}</a></p>
+                                        </div>
+                                        <input style="display:none">
+                                        <div class="input-field col s12">
+                                            <label>{{ 'label_date'|trans }}</label>
+                                            {{ form_widget(form.watched) }}
+                                            <div class="error">{{ form_errors(form.watched) }}</div>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <label>{{ 'label_bird_view'|trans }}</label>
+                                            {{ form_widget(form.taxref) }}
+                                            <div class="error">{{ form_errors(form.taxref) }}</div>
+                                            <p class="left-align"><a href="http://www.oiseaux.net/oiseaux/france.html" class="caption light-2-no-hov small" target="_blank">{{ 'need_help'|trans }}</a></p>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <label>{{ 'label_quota_bird'|trans }}</label>
+                                            {{ form_widget(form.individuals) }}
+                                            <div class="error">{{ form_errors(form.individuals) }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col s12 l6 secondary-section v-margin center-align">
 
+                                    </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 {% endblock %}

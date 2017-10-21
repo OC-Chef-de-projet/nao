@@ -2,11 +2,13 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Observation;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use AppBundle\Form\Type\ObservationType;
 
 /**
  * Class ObservationController
@@ -20,9 +22,18 @@ class ObservationController extends Controller
      * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET"})
      */
-    public function createAction()
+    public function createAction(Request $request)
     {
-        return $this->render('observation/create.html.twig');
+        $observation = new Observation();
+        $form = $this->createForm(ObservationType::class, $observation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            // GO !
+        }
+        return $this->render('observation/create.html.twig', array(
+            'form'      => $form->createView()
+        ));
     }
 
     /**
@@ -69,7 +80,10 @@ class ObservationController extends Controller
      */
     public function showValidateAction()
     {
-        return $this->render('observation/me/validate.html.twig');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        return $this->render('observation/me/validate.html.twig', array(
+            'observations'      => $this->container->get('app.obs')->getObseravtionsValidate($user)
+        ));
     }
 
     /**
