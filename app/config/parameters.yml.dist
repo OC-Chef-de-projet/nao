@@ -35,3 +35,4 @@ parameters:
 
     captcha.key: KEY
     captcha.secret: SECRET
+
