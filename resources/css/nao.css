@@ -1220,9 +1220,13 @@ ul.collapsible > li > div.collapsible-body{
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 1.5em 2em;
-    background: #009688;
-    color: #fff;
+    padding: 1.5em 0 1.5em 0;
+    background: rgba(0, 0, 0, 0.87);
+    color: #ffffff;
+}
+
+.cookie-action a.btn:first-child{
+    margin-right: 10px;
 }
 
 /* ====================================
@@ -1526,6 +1530,11 @@ ul.collapsible > li > div.collapsible-body{
 
     label.push-line{
         margin-left: 0px;
+    }
+
+    .cookie-action{
+        margin-top: 15px;
+        text-align: center;
     }
 
 }
