@@ -100,7 +100,8 @@ img {
     margin-bottom: 0 !important;
 }
 
-.marge-top {
+.marge-top,
+.marge-top-large{
     margin-top: 20px;
 }
 
@@ -366,9 +367,14 @@ label.push-line{
     margin-left: 20%;
 }
 
-/* ====================================
-    Heading
-    =============================================*/
+.file-field .btn,
+.file-field .btn-large {
+    height: auto !important;
+}
+
+    /* ====================================
+        Heading
+        =============================================*/
 
 header {
     min-height: 5%;
@@ -969,6 +975,12 @@ footer ul.social > li:not(:first-child) {
 
 .card ul.profil-details{
     margin-top: 40px;
+}
+
+.card a.btn-floating{
+    position: absolute;
+    right: 15px;
+    top: -28px;
 }
 
 
@@ -1577,6 +1589,17 @@ ul.collapsible > li > div.collapsible-body{
         text-align: center;
     }
 
+    .card .card-content form .secondary-section.v-margin-small{
+        margin-top: 20px;
+    }
+
+    .marge-top-large{
+        margin-top: 0;
+    }
+
+    .card a.btn-floating{
+        right: 0px;
+    }
 }
 
 /*
@@ -1682,6 +1705,18 @@ ul.collapsible > li > div.collapsible-body{
 
     .card .card-content form .secondary-section:after {
         content: none;
+    }
+
+    .marge-top-large{
+        margin: 0;
+    }
+
+    .hide-on-med-and-up{
+        display: block !important;
+    }
+
+    .hide-on-small-only{
+        display: none !important;
     }
 }
 

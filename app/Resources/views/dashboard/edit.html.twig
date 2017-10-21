@@ -2,7 +2,7 @@
 
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'dashboard_page_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
+{% block title %}{{ 'dashboard_page_title'|trans }}{% endblock %}
 
 {% block meta %}
     <meta name="description" content="{{ 'dashboard_page_meta_description'|trans }}">
@@ -65,9 +65,8 @@
             <div class="row">
                 <div class="col s12">
                     <div class="card no-style">
-                        <a href="{{ path('dashboard.profil.edit') }}" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">edit</i></a>
                         <div class="card-content">
-                            <form>
+                            <form id="profil_form" method="post" autocomplete="off" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col s12 l6 main-section">
                                         <div class="col l4 right-align hide-on-small-only">
@@ -79,23 +78,38 @@
                                             <ul class="profil-details">
                                                 <li><span class="card-title">{{ app.user.name }}</span></li>
                                                 <li>{{ 'registered_since'|trans({'%date%': app.user.created|date("d/m/Y")}) }}</li>
-                                                <li>{{ 'profil'|trans|capitalize }} {{ app.user.role|trans|lower}}</li>
                                                 <li>&nbsp;</li>
-                                                <li><h2>{{ 'activities'|trans }}</h2></li>
-                                                <li>{{ 'x_obersation_validate'|trans({'%nb%' : obs_validate}) }}</li>
                                             </ul>
+                                            <br />
+                                            <h2>{{ 'new_pofil_image'|trans }}</h2>
+                                            <div class="file-field input-field">
+                                                <div class="btn-floating btn-large waves-effect waves-light">
+                                                    <i class="material-icons dp48">add_a_photo</i>
+                                                    {{ form_widget(form.imagepath) }}
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input class="file-path validate valid" type="text">
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="error">{{ form_errors(form.imagepath) }}</div>
                                         </div>
                                     </div>
                                     <div class="col s12 l6 secondary-section v-margin-small">
                                         <div class="col s12 ">
                                             <h2>{{ 'about'|trans }}</h2>
-                                            {% if app.user.aboutMe != NULL %}
-                                                <p>{{ app.user.aboutMe }}</p>
-                                            {% else %}
-                                                <p>{{ 'about_me_default'|trans({'%name%' : app.user.name})|nl2br }}</p>
-                                            {% endif %}
+                                            <div class="col s12">
+                                                {{ form_widget(form.aboutme) }}
+                                                <div class="error">{{ form_errors(form.aboutme) }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="input-field col s12 center-align">
+                                            <br />
+                                            <input type="reset" class="btn waves-effect white min-pad" value="{{ 'cancel'|trans }}" />&nbsp;&nbsp;
+                                            <input type="submit" class="btn waves-effect min-pad" value="{{ 'save'|trans }}"  />
                                         </div>
                                     </div>
+                                    {{ form_end(form) }}
                                 </div>
                             </form>
                         </div>

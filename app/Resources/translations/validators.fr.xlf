@@ -37,7 +37,15 @@
                 <target>Le mot de passe doit être identique à sa confirmation .</target>
             </trans-unit>
 
-
+            <!-- IMAGE -->
+            <trans-unit id="avatar_format">
+                <source>avatar_format</source>
+                <target>l'image n'est pas valide</target>
+            </trans-unit>
+            <trans-unit id="avatar_size">
+                <source>avatar_size</source>
+                <target>La taille de l'image est trop grande</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

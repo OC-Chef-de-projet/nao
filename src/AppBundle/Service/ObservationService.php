@@ -207,5 +207,19 @@ class ObservationService
     public function deleteObservationsForUser(User $user){
         $this->em->getRepository(Observation::class)->deleteByUser($user->getId());
     }
+
+    /**
+     * Get observations validate for user
+     *
+     * @param User $user
+     * @return array
+     */
+    public function getObseravtionsValidate(User $user){
+        $obs = $this->em->getRepository('AppBundle:Observation')->findBy(array(
+            'status' => Observation::VALIDATED,
+            'user' => $user->getId()
+        ));
+        return $obs;
+    }
 }
 

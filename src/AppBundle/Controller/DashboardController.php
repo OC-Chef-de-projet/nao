@@ -2,12 +2,15 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\Type\UserProfilType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Form\Type\AccountType;
+use AppBundle\Entity\User;
 
 /**
  * Class DashboardController
@@ -64,7 +67,30 @@ class DashboardController extends Controller
      */
     public function profilAction()
     {
-        return $this->render('dashboard/profil.html.twig');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        return $this->render('dashboard/profil.html.twig', array(
+            'obs_validate'      => sizeof($this->container->get('app.obs')->getObseravtionsValidate($user))
+        ));
+    }
+
+    /**
+     * @Route("/profil/edit", name="dashboard.profil.edit")
+     * @Method({"GET","POST"})
+     */
+    public function profilEditAction(Request $request)
+    {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $form = $this->createForm(UserProfilType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $this->container->get('app.user')->updateProfil($user, $request->files->get('user_profil'));
+            return $this->redirectToRoute('dashboard.profil');
+        }
+        return $this->render('dashboard/edit.html.twig', array(
+            'obs_validate'              => sizeof($this->container->get('app.obs')->getObseravtionsValidate($user)),
+            'form'                      => $form->createView(),
+        ));
     }
 
     /**
@@ -80,12 +106,25 @@ class DashboardController extends Controller
     }
 
     /**
-     * @Route("/profil/utilisateur/{id}/{name}", name="dashboard.user")
+     * @Route("/profil/utilisateur/{id}/{name}", name="dashboard.user", requirements={"id": "\d+"})
+     * @ParamConverter("user", options={"mapping": {"id": "id"}})
      * @Method({"GET"})
      */
-    public function profilUserAction()
+    public function profilUserAction(User $user)
     {
-        return $this->render('dashboard/profil.html.twig');
+        $me = $this->get('security.token_storage')->getToken()->getUser();
+
+        if($user->getPrivate()) {
+            $access = ($me->getId() == $user->getId() || $me->getRole() == 'ROLE_ADMIN') ? true : false;
+        } else {
+            $access = true;
+        }
+
+        return $this->render('dashboard/profil_read_only.html.twig', array(
+            'obs_validate'              => sizeof($this->container->get('app.obs')->getObseravtionsValidate($user)),
+            'user'                      => $user,
+            'access_to_profil'          => $access
+        ));
     }
 }
 

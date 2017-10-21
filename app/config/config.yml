@@ -8,6 +8,7 @@ imports:
 parameters:
     locale: fr
     posts_directory: '%kernel.project_dir%/web/images/posts'
+    users_directory: '%kernel.project_dir%/web/images/users'
     list_limit: 10
     gps_distance: 10 # Distance between current position and obsersations
 

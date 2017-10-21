@@ -122,7 +122,6 @@ class User implements UserInterface
      */
     private $googleId;
 
-
     /**
      * User constructor.
      */
@@ -262,8 +261,6 @@ class User implements UserInterface
         return $this->role;
     }
 
-
-
     /**
      * Set token
      *
@@ -335,6 +332,16 @@ class User implements UserInterface
     public function getImagePath()
     {
         return 'images/users/' . $this->image_path;
+    }
+
+    /**
+     * Get only image name
+     *
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->image_path;
     }
 
     /**
@@ -500,5 +507,4 @@ class User implements UserInterface
         $slugify = new Slugify();
         return $slugify->slugify($this->getName());
     }
-
 }

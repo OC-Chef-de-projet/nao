@@ -22,6 +22,7 @@ class UserService
     private $newsletter;
     private $passwordEncoder;
     private $mailer;
+    private $users_directory;
 
     /**
      * UserService constructor.
@@ -29,7 +30,7 @@ class UserService
      * @param TokenStorage $ts
      * @param $list_limit
      */
-    public function __construct(EntityManager $em, TokenStorage $ts,$list_limit, NewsletterService $newsletter, UserPasswordEncoderInterface $passwordEncoder, Mailer $mailer)
+    public function __construct(EntityManager $em, TokenStorage $ts,$list_limit, NewsletterService $newsletter, UserPasswordEncoderInterface $passwordEncoder, Mailer $mailer, $users_directory)
     {
         $this->em               = $em;
         $this->ts               = $ts;
@@ -37,6 +38,7 @@ class UserService
         $this->newsletter       = $newsletter;
         $this->passwordEncoder  = $passwordEncoder;
         $this->mailer           = $mailer;
+        $this->users_directory  = $users_directory;
     }
 
     /**
@@ -140,6 +142,30 @@ class UserService
         }
         else{
             $this->newsletter->unsubscribe($user->getEmail());
+        }
+
+        // save the User
+        $this->em->persist($user);
+        $this->em->flush();
+    }
+
+
+    public function updateProfil(User $user, $files_user){
+
+        if(array_key_exists('imagepath', $files_user)){
+
+            // Before upload delete existing user image
+            if( $user->getImagePath() !== 'avatar-default.png'){
+                $old_file = $this->users_directory.'/'.$user->getImageName();
+                if ($old_file) {
+                    unlink($old_file);
+                }
+            }
+
+            $file = $files_user['imagepath'];
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->users_directory, $fileName);
+            $user->setImagePath($fileName);
         }
 
         // save the User
