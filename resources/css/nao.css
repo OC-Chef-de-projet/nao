@@ -1718,3 +1718,6 @@ btn-link-icon {
     position: absolute;
 }
 
+.grecaptcha-badge {
+    display: none;
+}
