@@ -21,10 +21,10 @@
                 <source>i_agree</source>
                 <target>J'accepte</target>
             </trans-unit>
-             <trans-unit id="want_to_know_more">
-                 <source>want_to_know_more</source>
-                 <target>En savoir plus</target>
-             </trans-unit>
+            <trans-unit id="want_to_know_more">
+                <source>want_to_know_more</source>
+                <target>En savoir plus</target>
+            </trans-unit>
 
             <!-- ERROR MESSAGE -->
             <trans-unit id="error_email_format">
@@ -402,19 +402,19 @@
                 <source>confirm</source>
                 <target>Confirmer</target>
             </trans-unit>
-             <trans-unit id="give_me_money">
-                 <source>give_me_money</source>
-                 <target>Faire un don a l'association</target>
-             </trans-unit>
+            <trans-unit id="give_me_money">
+                <source>give_me_money</source>
+                <target>Faire un don a l'association</target>
+            </trans-unit>
 
 
             <!-- MODAL -->
             <trans-unit id="modal_confirmation_explain">
                 <source>modal_confirmation_explain</source>
                 <target>
-                Cette décision est irrévocable
+                    Cette décision est irrévocable
 
-                Voulez-vous continuez ?
+                    Voulez-vous continuez ?
                 </target>
             </trans-unit>
 
@@ -608,9 +608,9 @@
             <trans-unit id="collaborative_project_explain_2">
                 <source>collaborative_project_explain_2</source>
                 <target>
-                Rejoignez de nombreux passionnés d'ornithologie à travers le projet de Nos Amis les Oiseaux (NAO).
-                Nous formons une communauté active et dynamique souhaitant partager cette passion et préserver les oiseaux.
-                N'attendez plus, rejoignez-nous !
+                    Rejoignez de nombreux passionnés d'ornithologie à travers le projet de Nos Amis les Oiseaux (NAO).
+                    Nous formons une communauté active et dynamique souhaitant partager cette passion et préserver les oiseaux.
+                    N'attendez plus, rejoignez-nous !
                 </target>
             </trans-unit>
             <trans-unit id="observe">
@@ -723,8 +723,8 @@
             <trans-unit id="account_raz_password_explain">
                 <source>account_raz_password_explain</source>
                 <target>
-                Vous avez oublié votre mot de passe ? Indiquez-nous votre adresse email et nous vous enverrons un lien afin de le réinitialiser.
-                Pensez à regarder dans votre dossier Spam si vous ne recevez rien.
+                    Vous avez oublié votre mot de passe ? Indiquez-nous votre adresse email et nous vous enverrons un lien afin de le réinitialiser.
+                    Pensez à regarder dans votre dossier Spam si vous ne recevez rien.
                 </target>
             </trans-unit>
             <trans-unit id="account_recovery_not_found">
@@ -899,7 +899,7 @@
             <trans-unit id="faq_more_question">
                 <source>faq_more_question</source>
                 <target>Vous ne trouvez pas la réponse à votre question ?
-                N'hésitez pas à nous contacter via la </target>
+                    N'hésitez pas à nous contacter via la </target>
             </trans-unit>
             <trans-unit id="faq_contact_page">
                 <source>faq_contact_page</source>
@@ -948,8 +948,8 @@
             <trans-unit id="404_explain">
                 <source>404_explain</source>
                 <target>
-                La page que vous recherchez n'existe pas ou plus
-                Nous en sommes désolés
+                    La page que vous recherchez n'existe pas ou plus
+                    Nous en sommes désolés
                 </target>
             </trans-unit>
             <trans-unit id="back_to_homepage">
@@ -1105,22 +1105,19 @@
                 <source>authorize</source>
                 <target>Autoriser</target>
             </trans-unit>
-
             <trans-unit id="captcha_error">
                 <source>captcha_error</source>
                 <target>Erreur de vérification, veuillez recommencez s'il vous plait</target>
             </trans-unit>
-
-
             <!-- EMAIL -->
             <trans-unit id="email_signature">
                 <source>email_signature</source>
                 <target>
 
-                Cet email a été envoyé automatiquement, merci de ne pas y répondre.
+                    Cet email a été envoyé automatiquement, merci de ne pas y répondre.
 
-                Cordialement,
-                L'équipe NAO
+                    Cordialement,
+                    L'équipe NAO
                 </target>
             </trans-unit>
 
@@ -1135,22 +1132,22 @@
             <trans-unit id="email_feedback_content">
                 <source>email_feedback_content</source>
                 <target>
-                Bonjour,
+                    Bonjour,
 
-                vous recevez cet email car une demande de contact vient d'être faite sur le site.
-                Vous trouverez ci-dessous toutes les informations par laissé l'expéditeur.
+                    vous recevez cet email car une demande de contact vient d'être faite sur le site.
+                    Vous trouverez ci-dessous toutes les informations par laissé l'expéditeur.
 
-                ---------------------------
+                    ---------------------------
 
-                Nom : %name%
+                    Nom : %name%
 
-                Email: %email%
+                    Email: %email%
 
-                Objet: %objet%
+                    Objet: %objet%
 
-                Message: %message%
+                    Message: %message%
 
-                ---------------------------
+                    ---------------------------
 
                 </target>
             </trans-unit>
@@ -1166,10 +1163,10 @@
             <trans-unit id="email_account_activation_content">
                 <source>email_account_activation_content</source>
                 <target>
-                Bonjour %name%,
+                    Bonjour %name%,
 
-                Pour valider votre compte utilisateur, merci de valider le lien ci-dessous.
-                Pour information ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.
+                    Pour valider votre compte utilisateur, merci de valider le lien ci-dessous.
+                    Pour information ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.
 
                 </target>
             </trans-unit>
@@ -1185,13 +1182,12 @@
             <trans-unit id="email_recovery_account_content">
                 <source>email_recovery_account_content</source>
                 <target>
-                Bonjour %name%,
+                    Bonjour %name%,
 
-                Vous avez demandé la modification de votre mot de passe sur notre site Nos amis les oiseaux, pou cela merci de cliquer sur le lien présent ci-dessous.
-                Si vous n'avez pas demandé la modification de votre mot de passe, merci de prendre contact avec notre support.
+                    Vous avez demandé la modification de votre mot de passe sur notre site Nos amis les oiseaux, pou cela merci de cliquer sur le lien présent ci-dessous.
+                    Si vous n'avez pas demandé la modification de votre mot de passe, merci de prendre contact avec notre support.
 
                 </target>
-
             </trans-unit>
         </body>
     </file>
