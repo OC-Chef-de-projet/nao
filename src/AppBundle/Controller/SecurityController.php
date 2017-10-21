@@ -23,8 +23,9 @@ class SecurityController extends Controller
      * @Route("/connexion", name="login")
      * @Method({"GET","POST"})
      */
-    public function loginAction()
+    public function loginAction(Request $request)
     {
+
         // Only for user not logged
         if($this->getUser()){
             return $this->redirectToRoute('homepage');
@@ -70,11 +71,6 @@ class SecurityController extends Controller
      */
     public function resetPasswordAction(User $user, Request $request)
     {
-        // Only for user not logged
-        if($this->getUser()){
-            return $this->redirectToRoute('homepage');
-        }
-
         $form = $this->createForm(ChangePasswordType::class, $user);
         $form->handleRequest($request);
 
@@ -111,6 +107,6 @@ class SecurityController extends Controller
      */
     public function loginCheckAction()
     {
-
+        error_log("CHECK");
     }
 }

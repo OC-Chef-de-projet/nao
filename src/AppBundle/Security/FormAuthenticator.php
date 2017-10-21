@@ -2,6 +2,7 @@
 namespace AppBundle\Security;
 
 use AppBundle\Form\Type\LoginType;
+use AppBundle\Service\ReCaptchaService;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,6 +32,7 @@ class FormAuthenticator extends AbstractGuardAuthenticator
     private $router;
     private $formFactory;
     private $passwordEncoder;
+    private $captcha;
 
     /**
      * FormAuthenticator constructor.
@@ -39,11 +41,12 @@ class FormAuthenticator extends AbstractGuardAuthenticator
      * @param FormFactoryInterface $formFactory
      * @param UserPasswordEncoder $passwordEncoder
      */
-    public function __construct(RouterInterface $router, FormFactoryInterface $formFactory,  UserPasswordEncoder $passwordEncoder)
+    public function __construct(RouterInterface $router, FormFactoryInterface $formFactory,  UserPasswordEncoder $passwordEncoder, ReCaptchaService $captcha)
     {
         $this->router = $router;
         $this->formFactory = $formFactory;
         $this->passwordEncoder = $passwordEncoder;
+        $this->captcha = $captcha;
     }
 
 
@@ -98,18 +101,19 @@ class FormAuthenticator extends AbstractGuardAuthenticator
      */
     public function getCredentials(Request $request)
     {
+
        $loginForm = $this->formFactory->create(LoginType::class);
        $loginForm->handleRequest($request);
 
        if($loginForm->isSubmitted() && $loginForm->isValid()){
-           $data = $loginForm->getData();
-
-           $request->getSession()->set(
-               Security::LAST_USERNAME,
-               $data['_email']
-           );
-
-           return $data;
+           if($this->captcha->verify($request)) {
+               $data = $loginForm->getData();
+               $request->getSession()->set(
+                   Security::LAST_USERNAME,
+                   $data['_email']
+               );
+               return $data;
+           }
        }
        return;
     }

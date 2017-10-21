@@ -24,7 +24,6 @@ class UserChecker implements UserCheckerInterface
             throw new AccountDeletedException('unknown_account');
         }
 
-        error_log(print_r($user,true));
         if ($user->getInactive() == 1) {
             throw new AccountExpiredException('disabled_account');
         }

@@ -10,7 +10,7 @@ services:
                 - { name: twig.extension }
     form_authenticator:
         class: AppBundle\Security\FormAuthenticator
-        arguments: ['@router', '@form.factory', '@security.user_password_encoder.generic']
+        arguments: ['@router', '@form.factory', '@security.user_password_encoder.generic','@app.captcha']
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     AppBundle\:
