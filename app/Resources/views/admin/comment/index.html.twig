@@ -32,14 +32,8 @@
                         <div class="card-content">
                             <div class="row">
                                 <div class="col s12 m10 push-m1">
-
-                                    <ul class="collection col s12" style="border: 1px solid white !important;"
-                                        id="eltlist" data-maxPage="{{ paginate.maxPages }}">
-                                        {% include 'admin/comment/list.html.twig' %}
-                                    </ul>
-                                    <div class="row">
-                                        {% include 'admin/paginate.html.twig' %}
-                                    </div>
+                                    {% include 'admin/comment/list.html.twig' %}
+                                    {% include 'admin/paginate.html.twig' %}
                                 </div>
                             </div>
                         </div>
@@ -54,7 +48,8 @@
                 </div>
                 <div class="modal-footer">
                     {{ form_start(form) }}
-                    <button type="reset" class="modal-action modal-close waves-effect btn-flat light-orange">{{ 'cancel' | trans }}</button>
+                    <button type="reset"
+                            class="modal-action modal-close waves-effect btn-flat light-orange">{{ 'cancel' | trans }}</button>
                     {{ form_widget(form.save) }}
                     {{ form_end(form) }}
                 </div>

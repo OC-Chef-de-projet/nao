@@ -1704,8 +1704,8 @@ a:hover.btn-link {
     text-transform: uppercase;
 }
 
-btn-link-icon {
-    margin-top: 10px;
+.btn-link-icon {
+    padding-top: 10px;
 }
 
 .input-field label {
@@ -1750,6 +1750,15 @@ btn-link-icon {
         border-radius: 50%;
     }
 
+    .img-container-small {
+        height: 25px;
+        width: 25px;
+        text-align: center;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+
+
     .user-container {
         padding-top:10px;
         padding-bottom:10px;
@@ -1760,6 +1769,8 @@ btn-link-icon {
 }
 
 @media all and (min-width: 601px) {
+    
+
     .fixed-action-btn {
         bottom: 0px;
         top: 60px;
@@ -1768,6 +1779,14 @@ btn-link-icon {
     .img-container {
         height: 200px;
         width: 200px;
+        text-align: center;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+
+    .img-container-small {
+        height: 50px;
+        width: 50px;
         text-align: center;
         overflow: hidden;
         border-radius: 50%;
@@ -1802,7 +1821,8 @@ btn-link-icon {
 
 
 
-.img-container img {
+.img-container img,
+.img-container-small img{
     height: auto;
     width: auto;
 
