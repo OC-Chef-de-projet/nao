@@ -14,9 +14,18 @@ class SearchController extends Controller
      * @Route("/recherche", name="search.global")
      * @Method({"GET"})
      */
-    public function globalSearchAction(Request $request)
+    public function globalSearchAction(Request $request, $page = 1, $pattern ='')
     {
-        return $this->render('search.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $posts = $em->getRepository('AppBundle:Post')->searchPosts($page,$this->getParameter('list_limit'),$request->query->get('search'));
+
+        dump($posts->getIterator());
+        return $this->render('search.html.twig', array(
+            'paginate' => $this->container->get('app.post')->getPagination($posts,$page),
+            'postlist' => $posts->getIterator(),
+            'pattern' => $request->query->get('search')
+        ));
+
     }
 
 }

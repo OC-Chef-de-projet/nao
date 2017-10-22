@@ -1821,3 +1821,7 @@ btn-link-icon {
     bottom: 0px;
     top: 60px;
 }
+
+.card .card-content form.small {
+    min-height: 50px;
+}

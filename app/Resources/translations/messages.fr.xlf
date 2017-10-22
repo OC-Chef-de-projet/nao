@@ -922,6 +922,25 @@
                 <target>Recherche</target>
             </trans-unit>
 
+            <trans-unit id="search_new">
+                <source>search_new</source>
+                <target>Nouvelle recherche</target>
+            </trans-unit>
+
+            <trans-unit id="search_result">
+                <source>search_result</source>
+                <target>%total_count% résultats trouvés pour "%pattern%"</target>
+            </trans-unit>
+
+            <trans-unit id="no_search_result">
+                <source>no_search_result</source>
+                <target>Désolé, aucun résultat trouvé pour "%pattern%"</target>
+            </trans-unit>
+
+            <trans-unit id="search_again">
+                <source>search_again</source>
+                <target>Rien n'est perdu, vous pouvez faire une nouvelle recherche</target>
+            </trans-unit>
 
             <!-- NEWSLETTER SEARCH PAGE -->
             <trans-unit id="newsletter_subscribe_success">
