@@ -29,7 +29,7 @@ class ObservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            // GO !
+            return $this->redirectToRoute('observation.create');
         }
         return $this->render('observation/create.html.twig', array(
             'form'      => $form->createView()
