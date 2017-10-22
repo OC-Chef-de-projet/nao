@@ -28,8 +28,8 @@ class ConfirmType extends AbstractType
 
         ->add('save', SubmitType::class,
             [
-                'attr' => array('class' => 'btn waves-effect'),
-                'label' => 'yes',
+                'attr' => array('class' => 'modal-action modal-close waves-effect btn-flat light-orange'),
+                'label' => 'confirm',
                 'translation_domain' => 'messages',
             ]
         )

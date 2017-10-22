@@ -147,7 +147,8 @@ class PostService
         return ['totalPosts' => $totalPosts,
             'totalDisplayed' => $totalDisplayed,
             'current' => $page,
-            'maxPages' => $maxPages
+            'maxPages' => $maxPages,
+            'totalItems' => count($posts)
         ];
     }
 

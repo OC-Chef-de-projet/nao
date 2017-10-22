@@ -1,6 +1,7 @@
+{% set bgwhite = true %}
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'admin_user'|trans }}{% endblock %}
+{% block title %}{{ 'admin_post'|trans }}{% endblock %}
 
 {% block header %}
     <header class="collapse admin">
@@ -42,7 +43,7 @@
         <h1 class="activated">{{ 'admin_post'|trans }}</h1>
     </section>
     <main class="container marge-top admin admin-container">
-        
+
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large btn-link"  href="{{ url('admin_post_new') }}">
                 <i class="material-icons">note_add</i>
