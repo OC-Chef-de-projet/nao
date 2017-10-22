@@ -99,6 +99,12 @@ services:
         public: true
         arguments: ['%mailchimp.key%', '%mailchimp.list%']
 
+    app.validator.city.check:
+        class: AppBundle\Validator\CityCheckValidator
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: validator.constraint_validator, alias: app.city.check }
+
     AppBundle\EventListener\UserListener:
         tags:
             - { name: doctrine.event_listener, event: prePersist }

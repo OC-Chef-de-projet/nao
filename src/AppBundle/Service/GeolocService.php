@@ -36,7 +36,6 @@ class GeolocService
      */
     public function getFranceRegion($latitude, $longitude){
 
-
         $distance = 10000000;
         $region_id = 0;
         for($i = 1 ; $i < 40000 ; $i += 500){
@@ -56,7 +55,7 @@ class GeolocService
             }
             $this->em->clear();
         }
-        $region = $this->em->getRepository('AppBundle:FranceRegion')->findOneById($region_id);;
+        $region = $this->em->getRepository('AppBundle:FranceRegion')->findOneById($region_id);
         $region->setDistance($distance);
         return $region;
     }
@@ -64,13 +63,13 @@ class GeolocService
     /**
      * Get all observation rouding a GPS position
      *
-     * @param $latitute
+     * @param $latitude
      * @param $longitude
      * @param $distance
+     * @return array
      */
     public function getNearest($latitude, $longitude, $distance)
     {
-
         $observations = $this->em->getRepository('AppBundle:Observation')->findBy([
                 'status' => Observation::VALIDATED
             ]

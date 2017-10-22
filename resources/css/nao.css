@@ -329,6 +329,14 @@ a.bleen:hover {
     color: #00675B !important;
 }
 
+a#geoloc{
+    position: absolute;
+    right: 13px;
+    top: 10px;
+    background-color: #FFFFFF;
+    z-index: 10;
+}
+
 /* ====================================
     Form
     =============================================*/
@@ -372,9 +380,16 @@ label.push-line{
     height: auto !important;
 }
 
-    /* ====================================
-        Heading
-        =============================================*/
+#dropPlace.dropdown-content li>span{
+    font-size: 15px !important;
+    padding: 10px 12px;
+}
+
+
+
+/* ====================================
+    Heading
+=============================================*/
 
 header {
     min-height: 5%;

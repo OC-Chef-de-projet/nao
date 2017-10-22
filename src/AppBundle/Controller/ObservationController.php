@@ -20,7 +20,7 @@ class ObservationController extends Controller
     /**
      * @Route("/creation", name="observation.create")
      * @Security("is_granted('ROLE_OBSERVER')")
-     * @Method({"GET"})
+     * @Method({"GET", "POST"})
      */
     public function createAction(Request $request)
     {

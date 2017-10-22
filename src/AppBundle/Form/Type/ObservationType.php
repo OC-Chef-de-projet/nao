@@ -13,7 +13,7 @@ class ObservationType extends AbstractType
     {
         $builder
             ->add('place', TextType::class, array(
-                'attr'  => array( 'class' => '', 'autocomplete' => 'off'),
+                'attr'  => array( 'class' => 'autocomplete'),
             ))
             ->add('watched', TextType::class, array(
                 'attr'  => array( 'class' => '', 'autocomplete' => 'off'),

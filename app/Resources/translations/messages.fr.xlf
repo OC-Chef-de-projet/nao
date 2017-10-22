@@ -313,6 +313,18 @@
                 <source>target_on_map</source>
                 <target>Pointer sur la carte</target>
             </trans-unit>
+            <trans-unit id="Yes">
+                <source>Yes</source>
+                <target>Oui</target>
+            </trans-unit>
+            <trans-unit id="No">
+                <source>No</source>
+                <target>Non</target>
+            </trans-unit>
+            <trans-unit id="Maybe">
+                <source>Maybe</source>
+                <target>Peut-être</target>
+            </trans-unit>
 
             <!-- ALT IMAGE -->
             <trans-unit id="alt_big_logo_white">
@@ -424,7 +436,7 @@
             </trans-unit>
             <trans-unit id="label_location">
                 <source>label_location</source>
-                <target>Lieux</target>
+                <target>Lieu</target>
             </trans-unit>
             <trans-unit id="label_date">
                 <source>label_date</source>

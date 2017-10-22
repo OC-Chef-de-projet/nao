@@ -21,4 +21,47 @@ class FranceRegionRepository extends EntityRepository
             ->getQuery();
         return $query->getResult();
     }
+
+    /**
+     *  Get autcomplete city name
+     *
+     * @param $city
+     * @return array
+     */
+    public function autocompleteByCity($city)
+    {
+        return $this->createQueryBuilder('r')
+            ->select('r.city AS text')
+            ->where('r.city LIKE :pattern')->setParameter('pattern', ''.$city.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Get more close distance between coordinate ans city
+     *
+     * @param $latitude
+     * @param $longitude
+     * @param $requestedDistance
+     * @return mixed
+     */
+    public function getDistanceByCoordinate($latitude, $longitude, $requestedDistance){
+        return $this->createQueryBuilder('l')
+            ->select('l')
+            ->addSelect(
+                '( 3959 * acos(cos(radians(' . $latitude . '))' .
+                '* cos( radians( l.latitude ) )' .
+                '* cos( radians( l.longitude )' .
+                '- radians(' . $longitude . ') )' .
+                '+ sin( radians(' . $latitude . ') )' .
+                '* sin( radians( l.latitude ) ) ) ) as distance', 'l.city AS city'
+            )
+            ->having('distance < :distance')
+            ->setParameter('distance', $requestedDistance)
+            ->orderBy('distance', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
+

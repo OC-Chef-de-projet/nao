@@ -2,12 +2,13 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * FranceRegion
  *
- * @ORM\Table(name="france_region")
+ * @ORM\Table(name="france_region", indexes={@Index(name="idx_gps", columns={"latitude", "longitude"})})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FranceRegionRepository")
  */
 class FranceRegion

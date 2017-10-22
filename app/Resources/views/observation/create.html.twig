@@ -52,15 +52,17 @@
                 <div class="col s12">
                     <div class="card no-style">
                         <div class="card-content">
-                            <form id="register_form" method="post" autocomplete="off">
+                            <form id="observation_form" method="post" autocomplete="off">
                                 <div class="row">
                                     <div class="col s12 l6 main-section">
                                         <div class="input-field col s12">
                                             <label>{{ 'label_location'|trans }}</label>
+                                            <a id="geoloc" href="#" class="light-2"><i class="material-icons">gps_fixed</i></a>
                                             {{ form_widget(form.place) }}
+                                            <ul id="dropPlace" class="autocomplete-content dropdown-content"></ul>
                                             <div class="error">{{ form_errors(form.place) }}</div>
                                             <p class="left-align"><a href="#" class="caption light-2-no-hov small">{{ 'target_on_map'|trans }}</a></p>
-                                        </div>
+                                        </div><!--
                                         <input style="display:none">
                                         <div class="input-field col s12">
                                             <label>{{ 'label_date'|trans }}</label>
@@ -77,10 +79,12 @@
                                             <label>{{ 'label_quota_bird'|trans }}</label>
                                             {{ form_widget(form.individuals) }}
                                             <div class="error">{{ form_errors(form.individuals) }}</div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <div class="col s12 l6 secondary-section v-margin center-align">
-
+                                        <div class="input-field col s12">
+                                            <input type="submit" class="btn waves-effect" value="sauvegarder" />
+                                        </div>
                                     </div>
                                     {{ form_end(form) }}
                                 </div>
@@ -91,5 +95,59 @@
             </div>
         </section>
     </main>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+
+            /**
+             * Autocomplete city name
+             */
+            $('#observation_place').materialize_autocomplete({
+                limit: 6,
+                cacheable: true,
+                multiple: {
+                    enable: false
+                },
+                dropdown : {
+                    el: '#dropPlace'
+                },
+                getData: function (value, callback) {
+                    var data = [];
+                    $.ajax({
+                        url: "{{ url('region.search.city') }}?bearer={{ jwt.token }}",
+                        type: "POST",
+                        dataType: "json",
+                        data: { "city": value },
+                        success: function (response) {
+                            callback(value, response);
+                        }
+                    });
+                },
+            });
+
+            /**
+             * When user use the geolocation button, we try to determine her address
+             */
+
+            $('#geoloc').on('click', function(event){
+                event.preventDefault();
+                if (navigator.geolocation){
+                    navigator.geolocation.getCurrentPosition(function(position){
+                        var data = {lat: parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude)};
+                        $.post( "{{ url('region.nearest.city') }}?bearer={{ jwt.token }}", data, function( response ) {
+                            $('#observation_place').parent().find('label').addClass('active');
+                            $('#observation_place').val(response.city);
+                        });
+                    });
+                }
+            });
+
+
+        });
+    </script>
 {% endblock %}
 
