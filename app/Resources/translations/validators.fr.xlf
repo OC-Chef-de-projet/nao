@@ -46,6 +46,13 @@
                 <source>avatar_size</source>
                 <target>La taille de l'image est trop grande</target>
             </trans-unit>
+
+            <!-- CITY -->
+            <trans-unit id="city.wrong">
+                <source>city.wrong</source>
+                <target>Ce lieu n'est pas valide.</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
