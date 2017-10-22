@@ -24,7 +24,7 @@
                         </div>
                         <div class="col s12 no-pad-right">
                             <i class="material-icons post-icon prefix light-2 post-link">delete</i>
-                            <a class="waves-effect modal-trigger confirm btn-link" href="#modal1"
+                            <a class="waves-effect modal-trigger confirm btn-link" href="#delete-post"
                                data-postid="{{ post.id }}" data-postaction="delete">
                                 {{ 'delete' | trans }}
                             </a>
@@ -42,17 +42,19 @@
     </div>
 {% endfor %}
 
-<!-- MODAL -->
-<div id="modal1" class="modal">
+
+<div id="delete-post" class="modal">
     <div class="modal-content">
-        <h5 id="modalTitle"></h5>
-        <br>
+        <h4>{{ 'want_delete_article'|trans }}</h4>
+        <p>{{ 'modal_confirmation_explain'|trans|nl2br }}</p>
+    </div>
+    <div class="modal-footer">
         {{ form_start(form) }}
-        <div class="center">
-            <button type="reset"
-                    class="modal-action modal-close btn white scroll-to waves-effect">{{ 'no' | trans }}</button>
-            {{ form_widget(form.save) }}
-        </div>
+        <button type="reset" class="modal-action modal-close waves-effect btn-flat light-orange">{{ 'cancel' | trans }}</button>
+        {{ form_widget(form.save) }}
         {{ form_end(form) }}
     </div>
 </div>
+
+
+<!-- MODAL -->

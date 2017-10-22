@@ -15,12 +15,11 @@
             <!-- COOKIES BAR -->
             <trans-unit id="cookies_explain">
                 <source>cookies_explain</source>
-                <target>Ce site utilise des cookies pour vous offrir le meilleur service.
-                En poursuivant votre navigation, vous acceptez l’utilisation des cookies.</target>
+                <target>Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.</target>
             </trans-unit>
             <trans-unit id="i_agree">
                 <source>i_agree</source>
-                <target>Continuer</target>
+                <target>J'accepte</target>
             </trans-unit>
             <trans-unit id="want_to_know_more">
                 <source>want_to_know_more</source>
@@ -119,10 +118,6 @@
                 <source>new_password_page_title</source>
                 <target>Changement de mot de passe</target>
             </trans-unit>
-            <trans-unit id="profil_view_page_title">
-                <source>profil_view_page_title</source>
-                <target>Profil de %name%</target>
-            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -200,10 +195,6 @@
             </trans-unit>
             <trans-unit id="observation_validation_page_meta_description">
                 <source>observation_validation_page_meta_description</source>
-                <target></target>
-            </trans-unit>
-            <trans-unit id="profil_view_page_meta_description">
-                <source>profil_view_page_meta_description</source>
                 <target></target>
             </trans-unit>
 
@@ -500,10 +491,11 @@
                 <source>delete_article</source>
                 <target>Suppression article</target>
             </trans-unit>
-            <trans-unit id="delete_article_confirmation">
-                <source>delete_article_confirmation</source>
-                <target>Etes-vous sur de vouloir supprimer cet article ?</target>
+            <trans-unit id="want_delete_article">
+                <source>want_delete_article</source>
+                <target>Supprimer l'article ?</target>
             </trans-unit>
+
             <trans-unit id="read">
                 <source>read</source>
                 <target>Lire</target>
@@ -1019,41 +1011,7 @@
                 <source>private_profil</source>
                 <target>Je veux rendre mon profil privé</target>
             </trans-unit>
-            <trans-unit id="registered_since">
-                <source>registered_since</source>
-                <target>Inscrit(e) depuis le %date%</target>
-            </trans-unit>
-            <trans-unit id="activities">
-                <source>activities</source>
-                <target>Activités</target>
-            </trans-unit>
-            <trans-unit id="x_obersation_validate">
-                <source>x_obersation_validate</source>
-                <target>%nb% observations validées</target>
-            </trans-unit>
-            <trans-unit id="about_me_default">
-                <source>about_me_default</source>
-                <target>%name% n'a pas encore renseigné cette partie, c'est dommage :(
-                Soyez patient, ça va venir :)
-                </target>
-            </trans-unit>
-            <trans-unit id="new_pofil_image">
-                <source>new_pofil_image</source>
-                <target>Nouvelle image de profil</target>
-            </trans-unit>
 
-
-            <!-- VIEW PROFIL -->
-            <trans-unit id="profil_view_main_title">
-                <source>profil_view_main_title</source>
-                <target>Profil de %name%</target>
-            </trans-unit>
-            <trans-unit id="private_access">
-                <source>private_access</source>
-                <target>
-                Désolé, vous ne pouvez avoir accès au profil de %name%, ce dernier est confidentiel.
-                </target>
-            </trans-unit>
 
             <!-- ADMIN DASHBOARD -->
             <trans-unit id="admin">
