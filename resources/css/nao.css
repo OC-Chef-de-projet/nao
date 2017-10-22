@@ -1795,7 +1795,10 @@ btn-link-icon {
 }
 
 
-
+.collection,
+.collection .collection-item {
+    border:none;
+}
 
 
 

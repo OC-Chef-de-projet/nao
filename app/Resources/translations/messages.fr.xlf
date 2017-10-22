@@ -1060,11 +1060,11 @@
             </trans-unit>
             <trans-unit id="delete_comment_confirmation">
                 <source>delete_comment_confirmation</source>
-                <target>Etes-vous sur de vouloir supprimer ce commentaire ?</target>
+                <target>Supprimer le commentaire ?</target>
             </trans-unit>
             <trans-unit id="accept_comment_confirmation">
                 <source>accept_comment_confirmation</source>
-                <target>Etes-vous sur de vouloir authoriser ce commentaire ?</target>
+                <target>Autoriser le commentaire ?</target>
             </trans-unit>
 
 
