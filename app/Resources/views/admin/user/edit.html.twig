@@ -11,6 +11,8 @@
 {% endblock %}
 
 {% block body %}
+
+
     <!-- PAGE HEADING -->
     <section class="page-heading container hide-on-med-and-down admin">
         <nav>
@@ -25,48 +27,54 @@
         </nav>
         <h1 class="activated">{{ 'admin_user'|trans }}</h1>
     </section>
-    <main class="container marge-top">
+
+    <main class="container marge-top-large">
         <section>
             <div class="row">
+                <div class="hide-on-med-and-up user-container">
+                    <div class="img-container push-s3">
+                        <img src="{{ asset(user.imagePath ) }}" alt="{{ 'alt_profil'|trans }}"/>
+                    </div>
+                </div>
                 <div class="col s12">
                     <div class="card no-style">
                         <div class="card-content">
-                            <div class="row">
-                                {{ form_start(form) }}
-                                <div class="col s12 m10 push-m1">
-                                    <br/>
-                                    <div class="row">
-                                        <div class="col s12 m6">
-                                            <div class="col s12 m4 push-s3">
-                                                <div style="height: 100px;width:100px">
-                                                    <img src="{{ asset(user.getImagePath) }}" alt=""
-                                                         class="circle responsive-img" style="width:100%;height:100%">
+                            <form>
+                                <div class="row">
+                                    <div class="col s12 l6 main-section">
+                                        <div class="col l5 push-s2 hide-on-small-only">
+                                            <div class="img-container">
+                                                <img src="{{ asset(user.imagePath ) }}" alt="{{ 'alt_profil'|trans }}"/>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 l6">
+                                            <ul class="profil-details">
+                                                <li><span class="card-title">{{ user.name }}</span></li>
+                                                <li>{% trans %}
+                                                    enrolled_since{% endtrans %} {{ user.created|date('d/m/Y') }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col s12 l6 secondary-section v-margin-small">
+                                        <div class="col s12 ">
+                                            {{ form_start(form) }}
+                                            <div class="col s12 m6">
+                                                {{ form_widget(form.role) }}
+                                                <br/>
+                                                <div class='switch row'>
+                                                    <label>
+                                                        {{ form_widget(form.inactive) }}
+                                                        <span class="lever"></span>
+                                                        {{ 'bloqued_user' | trans }}
+                                                    </label>
                                                 </div>
                                             </div>
-                                            <div class="col s12 m8">
-                                                <h4>{{ user.name }}</h4>
-                                                <p>{% trans %}enrolled_since{% endtrans %} {{ user.created|date('d/m/Y') }}</p>
-                                                <br/>
-                                            </div>
 
                                         </div>
-                                        <div class="col s12 m6">
-                                            {{ form_widget(form.role) }}
-                                            <br/>
-                                            <div class='switch row'>
-                                                <label>
-                                                    {{ form_widget(form.inactive) }}
-                                                    <span class="lever"></span>
-                                                    {{  'bloqued_user' | trans }}
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col s12 m6 right">
+                                        <div class="col s12">
+                                            <br>
                                             <div class="row">
+
                                                 <div class="col s6">
                                                     {{ form_widget(form.cancel) }}
                                                 </div>
@@ -75,19 +83,18 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col s12 m6 right">
-
-                                        </div>
                                     </div>
                                 </div>
-                                {{ form_end(form) }}
-                            </div>
                         </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
+            </div>
         </section>
     </main>
+
 
 {% endblock %}
 

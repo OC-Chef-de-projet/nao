@@ -1742,15 +1742,40 @@ btn-link-icon {
         padding-left: 0.25rem !important;
     }
 
-    .fixed-action-btn {
-
+    .img-container {
+        height: 100px;
+        width: 100px;
+        margin: auto;
+        overflow: hidden;
+        border-radius: 50%;
     }
+
+    .user-container {
+        padding-top:10px;
+        padding-bottom:10px;
+        background: rgba(0, 150, 136, 0.07);
+        color: rgba(0, 0, 0, 0.87);
+    }
+
 }
 
 @media all and (min-width: 601px) {
     .fixed-action-btn {
         bottom: 0px;
         top: 60px;
+    }
+
+    .img-container {
+        height: 200px;
+        width: 200px;
+        text-align: center;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+
+    .user-container {
+        background: rgba(0, 150, 136, 0.07);
+        color: rgba(0, 0, 0, 0.87);
     }
 }
 
@@ -1767,4 +1792,15 @@ btn-link-icon {
 
 .none {
     display: none;
+}
+
+
+
+
+
+
+.img-container img {
+    height: auto;
+    width: auto;
+
 }
