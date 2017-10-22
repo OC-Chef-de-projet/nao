@@ -1,3 +1,4 @@
+{% set bgwhite = true %}
 {% extends "common/template/base.html.twig" %}
 
 {% block title %}{{ 'writing_article'|trans }}{% endblock %}
@@ -5,11 +6,12 @@
 {% block header %}
     <header class="collapse admin">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_user' , 'admin' : true} %}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_post_title' , 'admin' : true} %}
     </header>
 {% endblock %}
 
 {% block body %}
+    <!-- PAGE HEADING -->
     <section class="page-heading container hide-on-med-and-down admin">
         <nav>
             <div class="nav-wrapper">
@@ -23,53 +25,61 @@
         </nav>
         <h1 class="activated">{{ 'writing_article'|trans }}</h1>
     </section>
-    <div class="container">
-        {{ form_start(form) }}
-        <div class="card large">
+
+    <main class="container marge-top admin-container">
+        <section>
             <div class="row">
-                <div class="col s12 m6">
-                    <div class="col m8 push-m2">
-                        <div class="input-field col s12">
-                            {{ form_widget(form.title) }}
-                            <label for="first_name">{{ form_label(form.title) }}</label>
-                        </div>
-                        <div class="input-field col s12">
-                            {{ form_widget(form.content) }}
-                            <label for="appbundle_post_content">{{ form_label(form.content) }}</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m6">
-                    <div class="col m8 push-m2">
-                        <br>
-                        {{ form_label(form.imagelink) }}
-                        <div class="card valign-wrapper z-depth-0">
-                            <div class="file_input_div center ">
-                                <div>
-                                    <label class="btn-floating btn-large waves-effect waves-light">
-                                        <i class="material-icons">add_a_photo</i>
-                                        {{ form_widget(form.imagelink) }}
-                                    </label>
+                <div class="col s12">
+                    <div class="card no-style">
+                        {{ form_start(form) }}
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m10 push-m1">
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <div class="input-field">
+                                                {{ form_widget(form.title) }}
+                                                <label for="first_name">{{ form_label(form.title) }}</label>
+                                            </div>
+                                            <div class="input-field">
+                                                {{ form_widget(form.content) }}
+                                                <label for="appbundle_post_content">{{ form_label(form.content) }}</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="col s12 m6">
+                                            {{ form_label(form.imagelink) }}
+                                            <br>
+                                            <div class="card valign-wrapper z-depth-0">
+                                                <div class="file_input_div center ">
+                                                    <div>
+                                                        <label class="btn-floating btn-large waves-effect waves-light">
+                                                            <i class="material-icons">add_a_photo</i>
+                                                            {{ form_widget(form.imagelink) }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col s12 m6 right" style="height:50px">
+                                            {{ form_widget(form.save_published) }}
+                                        </div>
+                                        <div class="col s12 m6 left">
+                                            {{ form_widget(form.save_draft) }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        {{ form_end(form) }}
                     </div>
                 </div>
             </div>
-            <div class="card-action">
-                <div class="row">
-                    <div class="col s12 m6 center" style="height:50px">
-                        {{ form_widget(form.save_draft) }}
-                    </div>
-                    <div class="col s12 m6 center">
-                        {{ form_widget(form.save_published) }}
-                    </div>
-                </div>
-                {{ form_end(form) }}
-            </div>
-        </div>
-    </div>
-    <!-- #DD2C00; -->
-
+        </section>
+    </main>
 {% endblock %}
 
