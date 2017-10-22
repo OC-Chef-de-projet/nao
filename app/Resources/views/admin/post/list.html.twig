@@ -2,16 +2,16 @@
     <div class="col s12 m6">
         <div class="card no-style post-card">
             <div class="card-content">
-                <div class="row">
-                    <div class="col s4">
-                        <div class="col s12">
+                <div class="row no-pad-right">
+                    <div class="col s4 no-pad-right">
+                        <div class="col s12  no-pad-right">
                             <div class="card-image">
                                 <img src="{{ asset('images/posts/'~post.imagelink) }}">
                             </div>
                         </div>
                     </div>
-                    <div class="col s8 ">
-                        <div class="col s12">
+                    <div class="col s8  no-pad-right">
+                        <div class="col s12 no-pad-right">
                             <b><span class="title">{{ post.title }}</span></b>
                         </div>
                         <div class="col s12">
@@ -22,7 +22,7 @@
                             {% endif %}
                             <br>
                         </div>
-                        <div class="col s12">
+                        <div class="col s12 no-pad-right">
                             <i class="material-icons post-icon prefix light-2 post-link">delete</i>
                             <a class="waves-effect modal-trigger confirm btn-link" href="#modal1"
                                data-postid="{{ post.id }}" data-postaction="delete">

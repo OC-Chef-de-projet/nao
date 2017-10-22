@@ -26,14 +26,9 @@ html, body {
     height: 100%;
 }
 
-body,
-section.bg-body{
+body {
     background: rgba(0, 150, 136, 0.07);
     color: rgba(0, 0, 0, 0.87);
-}
-
-section.bg-body{
-    padding: 20px 0 8px 0;
 }
 
 body:after {
@@ -55,10 +50,6 @@ div.center {
 .top-neg{
     position:relative;
     top:-15px;
-}
-
-.grecaptcha-badge{
-    opacity: 0 !important;
 }
 
 /* ====================================
@@ -100,8 +91,7 @@ img {
     margin-bottom: 0 !important;
 }
 
-.marge-top,
-.marge-top-large{
+.marge-top {
     margin-top: 20px;
 }
 
@@ -367,14 +357,9 @@ label.push-line{
     margin-left: 20%;
 }
 
-.file-field .btn,
-.file-field .btn-large {
-    height: auto !important;
-}
-
-    /* ====================================
-        Heading
-        =============================================*/
+/* ====================================
+    Heading
+    =============================================*/
 
 header {
     min-height: 5%;
@@ -906,10 +891,6 @@ footer ul.social > li:not(:first-child) {
     margin-top: 120px;
 }
 
-.card .card-content form .secondary-section.v-margin-small {
-    margin-top: 50px;
-}
-
 .card .card-content form .secondary-section:after {
     background: rgba(0, 0, 0, 0.54);
     content: "";
@@ -973,42 +954,9 @@ footer ul.social > li:not(:first-child) {
     padding: 0;
 }
 
-.card ul.profil-details{
-    margin-top: 40px;
-}
-
-.card a.btn-floating{
-    position: absolute;
-    right: 15px;
-    top: -28px;
-}
-
-
-/* ====================================
-    Image avatar
-    =============================================*/
-.img-container{
-    width: 110px;
-    height: 110px;
-    border-radius: 100%;
-    overflow: hidden;
-    display: inline-block;
-}
-
-.img-container img{
-    /*
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%)
-    */
-    height: 100%;
-    width: 100%;
-}
-
 /* ====================================
     Stepbar
-=============================================*/
+    =============================================*/
 
 #stepbar > li {
     list-style-type: none;
@@ -1589,17 +1537,6 @@ ul.collapsible > li > div.collapsible-body{
         text-align: center;
     }
 
-    .card .card-content form .secondary-section.v-margin-small{
-        margin-top: 20px;
-    }
-
-    .marge-top-large{
-        margin-top: 0;
-    }
-
-    .card a.btn-floating{
-        right: 0px;
-    }
 }
 
 /*
@@ -1706,18 +1643,6 @@ ul.collapsible > li > div.collapsible-body{
     .card .card-content form .secondary-section:after {
         content: none;
     }
-
-    .marge-top-large{
-        margin: 0;
-    }
-
-    .hide-on-med-and-up{
-        display: block !important;
-    }
-
-    .hide-on-small-only{
-        display: none !important;
-    }
 }
 
 /* ====================================
@@ -1808,18 +1733,25 @@ btn-link-icon {
         font-size: 14px;
     }
 
-    .admin-container  {
-        width: 100%;
-    }
     .col.s12 > .btn {
         width: 100%;
     }
+
+    .no-pad-right {
+        padding-right: 0 !important;
+        padding-left: 0.25rem !important;
+    }
+
+    .fixed-action-btn {
+
+    }
 }
 
-
-.fixed-action-btn {
-    bottom: 0px;
-    top: 60px;
+@media all and (min-width: 601px) {
+    .fixed-action-btn {
+        bottom: 0px;
+        top: 60px;
+    }
 }
 
 .card .card-content form.small {
