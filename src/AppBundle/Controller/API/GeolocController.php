@@ -43,7 +43,7 @@ class GeolocController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function searchNearestCityFromCoordinate(Request $request)
+    public function searchNearestCityFromCoordinateAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $latitude   = $request->request->get('lat');
