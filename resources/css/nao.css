@@ -1757,3 +1757,14 @@ btn-link-icon {
 .card .card-content form.small {
     min-height: 50px;
 }
+
+/* Upload photo*/
+.file_input_div {
+    margin: auto;
+    width: 100%;
+    height: 40px;
+}
+
+.none {
+    display: none;
+}

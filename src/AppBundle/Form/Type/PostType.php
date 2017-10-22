@@ -45,7 +45,7 @@ class PostType extends AbstractType
                 'data_class' => null,
                 'required' => false,
                 'attr' => [
-                    'class' => 'upload'
+                    'class' => 'none'
                 ],
                 'translation_domain' => 'messages',
             ])

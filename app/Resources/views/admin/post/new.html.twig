@@ -1,6 +1,6 @@
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'admin_user'|trans }}{% endblock %}
+{% block title %}{{ 'writing_article'|trans }}{% endblock %}
 
 {% block header %}
     <header class="collapse admin">
@@ -41,15 +41,16 @@
                 </div>
                 <div class="col s12 m6">
                     <div class="col m8 push-m2">
+                        <br>
                         {{ form_label(form.imagelink) }}
-                        <div class="file-field input-field">
-                            <div class="btn-floating btn-medium waves-effect waves-light">
-                                <i class="material-icons dp48">add_a_photo</i>
-                                {{ form_widget(form.imagelink) }}
-                            </div>
-
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text"/>
+                        <div class="card valign-wrapper z-depth-0">
+                            <div class="file_input_div center ">
+                                <div>
+                                    <label class="btn-floating btn-large waves-effect waves-light">
+                                        <i class="material-icons">add_a_photo</i>
+                                        {{ form_widget(form.imagelink) }}
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
