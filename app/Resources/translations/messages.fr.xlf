@@ -122,7 +122,10 @@
                 <source>GPS_coordinate</source>
                 <target>Coordonnées GPS %latitude% N, %longitude% E</target>
             </trans-unit>
-
+            <trans-unit id="profil_view_page_title">
+                <source>profil_view_page_title</source>
+                <target>Profil de %name%</target>
+            </trans-unit>
 
             <!-- PAGE META -->
             <trans-unit id="homepage_meta_description">
@@ -199,6 +202,10 @@
             </trans-unit>
             <trans-unit id="observation_validation_page_meta_description">
                 <source>observation_validation_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="profil_view_page_meta_description">
+                <source>profil_view_page_meta_description</source>
                 <target></target>
             </trans-unit>
 
@@ -1092,6 +1099,10 @@
             <trans-unit id="private_access">
                 <source>private_access</source>
                 <target>Désolé, vous ne pouvez avoir accès au profil de %name%, ce dernier est confidentiel</target>
+            </trans-unit>
+            <trans-unit id="profil_view_main_title">
+                <source>profil_view_main_title</source>
+                <target>Profil de %name%</target>
             </trans-unit>
 
 
