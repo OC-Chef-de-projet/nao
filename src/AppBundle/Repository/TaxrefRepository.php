@@ -12,4 +12,18 @@ use AppBundle\Entity\Taxref;
  */
 class TaxrefRepository extends EntityRepository
 {
+    /**
+     * Get autcomplete name
+     *
+     * @param $name
+     * @return array
+     */
+    public function autocompleteByCommonName($name)
+    {
+        return $this->createQueryBuilder('t')
+            ->select('t.common_name AS text')
+            ->where('t.common_name LIKE :pattern')->setParameter('pattern', ''.$name.'%')
+            ->getQuery()
+            ->getResult();
+    }
 }

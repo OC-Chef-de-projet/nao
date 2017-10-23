@@ -53,6 +53,11 @@
                 <target>Ce lieu n'est pas valide.</target>
             </trans-unit>
 
+            <!-- CITY -->
+            <trans-unit id="bird.wrong">
+                <source>bird.wrong</source>
+                <target>Cette espèce n'a pas été reconnue.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

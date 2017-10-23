@@ -510,14 +510,14 @@
         });
 
         /* ==================================================
+         PRRFILLING TEXT INPUTS
+         ===========================================================*/
+        Materialize.updateTextFields();
+
+        /* ==================================================
          MODAL
          ===========================================================*/
         $('.modal').modal();
-
-        /* ==================================================
-         SELECT
-         ===========================================================*/
-        $('select').material_select();
 
         /* ==================================================
          COOKIE POLICY
@@ -532,6 +532,24 @@
             date.setTime(date.getTime()+(7*24*60*60*1000));
             document.cookie = "nao-cookies-policy=1;expires="+date.toGMTString();
         });
+
+        /* ==================================================
+         SELECT
+         ===========================================================*/
+        $('select').material_select();
+
+        /* ==================================================
+         DATEPICKER
+         ===========================================================*/
+        $('.datepicker').pickadate({
+            format: 'dd/mm/yyyy',
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Aujourd\'hui',
+            clear: 'Supprimer',
+            close: 'Ok',
+            closeOnSelect: false // Close upon selecting a date,
+        })
 
     });
 })(jQuery);
