@@ -43,7 +43,7 @@ class Observation
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotNull()
      * @ORM\Column(name="watched", type="datetimetz", nullable=true)
      */
     private $watched;

@@ -317,6 +317,7 @@
                 <target>Peut-être</target>
             </trans-unit>
 
+
             <!-- ALT IMAGE -->
             <trans-unit id="alt_big_logo_white">
                 <source>alt_big_logo_white</source>
@@ -445,7 +446,10 @@
                 <source>label_more_bird</source>
                 <target>Comportement observé (facultatif)</target>
             </trans-unit>
-
+            <trans-unit id="save_observation">
+                <source>save_observation</source>
+                <target>Soumettre l'observation</target>
+            </trans-unit>
 
             <!-- MODAL -->
             <trans-unit id="modal_confirmation_explain">
@@ -842,6 +846,7 @@
                 </target>
             </trans-unit>
 
+
             <!-- BLOG -->
             <trans-unit id="blog_main_title">
                 <source>blog_main_title</source>
@@ -1076,6 +1081,7 @@
                 <source>private_access</source>
                 <target>Désolé, vous ne pouvez avoir accès au profil de %name%, ce dernier est confidentiel</target>
             </trans-unit>
+
 
             <!-- ADMIN DASHBOARD -->
             <trans-unit id="admin">

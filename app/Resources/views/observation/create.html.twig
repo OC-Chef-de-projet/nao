@@ -62,28 +62,55 @@
                                             <ul id="dropPlace" class="autocomplete-content dropdown-content"></ul>
                                             <div class="error">{{ form_errors(form.place) }}</div>
                                             <p class="left-align"><a href="#" class="caption light-2-no-hov small">{{ 'target_on_map'|trans }}</a></p>
-                                        </div><!--
+                                        </div>
                                         <input style="display:none">
                                         <div class="input-field col s12">
                                             <label>{{ 'label_date'|trans }}</label>
                                             {{ form_widget(form.watched) }}
                                             <div class="error">{{ form_errors(form.watched) }}</div>
                                         </div>
+
                                         <div class="input-field col s12">
                                             <label>{{ 'label_bird_view'|trans }}</label>
                                             {{ form_widget(form.taxref) }}
+                                            <ul id="dropBird" class="autocomplete-content dropdown-content"></ul>
                                             <div class="error">{{ form_errors(form.taxref) }}</div>
                                             <p class="left-align"><a href="http://www.oiseaux.net/oiseaux/france.html" class="caption light-2-no-hov small" target="_blank">{{ 'need_help'|trans }}</a></p>
                                         </div>
                                         <div class="input-field col s12">
-                                            <label>{{ 'label_quota_bird'|trans }}</label>
-                                            {{ form_widget(form.individuals) }}
-                                            <div class="error">{{ form_errors(form.individuals) }}</div>
-                                        </div>-->
+                                            <div class="row">
+                                                <div class="col s9">
+                                                    <label>{{ 'label_quota_bird'|trans }}</label>
+                                                </div>
+                                                <div class="col s3">
+                                                    {{ form_widget(form.individuals) }}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col s12 l6 secondary-section v-margin center-align">
-                                        <div class="input-field col s12">
-                                            <input type="submit" class="btn waves-effect" value="sauvegarder" />
+                                    <div class="col s12 l6 secondary-section no-margin-top">
+                                        <div class="input-field col s12 center-align">
+                                            <div class="file-field input-field">
+                                                <div class="btn-floating btn-large waves-effect waves-light">
+                                                    <i class="material-icons dp48">add_a_photo</i>
+                                                    {{ form_widget(form.imagepath) }}
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input class="file-path validate valid" type="text">
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="error">{{ form_errors(form.imagepath) }}</div>
+                                        </div>
+                                        <div class="col s12 ">
+                                            <label>{{ 'label_more_bird'|trans }}</label>
+                                            {{ form_widget(form.comments) }}
+                                            <div class="error">{{ form_errors(form.comments) }}</div>
+                                        </div>
+                                        <div class="input-field col s12 center-align">
+                                            <br />
+                                            <input type="reset" class="btn waves-effect white min-pad" value="{{ 'delete'|trans }}" />&nbsp;&nbsp;
+                                            <input type="submit" class="btn waves-effect min-pad" value="{{ 'save_observation'|trans }}"  />
                                         </div>
                                     </div>
                                     {{ form_end(form) }}
@@ -146,6 +173,31 @@
                 }
             });
 
+            /**
+             * Autocomplete Bird
+             */
+            $('#observation_taxref').materialize_autocomplete({
+                limit: 6,
+                cacheable: true,
+                multiple: {
+                    enable: false
+                },
+                dropdown : {
+                    el: '#dropBird'
+                },
+                getData: function (value, callback) {
+                    var data = [];
+                    $.ajax({
+                        url: "{{ url('taxref.search.name') }}?bearer={{ jwt.token }}",
+                        type: "POST",
+                        dataType: "json",
+                        data: { "name": value },
+                        success: function (response) {
+                            callback(value, response);
+                        }
+                    });
+                },
+            });
 
         });
     </script>

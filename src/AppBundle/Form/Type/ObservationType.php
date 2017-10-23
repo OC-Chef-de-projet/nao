@@ -6,6 +6,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
+use AppBundle\Validator\BirdCheck;
+use Symfony\Component\Validator\Constraints\File;
 
 class ObservationType extends AbstractType
 {
@@ -16,18 +21,53 @@ class ObservationType extends AbstractType
                 'attr'  => array( 'class' => 'autocomplete'),
             ))
             ->add('watched', TextType::class, array(
-                'attr'  => array( 'class' => '', 'autocomplete' => 'off'),
+                'attr'  => array( 'class' => 'datepicker', 'autocomplete' => 'off', 'readonly' => true),
             ))
             ->add('taxref', TextType::class, array(
-                'attr'  => array( 'class' => '', 'autocomplete' => 'off'),
+                'attr'      => array( 'class' => '', 'autocomplete' => 'off'),
+                'mapped'    => false,
+                'constraints' => [
+                    new BirdCheck()
+                ]
             ))
             ->add('individuals', ChoiceType::class, array(
                 'attr'  => array( 'class' => '', 'autocomplete' => 'off'),
+                'choice_translation_domain' => false,
                 'choices'  => array(
-                    'Maybe' => null,
-                    'Yes' => true,
-                    'No' => false,
+                    1 => 1,
+                    2 => 2,
+                    3 => 3,
+                    4 => 4,
+                    5 => 5,
+                    6 => 6,
+                    7 => 7,
+                    8 => 8,
+                    9 => 9,
+                    '10+' => 10,
                 ),
+            ))
+            ->add('comments', TextareaType::class, array(
+                'attr'          => array( 'class' => 'materialize-textarea'),
+                'required'      => false
+            ))
+            ->add('imagepath', FileType::class, array(
+                'label'         => false,
+                'mapped'        => false,
+                'data_class'    => null,
+                'required'      => false,
+                'attr'          => array('class' => 'upload'),
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/gif',
+                            'image/png'
+                        ],
+                        'mimeTypesMessage'  => 'avatar_format',
+                        'maxSizeMessage'    => 'avatar_size',
+                    ])
+                ]
             ))
         ;
     }
