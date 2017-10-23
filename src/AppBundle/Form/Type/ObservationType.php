@@ -47,7 +47,7 @@ class ObservationType extends AbstractType
                 ),
             ))
             ->add('comments', TextareaType::class, array(
-                'attr'          => array( 'class' => 'materialize-textarea'),
+                'attr'          => array( 'class' => 'materialize-textarea '),
                 'required'      => false
             ))
             ->add('imagepath', FileType::class, array(
