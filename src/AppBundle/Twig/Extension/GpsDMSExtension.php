@@ -21,7 +21,7 @@ class GpsDMSExtension extends \Twig_Extension
 
         $tempma = $tempma * 3600;
         $min = floor($tempma / 60);
-        $sec = $tempma - ($min*60);
+        // Second is $tempma - ($min*60);
 
 
         $coordinate = $deg.'°'.$min.'\'';
