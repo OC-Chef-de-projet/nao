@@ -69,7 +69,7 @@ class DashboardController extends Controller
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
         return $this->render('dashboard/profil.html.twig', array(
-            'obs_validate'      => sizeof($this->container->get('app.obs')->getObseravtionsValidate($user))
+            'obs_validate'      => sizeof($this->container->get('app.obs')->getObservationsValidate($user))
         ));
     }
 
@@ -88,7 +88,7 @@ class DashboardController extends Controller
             return $this->redirectToRoute('dashboard.profil');
         }
         return $this->render('dashboard/edit.html.twig', array(
-            'obs_validate'              => sizeof($this->container->get('app.obs')->getObseravtionsValidate($user)),
+            'obs_validate'              => sizeof($this->container->get('app.obs')->getObservationsValidate($user)),
             'form'                      => $form->createView(),
         ));
     }
@@ -121,7 +121,7 @@ class DashboardController extends Controller
         }
 
         return $this->render('dashboard/profil_read_only.html.twig', array(
-            'obs_validate'              => sizeof($this->container->get('app.obs')->getObseravtionsValidate($user)),
+            'obs_validate'              => sizeof($this->container->get('app.obs')->getObservationsValidate($user)),
             'user'                      => $user,
             'access_to_profil'          => $access
         ));
