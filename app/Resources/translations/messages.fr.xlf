@@ -118,6 +118,10 @@
                 <source>new_password_page_title</source>
                 <target>Changement de mot de passe</target>
             </trans-unit>
+            <trans-unit id="GPS_coordinate">
+                <source>GPS_coordinate</source>
+                <target>Coordonnées GPS %latitude% N, %longitude% E</target>
+            </trans-unit>
 
 
             <!-- PAGE META -->
@@ -594,6 +598,14 @@
                 <source>waiting</source>
                 <target>En attente</target>
             </trans-unit>
+            <trans-unit id="waiting_validation">
+                <source>waiting_validation</source>
+                <target>En attente de validation</target>
+            </trans-unit>
+
+
+
+
             <trans-unit id="validated">
                 <source>validated</source>
                 <target>Validées</target>

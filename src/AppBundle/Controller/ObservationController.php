@@ -82,7 +82,7 @@ class ObservationController extends Controller
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
         return $this->render('observation/me/validate.html.twig', array(
-            'observations'      => $this->container->get('app.obs')->getObseravtionsValidate($user)
+            'observations'      => $this->container->get('app.obs')->getObservationsValidate($user)
         ));
     }
 
@@ -93,6 +93,8 @@ class ObservationController extends Controller
      */
     public function showWaitingAction()
     {
+
+
         return $this->render('observation/me/waiting.html.twig');
     }
 
@@ -101,9 +103,14 @@ class ObservationController extends Controller
      * @Security("is_granted('ROLE_NATURALIST')")
      * @Method({"GET"})
      */
-    public function showWaitingValidationAction()
+    public function showWaitingValidationAction(Request $request, $page = 1)
     {
-        return $this->render('observation/validation/waiting.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $obs = $em->getRepository('AppBundle:Observation')->getWaitingValidation($page,$this->getParameter('list_limit'));
+        return $this->render('observation/validation/waiting.html.twig', [
+            'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
+            'obslist' => $obs->getIterator()
+        ]);
     }
 
     /**
@@ -111,9 +118,15 @@ class ObservationController extends Controller
      * @Security("is_granted('ROLE_NATURALIST')")
      * @Method({"GET"})
      */
-    public function showValidateValidationAction()
+    public function showValidateValidationAction(Request $request, $page = 1)
     {
-        return $this->render('observation/validation/validate.html.twig');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $obs = $em->getRepository('AppBundle:Observation')->getValidateValidation($user, $page,$this->getParameter('list_limit'));
+        return $this->render('observation/validation/validate.html.twig', [
+            'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
+            'obslist' => $obs->getIterator()
+        ]);
     }
 
     /**
@@ -121,8 +134,14 @@ class ObservationController extends Controller
      * @Security("is_granted('ROLE_NATURALIST')")
      * @Method({"GET"})
      */
-    public function showDeclineValidationAction()
+    public function showDeclineValidationAction(Request $request, $page = 1)
     {
-        return $this->render('observation/validation/refuse.html.twig');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $obs = $em->getRepository('AppBundle:Observation')->getDeclineValidation($user, $page,$this->getParameter('list_limit'));
+        return $this->render('observation/validation/refuse.html.twig', [
+            'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
+            'obslist' => $obs->getIterator()
+        ]);
     }
 }

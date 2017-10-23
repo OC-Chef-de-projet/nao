@@ -58,7 +58,7 @@ services:
     app.obs:
         class: AppBundle\Service\ObservationService
         public: true
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%']
 
     app.cmt:
         class: AppBundle\Service\CommentService
@@ -122,3 +122,7 @@ services:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
 
+    AppBundle.twig.gps_extension:
+            class: AppBundle\Twig\Extension\GpsDMSExtension
+            tags:
+                - { name: twig.extension }
