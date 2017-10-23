@@ -18,15 +18,17 @@ class ObservationService
 
     private $em;
     private $ts;
+    private $list_limit;
 
     /**
      * ObservationService constructor.
      * @param EntityManager $em
      */
-    public function __construct(EntityManager $em, TokenStorage $ts)
+    public function __construct(EntityManager $em, TokenStorage $ts, $list_limit)
     {
         $this->em = $em;
         $this->ts = $ts;
+        $this->list_limit = $list_limit;
     }
 
     /**
@@ -204,7 +206,8 @@ class ObservationService
      *
      * @param User $user
      */
-    public function deleteObservationsForUser(User $user){
+    public function deleteObservationsForUser(User $user)
+    {
         $this->em->getRepository(Observation::class)->deleteByUser($user->getId());
     }
 
@@ -214,12 +217,33 @@ class ObservationService
      * @param User $user
      * @return array
      */
-    public function getObseravtionsValidate(User $user){
+    public function getObservationsValidate(User $user)
+    {
         $obs = $this->em->getRepository('AppBundle:Observation')->findBy(array(
             'status' => Observation::VALIDATED,
             'user' => $user->getId()
         ));
         return $obs;
+    }
+
+    /**
+     * @param Paginator $obs
+     * @param $page
+     * @return array
+     */
+    public function getPagination(Paginator $obs, $page)
+    {
+
+        $totalObs = $obs->count();
+        $totalDisplayed = $obs->getIterator()->count();
+        $maxPages = ceil($obs->count() / $this->list_limit);
+
+        return ['totalObs' => $totalObs,
+            'totalDisplayed' => $totalDisplayed,
+            'current' => $page,
+            'maxPages' => $maxPages,
+            'totalItems' => count($obs)
+        ];
     }
 }
 
