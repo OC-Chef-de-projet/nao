@@ -49,7 +49,12 @@ class GeolocController extends Controller
         $latitude   = $request->request->get('lat');
         $longitude  = $request->request->get('lng');
 
-        $region     = $em->getRepository('AppBundle:FranceRegion')->getDistanceByCoordinate($latitude,$longitude, 1000000);
+        for ($d= 500; $d <= 50000; $d+= 500){
+            $region     = $em->getRepository('AppBundle:FranceRegion')->getDistanceByCoordinate($latitude,$longitude, $d);
+            if(!is_null($region)){
+                break;
+            }
+        }
         return new JsonResponse(['city' => $region['city']]);
     }
 
