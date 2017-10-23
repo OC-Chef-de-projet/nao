@@ -76,7 +76,7 @@ class UserController extends Controller
             }
         }
         if ($form->isSubmitted() && $form->isValid()) {
-            dump($user);
+
             $em->persist($user);
             $em->flush();
             return $this->redirectToRoute('admin_user_index', ['page' => 1, 'role' => $user->getRole()]);
