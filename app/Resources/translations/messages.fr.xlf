@@ -1050,7 +1050,32 @@
                 <source>private_profil</source>
                 <target>Je veux rendre mon profil privé</target>
             </trans-unit>
-
+            <trans-unit id="registered_since">
+                <source>registered_since</source>
+                <target>Inscrit(e) depuis le %date%</target>
+            </trans-unit>
+            <trans-unit id="activities">
+                <source>activities</source>
+                <target>Activités</target>
+            </trans-unit>
+            <trans-unit id="x_obersation_validate">
+                <source>x_obersation_validate</source>
+                <target>%nb% observation(s) validées</target>
+            </trans-unit>
+            <trans-unit id="about_me_default">
+                <source>about_me_default</source>
+                <target>%name% n'a pas encore renseigné cette partie, c'est dommage :(
+                Soyez patient, ça va venir :)
+                </target>
+            </trans-unit>
+            <trans-unit id="new_pofil_image">
+                <source>new_pofil_image</source>
+                <target>Nouvelle image de profil</target>
+            </trans-unit>
+            <trans-unit id="private_access">
+                <source>private_access</source>
+                <target>Désolé, vous ne pouvez avoir accès au profil de %name%, ce dernier est confidentiel</target>
+            </trans-unit>
 
             <!-- ADMIN DASHBOARD -->
             <trans-unit id="admin">
