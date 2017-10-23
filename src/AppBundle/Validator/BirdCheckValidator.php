@@ -20,7 +20,7 @@ class BirdCheckValidator extends ConstraintValidator
     {
         $bird = $this->em->getRepository('AppBundle:Taxref')->findOneBy(array('common_name' => $name));
 
-        if(!$bird || !empty(trim($name))) {
+        if(!$bird || empty(trim($name))) {
             $this->context->buildViolation($constraint->message)->addViolation();
         }
     }
