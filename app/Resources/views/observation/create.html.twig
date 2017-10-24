@@ -52,7 +52,7 @@
                 <div class="col s12">
                     <div class="card no-style">
                         <div class="card-content">
-                            <form id="observation_form" method="post" autocomplete="off">
+                            <form id="observation_form" method="post" autocomplete="off" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col s12 l6 main-section">
                                         <div class="input-field col s12">
@@ -69,7 +69,6 @@
                                             {{ form_widget(form.watched) }}
                                             <div class="error">{{ form_errors(form.watched) }}</div>
                                         </div>
-
                                         <div class="input-field col s12">
                                             <label>{{ 'label_bird_view'|trans }}</label>
                                             {{ form_widget(form.taxref) }}
@@ -107,13 +106,13 @@
                                             {{ form_widget(form.comments) }}
                                             <div class="error">{{ form_errors(form.comments) }}</div>
                                         </div>
-                                        <div class="input-field col s12 center-align">
-                                            <br />
-                                            <input type="reset" class="btn waves-effect white min-pad" value="{{ 'delete'|trans }}" />&nbsp;&nbsp;
-                                            <input type="submit" class="btn waves-effect min-pad" value="{{ 'save_observation'|trans }}"  />
-                                        </div>
                                     </div>
                                     {{ form_end(form) }}
+                                    <br />
+                                    <div id="obs-action" class="col s12 center-align">
+                                        <input type="submit" name="draft" class="btn waves-effect white min-pad" value="{{ 'saving_draft'|trans }}" />
+                                        <input type="submit" name="published" class="btn waves-effect min-pad" value="{{ 'save_observation'|trans }}"  />
+                                    </div>
                                 </div>
                             </form>
                         </div>

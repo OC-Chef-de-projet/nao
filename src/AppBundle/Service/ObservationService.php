@@ -55,9 +55,7 @@ class ObservationService
     /**
      * Get observation list
      *
-     * @param $email
      * @param string $url
-     *
      * @return array
      */
     public function getlist($url = '')
@@ -135,9 +133,7 @@ class ObservationService
     /**
      * Add an observation
      *
-     * @param $email
      * @param $observation
-     *
      * @return array
      */
     public function add($observation)
