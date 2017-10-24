@@ -31,8 +31,9 @@ class FranceRegionRepository extends EntityRepository
     public function autocompleteByCity($city)
     {
         return $this->createQueryBuilder('r')
-            ->select('r.city AS text')
+            ->select('r.city AS city', 'r.postcode AS code')
             ->where('r.city LIKE :pattern')->setParameter('pattern', ''.$city.'%')
+            ->setMaxResults(10)
             ->getQuery()
             ->getResult();
     }

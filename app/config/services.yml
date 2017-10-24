@@ -105,6 +105,12 @@ services:
         tags:
             - { name: validator.constraint_validator, alias: app.city.check }
 
+    app.validator.bird.check:
+        class: AppBundle\Validator\BirdCheckValidator
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: validator.constraint_validator, alias: app.bird.check }
+
     AppBundle\EventListener\UserListener:
         tags:
             - { name: doctrine.event_listener, event: prePersist }

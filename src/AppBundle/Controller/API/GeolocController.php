@@ -30,8 +30,15 @@ class GeolocController extends Controller
     {
         $em             = $this->getDoctrine()->getManager();
         $city           = $request->request->get('city');
+        $result         = array();
+
         $autocomplete   = $em->getRepository('AppBundle:FranceRegion')->autocompleteByCity($city);
-        return new JsonResponse($autocomplete);
+
+        foreach ($autocomplete as $value){
+            $result[]['text'] = substr($value['code'],0,2) .' - '. $value['city'];
+        }
+
+        return new JsonResponse($result);
     }
 
     /**
