@@ -16,6 +16,7 @@ class Observation
     const WAITING = 0;
     const VALIDATED = 1;
     const REFUSED = 2;
+    const DRAFT = 4;
 
     /**
      * @var int
