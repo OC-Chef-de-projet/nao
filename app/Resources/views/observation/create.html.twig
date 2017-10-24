@@ -107,13 +107,14 @@
                                             <div class="error">{{ form_errors(form.comments) }}</div>
                                         </div>
                                     </div>
-                                    {{ form_end(form) }}
                                     <br />
                                     <div id="obs-action" class="col s12 center-align">
-                                        <input type="submit" name="draft" class="btn waves-effect white min-pad" value="{{ 'saving_draft'|trans }}" />
-                                        <input type="submit" name="published" class="btn waves-effect min-pad" value="{{ 'save_observation'|trans }}"  />
+                                        <br />
+                                        {{ form_widget(form.save_draft) }}
+                                        {{ form_widget(form.save_published) }}
                                     </div>
                                 </div>
+                                {{ form_end(form) }}
                             </form>
                         </div>
                     </div>

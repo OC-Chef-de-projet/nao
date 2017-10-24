@@ -21,7 +21,6 @@ class CityCheckValidator extends ConstraintValidator
         $region = explode('-', $city);
 
         if(!empty($city) && isset($region[1])){
-            dump($region);
             $city = $this->em->getRepository('AppBundle:FranceRegion')->findOneBy(array('city' => trim($region[1])));
 
             if(!$city) {

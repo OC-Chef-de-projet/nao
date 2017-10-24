@@ -2,11 +2,15 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\FranceRegion;
 use AppBundle\Entity\Observation;
+use AppBundle\Entity\Taxref;
 use AppBundle\Entity\User;
+use AppBundle\Repository\FranceRegionRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Form;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
@@ -240,6 +244,48 @@ class ObservationService
             'maxPages' => $maxPages,
             'totalItems' => count($obs)
         ];
+    }
+
+    public function createObservation(Observation $observation, Form $form, Request $request){
+
+        $user = $this->ts->getToken()->getUser();
+        $observation->setUser($user);
+
+        // User want to save observation as draft
+        if ($form->get('save_draft')->isClicked()) {
+            $observation->setStatus(Observation::DRAFT);
+        }
+
+        // User want published observation,
+        // only simple user need to have validation
+        if ($form->get('save_published')->isClicked()) {
+
+            if($user->getRole() == 'ROLE_OBSERVER'){
+                $observation->setStatus(Observation::WAITING);
+            }else{
+                $observation->setStatus(Post::PUBLISHED);
+            }
+        }
+
+        // Get date
+        $observation->setWatched(\DateTime::createFromFormat('d/m/Y', $observation->getWatched()));
+
+        // Get localisation
+        $region     = explode('-', $observation->getPlace());
+        $place      = $this->em->getRepository(FranceRegion::class)->FindOneBy(array('city' => trim($region[1])));
+        $observation->setPlace($place->getCity());
+        $observation->setLatitude($place->getLatitude());
+        $observation->setLongitude($place->getLongitude());
+
+        // Get taxref
+        $taxref     =  $this->em->getRepository(Taxref::class)->FindOneBy(array(
+            'common_name' => $request->request->get('observation')['taxref'])
+        );
+
+        $observation->setTaxref($taxref);
+
+        $this->em->persist($observation);
+        $this->em->flush();
     }
 }
 

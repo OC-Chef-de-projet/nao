@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use AppBundle\Validator\BirdCheck;
 use Symfony\Component\Validator\Constraints\File;
@@ -69,6 +70,20 @@ class ObservationType extends AbstractType
                     ])
                 ]
             ))
+            ->add('save_draft', SubmitType::class,
+                [
+                    'attr' => array('class' => 'btn waves-effect white min-pad'),
+                    'label' => 'saving_draft',
+                    'translation_domain' => 'messages',
+                ]
+            )
+            ->add('save_published', SubmitType::class,
+                [
+                    'attr' => array('class' => 'btn waves-effect min-pad'),
+                    'label' => 'save_observation',
+                    'translation_domain' => 'messages',
+                ]
+            )
         ;
     }
 
