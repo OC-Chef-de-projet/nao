@@ -55,7 +55,7 @@ class FranceRegionRepository extends EntityRepository
                 '* cos( radians( l.longitude )' .
                 '- radians(' . $longitude . ') )' .
                 '+ sin( radians(' . $latitude . ') )' .
-                '* sin( radians( l.latitude ) ) ) ) as distance', 'l.city AS city'
+                '* sin( radians( l.latitude ) ) ) ) as distance', 'l.city AS city', 'l.postcode AS code'
             )
             ->having('distance < :distance')
             ->setParameter('distance', $requestedDistance)

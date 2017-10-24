@@ -55,14 +55,16 @@ class GeolocController extends Controller
         $em = $this->getDoctrine()->getManager();
         $latitude   = $request->request->get('lat');
         $longitude  = $request->request->get('lng');
+        $city = '';
 
         for ($d= 500; $d <= 50000; $d+= 500){
             $region     = $em->getRepository('AppBundle:FranceRegion')->getDistanceByCoordinate($latitude,$longitude, $d);
             if(!is_null($region)){
+                $city = substr($region['code'],0,2) .' - '. $region['city'];
                 break;
             }
         }
-        return new JsonResponse(['city' => $region['city']]);
+        return new JsonResponse(['city' => $city]);
     }
 
 }
