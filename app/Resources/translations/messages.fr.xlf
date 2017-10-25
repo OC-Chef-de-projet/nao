@@ -100,7 +100,7 @@
             </trans-unit>
             <trans-unit id="observation_me_page_title">
                 <source>observation_me_page_title</source>
-                <target>Vos observation</target>
+                <target>Vos observations</target>
             </trans-unit>
             <trans-unit id="observation_validation_page_title">
                 <source>observation_validation_page_title</source>
@@ -613,17 +613,13 @@
                 <source>waiting_validation</source>
                 <target>En attente de validation</target>
             </trans-unit>
-
-
-
-
             <trans-unit id="validated">
                 <source>validated</source>
                 <target>Validées</target>
             </trans-unit>
             <trans-unit id="observation_me_main_title">
                 <source>observation_me_main_title</source>
-                <target>Vos observation</target>
+                <target>Vos observations</target>
             </trans-unit>
             <trans-unit id="observation_validation_main_title">
                 <source>observation_validation_main_title</source>

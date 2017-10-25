@@ -71,7 +71,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/mes-observations/brouillon", name="observation.me.draft")
+     * @Route("/vos-observations/brouillon", name="observation.me.draft")
      * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET"})
      */
@@ -81,7 +81,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/mes-observations/valide", name="observation.me.validate")
+     * @Route("/vos-observations/valide", name="observation.me.validate")
      * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET"})
      */
@@ -94,7 +94,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/mes-observations/en-attente", name="observation.me.waiting")
+     * @Route("/vos-observations/en-attente", name="observation.me.waiting")
      * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET"})
      */
