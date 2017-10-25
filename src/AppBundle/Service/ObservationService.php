@@ -268,7 +268,7 @@ class ObservationService
                 $observation->setStatus(Observation::WAITING);
                 $redirect = 'WAITING';
             }else{
-                $observation->setStatus(Post::PUBLISHED);
+                $observation->setStatus(Observation::PUBLISHED);
                 $observation->setNaturalist($user);
                 $redirect = 'PUBLISHED';
             }
