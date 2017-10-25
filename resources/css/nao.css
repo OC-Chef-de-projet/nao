@@ -61,6 +61,10 @@ div.center {
     opacity: 0 !important;
 }
 
+main{
+    min-height: 350px;
+}
+
 
 /* ====================================
     Common / Typography
