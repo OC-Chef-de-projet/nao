@@ -111,6 +111,13 @@ class Observation
     private $taxref;
 
     /**
+     * Observation constructor.
+     */
+    public function __construct()
+    {
+        $this->image_path   = 'default-image_observation.jpg';
+    }
+    /**
      * Get id
      *
      * @return integer

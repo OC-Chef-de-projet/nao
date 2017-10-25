@@ -29,8 +29,14 @@ class ObservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $this->container->get('app.obs')->createObservation($observation, $form, $request);
-            //return $this->redirectToRoute('observation.create');
+            $action = $this->container->get('app.obs')->createObservation($observation, $form, $request);
+            if($action == 'DRAFT'){
+                return $this->redirectToRoute('observation.me.draft');
+            }elseif($action == 'WAITING'){
+                return $this->redirectToRoute('observation.me.waiting');
+            }elseif($action == 'PUBLISHED'){
+                return $this->redirectToRoute('observation.me.validate');
+            }
         }
         return $this->render('observation/create.html.twig', array(
             'form'      => $form->createView()

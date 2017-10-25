@@ -2,7 +2,7 @@
 
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'observation_create_title'|trans }}{% endblock %}
+{% block title %}{{ 'observation_create_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
 
 {% block meta %}
     <meta name="description" content="{{ 'observation_create_meta_description'|trans }}">
@@ -150,24 +150,31 @@
                         dataType: "json",
                         data: { "city": value },
                         success: function (response) {
+                            if(!response.length){
+                                $('#observation_latitude').val('');
+                                $('#observation_longitude').val('');
+                            }
                             callback(value, response);
                         }
                     });
-                },
+                }
             });
 
             /**
              * When user use the geolocation button, we try to determine her address
              */
-
             $('#geoloc').on('click', function(event){
                 event.preventDefault();
                 if (navigator.geolocation){
                     navigator.geolocation.getCurrentPosition(function(position){
-                        var data = {lat: parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude)};
+                        var lat = parseFloat(position.coords.latitude);
+                        var lng = parseFloat(position.coords.longitude);
+                        var data = {lat: lat, lng: lng};
                         $.post( "{{ url('region.nearest.city') }}?bearer={{ jwt.token }}", data, function( response ) {
                             $('#observation_place').parent().find('label').addClass('active');
                             $('#observation_place').val(response.city);
+                            $('#observation_latitude').val(lat);
+                            $('#observation_longitude').val(lng);
                         });
                     });
                 }

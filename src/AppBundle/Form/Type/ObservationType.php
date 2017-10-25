@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 use AppBundle\Validator\BirdCheck;
 use Symfony\Component\Validator\Constraints\File;
@@ -20,6 +21,12 @@ class ObservationType extends AbstractType
         $builder
             ->add('place', TextType::class, array(
                 'attr'  => array( 'class' => 'autocomplete'),
+            ))
+            ->add('latitude', HiddenType::class, array(
+                'data' => '',
+            ))
+            ->add('longitude', HiddenType::class, array(
+                'data' => '',
             ))
             ->add('watched', TextType::class, array(
                 'attr'  => array( 'class' => 'datepicker', 'autocomplete' => 'off', 'readonly' => true),
@@ -53,7 +60,6 @@ class ObservationType extends AbstractType
             ))
             ->add('imagepath', FileType::class, array(
                 'label'         => false,
-                'mapped'        => false,
                 'data_class'    => null,
                 'required'      => false,
                 'attr'          => array('class' => 'upload'),

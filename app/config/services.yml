@@ -58,7 +58,7 @@ services:
     app.obs:
         class: AppBundle\Service\ObservationService
         public: true
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%']
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%', '%obseravtions_directory%']
 
     app.cmt:
         class: AppBundle\Service\CommentService

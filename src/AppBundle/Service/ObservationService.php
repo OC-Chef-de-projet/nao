@@ -6,7 +6,6 @@ use AppBundle\Entity\FranceRegion;
 use AppBundle\Entity\Observation;
 use AppBundle\Entity\Taxref;
 use AppBundle\Entity\User;
-use AppBundle\Repository\FranceRegionRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Form;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -23,16 +22,18 @@ class ObservationService
     private $em;
     private $ts;
     private $list_limit;
+    private $observations_directory;
 
     /**
      * ObservationService constructor.
      * @param EntityManager $em
      */
-    public function __construct(EntityManager $em, TokenStorage $ts, $list_limit)
+    public function __construct(EntityManager $em, TokenStorage $ts, $list_limit, $observations_directory)
     {
         $this->em = $em;
         $this->ts = $ts;
         $this->list_limit = $list_limit;
+        $this->observations_directory = $observations_directory;
     }
 
     /**
@@ -248,12 +249,15 @@ class ObservationService
 
     public function createObservation(Observation $observation, Form $form, Request $request){
 
+        $data = $form->getData();
+
         $user = $this->ts->getToken()->getUser();
         $observation->setUser($user);
 
         // User want to save observation as draft
         if ($form->get('save_draft')->isClicked()) {
             $observation->setStatus(Observation::DRAFT);
+            $redirect = 'DRAFT';
         }
 
         // User want published observation,
@@ -262,8 +266,11 @@ class ObservationService
 
             if($user->getRole() == 'ROLE_OBSERVER'){
                 $observation->setStatus(Observation::WAITING);
+                $redirect = 'WAITING';
             }else{
                 $observation->setStatus(Post::PUBLISHED);
+                $observation->setNaturalist($user);
+                $redirect = 'PUBLISHED';
             }
         }
 
@@ -271,11 +278,23 @@ class ObservationService
         $observation->setWatched(\DateTime::createFromFormat('d/m/Y', $observation->getWatched()));
 
         // Get localisation
-        $region     = explode('-', $observation->getPlace());
+        $region     = explode(' - ', $observation->getPlace());
         $place      = $this->em->getRepository(FranceRegion::class)->FindOneBy(array('city' => trim($region[1])));
         $observation->setPlace($place->getCity());
-        $observation->setLatitude($place->getLatitude());
-        $observation->setLongitude($place->getLongitude());
+
+        // If we can retrieve "True" coordinate
+        // we take coordinate of the nearest city
+        if(!is_null($data->getLatitude())) {
+            $observation->setLatitude($data->getLatitude());
+        }else{
+            $observation->setLatitude($place->getLatitude());
+        }
+
+        if(!is_null($data->getLongitude())) {
+            $observation->setLongitude($data->getLongitude());
+        }else{
+            $observation->setLongitude($place->getLongitude());
+        }
 
         // Get taxref
         $taxref     =  $this->em->getRepository(Taxref::class)->FindOneBy(array(
@@ -284,8 +303,22 @@ class ObservationService
 
         $observation->setTaxref($taxref);
 
+        if (!is_null($data->getImagePath())) {
+            $file = $observation->getImagePath();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move(
+                $this->observations_directory,
+                $fileName
+            );
+            $observation->setImagePath($fileName);
+        }else{
+            $observation->setImagePath('default-image_observation.jpg');
+        }
+
         $this->em->persist($observation);
         $this->em->flush();
+
+        return $redirect;
     }
 }
 
