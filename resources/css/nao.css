@@ -61,6 +61,7 @@ div.center {
     opacity: 0 !important;
 }
 
+
 /* ====================================
     Common / Typography
     =============================================*/
@@ -400,6 +401,10 @@ label.push-line{
 
 .autocomplete-content{
     position: absolute;
+}
+
+form#global_form_newsletter button{
+    padding: 0 16px;
 }
 
 
@@ -1635,6 +1640,15 @@ ul.collapsible > li > div.collapsible-body{
 
     .card a.btn-floating{
         right: 0px;
+    }
+
+    #obs-action .btn:first-child{
+        margin-left: 0px;
+    }
+
+    #obs-action .btn:nth-last-child(1){
+        margin-left: 0px;
+        margin-top: 20px;
     }
 }
 
