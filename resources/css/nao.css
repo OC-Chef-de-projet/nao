@@ -407,8 +407,6 @@ form#global_form_newsletter button{
     padding: 0 16px;
 }
 
-
-
 /* ====================================
     Heading
 =============================================*/
@@ -1602,7 +1600,7 @@ ul.collapsible > li > div.collapsible-body{
     .btn.social,
     .btn-large.social,
     .col.social{
-        width: 90%;
+        width: 100%;
     }
 
     .btn.social:first-child{
@@ -1612,7 +1610,9 @@ ul.collapsible > li > div.collapsible-body{
     .btn.social.less{
         margin-right: 20px;
     }
-
+    .col.s12>.btn.social.less{
+        width: auto !important;
+    }
     .btn.social.less i{
         display: inline-block;
         margin-right: 50%;
