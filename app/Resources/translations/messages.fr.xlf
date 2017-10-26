@@ -1100,6 +1100,34 @@
                 <source>profil_view_main_title</source>
                 <target>Profil de %name%</target>
             </trans-unit>
+            <trans-unit id="observation_individuals">
+                <source>observation_individuals</source>
+                <target>%individuals% individu(s) observé(s) le %date%</target>
+            </trans-unit>
+            <trans-unit id="validate">
+                <source>validate</source>
+                <target>Valider</target>
+            </trans-unit>
+            <trans-unit id="reject">
+                <source>reject</source>
+                <target>Rejeter</target>
+            </trans-unit>
+            <trans-unit id="reject_title">
+                <source>reject_title</source>
+                <target>Le motif de votre refus sera envoyé à %username%</target>
+            </trans-unit>
+            <trans-unit id="warn_admin">
+                <source>warn_admin</source>
+                <target>Signaler cette observation à l'administrateur</target>
+            </trans-unit>
+            <trans-unit id="observation_validation">
+                <source>observation_validation</source>
+                <target>Valider cette observation ?</target>
+            </trans-unit>
+            <trans-unit id="reject_observation">
+                <source>reject_observation</source>
+                <target>Rejeter l'observation ?</target>
+            </trans-unit>
 
 
             <!-- ADMIN DASHBOARD -->

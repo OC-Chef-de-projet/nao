@@ -556,7 +556,20 @@
             firstDay: 1,
             closeOnSelect: false,
             max: new Date()
-        })
+        });
 
+        /* ==================================================
+         REJECT FORM
+         ===========================================================*/
+        var rejectForm         = $('#reject');
+        var rejectCountChars    = $('#reject_count_chars');
+        var rejectInput         = rejectForm.find('textarea');
+        rejectInput.on('keyup', function(event){
+            if(rejectInput.val().length > 120){
+                content = rejectInput.val();
+                rejectInput.val(content.substr(0,120));
+            }
+            rejectCountChars.html(rejectInput.val().length);
+        });
     });
 })(jQuery);

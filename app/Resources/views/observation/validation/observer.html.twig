@@ -1,0 +1,10 @@
+<div class="observation-validate-content">
+    <span>
+        <img class="circle" src="{{ asset(observation.user.imagePath ) }}" alt="{{ 'alt_profil'|trans }}"/>
+    </span>
+    <div class="observation-validate-detail">
+        <a href="{{ path('dashboard.user', {'id' : observation.user.id, 'name' : observation.user.slug }) }}"
+           class="bleen">{{ observation.user.name }}</a>
+        <p>{{ observation.user.roleString }}</p>
+    </div>
+</div>

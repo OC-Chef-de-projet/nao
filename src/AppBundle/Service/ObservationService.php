@@ -6,6 +6,7 @@ use AppBundle\Entity\FranceRegion;
 use AppBundle\Entity\Observation;
 use AppBundle\Entity\Taxref;
 use AppBundle\Entity\User;
+use AppBundle\Entity\Notification;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Form;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -319,6 +320,47 @@ class ObservationService
         $this->em->flush();
 
         return $redirect;
+    }
+
+
+    public function validate(Observation $observation)
+    {
+        $naturalist = $this->ts->getToken()->getUser();
+        $observation->setNaturalist($naturalist);
+        $observation->setValidated(new \DateTime('now'));
+        $observation->setStatus(Observation::VALIDATED);
+        $this->em->persist($observation);
+        $this->em->flush();
+
+    }
+
+    public function reject(Observation $observation, $data)
+    {
+
+
+        $naturalist = $this->ts->getToken()->getUser();
+        $observation->setNaturalist($naturalist);
+        $observation->setValidated(new \DateTime('now'));
+        $observation->setStatus(Observation::REFUSED);
+        $this->em->persist($observation);
+
+        $notice = new Notification();
+        $notice->setContent($data['reason']);
+        $notice->setFromUser($naturalist);
+        $notice->setToUser($observation->getUser());
+        $this->em->persist($notice);
+
+        if(isset($data['warn_admin']) && !empty($data['warn_admin'])) {
+            $admins = $this->em->getRepository(User::class)->searchUsersByRole(1,'ROLE_ADMIN');
+            foreach($admins as $admin) {
+                $notice = new Notification();
+                $notice->setContent($data['reason']);
+                $notice->setFromUser($naturalist);
+                $notice->setToUser($admin);
+                $this->em->persist($notice);
+            }
+        }
+        $this->em->flush();
     }
 }
 

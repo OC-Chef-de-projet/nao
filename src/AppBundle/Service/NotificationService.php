@@ -116,10 +116,5 @@ class NotificationService
     public function deleteNotificationsForUser(User $user){
         $this->em->getRepository(Notification::class)->deleteByUser($user->getId());
     }
-
-
-
-
-
 }
 

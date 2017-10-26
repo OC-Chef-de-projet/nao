@@ -1880,3 +1880,21 @@ btn-link-icon {
     bottom: 0px;
     top: 60px;
 }
+
+
+.observation-validate-content {
+    margin: 15px 0 10px 0;
+    padding-bottom: 25px;
+}
+
+.observation-validate-content img{
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+
+.observation-validate-detail{
+    padding-left: 60px;
+}
+
+

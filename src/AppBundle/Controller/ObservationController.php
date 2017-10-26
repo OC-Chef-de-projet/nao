@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Observation;
+use AppBundle\Form\Type\ObservationChoiceType;
+use AppBundle\Form\Type\RejectType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -119,6 +121,41 @@ class ObservationController extends Controller
             'obslist' => $obs->getIterator()
         ]);
     }
+
+    /**
+     * @Route("/validation/validation/{id}", requirements={"id" = "\d+"}, name="observation.validation.validation")
+     * @Security("is_granted('ROLE_NATURALIST')")
+     * @param Request $request Http request
+     * @param Observation $obs Observation entity
+     * @Method({"GET","POST"})
+     */
+    public function validationValidationAction(Request $request, Observation $obs)
+    {
+
+        $form = $this->createForm(ObservationChoiceType::class);
+        $form->handleRequest($request);
+
+        $form_reject = $this->createForm(RejectType::class);
+        $form_reject->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $this->container->get('app.obs')->validate($obs);
+            return $this->redirectToRoute('observation.validation.waiting');
+        }
+
+        if ($form_reject->isSubmitted()) {
+            $this->container->get('app.obs')->reject($obs,$form_reject->getData());
+            return $this->redirectToRoute('observation.validation.waiting');
+        }
+
+
+        return $this->render(':observation/validation:validate_dialog.html.twig', [
+            'form' => $form->createView(),
+            'observation' => $obs,
+            'reject' => $form_reject->createView()
+        ]);
+    }
+
 
     /**
      * @Route("/validation/vos-validations", name="observation.validation.validate")
