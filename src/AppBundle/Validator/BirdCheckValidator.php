@@ -18,7 +18,8 @@ class BirdCheckValidator extends ConstraintValidator
 
     public function validate($name, Constraint $constraint)
     {
-        $bird = $this->em->getRepository('AppBundle:Taxref')->findOneBy(array('common_name' => $name));
+        $latin_name = substr($name, ($p = strpos($name, '(')+1), strrpos($name, ')')-$p);
+        $bird = $this->em->getRepository('AppBundle:Taxref')->findOneBy(array('taxon_sc' => $latin_name));
 
         if(!$bird || empty(trim($name))) {
             $this->context->buildViolation($constraint->message)->addViolation();

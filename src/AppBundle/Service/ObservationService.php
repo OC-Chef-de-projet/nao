@@ -269,7 +269,7 @@ class ObservationService
                 $observation->setStatus(Observation::WAITING);
                 $redirect = 'WAITING';
             }else{
-                $observation->setStatus(Observation::PUBLISHED);
+                $observation->setStatus(Observation::VALIDATED);
                 $observation->setNaturalist($user);
                 $redirect = 'PUBLISHED';
             }
@@ -298,9 +298,9 @@ class ObservationService
         }
 
         // Get taxref
-        $taxref     =  $this->em->getRepository(Taxref::class)->FindOneBy(array(
-            'common_name' => $request->request->get('observation')['taxref'])
-        );
+        $taxref_name = $request->request->get('observation')['taxref'];
+        $latin_name = substr($taxref_name, ($p = strpos($taxref_name, '(')+1), strrpos($taxref_name, ')')-$p);
+        $taxref = $this->em->getRepository('AppBundle:Taxref')->findOneBy(array('taxon_sc' => $latin_name));
 
         $observation->setTaxref($taxref);
 

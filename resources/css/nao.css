@@ -1024,6 +1024,11 @@ footer ul.social > li:not(:first-child) {
     top: -28px;
 }
 
+.card .card-image{
+    height: 140px;
+    overflow: hidden;
+}
+
 
 /* ====================================
     Image avatar
@@ -1332,6 +1337,15 @@ ul.collapsible > li > div.collapsible-body{
 /* ====================================
     Responsive
     =============================================*/
+
+/**
+    Desktop screen
+ */
+@media only screen and (min-width: 1500px) {
+    .card .card-image{
+        height: 190px;
+    }
+}
 
 /**
     Desktop screen

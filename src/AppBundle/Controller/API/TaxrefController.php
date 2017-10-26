@@ -30,8 +30,17 @@ class TaxrefController extends Controller
     {
         $em             = $this->getDoctrine()->getManager();
         $name           = $request->request->get('name');
+        $result         = array();
+
         $autocomplete   = $em->getRepository('AppBundle:Taxref')->autocompleteByCommonName($name);
-        return new JsonResponse($autocomplete);
+
+        foreach ($autocomplete as $value){
+            $result[] = array(
+                'text'      => $value['text'] .' ('.$value['latin'].')',
+            );
+        }
+
+        return new JsonResponse($result);
     }
 
 }

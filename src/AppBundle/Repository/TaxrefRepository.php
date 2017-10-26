@@ -21,7 +21,7 @@ class TaxrefRepository extends EntityRepository
     public function autocompleteByCommonName($name)
     {
         return $this->createQueryBuilder('t')
-            ->select('t.common_name AS text')
+            ->select('t.common_name AS text', 't.taxon_sc AS latin')
             ->where('t.common_name LIKE :pattern')->setParameter('pattern', ''.$name.'%')
             ->getQuery()
             ->getResult();

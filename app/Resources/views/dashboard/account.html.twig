@@ -108,7 +108,7 @@
                                     <div class="col s12 form-link">
                                         <ul class="form-link">
                                             <li><i class="material-icons">exit_to_app</i><a href="{{ path('logout') }}" class="light-2">{{ 'sign_out'|trans }}</a></li>
-                                            <li><i class="material-icons">delete</i><a href="#delete-account" class="light-2 modal-trigger">{{ 'delete_account'|trans }}</a></li>
+                                            {% if app.user.role != 'ROLE_ADMIN' %}<li><i class="material-icons">delete</i><a href="#delete-account" class="light-2 modal-trigger">{{ 'delete_account'|trans }}</a></li>{% endif %}
                                         </ul>
                                     </div>
                                 </div>
