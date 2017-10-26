@@ -34,6 +34,9 @@
                 <li class="tab"><a href="{{ path('observation.me.waiting') }}" target="_self">{{ 'waiting'|trans }}</a></li>
             {% endif %}
         </ul>
+        <div id="btn-float-add">
+            <a href="{{ path('observation.create') }}" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a>
+        </div>
     </header>
 {% endblock %}
 

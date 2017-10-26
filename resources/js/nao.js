@@ -53,6 +53,7 @@
                 constrainWidth: false,
                 belowOrigin: true
             });
+            $('#btn-float-add').css('top', header.height.top + 'px');
         }
 
         /**
@@ -127,6 +128,10 @@
                     navSmallTitle.removeClass('activated');
                 }
             }
+
+            /*if(tabs.hasClass('pinned')){
+                $('#btn-float-add').css('top', '100px');
+            }*/
         }
 
         /**

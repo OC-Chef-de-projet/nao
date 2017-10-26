@@ -147,6 +147,13 @@ a.small{
     margin-left: 20px;
 }
 
+#btn-float-add{
+    float: right;
+    margin-top: -28px;
+    margin-right: 20%;
+    z-index: 999999;
+}
+
 /* ====================================
     Text color
     =============================================*/
@@ -1672,6 +1679,13 @@ ul.collapsible > li > div.collapsible-body{
     #obs-action .btn:nth-last-child(1){
         margin-left: 0px;
         margin-top: 20px;
+    }
+
+    #btn-float-add{
+        position: fixed;
+        top: 53%;
+        left: 82%;
+        z-index: 999999;
     }
 }
 
