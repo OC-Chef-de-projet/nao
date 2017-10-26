@@ -77,9 +77,15 @@ class ObservationController extends Controller
      * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET"})
      */
-    public function showDraftAction()
+    public function showDraftAction(Request $request, $page = 1)
     {
-        return $this->render('observation/me/draft.html.twig');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $obs = $em->getRepository('AppBundle:Observation')->getMyDraftObservations($user, $page,$this->getParameter('list_limit'));
+        return $this->render('observation/me/draft.html.twig', [
+            'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
+            'obslist' => $obs->getIterator()
+        ]);
     }
 
     /**
@@ -87,12 +93,15 @@ class ObservationController extends Controller
      * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET"})
      */
-    public function showValidateAction()
+    public function showValidateAction(Request $request, $page = 1)
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        return $this->render('observation/me/validate.html.twig', array(
-            'observations'      => $this->container->get('app.obs')->getObservationsValidate($user)
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $obs = $em->getRepository('AppBundle:Observation')->getMyValidateObservations($user, $page,$this->getParameter('list_limit'));
+        return $this->render('observation/me/validate.html.twig', [
+            'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
+            'obslist' => $obs->getIterator()
+        ]);
     }
 
     /**
@@ -100,11 +109,15 @@ class ObservationController extends Controller
      * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET"})
      */
-    public function showWaitingAction()
+    public function showWaitingAction(Request $request, $page = 1)
     {
-
-
-        return $this->render('observation/me/waiting.html.twig');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $obs = $em->getRepository('AppBundle:Observation')->getMyValidateObservations($user, $page,$this->getParameter('list_limit'));
+        return $this->render('observation/me/waiting.html.twig', [
+            'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
+            'obslist' => $obs->getIterator()
+        ]);
     }
 
     /**

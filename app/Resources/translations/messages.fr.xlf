@@ -637,7 +637,18 @@
                 <source>dont_have_notifications</source>
                 <target>Vous n'avez pas de notification</target>
             </trans-unit>
-
+            <trans-unit id="dont_have_obs_draft">
+                <source>dont_have_obs_draft</source>
+                <target>Vous n'avez pas d'observation en brouillons</target>
+            </trans-unit>
+            <trans-unit id="dont_have_obs_validate">
+                <source>dont_have_obs_validate</source>
+                <target>Vous n'avez pas d'observation validée</target>
+            </trans-unit>
+            <trans-unit id="dont_have_obs_waiting">
+                <source>dont_have_obs_waiting</source>
+                <target>Vous n'avez pas d'observation en attente</target>
+            </trans-unit>
 
             <!-- HOMEPAGE -->
             <trans-unit id="homepage_main_title">

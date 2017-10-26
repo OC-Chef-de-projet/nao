@@ -7,13 +7,13 @@
             <div class="col s8 m6">
                 <span class="card-title">{{ observation.taxref.commonName }}</span>
                 <p>
-                    {{ 'observe_at'|trans({'%date%': observation.watched|date("d/m/Y")}) }}<br/>
+                    {{ 'observe_at'|trans({'%date%': observation.watched|date("d/m/Y")}) }}<br/><br />
                     {{ 'in_place'|trans({'%place%': observation.place}) }}
                 </p>
                 <br/>
-                    <p class="caption light-2 text-right" style="text-align: right">
-                        {{ 'GPS_coordinate' | trans({'%latitude%': observation.latitude | gps_dms, "%longitude%": observation.longitude | gps_dms()}) }}
-                    </p>
+                <p class="caption light-2-no-hov text-right" style="text-align: right">
+                    {{ 'GPS_coordinate' | trans({'%latitude%': observation.latitude | gps_dms, "%longitude%": observation.longitude | gps_dms()}) }}
+                </p>
             </div>
         </div>
     </div>

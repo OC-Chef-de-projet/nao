@@ -44,7 +44,6 @@ class ObservationRepository extends EntityRepository
         return $paginator;
     }
 
-
     /**
      * Get my validated observation (role NATURALIST)
      *
@@ -81,8 +80,6 @@ class ObservationRepository extends EntityRepository
         return $paginator;
     }
 
-
-
     /**
      * Paginator Helper
      *
@@ -100,6 +97,69 @@ class ObservationRepository extends EntityRepository
             ->setFirstResult($limit * ($page - 1)) // Offset
             ->setMaxResults($limit); // Limit
 
+        return $paginator;
+    }
+
+    /**
+     * Get my draft observation
+     *
+     * @param $currentPage
+     * @param int $limit
+     * @return Paginator
+     */
+    public function getMyDraftObservations($user, $currentPage, $limit = 50)
+    {
+        $query = $this->createQueryBuilder('o')
+            ->where('o.status = :status')
+            ->setParameter('status',Observation::DRAFT)
+            ->andWhere('o.user = :user')
+            ->setParameter('user',$user)
+            ->orderBy('o.watched', 'DESC')
+            ->getQuery();
+
+        $paginator = $this->paginate($query, $currentPage, $limit);
+        return $paginator;
+    }
+
+    /**
+     * Get my validate observation
+     *
+     * @param $currentPage
+     * @param int $limit
+     * @return Paginator
+     */
+    public function getMyValidateObservations($user, $currentPage, $limit = 50)
+    {
+        $query = $this->createQueryBuilder('o')
+            ->where('o.status = :status')
+            ->setParameter('status',Observation::VALIDATED)
+            ->andWhere('o.user = :user')
+            ->setParameter('user',$user)
+            ->orderBy('o.watched', 'DESC')
+            ->getQuery();
+
+        $paginator = $this->paginate($query, $currentPage, $limit);
+        return $paginator;
+    }
+
+    /**
+     * Get my wainting observation
+     *
+     * @param $currentPage
+     * @param int $limit
+     * @return Paginator
+     */
+    public function getMyWaitingObservations($user, $currentPage, $limit = 50)
+    {
+        $query = $this->createQueryBuilder('o')
+            ->where('o.status = :status')
+            ->setParameter('status',Observation::WAITING)
+            ->andWhere('o.user = :user')
+            ->setParameter('user',$user)
+            ->orderBy('o.watched', 'DESC')
+            ->getQuery();
+
+        $paginator = $this->paginate($query, $currentPage, $limit);
         return $paginator;
     }
 }
