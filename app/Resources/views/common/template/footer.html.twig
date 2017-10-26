@@ -26,7 +26,7 @@
                                         <label>{{ 'label_email'|trans }} *</label>
                                     </div>
                                     <div class="input-field col s12">
-                                        <button class="g-recaptcha btn waves-effect" data-sitekey="{{ recaptcha }}" data-callback='onSubmitNewsletter'>{{ 'subscribe_to_newsletter'|trans }}</button>
+                                        <button class="btn waves-effect">{{ 'subscribe_to_newsletter'|trans }}</button>
                                     </div>
                                 </div>
                             </form>
@@ -76,11 +76,3 @@
     </div>
 </footer>
 
-<script>
-    // Re captcha for newsletter
-    function onSubmitNewsletter(token) {
-        document.getElementById("global_form_newsletter").submit();
-        // Re captcha for Contact
-        //document.getElementById("feedback_form").submit();
-    }
-</script>
