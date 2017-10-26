@@ -6,13 +6,7 @@
             <div id="nav-small-title">{% if navtitle is defined %}{{ navtitle|trans }}{% endif %}</div>
             <ul class="right static-menu">
                 {% if admin is defined %}<li><a href="{{ path('admin_homepage') }}"><i class="material-icons">settings</i></a></li>{% endif %}
-                {% if current_route != '' and admin is not defined %}
-                <li>
-                    <a href="javascript:void(0)" class="sharing" data-role="dropdown" {% if homeshare is defined %}data-link="{{ url('homepage') }}"{% else %}data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}"{% endif %}>
-                        <i class="material-icons">share</i>
-                    </a>
-                </li>
-                {% endif %}
+                {% include 'common/widget/navbar/sharing.html.twig' %}
                 {% if user_is_logged %}
                     <li>
                         <a href="{{ path('dashboard.notification') }}">

@@ -1,0 +1,7 @@
+{% if current_route != '' and admin is not defined %}
+    <li>
+        <a href="javascript:void(0)" class="sharing" data-role="dropdown" {% if homeshare is defined %}data-link="{{ url('homepage') }}"{% else %}data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}"{% endif %}>
+            <i class="material-icons">share</i>
+        </a>
+    </li>
+{% endif %}
