@@ -32,7 +32,7 @@ class ObservationTest extends WebTestCase
     public function testObservations()
     {
         $ts = new TokenStorage();
-        $obs = new ObservationService(self::$em, $ts, 50);
+        $obs = new ObservationService(self::$em, $ts, 50, './');
         $result = $obs->getLastObersations(2);
         $this->assertCount(2, $result);
     }
