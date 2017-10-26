@@ -1239,7 +1239,7 @@ ul.collapsible{
 ul.collapsible > li > div.collapsible-header{
     border: none;
     color: #009688;
-    padding: 1rem 0 1rem 0;
+    padding: 1rem 20px 1rem 0;
 }
 
 ul.collapsible > li.active > div.collapsible-header{
@@ -1249,6 +1249,7 @@ ul.collapsible > li.active > div.collapsible-header{
 ul.collapsible > li > div.collapsible-header i{
     position: absolute;
     right: 0px;
+    margin-top: 5px;
 }
 
 ul.collapsible > li > div.collapsible-body{
