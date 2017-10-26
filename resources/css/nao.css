@@ -1683,7 +1683,7 @@ ul.collapsible > li > div.collapsible-body{
 
     #btn-float-add{
         position: fixed;
-        top: 53%;
+        top: 60%;
         left: 82%;
         z-index: 999999;
     }
