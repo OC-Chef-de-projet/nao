@@ -163,6 +163,13 @@ class ObservationRepository extends EntityRepository
         return $paginator;
     }
 
+    /**
+     * Get last observation for specimen
+     *
+     * @param $taxref_id
+     * @param $observation_id
+     * @return array
+     */
     public function getLastObservationForBird($taxref_id, $observation_id)
     {
         return $this->createQueryBuilder('o')
@@ -175,5 +182,24 @@ class ObservationRepository extends EntityRepository
             ->orderBy('o.watched', 'DESC')
             ->getQuery()
             ->getResult();
+    }
+
+    /**
+     * Get observations
+     *
+     * @param $currentPage
+     * @param int $limit
+     * @return Paginator
+     */
+    public function getValideObservations($currentPage, $limit = 50)
+    {
+        $query = $this->createQueryBuilder('o')
+            ->where('o.status = :status')
+            ->setParameter('status',Observation::VALIDATED)
+            ->orderBy('o.watched', 'DESC')
+            ->getQuery();
+
+        $paginator = $this->paginate($query, $currentPage, $limit);
+        return $paginator;
     }
 }

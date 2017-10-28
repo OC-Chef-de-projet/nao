@@ -1,3 +1,5 @@
+{% set bgwhite = true %}
+
 {% extends "common/template/base.html.twig" %}
 
 {% block title %}{{ 'observation_list_title'|trans }}{% endblock %}
@@ -29,6 +31,9 @@
             <li class="tab"><a href="{{ path('observation.map') }}" target="_self">{{ 'map'|trans }}</a></li>
             <li class="tab"><a class="active" href="{{ path('observation.list') }}" target="_self">{{ 'list'|trans }}</a></li>
         </ul>
+        <div id="btn-float-add">
+            <a href="{{ path('observation.create') }}" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a>
+        </div>
     </header>
 {% endblock %}
 
@@ -49,7 +54,28 @@
     <!-- PAGE CONTENT -->
     <main class="container marge-top">
         <section>
-
+            <section>
+                {% if obslist|length > 0 %}
+                    <div class="row">
+                        <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
+                            {% for observation in obslist %}
+                                <div class="col s12 m6" >
+                                    {% include 'common/cards/observation_state.html.twig' with {'observation':observation, 'action': 'detail' } only %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% include 'admin/paginate.html.twig' %}
+                    </div>
+                {% else %}
+                    <div class="row">
+                        <div class="col s12">
+                            <p>{{ 'dont_have_obs_found'|trans }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </section>
         </section>
     </main>
 {% endblock %}
