@@ -28,6 +28,9 @@
         <section>
             <div class="row">
                 <div class="col s12">
+                    {% if cmtlist|length <= 0 %}
+                        <p>{{ 'no_comment' | trans }}</p>
+                    {% else %}
                     <div class="card no-style">
                         <div class="card-content">
                             <div class="row">
@@ -38,24 +41,25 @@
                             </div>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
             </div>
-
-            <div id="action-cmt" class="modal">
-                <div class="modal-content">
-                    <h4 id="modalTitle"></h4>
-                    <p>{{ 'modal_confirmation_explain'|trans|nl2br }}</p>
-                </div>
-                <div class="modal-footer">
-                    {{ form_start(form) }}
-                    <button type="reset"
-                            class="modal-action modal-close waves-effect btn-flat light-orange">{{ 'cancel' | trans }}</button>
-                    {{ form_widget(form.save) }}
-                    {{ form_end(form) }}
-                </div>
-            </div>
-
         </section>
+        <div id="action-cmt" class="modal">
+            <div class="modal-content">
+                <h4 id="modalTitle"></h4>
+                <p>{{ 'modal_confirmation_explain'|trans|nl2br }}</p>
+            </div>
+            <div class="modal-footer">
+                {{ form_start(form) }}
+                <button type="reset"
+                        class="modal-action modal-close waves-effect btn-flat light-orange">{{ 'cancel' | trans }}</button>
+                {{ form_widget(form.save) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+
     </main>
 {% endblock %}
 

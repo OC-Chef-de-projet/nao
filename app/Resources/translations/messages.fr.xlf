@@ -1206,7 +1206,10 @@
                 <source>accept_comment_confirmation</source>
                 <target>Autoriser le commentaire ?</target>
             </trans-unit>
-
+            <trans-unit id="no_comment">
+                <source>no_comment</source>
+                <target>Il n'y a aucun commentaire à modérer</target>
+            </trans-unit>
 
             <!-- USER MANAGEMENT -->
             <trans-unit id="admin_user">
