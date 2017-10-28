@@ -253,15 +253,6 @@ class Taxref
     private $clipperton;
 
 
-    private $custom_name;
-
-    /**
-     * Taxref constructor.
-     */
-    public function __construct(){
-        $this->custom_name = $this->getCustomName();
-    }
-
     /**
      * Set regnum
      *
