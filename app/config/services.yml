@@ -58,7 +58,7 @@ services:
     app.obs:
         class: AppBundle\Service\ObservationService
         public: true
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%', '%obseravtions_directory%']
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%', '%obseravtions_directory%', '@translator']
 
     app.cmt:
         class: AppBundle\Service\CommentService
@@ -132,3 +132,8 @@ services:
             class: AppBundle\Twig\Extension\GpsDMSExtension
             tags:
                 - { name: twig.extension }
+
+    AppBundle.twig.html_extension:
+        class: AppBundle\Twig\Extension\HtmlExtension
+        tags:
+            - { name: twig.extension }
