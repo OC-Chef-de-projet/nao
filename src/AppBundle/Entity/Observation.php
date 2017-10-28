@@ -31,7 +31,7 @@ class Observation
      * @var smallint
      *
      * @ORM\Column(name="status", type="smallint")
-     * @Assert\Choice(choices = {Observation::WAITING,Observation::VALIDATED,Observation::REFUSED},strict = true)
+     * @Assert\Choice(choices = {Observation::WAITING,Observation::VALIDATED,Observation::REFUSED, Observation::DRAFT}, strict = true)
      */
     private $status;
 
@@ -117,6 +117,7 @@ class Observation
     {
         $this->image_path   = 'default-image_observation.jpg';
     }
+
     /**
      * Get id
      *

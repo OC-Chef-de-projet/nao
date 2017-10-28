@@ -32,7 +32,7 @@ class ObservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $action = $this->container->get('app.obs')->createObservation($observation, $form, $request);
+            $action = $this->container->get('app.obs')->saveObservation($observation, $form, $request);
             if($action == 'DRAFT'){
                 return $this->redirectToRoute('observation.me.draft');
             }elseif($action == 'WAITING'){
@@ -50,7 +50,7 @@ class ObservationController extends Controller
      * @Route("/vos-observations/brouillon/edition/{id}", name="observation.me.draft.edit")
      * @ParamConverter("observation", options={"mapping": {"id": "id"}})
      * @Security("is_granted('ROLE_OBSERVER')")
-     * @Method({"GET"})
+     * @Method({"GET", "POST"})
      */
     public function editDraftAction(Observation $observation, Request $request)
     {
@@ -64,14 +64,14 @@ class ObservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-           /* $action = $this->container->get('app.obs')->createObservation($observation, $form, $request);
+           $action = $this->container->get('app.obs')->saveObservation($observation, $form, $request);
             if($action == 'DRAFT'){
                 return $this->redirectToRoute('observation.me.draft');
             }elseif($action == 'WAITING'){
                 return $this->redirectToRoute('observation.me.waiting');
             }elseif($action == 'PUBLISHED'){
                 return $this->redirectToRoute('observation.me.validate');
-            }*/
+            }
         }
         return $this->render('observation/create.html.twig', array(
             'form'      => $form->createView()

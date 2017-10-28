@@ -157,6 +157,10 @@
                             callback(value, response);
                         }
                     });
+                },
+                onSelect: function (item) {
+                    $('#observation_latitude').val('');
+                    $('#observation_longitude').val('');
                 }
             });
 

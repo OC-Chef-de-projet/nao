@@ -11,8 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use AppBundle\Form\Type\TaxrefType;
-use AppBundle\Validator\BirdCheck;
 use Symfony\Component\Validator\Constraints\File;
 
 class ObservationType extends AbstractType
@@ -55,6 +53,7 @@ class ObservationType extends AbstractType
             ))
             ->add('imagepath', FileType::class, array(
                 'label'         => false,
+                'mapped'        => false,
                 'data_class'    => null,
                 'required'      => false,
                 'attr'          => array('class' => 'upload'),
