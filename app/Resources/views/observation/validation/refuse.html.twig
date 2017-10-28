@@ -53,18 +53,26 @@
     <!-- PAGE CONTENT -->
     <main class="container marge-top">
         <section>
-            <div class="row">
-                <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
-                    {% for observation in obslist %}
-                        <div class="col s12 m6" >
-                            {% include 'common/cards/observation_state.html.twig' with {'observation':observation } only %}
-                        </div>
-                    {% endfor %}
+            {% if observation is not defined or observation|length <= 0 %}
+                <div class="row">
+                    <div class="col s12">
+                        <p>{{ 'no_observation_refused' | trans }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                {% include 'admin/paginate.html.twig' %}
-            </div>
+            {% else %}
+                <div class="row">
+                    <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
+                        {% for observation in obslist %}
+                            <div class="col s12 m6" >
+                                {% include 'common/cards/observation_state.html.twig' with {'observation':observation } only %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row">
+                    {% include 'admin/paginate.html.twig' %}
+                </div>
+            {% endif %}
         </section>
     </main>
 {% endblock %}

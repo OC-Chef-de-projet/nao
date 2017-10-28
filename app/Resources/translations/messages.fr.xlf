@@ -1139,6 +1139,18 @@
                 <source>reject_observation</source>
                 <target>Rejeter l'observation ?</target>
             </trans-unit>
+            <trans-unit id="no_observation_waiting">
+                <source>no_observation_waiting</source>
+                <target>Vous n'avez pas d'observation en attente de validation</target>
+            </trans-unit>
+            <trans-unit id="no_observation_validated">
+                <source>no_observation_validated</source>
+                <target>Vous n'avez pas encore validé d'observation</target>
+            </trans-unit>
+            <trans-unit id="no_observation_refused">
+                <source>no_observation_refused</source>
+                <target>Vous n'avez pas encore refusé d'observation</target>
+            </trans-unit>
 
 
             <!-- ADMIN DASHBOARD -->
