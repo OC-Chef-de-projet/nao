@@ -149,7 +149,12 @@ class UserService
         $this->em->flush();
     }
 
-
+    /**
+     * Update user profil
+     *
+     * @param User $user
+     * @param $files_user
+     */
     public function updateProfil(User $user, $files_user){
 
         if(array_key_exists('imagepath', $files_user)){

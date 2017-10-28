@@ -2,7 +2,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Taxref
@@ -492,6 +491,27 @@ class Taxref
     public function getTaxonSc()
     {
         return $this->taxon_sc;
+    }
+
+    /**
+     * Set custom name
+     *
+     * @return string
+     */
+    public function setCustomName($customName){
+
+        $this->custom_name = $customName;
+
+        return $this;
+    }
+
+    /**
+     * Get custom name
+     *
+     * @return string
+     */
+    public function getCustomName(){
+        return $this->getCommonName() . '('.$this->getTaxonSc().')';
     }
 
     /**

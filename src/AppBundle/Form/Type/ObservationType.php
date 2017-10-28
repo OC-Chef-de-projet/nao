@@ -10,8 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-
-use AppBundle\Validator\BirdCheck;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Validator\Constraints\File;
 
 class ObservationType extends AbstractType
@@ -22,22 +21,16 @@ class ObservationType extends AbstractType
             ->add('place', TextType::class, array(
                 'attr'  => array( 'class' => 'autocomplete'),
             ))
-            ->add('latitude', HiddenType::class, array(
-                'data' => '',
+            ->add('latitude', HiddenType::class)
+            ->add('longitude', HiddenType::class)
+            ->add('watched', DateTimeType::class, array(
+                'attr'      => array( 'class' => 'datepicker', 'autocomplete' => 'off', 'readonly' => true),
+                'widget'    => 'single_text',
+                'format'    => 'dd/MM/yyyy',
+                'with_seconds'  => false,
+                'with_minutes'  => false,
             ))
-            ->add('longitude', HiddenType::class, array(
-                'data' => '',
-            ))
-            ->add('watched', TextType::class, array(
-                'attr'  => array( 'class' => 'datepicker', 'autocomplete' => 'off', 'readonly' => true),
-            ))
-            ->add('taxref', TextType::class, array(
-                'attr'      => array( 'class' => '', 'autocomplete' => 'off'),
-                'mapped'    => false,
-                'constraints' => [
-                    new BirdCheck()
-                ]
-            ))
+            ->add('taxref', TaxrefType::class)
             ->add('individuals', ChoiceType::class, array(
                 'attr'  => array( 'class' => '', 'autocomplete' => 'off'),
                 'choice_translation_domain' => false,
@@ -60,6 +53,7 @@ class ObservationType extends AbstractType
             ))
             ->add('imagepath', FileType::class, array(
                 'label'         => false,
+                'mapped'        => false,
                 'data_class'    => null,
                 'required'      => false,
                 'attr'          => array('class' => 'upload'),

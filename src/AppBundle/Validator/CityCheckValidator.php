@@ -18,11 +18,11 @@ class CityCheckValidator extends ConstraintValidator
 
     public function validate($city, Constraint $constraint)
     {
-        $region = explode(' - ', $city);
+        $region     = explode(' (', $city);
+        $cityName   = isset($region[0]) ? trim($region[0]) : null;
 
-        if(!empty($city) && isset($region[1])){
-            $city = $this->em->getRepository('AppBundle:FranceRegion')->findOneBy(array('city' => $region[1]));
-
+        if(!empty($city) && !is_null($cityName)){
+            $city = $this->em->getRepository('AppBundle:FranceRegion')->findOneBy(array('city' => $cityName));
             if(!$city) {
                 $this->context->buildViolation($constraint->message)->addViolation();
             }

@@ -51,7 +51,7 @@ class ObservationService
                 'status' => Observation::VALIDATED
             ],
             [
-                'validated' => 'DESC'
+                'watched' => 'DESC'
             ],
             $max
         );
@@ -248,10 +248,17 @@ class ObservationService
         ];
     }
 
-    public function createObservation(Observation $observation, Form $form, Request $request){
+    /**
+     * Save observation
+     *
+     * @param Observation $observation
+     * @param Form $form
+     * @param Request $request
+     * @return string
+     */
+    public function saveObservation(Observation $observation, Form $form, Request $request){
 
-        $data = $form->getData();
-
+        // Get user informations
         $user = $this->ts->getToken()->getUser();
         $observation->setUser($user);
 
@@ -275,45 +282,41 @@ class ObservationService
             }
         }
 
-        // Get date
-        $observation->setWatched(\DateTime::createFromFormat('d/m/Y', $observation->getWatched()));
+        // Get region localisation
+        $localization   = explode(' (', $observation->getPlace());
+        $cityName       = isset($localization[0]) ? trim($localization[0]) : null;
+        $franceRegion   = $this->em->getRepository(FranceRegion::class)->FindOneBy(array('city' => $cityName));
 
-        // Get localisation
-        $region     = explode(' - ', $observation->getPlace());
-        $place      = $this->em->getRepository(FranceRegion::class)->FindOneBy(array('city' => trim($region[1])));
-        $observation->setPlace($place->getCity());
-
-        // If we can retrieve "True" coordinate
-        // we take coordinate of the nearest city
-        if(!is_null($data->getLatitude())) {
-            $observation->setLatitude($data->getLatitude());
-        }else{
-            $observation->setLatitude($place->getLatitude());
+        if(is_null($observation->getLatitude())){
+            $observation->setLatitude($franceRegion->getLatitude());
         }
 
-        if(!is_null($data->getLongitude())) {
-            $observation->setLongitude($data->getLongitude());
-        }else{
-            $observation->setLongitude($place->getLongitude());
+        if(is_null($observation->getLongitude())){
+            $observation->setLongitude($franceRegion->getLongitude());
         }
 
-        // Get taxref
-        $taxref_name = $request->request->get('observation')['taxref'];
-        $latin_name = substr($taxref_name, ($p = strpos($taxref_name, '(')+1), strrpos($taxref_name, ')')-$p);
-        $taxref = $this->em->getRepository('AppBundle:Taxref')->findOneBy(array('taxon_sc' => $latin_name));
+        // Get taxref informations
+        $taxref_name    = $request->request->get('observation')['taxref']['customname'];
+        $latin_name     = substr($taxref_name, ($p = strpos($taxref_name, '(')+1), strrpos($taxref_name, ')')-$p);
+        $taxref         = $this->em->getRepository('AppBundle:Taxref')->findOneBy(array('taxon_sc' => $latin_name));
 
         $observation->setTaxref($taxref);
 
-        if (!is_null($data->getImagePath())) {
-            $file = $observation->getImagePath();
+        // finaly we need to keep information about observation image
+        $file_upload = $request->files->get('observation');
+
+        if(array_key_exists('imagepath', $file_upload)){
+            // Before upload delete existing old observation image
+            if( $observation->getImagePath() !== 'default-image_observation.jpg'){
+                $old_file = $this->observations_directory.'/'. $observation->getImagePath();
+                if ($old_file) {
+                    unlink($old_file);
+                }
+            }
+            $file = $file_upload['imagepath'];
             $fileName = md5(uniqid()) . '.' . $file->guessExtension();
-            $file->move(
-                $this->observations_directory,
-                $fileName
-            );
+            $file->move($this->observations_directory, $fileName);
             $observation->setImagePath($fileName);
-        }else{
-            $observation->setImagePath('default-image_observation.jpg');
         }
 
         $this->em->persist($observation);
@@ -322,7 +325,11 @@ class ObservationService
         return $redirect;
     }
 
-
+    /**
+     * Validate an observation
+     *
+     * @param Observation $observation
+     */
     public function validate(Observation $observation)
     {
         $naturalist = $this->ts->getToken()->getUser();
@@ -334,10 +341,14 @@ class ObservationService
 
     }
 
+    /**
+     * Reject an observation
+     *
+     * @param Observation $observation
+     * @param $data
+     */
     public function reject(Observation $observation, $data)
     {
-
-
         $naturalist = $this->ts->getToken()->getUser();
         $observation->setNaturalist($naturalist);
         $observation->setValidated(new \DateTime('now'));

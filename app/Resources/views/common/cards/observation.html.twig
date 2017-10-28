@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card observation">
     <div class="card-content">
         <div class="row no-pad-bot">
             <div class="col s6">
@@ -9,7 +9,9 @@
                 </p>
             </div>
             <div class="col s6">
-                <img src="{{ asset('images/observations/' ~ observation.imagePath ) }}" alt="{{ 'alt_bird'|trans }}">
+                <div class="media-container" style="background: url('{{ asset('images/observations/' ~ observation.imagePath ) }}') center/cover no-repeat">
+                    &nbsp;
+                </div>
             </div>
         </div>
     </div>

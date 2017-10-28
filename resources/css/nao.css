@@ -80,6 +80,11 @@ h2 {
     font-size: 18px;
 }
 
+h4{
+    font-size: 20px;
+    font-weight: 500
+}
+
 h1.slogan {
     text-align: center;
     font-size: 32px;
@@ -1036,6 +1041,27 @@ footer ul.social > li:not(:first-child) {
     overflow: hidden;
 }
 
+.card.observation {
+    min-height: 100px;
+}
+
+.card.observation form{
+    padding: 0;
+    min-height: 0 !important;
+}
+
+.card.observation p.coordinate {
+    margin-top: 15px;
+}
+
+form#reject textarea{
+    min-height: 3rem !important;
+}
+
+.card.observation .media-container{
+    width: 100%;
+    min-height: 138px;
+}
 
 /* ====================================
     Image avatar
@@ -1638,16 +1664,14 @@ ul.collapsible > li > div.collapsible-body{
     }
 
     .btn.social.less{
-        margin-right: 20px;
+        margin-right: 25px;
     }
     .col.s12>.btn.social.less{
         width: auto !important;
     }
     .btn.social.less i{
-        display: inline-block;
-        margin-right: 50%;
         float: none;
-        font-size: 26px;
+        font-size: 32px;
         border-right: none !important;
     }
 
@@ -1686,6 +1710,18 @@ ul.collapsible > li > div.collapsible-body{
         top: 60%;
         left: 82%;
         z-index: 999999;
+    }
+
+    .card.observation p.coordinate {
+        margin-top: 6px;
+    }
+
+    .card.observation {
+        border-bottom: 1px solid rgba(0,0,0,0.54);
+    }
+
+    .card.observation.no-border {
+        border-bottom: none;
     }
 }
 

@@ -46,47 +46,41 @@
     <!-- PAGE CONTENT -->
     <main class="container marge-top">
         <section>
-            <div class="row">
+            <div class="row no-pad-bot">
                 <div class="col s12">
-                    <div class="card no-style">
+                    <div class="card no-style observation no-border">
                         <div class="card-content">
-                            <div class="row">
+                            <div class="row no-pad-bot">
                                 <div class="col s12 m10 push-m1">
                                     <br/>
-                                    <div class="row">
+                                    <div class="row no-pad-bot">
                                         <div class="col s12 m6 right">
-                                            <span class="card-title">{{ observation.taxref.commonName }}</span>
+                                            <h2>{{ observation.taxref.commonName }}</h2>
                                             <p>
-                                                {{ 'observation_individuals'|trans({'%individuals%': observation.individuals, '%date%': observation.watched|date("d/m/Y")}) }}
-                                                <br/>
+                                                {{ 'observation_individuals'|trans({'%individuals%': observation.individuals, '%date%': observation.watched|date("d/m/Y")}) }}<br/>
                                                 {{ 'in_place'|trans({'%place%': observation.place}) }}
                                             </p>
-                                            <p class="caption light-2 text-right" style="text-align: right">
+                                            <p class="caption light-2-no-hov coordinate">
                                                 {{ 'GPS_coordinate' | trans({'%latitude%': observation.latitude | gps_dms, "%longitude%": observation.longitude | gps_dms()}) }}
                                             </p>
                                             <div class="col s12 hide-on-med-and-up">
                                                 {% include ':observation/validation:observer.html.twig' %}
                                             </div>
-
-                                            <div class="col s12 hide-on-small-only">
-                                                <br/>
-                                                {{ observation.comments }}
+                                            <div class="col s12 hide-on-small-only no-pad">
+                                                <br/><p>{{ observation.comments }}</p>
                                             </div>
-
                                         </div>
                                         <div class="col s12 m6 right">
                                             <img src="{{ asset('images/observations/' ~ observation.imagePath ) }}"
                                                  alt="{{ 'alt_bird'|trans }}">
                                         </div>
-
                                         <div class="col s12 m6 hide-on-med-and-up">
-                                            {{ observation.comments }}
+                                            <br/><p>{{ observation.comments }}</p><br />
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="col s12 m10 push-m1">
-                                    <div class="row">
+                                    <div class="row no-pad-bot">
                                         <div class="col s12 m6 hide-on-small-only">
                                             {% include ':observation/validation:observer.html.twig' %}
                                         </div>
@@ -103,11 +97,12 @@
                     </div>
                 </div>
             </div>
+            <br />
             <div id="reject_div" style="display:none">
                 {% include ':observation/validation:reject.html.twig' %}
             </div>
 
-            <!-- -->
+            <!-- MODAL -->
             <div id="action-validate" class="modal">
                 <div class="modal-content">
                     <h4>{{ 'observation_validation' | trans }}</h4>
@@ -130,7 +125,6 @@
                 </div>
             </div>
 
-
         </section>
     </main>
 {% endblock %}
@@ -144,7 +138,7 @@
                 $('#reject_div').show();
                 $('html, body').animate({
                     scrollTop: $("#reject_div").offset().top
-                }, 2000);
+                }, 1000);
 
             });
 
@@ -166,7 +160,7 @@
                 $('#reject_div').hide();
                 $('html, body').animate({
                     scrollTop: $("#validate_dialog").offset().top
-                }, 2000);
+                }, 1000);
 
             });
         });

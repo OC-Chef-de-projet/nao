@@ -1,24 +1,23 @@
-<div class="card no-style">
+<div class="card no-style observation">
     <div class="card-content">
-            <div class="row no-pad-bot">
-                <div class="col s4 m6">
-                    <a href="{{ path('observation.validation.validation', {'id' : observation.id}) }}">
-                    <img src="{{ asset('images/observations/' ~ observation.imagePath ) }}" alt="{{ 'alt_bird'|trans }}">
-                    </a>
-                </div>
-                <div class="col s8 m6">
-                    <span class="card-title">{{ observation.taxref.commonName }}</span>
-                    <p>
-                        {{ 'observe_at'|trans({'%date%': observation.watched|date("d/m/Y")}) }}<br/>
-                        {{ 'in_place'|trans({'%place%': observation.place}) }}
-                    </p>
-                    <br/>
-                    <p class="caption light-2-no-hov text-right" style="text-align: right">
-                        {{ 'GPS_coordinate' | trans({'%latitude%': observation.latitude | gps_dms, "%longitude%": observation.longitude | gps_dms()}) }}
-                    </p>
-                </div>
+        <div class="row no-pad-bot">
+            <div class="col s4 m4">
+                <a href="{{ path('observation.validation.validation', {'id' : observation.id}) }}">
+                    <div class="media-container" style="background: url('{{ asset('images/observations/' ~ observation.imagePath ) }}') center/cover no-repeat">
+                        &nbsp;
+                    </div>
+                </a>
             </div>
+            <div class="col s8 m8">
+                <h2>{{ observation.taxref.commonName }}</h2>
+                <p>
+                    {{ 'observe_at'|trans({'%date%': observation.watched|date("d/m/Y")}) }}<br/>
+                    {{ 'in_place'|trans({'%place%': observation.place}) }}
+                </p>
+                <p class="caption light-2-no-hov coordinate">
+                    {{ 'GPS_coordinate' | trans({'%latitude%': observation.latitude | gps_dms, "%longitude%": observation.longitude | gps_dms()}) }}
+                </p>
+            </div>
+        </div>
     </div>
-
-
 </div>
