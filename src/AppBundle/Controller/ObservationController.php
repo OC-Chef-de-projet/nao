@@ -48,23 +48,23 @@ class ObservationController extends Controller
 
     /**
      * @Route("/vos-observations/brouillon/edition/{id}", name="observation.me.draft.edit")
-     * @ParamConverter("observation", options={"mapping": {"id": "id"}})
+     * @ParamConverter("obs", options={"mapping": {"id": "id"}})
      * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET", "POST"})
      */
-    public function editDraftAction(Observation $observation, Request $request)
+    public function editDraftAction(Observation $obs, Request $request)
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        if($observation->getStatus() != $observation::DRAFT || $observation->getUser() != $user){
+        if($obs->getStatus() != $obs::DRAFT || $obs->getUser() != $user){
             throw $this->createNotFoundException('you cannot access of this page !');
         }
 
-        $form = $this->createForm(ObservationType::class, $observation);
+        $form = $this->createForm(ObservationType::class, $obs);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-           $action = $this->container->get('app.obs')->saveObservation($observation, $form, $request);
+           $action = $this->container->get('app.obs')->saveObservation($obs, $form, $request);
             if($action == 'DRAFT'){
                 return $this->redirectToRoute('observation.me.draft');
             }elseif($action == 'WAITING'){
