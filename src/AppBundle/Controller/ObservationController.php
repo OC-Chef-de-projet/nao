@@ -112,9 +112,14 @@ class ObservationController extends Controller
      * @Route("/liste", name="observation.list")
      * @Method({"GET"})
      */
-    public function showListAction()
+    public function showListAction(Request $request, $page = 1)
     {
-        return $this->render('observation/list.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $obs = $em->getRepository('AppBundle:Observation')->getValideObservations($page,$this->getParameter('list_limit'));
+        return $this->render('observation/list.html.twig', [
+            'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
+            'obslist' => $obs->getIterator()
+        ]);
     }
 
     /**

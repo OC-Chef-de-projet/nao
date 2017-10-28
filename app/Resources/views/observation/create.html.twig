@@ -61,7 +61,7 @@
                                             {{ form_widget(form.place) }}
                                             <ul id="dropPlace" class="autocomplete-content dropdown-content"></ul>
                                             <div class="error">{{ form_errors(form.place) }}</div>
-                                            <p class="left-align"><a href="#" class="caption light-2-no-hov small">{{ 'target_on_map'|trans }}</a></p>
+                                            <p class="left-align"><a href="#pointer_map" id="action_map" class="caption light-2-no-hov small modal-trigger">{{ 'target_on_map'|trans }}</a></p>
                                         </div>
                                         <input style="display:none">
                                         <div class="input-field col s12">
@@ -120,6 +120,11 @@
                     </div>
                 </div>
             </div>
+
+            <!-- MAPS MODAL -->
+            <div id="pointer_map" class="modal">
+                <div id="maps"></div>
+            </div>
         </section>
     </main>
 {% endblock %}
@@ -130,9 +135,9 @@
     <script>
         $(function () {
 
-            /**
+            /**************************
              * Autocomplete city name
-             */
+             ***************************************/
             $('#observation_place').materialize_autocomplete({
                 limit: 6,
                 cacheable: true,
@@ -164,29 +169,9 @@
                 }
             });
 
-            /**
-             * When user use the geolocation button, we try to determine her address
-             */
-            $('#geoloc').on('click', function(event){
-                event.preventDefault();
-                if (navigator.geolocation){
-                    navigator.geolocation.getCurrentPosition(function(position){
-                        var lat = parseFloat(position.coords.latitude);
-                        var lng = parseFloat(position.coords.longitude);
-                        var data = {lat: lat, lng: lng};
-                        $.post( "{{ url('region.nearest.city') }}?bearer={{ jwt.token }}", data, function( response ) {
-                            $('#observation_place').parent().find('label').addClass('active');
-                            $('#observation_place').val(response.city);
-                            $('#observation_latitude').val(lat);
-                            $('#observation_longitude').val(lng);
-                        });
-                    });
-                }
-            });
-
-            /**
+            /**************************
              * Autocomplete Bird
-             */
+             ***************************************/
             $('#observation_taxref_customname').materialize_autocomplete({
                 limit: 6,
                 cacheable: true,
@@ -209,6 +194,71 @@
                     });
                 },
             });
+
+            /**************************
+             * When user use the geolocation button, we try to determine her address
+             ***************************************/
+            $('#geoloc').on('click', function(event){
+                event.preventDefault();
+                if (navigator.geolocation){
+                    navigator.geolocation.getCurrentPosition(function(position){
+                        var lat = parseFloat(position.coords.latitude);
+                        var lng = parseFloat(position.coords.longitude);
+                        updateLocalization(lat,lng);
+                    });
+                }
+            });
+
+            /**************************
+             * Update coordinate and place to form
+             ***************************************/
+            function updateLocalization(lat, lng){
+                var data = {lat: lat, lng: lng};
+                $.post( "{{ url('region.nearest.city') }}?bearer={{ jwt.token }}", data, function( response ) {
+                    $('#observation_place').parent().find('label').addClass('active');
+                    $('#observation_place').val(response.city);
+                    $('#observation_latitude').val(lat);
+                    $('#observation_longitude').val(lng);
+                });
+            }
+
+            /**************************
+             * Google maps for pointing localisation
+             ***************************************/
+            var map;
+
+            $('#pointer_map').modal({
+                ready: function() {
+                    map = new GMaps({
+                        div: '#maps',
+                        lat: 46.52863469527167,
+                        lng: 2.43896484375,
+                        zoom: 6,
+                        width: '100%',
+                        height: '550px',
+                        click: function(e) {
+                            placeMarker(e.latLng);
+                        },
+                    });
+                }
+            });
+
+            /**
+             * Add custom marker for position
+             * @param location
+             */
+            function placeMarker(location){
+                map.removeMarkers();
+                map.addMarker({
+                    position: location,
+                    icon: "{{ asset('assets/img/marker.png') }}",
+                    title: 'cliquez pour valider',
+                    click: function(e) {
+                        updateLocalization(location.lat(), location.lng());
+                        $('#pointer_map').modal('close');
+                    }
+                });
+            }
 
         });
     </script>
