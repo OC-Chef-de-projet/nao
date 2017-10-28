@@ -53,6 +53,14 @@
     <!-- PAGE CONTENT -->
     <main class="container marge-top">
         <section>
+
+            {% if obslist is not defined or obslist|length <= 0 %}
+                <div class="row">
+                    <div class="col s12">
+                        <p>{{ 'no_observation_validated' | trans }}</p>
+                    </div>
+                </div>
+            {% else %}
             <div class="row">
                 <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
                     {% for observation in obslist %}
@@ -65,6 +73,7 @@
             <div class="row">
                 {% include 'admin/paginate.html.twig' %}
             </div>
+            {% endif %}
         </section>
     </main>
 {% endblock %}
