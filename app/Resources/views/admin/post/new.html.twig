@@ -82,4 +82,17 @@
         </section>
     </main>
 {% endblock %}
-
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('#post_content').materialnote({
+                toolbar:
+                    [
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                    ]
+            });
+        });
+    </script>
+{% endblock %}

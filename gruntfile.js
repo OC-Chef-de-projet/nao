@@ -92,6 +92,7 @@ module.exports = function (grunt) {
                 ]
 
             }
+
         },
 
         // Concat plugins to make core.min
@@ -107,14 +108,15 @@ module.exports = function (grunt) {
                         'resources/vendor/materialize-autocomplete/jquery.materialize-autocomplete.min.js',
                         'resources/vendor/jquery-validator/jquery.validate.min.js',
                         'resources/vendor/jquery-validator/additional-methods.min.js',
-                        'resources/vendor/jquery-validator/localization/messages_fr.js'
+                        'resources/vendor/jquery-validator/localization/messages_fr.js',
+                        'resources/vendor/materialNote/js/materialnote.js'
                     ],
 
 
                     // CSS
                     'web/assets/css/core.min.css': [
                         'resources/vendor/bootstrap/css/bootstrap.min.css',
-                        'resources/vendor/materialize/css/materialize.min.css'
+                        'resources/vendor/materialize/css/materialize.min.css',
                     ]
                 }
             },
@@ -122,7 +124,9 @@ module.exports = function (grunt) {
             custom: {
                 files: {
                     'web/assets/css/custom.min.css': [
-                        'resources/css/nao.css'
+                        'resources/css/nao.css',
+                        'resources/css/materialnote.css'
+
                     ]
                 }
             }
