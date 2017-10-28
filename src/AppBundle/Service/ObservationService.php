@@ -51,7 +51,7 @@ class ObservationService
                 'status' => Observation::VALIDATED
             ],
             [
-                'validated' => 'DESC'
+                'watched' => 'DESC'
             ],
             $max
         );
@@ -275,9 +275,6 @@ class ObservationService
             }
         }
 
-        // Get date
-        $observation->setWatched(\DateTime::createFromFormat('d/m/Y', $observation->getWatched()));
-
         // Get localisation
         $region     = explode(' - ', $observation->getPlace());
         $place      = $this->em->getRepository(FranceRegion::class)->FindOneBy(array('city' => trim($region[1])));
@@ -298,7 +295,7 @@ class ObservationService
         }
 
         // Get taxref
-        $taxref_name = $request->request->get('observation')['taxref'];
+        $taxref_name = $request->request->get('observation')['taxref']['customname'];
         $latin_name = substr($taxref_name, ($p = strpos($taxref_name, '(')+1), strrpos($taxref_name, ')')-$p);
         $taxref = $this->em->getRepository('AppBundle:Taxref')->findOneBy(array('taxon_sc' => $latin_name));
 

@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Form\Type\ObservationType;
 
@@ -46,6 +47,38 @@ class ObservationController extends Controller
     }
 
     /**
+     * @Route("/vos-observations/brouillon/edition/{id}", name="observation.me.draft.edit")
+     * @ParamConverter("observation", options={"mapping": {"id": "id"}})
+     * @Security("is_granted('ROLE_OBSERVER')")
+     * @Method({"GET"})
+     */
+    public function editDraftAction(Observation $observation, Request $request)
+    {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        if($observation->getStatus() != $observation::DRAFT || $observation->getUser() != $user){
+            throw $this->createNotFoundException('you cannot access of this page !');
+        }
+
+        $form = $this->createForm(ObservationType::class, $observation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+           /* $action = $this->container->get('app.obs')->createObservation($observation, $form, $request);
+            if($action == 'DRAFT'){
+                return $this->redirectToRoute('observation.me.draft');
+            }elseif($action == 'WAITING'){
+                return $this->redirectToRoute('observation.me.waiting');
+            }elseif($action == 'PUBLISHED'){
+                return $this->redirectToRoute('observation.me.validate');
+            }*/
+        }
+        return $this->render('observation/create.html.twig', array(
+            'form'      => $form->createView()
+        ));
+    }
+
+    /**
      * @Route("/carte", name="observation.map")
      * @Method({"GET"})
      */
@@ -56,11 +89,23 @@ class ObservationController extends Controller
 
     /**
      * @Route("/carte/{id}", name="observation.detail", requirements={"id": "\d+"})
+     * @ParamConverter("observation", options={"mapping": {"id": "id"}})
      * @Method({"GET"})
      */
-    public function showDetailAction()
+    public function showDetailAction(Observation $observation)
     {
-        return $this->render('observation/detail.html.twig');
+        if($observation->getStatus() != $observation::VALIDATED){
+            throw $this->createNotFoundException('Observation need to be validate !');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $lastObservation = $em->getRepository('AppBundle:Observation')
+            ->getLastObservationForBird($observation->getTaxref()->getId(),$observation->getId());
+
+        return $this->render('observation/detail.html.twig', array(
+            'observation'   => $observation,
+            'lastobs'       => $lastObservation != [] ? $lastObservation[0] : null
+        ));
     }
 
     /**
@@ -113,7 +158,7 @@ class ObservationController extends Controller
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $obs = $em->getRepository('AppBundle:Observation')->getMyValidateObservations($user, $page,$this->getParameter('list_limit'));
+        $obs = $em->getRepository('AppBundle:Observation')->getMyWaitingObservations($user, $page,$this->getParameter('list_limit'));
         return $this->render('observation/me/waiting.html.twig', [
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()
@@ -138,8 +183,6 @@ class ObservationController extends Controller
     /**
      * @Route("/validation/validation/{id}", requirements={"id" = "\d+"}, name="observation.validation.validation")
      * @Security("is_granted('ROLE_NATURALIST')")
-     * @param Request $request Http request
-     * @param Observation $obs Observation entity
      * @Method({"GET","POST"})
      */
     public function validationValidationAction(Request $request, Observation $obs)

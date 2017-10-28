@@ -253,6 +253,7 @@ class Taxref
      */
     private $clipperton;
 
+    private $custom_name;
 
     /**
      * Set regnum
@@ -492,6 +493,26 @@ class Taxref
     public function getTaxonSc()
     {
         return $this->taxon_sc;
+    }
+
+    /**
+     * Get custom name
+     *
+     * @return string
+     */
+    public function setCustomName($customName){
+        $this->custom_name;
+
+        return $this;
+    }
+
+    /**
+     * Get custom name
+     *
+     * @return string
+     */
+    public function getCustomName(){
+        return $this->getCommonName() . '('.$this->getTaxonSc().')';
     }
 
     /**

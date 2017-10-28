@@ -200,6 +200,15 @@ class Observation
     }
 
     /**
+     * Get watched
+     *
+     * @return \DateTime
+     */
+    public function getWatchedString()
+    {
+        return !is_null($this->getWatched()) ? $this->getWatched()->format('m/d/Y') : '';
+    }
+    /**
      * Set place
      *
      * @param string $place

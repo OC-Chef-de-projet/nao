@@ -71,9 +71,9 @@
                                         </div>
                                         <div class="input-field col s12">
                                             <label>{{ 'label_bird_view'|trans }}</label>
-                                            {{ form_widget(form.taxref) }}
+                                            {{ form_widget(form.taxref.customname) }}
                                             <ul id="dropBird" class="autocomplete-content dropdown-content"></ul>
-                                            <div class="error">{{ form_errors(form.taxref) }}</div>
+                                            <div class="error">{{ form_errors(form.taxref.customname) }}</div>
                                             <p class="left-align"><a href="http://www.oiseaux.net/oiseaux/france.html" class="caption light-2-no-hov small" target="_blank">{{ 'need_help'|trans }}</a></p>
                                         </div>
                                         <div class="input-field col s12">
@@ -183,7 +183,7 @@
             /**
              * Autocomplete Bird
              */
-            $('#observation_taxref').materialize_autocomplete({
+            $('#observation_taxref_customname').materialize_autocomplete({
                 limit: 6,
                 cacheable: true,
                 multiple: {

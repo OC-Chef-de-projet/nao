@@ -162,4 +162,18 @@ class ObservationRepository extends EntityRepository
         $paginator = $this->paginate($query, $currentPage, $limit);
         return $paginator;
     }
+
+    public function getLastObservationForBird($taxref_id, $observation_id)
+    {
+        return $this->createQueryBuilder('o')
+            ->where('o.taxref = :taxref')
+            ->setParameter('taxref', $taxref_id)
+            ->andWhere('o.status = :status')
+            ->setParameter('status',Observation::VALIDATED)
+            ->andWhere('o.id != :id')
+            ->setParameter('id',$observation_id)
+            ->orderBy('o.watched', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

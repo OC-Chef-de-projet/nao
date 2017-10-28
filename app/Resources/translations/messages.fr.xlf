@@ -649,6 +649,15 @@
                 <source>dont_have_obs_waiting</source>
                 <target>Vous n'avez pas d'observation en attente</target>
             </trans-unit>
+            <trans-unit id="last_bird_watched_of">
+                <source>last_bird_watched_of</source>
+                <target>Dernier spécimen observé de %name%</target>
+            </trans-unit>
+            <trans-unit id="no_last_bird_watched">
+                <source>no_last_bird_watched</source>
+                <target>Il n'y a pas d'autre observation pour ce spécimen</target>
+            </trans-unit>
+
 
             <!-- HOMEPAGE -->
             <trans-unit id="homepage_main_title">

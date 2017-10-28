@@ -1,10 +1,10 @@
 {{ 'reject_title' | trans({'%username%': observation.user.name}) }}
-<br/>
+<br/><br />
 <div class="card no-style">
     <div class="card-content">
         <div class="row">
             {{ form_start(reject, {'attr': {'id': 'reject'}}) }}
-            <div class="col s12 m10 push-m1">
+            <div class="col s12 m8 push-m1">
                 <br/>
                 {{ form_widget(reject.reason) }}
                 <span class="caption light-2-no-hov top-neg right" style="margin-right: 5px;"><span
@@ -14,8 +14,8 @@
                 {{ form_widget(reject.warn_admin) }}
                 <label for="reject_warn_admin" class="light-2 push-line">{{ 'warn_admin'|trans }}</label>
             </div>
-            <div class="col s12 m10 ">
-                <br>
+            <div class="col s12 ">
+                <br /><br />
                 <div class="form-control center push-m2">
                     {{ form_widget(reject.cancel) }}&nbsp;
                     {{ form_widget(reject.confirm) }}
