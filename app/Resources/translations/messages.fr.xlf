@@ -660,6 +660,7 @@
             <trans-unit id="notification_subject">
                 <source>notification_subject</source>
                 <target>De %naturalist% concernant l'utilisateur %observer%</target>
+            </trans-unit>
             <trans-unit id="dont_have_obs_found">
                 <source>dont_have_obs_found</source>
                 <target>Aucune observation n'a été trouvée</target>
