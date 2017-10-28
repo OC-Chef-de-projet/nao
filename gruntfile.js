@@ -92,7 +92,6 @@ module.exports = function (grunt) {
                 ]
 
             }
-
         },
 
         // Concat plugins to make core.min
@@ -109,7 +108,8 @@ module.exports = function (grunt) {
                         'resources/vendor/jquery-validator/jquery.validate.min.js',
                         'resources/vendor/jquery-validator/additional-methods.min.js',
                         'resources/vendor/jquery-validator/localization/messages_fr.js',
-                        'resources/vendor/materialNote/js/materialnote.js'
+                        'resources/vendor/materialNote/js/materialnote.js',
+                        'resources/vendor/gmaps/gmaps.min.js'
                     ],
 
 
