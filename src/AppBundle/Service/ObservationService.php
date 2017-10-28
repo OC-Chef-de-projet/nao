@@ -257,7 +257,6 @@ class ObservationService
      * @return string
      */
     public function saveObservation(Observation $observation, Form $form, Request $request){
-        $data = $form->getData();
 
         // Get user informations
         $user = $this->ts->getToken()->getUser();

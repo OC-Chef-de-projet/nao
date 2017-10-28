@@ -2,7 +2,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Taxref
@@ -253,6 +252,7 @@ class Taxref
      */
     private $clipperton;
 
+
     private $custom_name;
 
     /**
@@ -496,12 +496,13 @@ class Taxref
     }
 
     /**
-     * Get custom name
+     * Set custom name
      *
      * @return string
      */
     public function setCustomName($customName){
-        $this->custom_name;
+
+        $this->custom_name = $customName;
 
         return $this;
     }
