@@ -12,6 +12,7 @@ use Symfony\Component\Form\Form;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class ObservationService
@@ -24,17 +25,19 @@ class ObservationService
     private $ts;
     private $list_limit;
     private $observations_directory;
+    private $translator = null;
 
     /**
      * ObservationService constructor.
      * @param EntityManager $em
      */
-    public function __construct(EntityManager $em, TokenStorage $ts, $list_limit, $observations_directory)
+    public function __construct(EntityManager $em, TokenStorage $ts, $list_limit, $observations_directory, TranslatorInterface $translator)
     {
         $this->em = $em;
         $this->ts = $ts;
         $this->list_limit = $list_limit;
         $this->observations_directory = $observations_directory;
+        $this->translator = $translator;
     }
 
     /**
@@ -365,7 +368,15 @@ class ObservationService
             $admins = $this->em->getRepository(User::class)->searchUsersByRole(1,'ROLE_ADMIN');
             foreach($admins as $admin) {
                 $notice = new Notification();
-                $notice->setContent($data['reason']);
+                $title = $this->translator->trans(
+                    'notification_subject',
+                    [
+                        '%naturalist%' => $observation->getNaturalist()->getName(),
+                        '%observer%' => $observation->getUser()->getName()
+                    ],
+                    'messages'
+                );
+                $notice->setContent('<b>'.$title.'</b><br>'.$data['reason']);
                 $notice->setFromUser($naturalist);
                 $notice->setToUser($admin);
                 $this->em->persist($notice);

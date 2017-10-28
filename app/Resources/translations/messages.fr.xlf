@@ -657,7 +657,10 @@
                 <source>no_last_bird_watched</source>
                 <target>Il n'y a pas d'autre observation pour ce spécimen</target>
             </trans-unit>
-
+            <trans-unit id="notification_subject">
+                <source>notification_subject</source>
+                <target>De %naturalist% concernant l'utilisateur %observer%</target>
+            </trans-unit>
 
             <!-- HOMEPAGE -->
             <trans-unit id="homepage_main_title">
