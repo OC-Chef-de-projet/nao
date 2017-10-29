@@ -236,6 +236,7 @@
                         zoom: 6,
                         width: '100%',
                         height: '550px',
+                        fullscreenControl : false,
                         click: function(e) {
                             placeMarker(e.latLng);
                         },
@@ -252,7 +253,7 @@
                 map.addMarker({
                     position: location,
                     icon: "{{ asset('assets/img/marker.png') }}",
-                    title: 'cliquez pour valider',
+                    title: 'cliquez de nouveau sur la localisation pour la valider',
                     click: function(e) {
                         updateLocalization(location.lat(), location.lng());
                         $('#pointer_map').modal('close');
