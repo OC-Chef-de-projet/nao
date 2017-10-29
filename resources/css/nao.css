@@ -1367,6 +1367,18 @@ ul.collapsible > li > div.collapsible-body{
 .picker--opened .picker__frame{
     top: 17%;
 }
+
+/* ====================================
+    Google maps
+    =============================================*/
+#pointer_map.modal{
+    max-height: 80% !important;
+}
+
+#maps{
+    width: 100% !important;
+}
+
 /* ====================================
     Responsive
     =============================================*/
@@ -1722,6 +1734,10 @@ ul.collapsible > li > div.collapsible-body{
 
     .card.observation.no-border {
         border-bottom: none;
+    }
+
+    #pointer_map.modal{
+        width: 90% !important;
     }
 }
 
