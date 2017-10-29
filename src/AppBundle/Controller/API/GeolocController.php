@@ -35,8 +35,9 @@ class GeolocController extends Controller
         $autocomplete   = $em->getRepository('AppBundle:FranceRegion')->autocompleteByCity($city);
 
         foreach ($autocomplete as $value){
+            $code = substr($value['code'],0,2) == '97' ? substr($value['code'],0,3) : substr($value['code'],0,2);
             $result[] = array(
-                'text'      => $value['city'] .' '. '('.substr($value['code'],0,2).')',
+                'text'      => $value['city'] .' '. '('.$code.')'
             );
         }
 
@@ -62,7 +63,8 @@ class GeolocController extends Controller
         for ($d= 500; $d <= 50000; $d+= 500){
             $region     = $em->getRepository('AppBundle:FranceRegion')->getDistanceByCoordinate($latitude,$longitude, $d);
             if(!is_null($region)){
-                $city   = $region['city'] .' '. '('.substr($region['code'],0,2).')';
+                $code = substr($region['code'],0,2) == '97' ? substr($region['code'],0,3) : substr($region['code'],0,2);
+                $city   = $region['city'] .' '. '('.$code.')';
                 break;
             }
         }
