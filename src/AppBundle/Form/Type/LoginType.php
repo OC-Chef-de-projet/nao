@@ -23,12 +23,6 @@ class LoginType extends AbstractType
             ->add('_password', PasswordType::class,array(
                     'attr'  => array( 'class' => '', 'autocomplete' => 'off'),
             ))
-            ->add('_remember_me', CheckboxType::class, array(
-                'data' => true,
-                'required' => false,
-                'label'     => false,
-                'attr'  => array( 'class' => 'filled-in', 'checked' => 'checked')
-            ))
         ;
     }
     public function configureOptions(OptionsResolver $resolver)
