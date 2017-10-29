@@ -67,6 +67,9 @@ security:
 
             remember_me:
                 secret: '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+                always_remember_me: false
 
             oauth:
                 resource_owners:
