@@ -36,7 +36,6 @@
                 <target>Cet email recoit déjà les newsletters.</target>
             </trans-unit>
 
-
             <!-- PAGE TITLE -->
             <trans-unit id="homepage_title">
                 <source>homepage_title</source>
@@ -52,11 +51,11 @@
             </trans-unit>
             <trans-unit id="observation_map_title">
                 <source>observation_map_title</source>
-                <target>Carte des observations</target>
+                <target>Carte des observations d'oiseaux en France</target>
             </trans-unit>
             <trans-unit id="observation_list_title">
                 <source>observation_list_title</source>
-                <target>Liste des observations</target>
+                <target>Liste des observations d'oiseaux en France</target>
             </trans-unit>
             <trans-unit id="observation_detail_title">
                 <source>observation_detail_title</source>
@@ -142,11 +141,11 @@
             </trans-unit>
             <trans-unit id="observation_map_meta_description">
                 <source>observation_map_meta_description</source>
-                <target></target>
+                <target>Retrouvez sur cette page la carte des observations d'oiseaux en France sur laquelle vous pouvez filtrer par espèce d'oiseau et par département.</target>
             </trans-unit>
             <trans-unit id="observation_list_meta_description">
                 <source>observation_list_meta_description</source>
-                <target></target>
+                <target>Découvrez la liste de toutes les observations d'oiseaux en France, réalisées par les passionnés d'ornithologie du site collaboratif Nos Amis les Oiseaux.</target>
             </trans-unit>
             <trans-unit id="observation_detail_meta_description">
                 <source>observation_detail_meta_description</source>
@@ -208,7 +207,6 @@
                 <source>profil_view_page_meta_description</source>
                 <target></target>
             </trans-unit>
-
 
             <!-- LINK NAVIGATION -->
             <trans-unit id="sign_in">
@@ -328,7 +326,6 @@
                 <target>Peut-être</target>
             </trans-unit>
 
-
             <!-- ALT IMAGE -->
             <trans-unit id="alt_big_logo_white">
                 <source>alt_big_logo_white</source>
@@ -346,7 +343,6 @@
                 <source>alt_profil</source>
                 <target>Photo de profil</target>
             </trans-unit>
-
 
             <!-- FORMS / BUTTON -->
             <trans-unit id="search">
@@ -461,6 +457,10 @@
                 <source>save_observation</source>
                 <target>Soumettre l'observation</target>
             </trans-unit>
+            <trans-unit id="search_by_bird">
+                <source>search_by_bird</source>
+                <target>Rechercher par espèce</target>
+            </trans-unit>
 
             <!-- MODAL -->
             <trans-unit id="modal_confirmation_explain">
@@ -471,7 +471,6 @@
                     Voulez-vous continuez ?
                 </target>
             </trans-unit>
-
 
             <!-- ROLES -->
             <trans-unit id="ROLE_ADMIN">
@@ -498,7 +497,6 @@
                 <source>profil_ROLE_OBSERVER</source>
                 <target>Profil particulier</target>
             </trans-unit>
-
 
             <!-- ARTICLES (POSTS) -->
             <trans-unit id="last_article">
@@ -549,7 +547,6 @@
                 <source>want_delete_article</source>
                 <target>Supprimer l'article ?</target>
             </trans-unit>
-
             <trans-unit id="read">
                 <source>read</source>
                 <target>Lire</target>
@@ -566,7 +563,6 @@
                 <source>featured_image</source>
                 <target>Image à la une</target>
             </trans-unit>
-
 
             <!-- OBSERVATIONS -->
             <trans-unit id="observations">
@@ -665,6 +661,14 @@
                 <source>dont_have_obs_found</source>
                 <target>Aucune observation n'a été trouvée</target>
             </trans-unit>
+            <trans-unit id="department">
+                <source>department</source>
+                <target>Département</target>
+            </trans-unit>
+            <trans-unit id="all_department">
+                <source>all_department</source>
+                <target>Tous les départements</target>
+            </trans-unit>
 
             <!-- HOMEPAGE -->
             <trans-unit id="homepage_main_title">
@@ -728,7 +732,6 @@
                 <target>Il n'y a pas encore d'observations</target>
             </trans-unit>
 
-
             <!-- FOOTER -->
             <trans-unit id="stay_inform">
                 <source>stay_inform</source>
@@ -738,7 +741,6 @@
                 <source>subscribe_to_newsletter</source>
                 <target>S'inscrire à la newsletter</target>
             </trans-unit>
-
 
             <!-- REGISTRATION PAGE -->
             <trans-unit id="registration_main_title">
@@ -762,7 +764,6 @@
                 <target>Votre demande de compte s'est envolée. Un email de confirmation vous a été envoyé.</target>
             </trans-unit>
 
-
             <!-- ACTIVATION PAGE -->
             <trans-unit id="registration_activation_title">
                 <source>registration_activation_title</source>
@@ -777,7 +778,6 @@
                 <target>Nous n'avons pas pu valider votre compte, merci de vous assurer d'avoir cliquez sur le lien d'activation présent dans le mail qui vous a été envoyer et de ne pas avoir pas déjà valider votre compte. </target>
             </trans-unit>
 
-
             <!-- LOGIN PAGE -->
             <trans-unit id="login_main_title">
                 <source>login_main_title</source>
@@ -791,7 +791,6 @@
                 <source>login_connexion_error</source>
                 <target>Problème de connexion ! merci de vérifier vos identifiants.</target>
             </trans-unit>
-
 
             <!-- ACCOUNT RECOVERY PAGE -->
             <trans-unit id="account_recovery_main_title">
@@ -822,7 +821,6 @@
                 <target>Nous venons de vous envoyer un email qui va vous permettre de choisir un nouveau mot de passe.</target>
             </trans-unit>
 
-
             <!-- CHANGE PASSWORD PAGE -->
             <trans-unit id="new_password_main_title">
                 <source>new_password_main_title</source>
@@ -840,7 +838,6 @@
                 <source>new_password_success_explain</source>
                 <target>Votre mot de passe a bien été modifié. Vous pouvez dès à présent accéder à votre compte avec vos nouveaux identifiants.</target>
             </trans-unit>
-
 
             <!-- ABOUT US PAGE -->
             <trans-unit id="about_main_title">
@@ -888,7 +885,6 @@
                 </target>
             </trans-unit>
 
-
             <!-- BLOG -->
             <trans-unit id="blog_main_title">
                 <source>blog_main_title</source>
@@ -931,7 +927,6 @@
                 <target>Votre commentaire a été prit en compte, cependant il doit être validé par un membre de notre équipe avant d'être publié.</target>
             </trans-unit>
 
-
             <!-- STAY CONNECTED PAGE -->
             <trans-unit id="stay_connected_main_title">
                 <source>stay_connected_main_title</source>
@@ -958,7 +953,6 @@
                 <target>En plus de notre newsletter, vous pouvez nous suivre sur nos réseaux sociaux pour vous tenir informé et pour discuter avec les membres de la communauté NAO. Nous avons mis à disposition un groupe sur Facebook afin de faciliter ces échanges. </target>
             </trans-unit>
 
-
             <!-- STAY CONNECTED PAGE -->
             <trans-unit id="contact_main_title">
                 <source>contact_main_title</source>
@@ -968,7 +962,6 @@
                 <source>contact_secondary_title</source>
                 <target>Notre équipe vole à votre secours</target>
             </trans-unit>
-
 
             <!-- FAQ PAGE -->
             <trans-unit id="faq_main_title">
@@ -992,7 +985,6 @@
                 <source>faq_contact_page</source>
                 <target>page contact</target>
             </trans-unit>
-
 
             <!-- GLOBAL SEARCH PAGE -->
             <trans-unit id="search_min">
@@ -1026,7 +1018,6 @@
                 <target>Votre inscription à notre newsletter a bien été prise en compte, toute l'équipe de NAO vous remercie.</target>
             </trans-unit>
 
-
             <!-- CONTACT PAGE -->
             <trans-unit id="contact_explain_faq">
                 <source>contact_explain_faq</source>
@@ -1040,7 +1031,6 @@
                 <source>contact_success</source>
                 <target>Votre message est bien parti par pigeon voyageur.</target>
             </trans-unit>
-
 
             <!-- 404 PAGE -->
             <trans-unit id="404_main_title">
@@ -1062,7 +1052,6 @@
                 <source>back_to_homepage</source>
                 <target>Retour à l'accueil</target>
             </trans-unit>
-
 
             <!-- USERS DASHBOARD -->
             <trans-unit id="dashboard_main_title">
@@ -1167,7 +1156,6 @@
                 <source>no_observation_refused</source>
                 <target>Vous n'avez pas encore refusé d'observation</target>
             </trans-unit>
-
 
             <!-- ADMIN DASHBOARD -->
             <trans-unit id="admin">

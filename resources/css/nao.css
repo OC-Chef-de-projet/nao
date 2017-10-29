@@ -159,6 +159,10 @@ a.small{
     z-index: 999999;
 }
 
+.btn-floating.white i{
+    color : #000000;
+}
+
 /* ====================================
     Text color
     =============================================*/
@@ -1371,12 +1375,98 @@ ul.collapsible > li > div.collapsible-body{
 /* ====================================
     Google maps
     =============================================*/
+.gmnoprint.gm-style-cc{
+    opacity: 0 !important;
+}
+
 #pointer_map.modal{
     max-height: 80% !important;
 }
 
 #maps{
     width: 100% !important;
+}
+
+.map-container{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 620px;
+    webkit-box-shadow: 0 4px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    box-shadow: 0 4px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    margin-top: 20px;
+}
+
+#google-maps{
+    width: 100%;
+    height: 100%;
+}
+
+#google-maps .gmnoprint:first-child{
+    top: 80px !important;
+}
+
+ul#action-map-widget{
+    z-index: 15;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+}
+
+ul#action-map-widget > li:first-child{
+    margin-bottom: 15px;
+}
+
+form#search-map-widget{
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    webkit-box-shadow: 0 4px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12),0 3px 1px -2px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 4px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    box-shadow: 0 4px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    z-index: 15;
+    position: absolute;
+    top: 15px;
+    left: 28%;
+    width: 45%;
+    padding: 10px 40px 10px 40px;
+}
+
+form#search-map-widget input{
+    height: 2rem;
+    border-bottom: none;
+    margin: 0;
+}
+
+form#search-map-widget a:first-child{
+    position: absolute;
+    width: 24px;
+    top: 15px;
+    left: 10px;
+}
+
+form#search-map-widget #action-map-filter{
+    position: absolute;
+    width: 24px;
+    top: 15px;
+    right: 10px;
+}
+
+form#search-map-widget #extra-filter{
+    display: none;
+    margin-top: 25px;
+}
+
+#extra-filter .dropdown-content li > a,
+.dropdown-content li > span{
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+#dropSpecimen{
+    position: absolute;
+    top: 77px;
+    left: 28%;
+    width: 45%
 }
 
 /* ====================================
@@ -1738,6 +1828,20 @@ ul.collapsible > li > div.collapsible-body{
 
     #pointer_map.modal{
         width: 90% !important;
+    }
+
+    main.full-map{
+        width: 100% !important;
+    }
+
+    .map-container{
+        margin-top: 0;
+    }
+
+    form#search-map-widget,
+    #dropSpecimen{
+        width: 96%;
+        left: 8px;
     }
 }
 

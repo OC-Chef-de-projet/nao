@@ -202,4 +202,29 @@ class ObservationRepository extends EntityRepository
         $paginator = $this->paginate($query, $currentPage, $limit);
         return $paginator;
     }
+
+
+    /**
+     * Get all observations wit filter
+     *
+     * @return array
+     */
+    public function getObservationsWithFilter($speciment, $department)
+    {
+        $query = $this->createQueryBuilder('o')
+            ->innerJoin('o.taxref', 't')
+            ->addSelect('t')
+            ->where('o.status = :status')->setParameter('status',Observation::VALIDATED);
+
+        if(!empty($speciment)){
+            $query->andwhere('t.common_name = :specimen')->setParameter('specimen', $speciment);
+        }
+
+        if(!empty($department)){
+            $query->andwhere('o.place LIKE :department')->setParameter('department', '%('.$department.')%');
+        }
+
+        $query->orderBy('o.watched', 'DESC');
+        return $query->getQuery()->getResult();
+    }
 }

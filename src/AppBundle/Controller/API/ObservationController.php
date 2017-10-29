@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller\API;
 
+use AppBundle\Entity\Observation;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -87,7 +88,7 @@ class ObservationController extends Controller
     public function nearestAction(Request $request)
     {
 
-        $latitude =$request->get('latitude');
+        $latitude = $request->get('latitude');
         $longitude = $request->get('longitude');
 
         $observations = $this->container->get('app.geoloc')->getNearest($latitude,$longitude,$this->getParameter('gps_distance'));
@@ -113,13 +114,38 @@ class ObservationController extends Controller
                 'commonName' => $observation->getTaxref()->getCommonName()
             ];
         }
-
-
         $viewHandler = $this->get('fos_rest.view_handler');
         $view = View::create($response);
         $view->setFormat('json');
         return $viewHandler->handle($view);
+    }
 
+    /**
+     * Get observations with some filters to show on map
+     *
+     * @Route("/search", name="obs.search")
+     * @Method({"POST"})
+     * @param Request $request
+     *  @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getObservationsForMapAction(Request $request)
+    {
+        // Get filters
+        $specimen   = trim($request->get('bird'));
+        $department = (int) $request->get('department');
+        $result         = array();
+
+        $em = $this->getDoctrine()->getManager();
+        $observations = $em->getRepository('AppBundle:Observation')->getObservationsWithFilter($specimen, $department);
+
+        foreach ($observations as $observation){
+            $result[] = array(
+                'place'     => $observation->getPlace(),
+                'latitude'  => $observation->getLatitude(),
+                'longitude' => $observation->getLongitude()
+            );
+        }
+        return new JsonResponse($result);
     }
 
 

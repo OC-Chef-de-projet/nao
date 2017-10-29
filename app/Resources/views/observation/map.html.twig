@@ -1,6 +1,8 @@
+{% set bgwhite = true %}
+
 {% extends "common/template/base.html.twig" %}
 
-{% block title %}{{ 'observation_map_title'|trans }}{% endblock %}
+{% block title %}{{ 'observation_map_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
 
 {% block meta %}
     <meta name="description" content="{{ 'observation_map_meta_description'|trans }}">
@@ -47,10 +49,194 @@
     </section>
 
     <!-- PAGE CONTENT -->
-    <main class="container marge-top">
+    <main class="container full-map">
         <section>
-
+            <div class="map-container">
+                <form id="search-map-widget" method="post">
+                    <a id="action-map-search" href="#" class="light-2"><i class="material-icons">search</i></a>
+                    <input type="text" id="search-bird" name="search-bird" autocomplete="off" placeholder="{{ 'search_by_bird'|trans }}"/>
+                    <a id="action-map-filter" href="#" class="bleen"><i class="material-icons">keyboard_arrow_down</i></a>
+                    <div id="extra-filter" class="input-field">
+                        {% include 'common/form/dep.html.twig' only %}
+                        <label>{{ 'department'|trans }}</label>
+                    </div>
+                </form>
+                <ul id="dropSpecimen" class="autocomplete-content dropdown-content"></ul>
+                <div id="google-maps"></div>
+                <ul id="action-map-widget">
+                    <li><a href="#" id="map-geoloc-zoom" class="btn-floating btn-large waves-effect waves-light white"><i class="material-icons">gps_fixed</i></a></li>
+                    <li><a href="{{ path('observation.create') }}" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a></li>
+                </ul>
+            </div>
         </section>
     </main>
+
+
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+
+            /**************************
+             * Autocomplete Bird
+             ***************************************/
+            var searchBird      = $('#search-bird');
+
+            searchBird.materialize_autocomplete({
+                limit: 6,
+                cacheable: true,
+                multiple: {
+                    enable: false
+                },
+                dropdown : {
+                    el: '#dropSpecimen'
+                },
+                getData: function (value, callback) {
+                    var data = [];
+                    $.ajax({
+                        url: "{{ url('taxref.search.name') }}?bearer={{ jwt.token }}",
+                        type: "POST",
+                        dataType: "json",
+                        data: { "name": value },
+                        success: function (response) {
+                            callback(value, response);
+                        }
+                    });
+                },
+            });
+
+            /**************************
+             * MAPS
+             ***************************************/
+            var map;
+            var polygon;
+
+            map = new GMaps({
+                div: '#google-maps',
+                lat: 46.52863469527167,
+                lng: 2.43896484375,
+                zoom: 6,
+                fullscreenControl : false,
+                streetViewControl : false,
+                mapTypeControl: false,
+                click: function(e) {
+                    //placeMarker(e.latLng);
+                },
+            });
+
+            /**************************
+             * Geolocalisation
+             ***************************************/
+            var geoZoom = $('#map-geoloc-zoom');
+
+            geoZoom.on('click', function(e){
+                e.preventDefault();
+                GMaps.geolocate({
+                    success: function(position) {
+                        map.setCenter(position.coords.latitude, position.coords.longitude);
+                        map.setZoom(15);
+                    },
+                    error: function(error) {
+                        console.log('Geolocation failed: '+error.message);
+                    },
+                    not_supported: function() {
+                        alert("Votre navigateur ne supporte pas la géolocalisation");
+                    }
+                });
+            });
+
+            /**************************
+             * search form management
+             ***************************************/
+            var actionSearch    = $('#action-map-search');
+            var actionFilter    = $('#action-map-filter');
+            var formSearch      = $('#search-map-widget');
+            var extraFilter     = $('#extra-filter');
+            var bird            = $('#search-bird');
+            var department      = $('#extra-filter select');
+
+            // Update map with all observations when page are finish to load
+            updateMapsWithObservations('', 0);
+
+            // Submit form by clinking on search button
+            actionSearch.on('click', function(e){
+                e.preventDefault();
+                formSearch.submit();
+            });
+
+            // Show or hide filter additional menu
+            actionFilter.on('click', function(e){
+               e.preventDefault();
+                extraFilter.toggle();
+                var arrowItem = actionFilter.find('i');
+                if(arrowItem.html() == 'keyboard_arrow_down'){
+                    arrowItem.html('keyboard_arrow_up');
+                }else{
+                    arrowItem.html('keyboard_arrow_down');
+                }
+            });
+
+            // When user submit form
+
+            formSearch.on('submit',function(e){
+                e.preventDefault();
+                updateMapsWithObservations(bird.val(), department.val());
+            });
+
+            /**
+             * Update current maps with observations generate with filters
+             *
+             * @param bird
+             * @param department
+             */
+            function updateMapsWithObservations(bird, department){
+                var data = {bird: bird, department: department};
+                $.post( "{{ url('obs.search') }}?bearer={{ jwt.token }}", data , function( response ) {
+                    map.removePolygons();
+                    map.removeMarkers();
+                    $.each(response, function(index, item) {
+                        drawRect(item.latitude, item.longitude);
+                    });
+                });
+            }
+
+            /**
+             * Draw rectangle
+             *
+             * @param lat
+             * @param lng
+             * @param width
+             * @param height
+             * @param color
+             */
+            function drawRect(lat, lng) {
+                var NORTH       = 0;
+                var WEST        = -90;
+                var SOUTH       = 180;
+                var EAST        = 90;
+                var distance    = 3000; // 3Km
+
+                var center = new google.maps.LatLng(lat, lng);
+                var north = google.maps.geometry.spherical.computeOffset(center, distance / 2, NORTH);
+                var south = google.maps.geometry.spherical.computeOffset(center, distance / 2, SOUTH);
+                var northEast = google.maps.geometry.spherical.computeOffset(north, distance / 2, EAST);
+                var northWest = google.maps.geometry.spherical.computeOffset(north, distance / 2, WEST);
+                var southEast = google.maps.geometry.spherical.computeOffset(south, distance / 2, EAST);
+                var southWest = google.maps.geometry.spherical.computeOffset(south, distance / 2, WEST);
+                var path = [northEast, northWest, southWest, southEast];
+
+                polygon = map.drawPolygon({
+                    paths: path,
+                    strokeColor: '#f67d79',
+                    strokeOpacity: 0.9,
+                    strokeWeight: 1,
+                    fillColor: '#eec0b7',
+                    fillOpacity: 0.5,
+                });
+            }
+
+        });
+    </script>
+{% endblock %}
