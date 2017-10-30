@@ -217,9 +217,26 @@
                     map.removePolygons();
                     map.removeMarkers();
                     $.each(response, function(index, item) {
-                        drawRect(item.latitude, item.longitude);
+                        var location = new google.maps.LatLng(item.latitude, item.longitude);
+                        drawRect(location);
+                        placeMarker(location);
                     });
                     $('#eltlist').html(response.html);
+                });
+            }
+
+            /**
+             * Add custom marker for position
+             * @param location
+             */
+            function placeMarker(location){
+                map.addMarker({
+                    position: location,
+                    icon: "{{ asset('assets/img/marker.png') }}",
+                    title: 'cliquez de nouveau sur la localisation pour la valider',
+                    click: function(e) {
+                        // TO DO !
+                    }
                 });
             }
 
@@ -232,16 +249,15 @@
              * @param height
              * @param color
              */
-            function drawRect(lat, lng) {
+            function drawRect(location) {
                 var NORTH       = 0;
                 var WEST        = -90;
                 var SOUTH       = 180;
                 var EAST        = 90;
                 var distance    = 3000; // 3Km
 
-                var center = new google.maps.LatLng(lat, lng);
-                var north = google.maps.geometry.spherical.computeOffset(center, distance / 2, NORTH);
-                var south = google.maps.geometry.spherical.computeOffset(center, distance / 2, SOUTH);
+                var north = google.maps.geometry.spherical.computeOffset(location, distance / 2, NORTH);
+                var south = google.maps.geometry.spherical.computeOffset(location, distance / 2, SOUTH);
                 var northEast = google.maps.geometry.spherical.computeOffset(north, distance / 2, EAST);
                 var northWest = google.maps.geometry.spherical.computeOffset(north, distance / 2, WEST);
                 var southEast = google.maps.geometry.spherical.computeOffset(south, distance / 2, EAST);
@@ -256,6 +272,7 @@
                     fillColor: '#eec0b7',
                     fillOpacity: 0.5,
                 });
+
             }
 
         });
