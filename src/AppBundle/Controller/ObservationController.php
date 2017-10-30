@@ -109,20 +109,6 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/liste", name="observation.list")
-     * @Method({"GET"})
-     */
-    public function showListAction(Request $request, $page = 1)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $obs = $em->getRepository('AppBundle:Observation')->getValideObservations($page,$this->getParameter('list_limit'));
-        return $this->render('observation/list.html.twig', [
-            'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
-            'obslist' => $obs->getIterator()
-        ]);
-    }
-
-    /**
      * @Route("/vos-observations/brouillon", name="observation.me.draft")
      * @Security("is_granted('ROLE_OBSERVER')")
      * @Method({"GET"})
