@@ -217,7 +217,7 @@ class ObservationRepository extends EntityRepository
             ->where('o.status = :status')->setParameter('status',Observation::VALIDATED);
 
         if(!empty($speciment)){
-            $query->andwhere('t.common_name = :specimen')->setParameter('specimen', $speciment);
+            $query->andwhere('t.taxon_sc = :specimen')->setParameter('specimen', $speciment);
         }
 
         if(!empty($department)){

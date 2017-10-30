@@ -135,8 +135,10 @@ class ObservationController extends Controller
         $department = (int) $request->get('department');
         $result         = array();
 
+        $latin_name = substr($specimen, ($p = strpos($specimen, '(')+1), strrpos($specimen, ')')-$p);
+
         $em = $this->getDoctrine()->getManager();
-        $observations = $em->getRepository('AppBundle:Observation')->getObservationsWithFilter($specimen, $department);
+        $observations = $em->getRepository('AppBundle:Observation')->getObservationsWithFilter($latin_name, $department);
 
         foreach ($observations as $observation){
             $result[] = array(
