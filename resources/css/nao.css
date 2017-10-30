@@ -256,6 +256,16 @@ a.small{
     color: #555555;
 }
 
+.btn.green1 {
+    background-color: #009688;
+    color: #FFFFFF;
+}
+
+.btn.green1:hover {
+    background-color: #009688;
+    color: #FFFFFF;
+}
+
 .btn.social,
 .btn-large.social,
 .col.social{
@@ -1848,6 +1858,10 @@ form#search-map-widget #extra-filter{
     #dropSpecimen{
         width: 96%;
         left: 8px;
+    }
+
+    ul.profil-details > li:last-child{
+        text-align: center;
     }
 }
 
