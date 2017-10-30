@@ -79,16 +79,16 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/carte", name="observation.map")
+     * @Route("/", name="observation.map")
      * @Method({"GET"})
      */
-    public function showMapAction()
+    public function showMapAction(Request $request)
     {
         return $this->render('observation/map.html.twig');
     }
 
     /**
-     * @Route("/carte/{id}", name="observation.detail", requirements={"id": "\d+"})
+     * @Route("/{id}", name="observation.detail", requirements={"id": "\d+"})
      * @ParamConverter("observation", options={"mapping": {"id": "id"}})
      * @Method({"GET"})
      */

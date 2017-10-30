@@ -1049,6 +1049,10 @@ footer ul.social > li:not(:first-child) {
     min-height: 100px;
 }
 
+.card.observation.fix-height {
+    height: 180px;
+}
+
 .card.observation form{
     padding: 0;
     min-height: 0 !important;
@@ -1056,6 +1060,8 @@ footer ul.social > li:not(:first-child) {
 
 .card.observation p.coordinate {
     margin-top: 15px;
+    position: absolute;
+    bottom: 15px
 }
 
 form#reject textarea{

@@ -145,6 +145,12 @@ class ObservationController extends Controller
                 'longitude' => $observation->getLongitude()
             );
         }
+
+        $html = $this->render('observation/list.html.twig', [
+            'obslist' => $observations,
+        ])->getContent();
+        $result['html'] = $html;
+
         return new JsonResponse($result);
     }
 

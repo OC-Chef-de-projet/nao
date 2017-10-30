@@ -28,8 +28,8 @@
             </div>
         </section>
         <ul class="tabs tabs-transparent">
-            <li class="tab"><a class="active" href="{{ path('observation.map') }}" target="_self">{{ 'map'|trans }}</a></li>
-            <li class="tab"><a href="{{ path('observation.list') }}" target="_self">{{ 'list'|trans }}</a></li>
+            <li class="tab"><a class="active" href="#show_map" >{{ 'map'|trans }}</a></li>
+            <li class="tab"><a href="#show_list" >{{ 'list'|trans }}</a></li>
         </ul>
     </header>
 {% endblock %}
@@ -41,7 +41,7 @@
             <div class="nav-wrapper">
                 <div class="col s12">
                     <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
-                    <span class="breadcrumb">{{ 'map'|trans }}</span>
+                    <span class="breadcrumb">{{ 'the_observations'|trans }}</span>
                 </div>
             </div>
         </nav>
@@ -49,27 +49,46 @@
     </section>
 
     <!-- PAGE CONTENT -->
-    <main class="container full-map">
-        <section>
-            <div class="map-container">
-                <form id="search-map-widget" method="post">
-                    <a id="action-map-search" href="#" class="light-2"><i class="material-icons">search</i></a>
-                    <input type="text" id="search-bird" name="search-bird" autocomplete="off" placeholder="{{ 'search_by_bird'|trans }}"/>
-                    <a id="action-map-filter" href="#" class="bleen"><i class="material-icons">keyboard_arrow_down</i></a>
-                    <div id="extra-filter" class="input-field">
-                        {% include 'common/form/dep.html.twig' only %}
-                        <label>{{ 'department'|trans }}</label>
+
+    <!-- MAP -->
+    <div id="show_map" class="col s12">
+        <main class="container full-map">
+            <section>
+                <div class="map-container">
+                    <form id="search-map-widget" method="post">
+                        <a id="action-map-search" href="#" class="light-2"><i class="material-icons">search</i></a>
+                        <input type="text" id="search-bird" name="search-bird" autocomplete="off" placeholder="{{ 'search_by_bird'|trans }}"/>
+                        <a id="action-map-filter" href="#" class="bleen"><i class="material-icons">keyboard_arrow_down</i></a>
+                        <div id="extra-filter" class="input-field">
+                            {% include 'common/form/dep.html.twig' only %}
+                            <label>{{ 'department'|trans }}</label>
+                        </div>
+                    </form>
+                    <ul id="dropSpecimen" class="autocomplete-content dropdown-content"></ul>
+                    <div id="google-maps"></div>
+                    <ul id="action-map-widget">
+                        <li><a href="#" id="map-geoloc-zoom" class="btn-floating btn-large waves-effect waves-light white"><i class="material-icons">gps_fixed</i></a></li>
+                        <li><a href="{{ path('observation.create') }}" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a></li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- LIST -->
+    <div id="show_list" class="col s12">
+        <main class="container marge-top">
+            <section>
+                <section>
+                    <div class="row">
+                        <div id="eltlist"></div>
                     </div>
-                </form>
-                <ul id="dropSpecimen" class="autocomplete-content dropdown-content"></ul>
-                <div id="google-maps"></div>
-                <ul id="action-map-widget">
-                    <li><a href="#" id="map-geoloc-zoom" class="btn-floating btn-large waves-effect waves-light white"><i class="material-icons">gps_fixed</i></a></li>
-                    <li><a href="{{ path('observation.create') }}" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a></li>
-                </ul>
-            </div>
-        </section>
-    </main>
+                </section>
+            </section>
+        </main>
+    </div>
+
+
 
 
 {% endblock %}
@@ -78,6 +97,7 @@
     {{ parent() }}
     <script>
         $(function () {
+            $('ul.tabs').tabs();
 
             /**************************
              * Autocomplete Bird
@@ -199,6 +219,7 @@
                     $.each(response, function(index, item) {
                         drawRect(item.latitude, item.longitude);
                     });
+                    $('#eltlist').html(response.html);
                 });
             }
 

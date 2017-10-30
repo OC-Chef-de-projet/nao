@@ -51,7 +51,7 @@
             </trans-unit>
             <trans-unit id="observation_map_title">
                 <source>observation_map_title</source>
-                <target>Carte des observations d'oiseaux en France</target>
+                <target>Observations d'oiseaux en France</target>
             </trans-unit>
             <trans-unit id="observation_list_title">
                 <source>observation_list_title</source>
@@ -569,6 +569,10 @@
                 <source>observations</source>
                 <target>Observations</target>
             </trans-unit>
+            <trans-unit id="the_observations">
+                <source>the_observations</source>
+                <target>Les observations</target>
+            </trans-unit>
             <trans-unit id="observation">
                 <source>observation</source>
                 <target>Observation</target>
@@ -591,7 +595,7 @@
             </trans-unit>
             <trans-unit id="observation_map_main_title">
                 <source>observation_map_main_title</source>
-                <target>Carte des observations</target>
+                <target>Les observations</target>
             </trans-unit>
             <trans-unit id="observation_map_secondary_title">
                 <source>observation_map_secondary_title</source>
@@ -668,6 +672,10 @@
             <trans-unit id="all_department">
                 <source>all_department</source>
                 <target>Tous les départements</target>
+            </trans-unit>
+            <trans-unit id="no_observation_found_in_zone">
+                <source>no_observation_found_in_zone</source>
+                <target>Il n'y a pas d'observation correspondante aux critères de votre recherche.</target>
             </trans-unit>
 
             <!-- HOMEPAGE -->

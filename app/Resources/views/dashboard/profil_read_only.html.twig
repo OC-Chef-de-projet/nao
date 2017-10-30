@@ -1,4 +1,5 @@
 {% set bgwhite = true %}
+
 {% set homeshare = true %}
 
 {% extends "common/template/base.html.twig" %}
@@ -15,7 +16,7 @@
 {% block header %}
     <header class="classic">
         <!-- NAVIGATION -->
-        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'legacy'} %}
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'profil_view_page_title'|trans({'%name%' : user.name})} %}
     </header>
 {% endblock %}
 

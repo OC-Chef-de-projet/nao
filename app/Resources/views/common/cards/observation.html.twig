@@ -2,8 +2,8 @@
     <div class="card-content">
         <div class="row no-pad-bot">
             <div class="col s6">
-                <span class="card-title">{{ observation.taxref.commonName }}</span>
-                <p class="caption light-2">
+                <h2>{{ observation.taxref.commonName }}</h2>
+                <p class="caption light-2-no-hov">
                     {{ 'observe_at'|trans({'%date%': observation.watched|date("d/m/Y")}) }}<br />
                     {{ 'in_place'|trans({'%place%': observation.place}) }}
                 </p>
