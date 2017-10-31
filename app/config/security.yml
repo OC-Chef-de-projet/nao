@@ -40,10 +40,14 @@ security:
                     require_previous_session: false
                     #username_parameter: email
 
-
         post_paginate:
             methods: [POST]
             pattern: ^/API/post/paginate
+            security: false
+
+        post_observations:
+            methods: [POST]
+            pattern: ^/API/observation/search
             security: false
 
         api:
