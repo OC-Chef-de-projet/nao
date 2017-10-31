@@ -120,7 +120,7 @@ class FranceRegion
     /**
      * @var decimal
      *
-     * @ORM\Column(name="distance", type="decimal", precision=3, scale=2)
+     * @ORM\Column(name="distance", type="decimal", precision=3, scale=2, nullable=true)
      */
     private $distance;
 

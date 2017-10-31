@@ -46,7 +46,6 @@ class LoadTaxrefData extends Fixture implements FixtureInterface, ContainerAware
                 continue;
             }
             $count++;
-            if ($count >= 100) break;
             $line = fgetcsv($csv, 0, ';');
             if (empty($line)) {
                 continue;
