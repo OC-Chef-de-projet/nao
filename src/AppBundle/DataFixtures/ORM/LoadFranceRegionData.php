@@ -60,6 +60,8 @@ class LoadFranceRegionData extends Fixture implements FixtureInterface, Containe
             $franceRegion->setLongitude($line[12]);
 		if(isset($line[13]) && !empty($line[13])){
 		    $franceRegion->setDistance($line[13]);
+		} else {
+		    $franceRegion->setDistance(0);
 		}
 
             $manager->persist($franceRegion);
