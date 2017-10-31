@@ -186,6 +186,19 @@
                 formSearch.submit();
             });
 
+            // submit by pressing enter
+            bird.on('keyup', function (event) {
+                if (event.which == 13) {
+                    formSearch.submit();
+                }
+            });
+
+            // Refresh when changing department
+            $('select').on('change', function() {
+                formSearch.submit();
+            })
+;
+
             // Show or hide filter additional menu
             actionFilter.on('click', function(e){
                e.preventDefault();

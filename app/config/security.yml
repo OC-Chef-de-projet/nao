@@ -50,6 +50,11 @@ security:
             pattern: ^/API/observation/search
             security: false
 
+        post_taxref:
+            methods: [POST]
+            pattern: ^/API/taxref/search
+            security: false
+
         api:
             pattern:   ^/API
             stateless: true
