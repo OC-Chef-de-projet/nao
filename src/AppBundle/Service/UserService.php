@@ -116,8 +116,10 @@ class UserService
            $this->newsletter->subscribe($user->getEmail());
         }
 
-        // Send mail with activation link
-        $this->mailer->sendActivationAccount($user);
+        // Send mail with activation link only for user register with email
+        if(is_null($user->getFacebookId()) && is_null($user->getGoogleId())){
+            $this->mailer->sendActivationAccount($user);
+        }
     }
 
     /**

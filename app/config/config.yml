@@ -11,7 +11,7 @@ parameters:
     users_directory: '%kernel.project_dir%/web/images/users'
     obseravtions_directory: '%kernel.project_dir%/web/images/observations'
     list_limit: 10
-    gps_distance: 10 # Distance between current position and obsersations
+    gps_distance: 10 # Distance between current position and observations
 
 framework:
     #esi: ~
