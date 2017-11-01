@@ -37,6 +37,9 @@
 
         _init_navigation();
 
+        //$('header section').offset().top = 64
+        // hauteur nav = 64
+
         /**
          * Let's init navigation system
          * @private
@@ -53,6 +56,7 @@
                 constrainWidth: false,
                 belowOrigin: true
             });
+
             $('#btn-float-add').css('top', header.height.top + 'px');
         }
 
@@ -102,6 +106,15 @@
                     navLogo.removeClass('activated');
                     navSmallTitle.removeClass('activated');
                     PageTitle.removeClass('activated');
+                }
+
+                // switch box shadow header to nav when collapse is hide by navbar
+                if(!tabs.length){
+                    if($(window).scrollTop() > $('header section').height() - 7 ){
+                        $('header.collapse nav.sticky').addClass('box-shadow');
+                    }else{
+                        $('header.collapse nav.sticky').removeClass('box-shadow');
+                    }
                 }
             }
 
