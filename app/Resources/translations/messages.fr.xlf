@@ -677,6 +677,14 @@
                 <source>no_observation_found_in_zone</source>
                 <target>Il n'y a pas d'observation correspondante aux critères de votre recherche.</target>
             </trans-unit>
+            <trans-unit id="x_observation_found_in_zone">
+                <source>x_observation_found_in_zone</source>
+                <target>Il y a %nombre% observation(s) trouvée(s) correspondante aux critères de votre recherche. Consultez la liste pour plus de détails</target>
+            </trans-unit>
+            <trans-unit id="x_observation_in_site">
+                <source>x_observation_in_site</source>
+                <target>%nombre% observations ont été validées sur le site. Consultez la liste pour plus de détails</target>
+            </trans-unit>
 
             <!-- HOMEPAGE -->
             <trans-unit id="homepage_main_title">

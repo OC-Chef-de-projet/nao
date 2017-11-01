@@ -148,10 +148,21 @@ class ObservationController extends Controller
             );
         }
 
+        // Generate observations list
         $html = $this->render('observation/list.html.twig', [
             'obslist' => $observations,
         ])->getContent();
         $result['html'] = $html;
+
+        // Return message after searching
+        if(empty($specimen) && $department == 0 ){
+            $result['message'] = $this->get('translator')->trans('x_observation_in_site', array('%nombre%' => sizeof($observations)));
+        }else{
+            $result['message'] = ( sizeof($observations) > 0 ) ?
+                $this->get('translator')->trans('x_observation_found_in_zone', array('%nombre%' => sizeof($observations))) :
+                $this->get('translator')->trans('no_observation_found_in_zone');
+        }
+
 
         return new JsonResponse($result);
     }

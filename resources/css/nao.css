@@ -1490,6 +1490,20 @@ form#search-map-widget #extra-filter{
     width: 45%
 }
 
+.map-container .map-result-overlay{
+    position: absolute;
+    z-index: 15;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.54);
+    height: 100%;
+    width: 25%;
+    color: #FFFFFF;
+    padding: 25% 20px;
+    vertical-align: middle;
+    display: none;
+}
+
 /* ====================================
     Responsive
     =============================================*/
@@ -1866,6 +1880,14 @@ form#search-map-widget #extra-filter{
     }
 
     ul.profil-details > li:last-child{
+        text-align: center;
+    }
+
+    .map-container .map-result-overlay{
+        z-index: 14;
+        height: 100px;
+        width: 100%;
+        padding: 80px 20px;
         text-align: center;
     }
 }

@@ -55,6 +55,7 @@
         <main class="container full-map">
             <section>
                 <div class="map-container">
+                    <div class="map-result-overlay"></div>
                     <form id="search-map-widget" method="post">
                         <a id="action-map-search" href="#" class="light-2"><i class="material-icons">search</i></a>
                         <input type="text" id="search-bird" name="search-bird" autocomplete="off" placeholder="{{ 'search_by_bird'|trans }}"/>
@@ -87,9 +88,6 @@
             </section>
         </main>
     </div>
-
-
-
 
 {% endblock %}
 
@@ -132,6 +130,7 @@
              ***************************************/
             var map;
             var polygon;
+            var markers = [];
 
             map = new GMaps({
                 div: '#google-maps',
@@ -141,8 +140,16 @@
                 fullscreenControl : false,
                 streetViewControl : false,
                 mapTypeControl: false,
-                click: function(e) {
-                    //placeMarker(e.latLng);
+                zoomControl: false,
+                zoom_changed: function(e) {
+                    var zoom = map.getZoom();
+                    for(i = 0; i < map.markers.length; i++){
+                        if(zoom > 10){
+                            map.markers[i].setVisible(false);
+                        }else{
+                            map.markers[i].setVisible(true);
+                        }
+                    }
                 },
             });
 
@@ -176,6 +183,7 @@
             var extraFilter     = $('#extra-filter');
             var bird            = $('#search-bird');
             var department      = $('#extra-filter select');
+            var mapOverlay      = $('.map-result-overlay');
 
             // Update map with all observations when page are finish to load
             updateMapsWithObservations('', 0);
@@ -212,7 +220,6 @@
             });
 
             // When user submit form
-
             formSearch.on('submit',function(e){
                 e.preventDefault();
                 updateMapsWithObservations(bird.val(), department.val());
@@ -235,6 +242,8 @@
                         placeMarker(location);
                     });
                     $('#eltlist').html(response.html);
+                    mapOverlay.html(response.message);
+                    mapOverlay.show();
                 });
             }
 
@@ -246,21 +255,13 @@
                 map.addMarker({
                     position: location,
                     icon: "{{ asset('assets/img/marker.png') }}",
-                    title: 'Zoomer ici pour voir la zone d\'observation',
-                    click: function(e) {
-                        // TO DO !
-                    }
+                    title: 'Zoomer ici pour voir la zone d\'observation'
                 });
             }
 
             /**
              * Draw rectangle
-             *
-             * @param lat
-             * @param lng
-             * @param width
-             * @param height
-             * @param color
+             * @param location
              */
             function drawRect(location) {
                 var NORTH       = 0;
@@ -285,7 +286,6 @@
                     fillColor: '#eec0b7',
                     fillOpacity: 0.5,
                 });
-
             }
 
         });
