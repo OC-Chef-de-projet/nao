@@ -352,18 +352,37 @@ class ObservationService
      */
     public function reject(Observation $observation, $data)
     {
+
+        // Set to REFUSED
         $naturalist = $this->ts->getToken()->getUser();
         $observation->setNaturalist($naturalist);
         $observation->setValidated(new \DateTime('now'));
         $observation->setStatus(Observation::REFUSED);
         $this->em->persist($observation);
 
+        // Duplicate record and set it as DRAFT
+        $draft = new Observation();
+        $draft->setStatus(Observation::DRAFT);
+        $draft->setValidated(null);
+        $draft->setUser($observation->getUser());
+        $draft->setTaxref($observation->getTaxref());
+        $draft->setWatched($observation->getWatched());
+        $draft->setPlace($observation->getPlace());
+        $draft->setLatitude($observation->getLatitude());
+        $draft->setLongitude($observation->getLongitude());
+        $draft->setImagePath($observation->getImagePath());
+        $draft->setComments($observation->getComments());
+        $draft->setIndividuals($observation->getIndividuals());
+        $this->em->persist($draft);
+
+        // Notice Observer
         $notice = new Notification();
         $notice->setContent($data['reason']);
         $notice->setFromUser($naturalist);
         $notice->setToUser($observation->getUser());
         $this->em->persist($notice);
 
+        // Warn admin
         if(isset($data['warn_admin']) && !empty($data['warn_admin'])) {
             $admins = $this->em->getRepository(User::class)->searchUsersByRole(1,'ROLE_ADMIN');
             foreach($admins as $admin) {
