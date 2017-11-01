@@ -331,6 +331,9 @@ class User implements UserInterface
      */
     public function getImagePath()
     {
+        if(is_null($this->image_path) || empty($this->image_path)){
+            $this->image_path = 'avatar-default.png';
+        }
         return 'images/users/' . $this->image_path;
     }
 
