@@ -13,6 +13,7 @@
                     <div class="col s8  no-pad-right">
                         <div class="col s12 no-pad-right">
                             <b><span class="title">{{ post.title }}</span></b>
+                            <br />
                         </div>
                         <div class="col s12">
                             {% if post.publishedAt != null %}
@@ -42,7 +43,7 @@
     </div>
 {% endfor %}
 
-
+<!-- MODAL -->
 <div id="delete-post" class="modal">
     <div class="modal-content">
         <h4>{{ 'want_delete_article'|trans }}</h4>
@@ -57,4 +58,3 @@
 </div>
 
 
-<!-- MODAL -->

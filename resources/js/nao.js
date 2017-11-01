@@ -33,12 +33,10 @@
         var tabs                = $('header ul.tabs');
         var HeaderMainTitle     = $('#header-main-title');
         var PageTitle           = $('.page-heading div.heading');
+        var contentSection      = $('header section');
         var to_top_offset       = 5;
 
         _init_navigation();
-
-        //$('header section').offset().top = 64
-        // hauteur nav = 64
 
         /**
          * Let's init navigation system
@@ -93,7 +91,7 @@
                 }else{
                     var positionMainTitleToTop = tabs.offset().top - $(window).scrollTop();
                 }
-                
+
                 /**
                  * When the title is over the screen
                  * We can display sub title in the navbar and hide main logo for mobile
@@ -109,7 +107,8 @@
                 }
 
                 // switch box shadow header to nav when collapse is hide by navbar
-                if(!tabs.length){
+
+                if(!tabs.length && !header.hasClass('admin')){
                     if($(window).scrollTop() > $('header section').height() - 7 ){
                         $('header.collapse nav.sticky').addClass('box-shadow');
                     }else{
@@ -141,10 +140,6 @@
                     navSmallTitle.removeClass('activated');
                 }
             }
-
-            /*if(tabs.hasClass('pinned')){
-                $('#btn-float-add').css('top', '100px');
-            }*/
         }
 
         /**

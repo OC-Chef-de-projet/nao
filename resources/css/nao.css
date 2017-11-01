@@ -7,7 +7,9 @@
 /* ====================================
     Materialize checkbox
     =============================================*/
-
+[type=checkbox]+label{
+    margin-left: 10px;
+}
 .switch label input[type="checkbox"]:checked + .lever {
     background-color: #DD2C00;
 }
@@ -632,7 +634,7 @@ header nav {
     -webkit-box-shadow: none;
     width: 100%;
     z-index: 999;
-    height: 56px;
+    height: 64px !important;
 }
 
 #nav-logo {
@@ -689,6 +691,7 @@ header nav #nav-small-title.activated {
     display: none;
 }
 
+.navbar-fixed,
 nav.nav-extended .nav-wrapper {
     height: 64px !important;
 }
@@ -1507,6 +1510,128 @@ form#search-map-widget #extra-filter{
 }
 
 /* ====================================
+    Admin
+    =============================================*/
+header.classic.admin{
+    height: 64px !important;
+}
+
+header.collapse.admin{
+    height: 115px !important;
+}
+
+header.admin,
+header.admin nav.sticky,
+header.admin ul.tabs {
+    background-color: #3F51B5 !important;
+    z-index: 997;
+}
+
+.header-overlap {
+    top: 80px;
+    left: 90%;
+    position: absolute;
+}
+
+#searchuser {
+    border-bottom: none;
+}
+
+#searchuser.active  {
+    border-bottom: none;
+    box-shadow: none;
+}
+
+
+.pagination li.active {
+    background-color: #3F51B5;
+}
+
+.input-field .pr .header-overlap {
+    top: 80px;
+    left: 90%;
+    position: absolute;
+}
+
+efix.active {
+    color: #3F51B5;
+}
+
+.dropdown-content li > a {
+    color: black;
+}
+
+.card:hover {
+    z-index: 1 !important;
+}
+
+a.btn-link,
+a:hover.btn-link {
+    color: #FF3D00;
+    text-transform: uppercase;
+}
+
+btn-link-icon {
+    margin-top: 10px;
+}
+
+.input-field label {
+    width: 100%
+}
+
+.header-overlap {
+    top: 90px;
+    left:90%;
+    position: absolute;
+}
+
+.grecaptcha-badge {
+    display: none;
+}
+
+.post-card {
+    min-height: 150px;
+    max-height: 150px;
+}
+
+
+@media all and (max-width: 600px) {
+    .post-link {
+        font-size: 14px;
+    }
+
+    .admin-container  {
+        width: 100%;
+    }
+    .col.s12 > .btn {
+        width: 100%;
+    }
+}
+
+.fixed-action-btn {
+    bottom: 0px;
+    top: 65px;
+    right: 190px;
+    width: 56px;
+    height: 56px;
+}
+
+.observation-validate-content {
+    margin: 15px 0 10px 0;
+    padding-bottom: 25px;
+}
+
+.observation-validate-content img{
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+
+.observation-validate-detail{
+    padding-left: 60px;
+}
+
+/* ====================================
     Responsive
     =============================================*/
 
@@ -1892,6 +2017,13 @@ form#search-map-widget #extra-filter{
         padding: 80px 20px;
         text-align: center;
     }
+
+    .fixed-action-btn {
+        position: fixed;
+        top: 60%;
+        left: 82%;
+        z-index: 999999;
+    }
 }
 
 /*
@@ -2010,124 +2142,6 @@ form#search-map-widget #extra-filter{
     .hide-on-small-only{
         display: none !important;
     }
-}
-
-/* ====================================
-    Admin
-    =============================================*/
-header.admin,
-header.admin nav.sticky,
-header.admin ul.tabs {
-    background-color: #3F51B5 !important;
-    z-index: 997;
-}
-
-header.admin nav.sticky{
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
-.header-overlap {
-    top: 80px;
-    left: 90%;
-    position: absolute;
-}
-
-#searchuser {
-    border-bottom: none;
-}
-
-#searchuser.active  {
-    border-bottom: none;
-    box-shadow: none;
-}
-
-
-.pagination li.active {
-    background-color: #3F51B5;
-}
-
-.input-field .pr .header-overlap {
-    top: 80px;
-    left: 90%;
-    position: absolute;
-}
-
-efix.active {
-    color: #3F51B5;
-}
-
-.dropdown-content li > a {
-    color: black;
-}
-
-.card:hover {
-    z-index: 1 !important;
-}
-
-a.btn-link,
-a:hover.btn-link {
-    color: #FF3D00;
-    text-transform: uppercase;
-}
-
-btn-link-icon {
-    margin-top: 10px;
-}
-
-.input-field label {
-    width: 100%
-}
-
-.header-overlap {
-    top: 90px;
-    left:90%;
-    position: absolute;
-}
-
-.grecaptcha-badge {
-    display: none;
-}
-
-.post-card {
-    min-height: 150px;
-    max-height: 150px;
-}
-
-
-@media all and (max-width: 600px) {
-    .post-link {
-        font-size: 14px;
-    }
-
-    .admin-container  {
-        width: 100%;
-    }
-    .col.s12 > .btn {
-        width: 100%;
-    }
-}
-
-
-.fixed-action-btn {
-    bottom: 0px;
-    top: 60px;
-}
-
-
-.observation-validate-content {
-    margin: 15px 0 10px 0;
-    padding-bottom: 25px;
-}
-
-.observation-validate-content img{
-    float: left;
-    width: 50px;
-    height: 50px;
-}
-
-.observation-validate-detail{
-    padding-left: 60px;
 }
 
 

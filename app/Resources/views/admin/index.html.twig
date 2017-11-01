@@ -3,7 +3,7 @@
 {% block title %}{{ 'admin_dashboard'|trans }}{% endblock %}
 
 {% block header %}
-    <header class="collapse admin">
+    <header class="classic admin">
         <!-- NAVIGATION -->
         {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_dashboard' , 'admin' : true} %}
     </header>
@@ -27,7 +27,6 @@
 
     <main class="container marge-top admin">
         <section>
-
             <div class="row">
                 <!-- Manager user -->
                 <div class="col s12 m4">
@@ -74,10 +73,8 @@
                         </a>
                     </div>
                 </div>
-
-
+            </div>
         </section>
-
     </main>
 {% endblock %}
 
