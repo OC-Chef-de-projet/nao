@@ -59,10 +59,7 @@
                                         <div class="col s12 m6 right">
                                             <p class="caption light-2-no-hov">{{ 'published_at'|trans({'%date%': article.publishedAt|date("d/m/Y")}) }}</p>
                                             <br />
-                                            <p>{{ article.content|raw }}</p>
-                                            {% autoescape off %}
-                                                {{ article.content }}
-                                            {% endautoescape %}
+                                            <p>{% autoescape 'html' %}{{ article.content|raw }}{% endautoescape %}</p>
                                             <br />
                                         </div>
                                         <div class="col s12 m6 right">
