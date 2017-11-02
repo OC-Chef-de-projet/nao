@@ -1552,6 +1552,10 @@ header.admin ul.tabs {
     background-color: #3F51B5;
 }
 
+.pagination.normal li.active {
+    background-color: #009688;
+}
+
 .input-field .pr .header-overlap {
     top: 80px;
     left: 90%;

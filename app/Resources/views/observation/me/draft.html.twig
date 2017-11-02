@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    {% include 'admin/paginate.html.twig' %}
+                    {% include 'admin/paginate.html.twig' with {'pnormal' :true} %}
                 </div>
             {% else %}
                 <div class="row">

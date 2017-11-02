@@ -2,8 +2,7 @@
 
 {% if paginate.maxPages > 1 %}
 <div class="container center-align">
-    <ul class="pagination">
-
+    <ul {% if pnormal is defined %}class="pagination normal"{% else %}class="pagination"{% endif %}>
         <!-- previous -->
         <li id="chevron_left" {{ paginate.current <= 1 ? 'class="disabled"': 'class="waves-effect"' }}>
             <a id="prevpage" href="javascript:void(0)">
