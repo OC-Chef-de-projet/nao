@@ -47,14 +47,25 @@ class CommentRepository extends EntityRepository
 
     public function getCommentsValidate()
     {
-
         $query = $this->createQueryBuilder('c')
             ->where('c.status = :status')
             ->setParameter('status',Comment::ACCEPTED)
             ->orderBy('c.created', 'DESC')
             ->getQuery()
             ->getResult();
+        return $query;
+    }
 
+    public function getCommentsValidateForPost($post_id)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->where('c.status = :status')
+            ->setParameter('status',Comment::ACCEPTED)
+            ->andWhere('c.post = :post')
+            ->setParameter('post',$post_id)
+            ->orderBy('c.created', 'DESC')
+            ->getQuery()
+            ->getResult();
         return $query;
     }
 

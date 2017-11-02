@@ -42,7 +42,7 @@ class BlogController extends Controller
 
         return $this->render('blog/detail.html.twig', array(
             'article'   => $post,
-            'comments'  => $em->getRepository('AppBundle:Comment')->getCommentsValidate()
+            'comments'  => $em->getRepository('AppBundle:Comment')->getCommentsValidateForPost($post->getId())
         ));
     }
 
