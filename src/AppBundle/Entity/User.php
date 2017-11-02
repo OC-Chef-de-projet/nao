@@ -334,7 +334,12 @@ class User implements UserInterface
         if(is_null($this->image_path) || empty($this->image_path)){
             $this->image_path = 'avatar-default.png';
         }
-        return 'images/users/' . $this->image_path;
+
+        if (is_null($this->getFacebookId()) && is_null($this->getGoogleId())){
+            return 'images/users/' . $this->image_path;
+        }else{
+            return $this->image_path;
+        }
     }
 
     /**
