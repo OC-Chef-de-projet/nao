@@ -1,4 +1,4 @@
 <li {% if current_route == 'homepage' %} class="active" {% endif %}><a href="{{ path('homepage') }}">{{ 'home'|trans }}</a></li>
-<li {% if current_route == 'observation' %} class="active" {% endif %}><a href="{{ path('observation.create') }}">{{ 'observer'|trans }}</a></li>
-<li {% if current_route == 'map' %} class="active" {% endif %}><a href="{{ path('observation.map') }}">{{ 'map'|trans }}</a></li>
-<li {% if current_route == 'about-us' %} class="active" {% endif %}><a href="{{ path('about') }}">{{ 'about'|trans }}</a></li>
+<li {% if current_route == 'observation.create' %} class="active" {% endif %}><a href="{{ path('observation.create') }}">{{ 'observer'|trans }}</a></li>
+<li {% if current_route == 'observation.map' %} class="active" {% endif %}><a href="{{ path('observation.map') }}">{{ 'map'|trans }}</a></li>
+<li {% if current_route == 'about' %} class="active" {% endif %}><a href="{{ path('about') }}">{{ 'about'|trans }}</a></li>

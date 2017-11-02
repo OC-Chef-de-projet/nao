@@ -1,5 +1,5 @@
 <li {% if current_route == 'blog' %} class="active" {% endif %}><a href="{{ path('blog') }}">{{ 'blog'|trans }}</a></li>
-<li {% if current_route == 'stay-connected' %} class="active" {% endif %}><a href="{{ path('stay.connected') }}">{{ 'stay_connected'|trans }}</a></li>
+<li {% if current_route == 'stay.connected' %} class="active" {% endif %}><a href="{{ path('stay.connected') }}">{{ 'stay_connected'|trans }}</a></li>
 <li {% if current_route == 'contact' %} class="active" {% endif %}><a href="{{ path('contact') }}">{{ 'contact'|trans }}</a></li>
 
 {% if user_is_logged %}
