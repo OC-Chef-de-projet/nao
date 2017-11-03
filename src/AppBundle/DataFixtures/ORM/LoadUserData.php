@@ -72,7 +72,7 @@ class LoadUserData extends Fixture implements FixtureInterface, ContainerAwareIn
         for($i = 0 ; $i < 5 ; $i++ ) {
             // Add admin
             $user = new User();
-            $user->setName('Administrateur_'.$i);
+            $user->setName($this->rand_name());
             $user->setEmail('admin'.$i.'@test.com');
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
             $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
@@ -84,7 +84,7 @@ class LoadUserData extends Fixture implements FixtureInterface, ContainerAwareIn
 
             // Add editor
             $user = new User();
-            $user->setName('Naturaliste_'.$i);
+            $user->setName($this->rand_name());
             $user->setEmail('natur'.$i.'@test.com');
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
             $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
@@ -97,7 +97,7 @@ class LoadUserData extends Fixture implements FixtureInterface, ContainerAwareIn
 
             // Add contributor
             $user = new User();
-            $user->setName('Observateur_'.$i);
+            $user->setName($this->rand_name());
             $user->setEmail('obs'.$i.'@test.com');
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
             $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
@@ -109,5 +109,37 @@ class LoadUserData extends Fixture implements FixtureInterface, ContainerAwareIn
             $manager->persist($user);
             $manager->flush();
         }
+    }
+
+    private function rand_name()
+    {
+        $names = [
+            'Iscander',
+            'Ishac',
+            'Isidore',
+            'Iskandre',
+            'Uveys',
+            'Uwais',
+            'Uwe',
+            'Uygar',
+            'Dean',
+            'Dembo',
+            'Denilson',
+            'Denis',
+            'Fenda',
+            'Ferdaous',
+            'Ferdinand',
+            'Ferial',
+            'Thessa',
+            'Thifaine',
+            'Thiphaine',
+            'Thomas',
+            'Thalya'
+        ];
+
+        $idx_name = rand(0,20);
+        $idx_surname = rand(0,20);
+
+        return $names[$idx_name].' '.$names[$idx_surname];
     }
 }
