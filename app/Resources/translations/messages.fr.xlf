@@ -685,6 +685,10 @@
                 <source>x_observation_in_site</source>
                 <target>%nombre% observations ont été validées sur le site. Consultez la liste pour plus de détails</target>
             </trans-unit>
+            <trans-unit id="observation_validation_notice">
+                <source>observation_validation_notice</source>
+                <target>Félicitations, votre observation a été validée.</target>
+            </trans-unit>
 
             <!-- HOMEPAGE -->
             <trans-unit id="homepage_main_title">
@@ -773,11 +777,11 @@
             </trans-unit>
             <trans-unit id="registration_have_account">
                 <source>registration_have_account</source>
-                <target>Déjà un compte ?</target>
+                <target>Déja un compte ?</target>
             </trans-unit>
             <trans-unit id="registration_success">
                 <source>registration_success</source>
-                <target>Votre demande de compte s'est envolée. Un email de confirmation vous a été envoyé. Pensez à regarder dans votre dossier Spam si vous ne recevez rien.</target>
+                <target>Votre demande de compte s'est envolée. Un email de confirmation vous a été envoyé.</target>
             </trans-unit>
 
             <!-- ACTIVATION PAGE -->
@@ -834,7 +838,7 @@
             </trans-unit>
             <trans-unit id="recovery_account_success">
                 <source>recovery_account_success</source>
-                <target>Nous venons de vous envoyer un email qui va vous permettre de choisir un nouveau mot de passe. Pensez à regarder dans votre dossier Spam si vous ne recevez rien.</target>
+                <target>Nous venons de vous envoyer un email qui va vous permettre de choisir un nouveau mot de passe.</target>
             </trans-unit>
 
             <!-- CHANGE PASSWORD PAGE -->

@@ -340,6 +340,16 @@ class ObservationService
         $observation->setValidated(new \DateTime('now'));
         $observation->setStatus(Observation::VALIDATED);
         $this->em->persist($observation);
+
+        // Notice Observer
+        $content = $this->translator->trans('observation_validation_notice', [], 'messages');
+
+        $notice = new Notification();
+        $notice->setContent($content);
+        $notice->setFromUser($naturalist);
+        $notice->setToUser($observation->getUser());
+        $this->em->persist($notice);
+
         $this->em->flush();
 
     }
