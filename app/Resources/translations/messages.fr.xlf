@@ -689,6 +689,14 @@
                 <source>observation_validation_notice</source>
                 <target>Félicitations, votre observation a été validée.</target>
             </trans-unit>
+            <trans-unit id="observation_refused_notice">
+                <source>observation_refused_notice</source>
+                <target>Votre observation de %species% du %date% a été refusée</target>
+            </trans-unit>
+            <trans-unit id="observation_refused_notice_admin">
+                <source>observation_refused_notice_admin</source>
+                <target>Refus de l'observation de %species% du %date%</target>
+            </trans-unit>
 
             <!-- HOMEPAGE -->
             <trans-unit id="homepage_main_title">

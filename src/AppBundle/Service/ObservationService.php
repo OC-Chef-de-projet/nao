@@ -387,7 +387,16 @@ class ObservationService
 
         // Notice Observer
         $notice = new Notification();
-        $notice->setContent($data['reason']);
+        $title = $this->translator->trans(
+            'observation_refused_notice',
+            [
+                '%species%' => $observation->getTaxref()->getCommonName(),
+                '%date%' => $observation->getWatched()->format('d/m/Y')
+            ],
+            'messages'
+        );
+
+        $notice->setContent('<b>'.$title.'</b><br>'.$data['reason']);
         $notice->setFromUser($naturalist);
         $notice->setToUser($observation->getUser());
         $this->em->persist($notice);
@@ -405,7 +414,18 @@ class ObservationService
                     ],
                     'messages'
                 );
-                $notice->setContent('<b>'.$title.'</b><br>'.$data['reason']);
+                $message = $this->translator->trans(
+                    'observation_refused_notice_admin',
+                    [
+                        '%species%' => $observation->getTaxref()->getCommonName(),
+                        '%date%' => $observation->getWatched()->format('d/m/Y')
+                    ],
+                    'messages'
+                );
+
+
+
+                $notice->setContent('<b>'.$title.'</b><br>'.$message.'<br>'.$data['reason']);
                 $notice->setFromUser($naturalist);
                 $notice->setToUser($admin);
                 $this->em->persist($notice);
