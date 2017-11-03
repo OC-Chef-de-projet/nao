@@ -1980,9 +1980,9 @@ btn-link-icon {
 
     #btn-float-add{
         position: fixed;
-        top: 60%;
+        top: 80%;
         left: 82%;
-        z-index: 999999;
+        z-index: 997;
     }
 
     .card.observation p.coordinate {
