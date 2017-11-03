@@ -335,7 +335,7 @@ class User implements UserInterface
             $this->image_path = 'avatar-default.png';
         }
 
-        if (is_null($this->getFacebookId()) && is_null($this->getGoogleId())){
+        if (!$this->isSocialAccount()){
             return 'images/users/' . $this->image_path;
         }else{
             return $this->image_path;
@@ -514,5 +514,13 @@ class User implements UserInterface
     public function getSlug(){
         $slugify = new Slugify();
         return $slugify->slugify($this->getName());
+    }
+
+    /**
+     * Determine if this user issue to social account network
+     * @return bool
+     */
+    public function isSocialAccount(){
+        return ( is_null($this->getFacebookId()) && is_null($this->getGoogleId()) ) ? false : true;
     }
 }

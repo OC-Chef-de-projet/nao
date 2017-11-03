@@ -228,9 +228,13 @@ class UserService
      * @return bool
      */
     public function recoveryAccount($email){
-        $user = $this->em->getRepository('AppBundle:User')->findOneBy(array('email' => $email));
+        $user = $this->em->getRepository('AppBundle:User')->findOneBy(
+            array(
+                'email'     => $email,
+                'inactive'  => false,
+            ));
 
-        if($user){
+        if($user && !$user->isSocialAccount()){
             $user->setToken($this->generateToken());
 
             // save the User
