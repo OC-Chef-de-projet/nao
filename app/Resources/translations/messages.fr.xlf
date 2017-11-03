@@ -773,11 +773,11 @@
             </trans-unit>
             <trans-unit id="registration_have_account">
                 <source>registration_have_account</source>
-                <target>Déja un compte ?</target>
+                <target>Déjà un compte ?</target>
             </trans-unit>
             <trans-unit id="registration_success">
                 <source>registration_success</source>
-                <target>Votre demande de compte s'est envolée. Un email de confirmation vous a été envoyé.</target>
+                <target>Votre demande de compte s'est envolée. Un email de confirmation vous a été envoyé, pensez à regarder dans votre dossier Spam si vous ne recevez rien.</target>
             </trans-unit>
 
             <!-- ACTIVATION PAGE -->
@@ -834,7 +834,7 @@
             </trans-unit>
             <trans-unit id="recovery_account_success">
                 <source>recovery_account_success</source>
-                <target>Nous venons de vous envoyer un email qui va vous permettre de choisir un nouveau mot de passe.</target>
+                <target>Nous venons de vous envoyer un email qui va vous permettre de choisir un nouveau mot de passe, Pensez à regarder dans votre dossier Spam si vous ne recevez rien.</target>
             </trans-unit>
 
             <!-- CHANGE PASSWORD PAGE -->
