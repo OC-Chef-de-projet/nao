@@ -1,10 +1,8 @@
-<img width="300px" src="https://github.com/rafinskipg/git-changelog/raw/master/images/git-changelog-logo.png" />
+<img width="300px" src="https://raw.githubusercontent.com/PierreSylvain/nao/develop/resources/images/logo/logo-NAO-color-3.png" />
 
 # NAO (Nos Amis les Oiseaux)
 
-_NAO_
-
-## v1.0.0  ( Sat Nov 04 2017 16:10:45 GMT+0100 (CET) )
+## v1.0.0  ( Sat Nov 04 2017 16:18:02 GMT+0100 (CET) )
 
 
 ## Bug Fixes
@@ -231,6 +229,10 @@ _NAO_
   ([af18dc97](https://github.com/PierreSylvain/nao/commit/af18dc972ded5f58cf519de1b5bc6f6cd7ce1679))
     - Add observation car view
   ([46a49f9a](https://github.com/PierreSylvain/nao/commit/46a49f9aece4303e601de3e4338895fdd594654f))
+
+  - **changelog**
+    - add CHANGELOG
+  ([3799ccc7](https://github.com/PierreSylvain/nao/commit/3799ccc71910dc8794bd67580304f9f3dd5ea99e))
 
   - **comment**
     - pagination

@@ -1,7 +1,7 @@
 {
     "app_name": "NAO (Nos Amis les Oiseaux)",
-    "logo": "https://github.com/rafinskipg/git-changelog/raw/master/images/git-changelog-logo.png",
-    "intro": "NAO",
+    "logo": "https://raw.githubusercontent.com/PierreSylvain/nao/develop/resources/images/logo/logo-NAO-color-3.png",
+    "intro": "",
     "branch" : "develop",
     "repo_url": "https://github.com/PierreSylvain/nao",
     "version_name" : "v1.0.0",
