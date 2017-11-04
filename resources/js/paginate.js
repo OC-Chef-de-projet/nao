@@ -6,6 +6,8 @@ $(function () {
     $('#nextpage').click(function () {
         var current = $('.pages').find('.active').attr('id').replace('p_', '');
         var maxPage = $(this).data('maxpage');
+        console.log("CURRENT " + current);
+        console.log("MAX " + maxPage);
         current = parseInt(current) + 1;
         checkLastpage(current);
         checkFirstpage(current);
@@ -17,6 +19,7 @@ $(function () {
     // Previous page for pagination
     $('#prevpage').click(function () {
         var current = $('.pages').find('.active').attr('id').replace('p_', '');
+        console.log("CURRENT " + current );
         current = parseInt(current) - 1;
         checkLastpage(current);
         checkFirstpage(current);
@@ -26,6 +29,8 @@ $(function () {
     });
     $('.gotopage').click(function () {
         var pageno = $(this).data("page");
+
+        console.log("PAGE " + pageno);
         // Search active page
         checkFirstpage(pageno);
         checkLastpage(pageno);

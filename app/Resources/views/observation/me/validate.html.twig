@@ -83,3 +83,28 @@
     </main>
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        /**
+         *
+         * @param pageno
+         * @param user_id
+         */
+        function getList(pageno, no) {
+            var status = $('.tab').find('.active').attr('id');
+            $.ajax({
+                url: "{{ path('api_obs_paginate') }}?bearer={{ token }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "page": pageno,
+                    "state": 'my_validate'
+                },
+                success: function (response) {
+                    $('#eltlist').html(response.html);
+                }
+            });
+        }
+    </script>
+{% endblock %}

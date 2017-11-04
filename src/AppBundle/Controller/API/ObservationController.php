@@ -167,6 +167,31 @@ class ObservationController extends Controller
         return new JsonResponse($result);
     }
 
+    /**
+     * Paginate observation list (ajax)
+     *
+     * @Route("/paginate", name="api_obs_paginate")
+     * @Method({"POST"})
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function paginateAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $obs = $em->getRepository('AppBundle:Observation')->getMyObservations(
+            $request->request->get('state'),
+            $this->get('security.token_storage')->getToken()->getUser(),
+            $request->request->get('page'),
+            $this->getParameter('list_limit')
+        );
 
 
+        $html = $this->render('observation/list.html.twig', [
+                'obslist' => $obs->getIterator(),
+            ])->getContent();
+
+        return new JsonResponse(['html' => $html]);
+    }
 }

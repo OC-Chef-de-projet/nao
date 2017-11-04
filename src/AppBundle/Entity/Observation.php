@@ -329,7 +329,7 @@ class Observation
         return $this->comments;
     }
 
-    /**
+    /**obs
      * Set individuals
      *
      * @param integer $individuals

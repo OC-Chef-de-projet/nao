@@ -119,6 +119,7 @@ class ObservationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $obs = $em->getRepository('AppBundle:Observation')->getMyDraftObservations($user, $page,$this->getParameter('list_limit'));
         return $this->render('observation/me/draft.html.twig', [
+            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()
         ]);
@@ -135,6 +136,7 @@ class ObservationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $obs = $em->getRepository('AppBundle:Observation')->getMyValidateObservations($user, $page,$this->getParameter('list_limit'));
         return $this->render('observation/me/validate.html.twig', [
+            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()
         ]);
@@ -151,6 +153,7 @@ class ObservationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $obs = $em->getRepository('AppBundle:Observation')->getMyWaitingObservations($user, $page,$this->getParameter('list_limit'));
         return $this->render('observation/me/waiting.html.twig', [
+            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()
         ]);
@@ -163,9 +166,11 @@ class ObservationController extends Controller
      */
     public function showWaitingValidationAction(Request $request, $page = 1)
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
         $obs = $em->getRepository('AppBundle:Observation')->getWaitingValidation($page,$this->getParameter('list_limit'));
         return $this->render('observation/validation/waiting.html.twig', [
+            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()
         ]);
@@ -215,6 +220,7 @@ class ObservationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $obs = $em->getRepository('AppBundle:Observation')->getValidateValidation($user, $page,$this->getParameter('list_limit'));
         return $this->render('observation/validation/validate.html.twig', [
+            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()
         ]);
@@ -231,6 +237,7 @@ class ObservationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $obs = $em->getRepository('AppBundle:Observation')->getDeclineValidation($user, $page,$this->getParameter('list_limit'));
         return $this->render('observation/validation/refuse.html.twig', [
+            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()
         ]);

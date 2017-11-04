@@ -141,7 +141,7 @@ module.exports = function (grunt) {
                     preserveComments: false
                 },
                 files: {
-                    'web/assets/js/nao.min.js': ['resources/js/nao.js', 'resources/js/social.js']
+                    'web/assets/js/nao.min.js': ['resources/js/nao.js', 'resources/js/social.js','resources/js/paginate.js']
                 }
             },
         },
