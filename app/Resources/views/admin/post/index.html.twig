@@ -48,9 +48,15 @@
                 <i class="material-icons">note_add</i>
             </a>
         </div>
-        <section class="row">
-            {% include 'admin/post/list.html.twig' %}
-            {% include 'admin/paginate.html.twig' %}
+        <section>
+            <div class="row">
+                <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
+                    {% include 'admin/post/list.html.twig' %}
+                </div>
+            </div>
+            <div class="row">
+                {% include 'admin/paginate.html.twig' %}
+            </div>
         </section>
     </main>
 {% endblock %}

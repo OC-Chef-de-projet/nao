@@ -44,7 +44,7 @@ class PostController extends Controller
             $form->handleRequest($request);
 
             $html = $this->render(':admin/post:list.html.twig', [
-                'postlist' => $posts,
+                'postlist' => $posts->getIterator(),
                 'form' =>  $form->createView()
 
             ])->getContent();
