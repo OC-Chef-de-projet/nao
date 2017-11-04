@@ -23,40 +23,43 @@ class PostType extends AbstractType
 
         $builder
             ->add('title', TextType::class,[
-                'label' => 'Titre',
+                'label' => 'article_title',
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'data_class' => null
+                'data_class' => null,
+                'translation_domain' => 'messages',
             ])
             ->add('content', TextareaType::class,
                 [
-                    'label' => 'Votre article',
+                    'label' => 'article_content',
                     'attr' => [
                         'class' => 'materialize-textarea post-textarea',
                     ],
-                    'data_class' => null
+                    'data_class' => null,
+                    'translation_domain' => 'messages',
                 ]
             )
             ->add('imagelink', FileType::class, [
-                'label' => 'Image à la une',
+                'label' => 'featured_image',
                 'data_class' => null,
                 'required' => false,
                 'attr' => [
-                    'class' => 'upload'
+                    'class' => 'none'
                 ],
+                'translation_domain' => 'messages',
             ])
             ->add('save_draft', SubmitType::class,
                 [
-                    'attr' => array('class' => 'btn waves-effect waves-light btn-cancel'),
-                    'label' => 'sauve_brouillon',
+                    'attr' => array('class' => 'btn white scroll-to waves-effect right'),
+                    'label' => 'saving_draft',
                     'translation_domain' => 'messages',
                 ]
             )
             ->add('save_published', SubmitType::class,
                 [
-                    'attr' => array('class' => 'btn waves-effect waves-light btn-validate'),
-                    'label' => 'sauve_publie',
+                    'attr' => array('class' => 'btn waves-effect'),
+                    'label' => 'publish_article',
                     'translation_domain' => 'messages',
                 ]
             )

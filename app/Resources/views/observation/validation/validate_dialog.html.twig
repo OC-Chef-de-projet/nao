@@ -1,0 +1,169 @@
+{% set bgwhite = true %}
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'observation_validation_page_title'|trans }}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ 'observation_validation_page_meta_description'|trans }}">
+    <meta name="og:description" content="{{ 'observation_validation_page_meta_description'|trans }}">
+    <meta name="og:title" content="{{ 'observation_validation_page_title'|trans }}">
+    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}"/>
+{% endblock %}
+
+{% block header %}
+    <header class="collapse bg10">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'observation_validation_page_title'} %}
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <div id="header-main-title">
+                            <h1>{{ 'observation_validation_main_title'|trans }}</h1>
+                            <span>{{ 'observation_validation_main_title'|trans }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down" id="validate_dialog">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <span class="breadcrumb">{{ 'observation_validation_page_title'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <div class="heading">{{ 'observation_validation_main_title'|trans }}</div>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section>
+            <div class="row no-pad-bot">
+                <div class="col s12">
+                    <div class="card no-style observation no-border">
+                        <div class="card-content">
+                            <div class="row no-pad-bot">
+                                <div class="col s12 m10 push-m1">
+                                    <br/>
+                                    <div class="row no-pad-bot">
+                                        <div class="col s12 m6 right">
+                                            <h2>{{ observation.taxref.commonName }}</h2>
+                                            <p>
+                                                {{ 'observation_individuals'|trans({'%individuals%': observation.individuals, '%date%': observation.watched|date("d/m/Y")}) }}<br/>
+                                                {{ 'in_place'|trans({'%place%': observation.place}) }}
+                                            </p>
+                                            <p class="caption light-2-no-hov coordinate">
+                                                {{ 'GPS_coordinate' | trans({'%latitude%': observation.latitude | gps_dms, "%longitude%": observation.longitude | gps_dms()}) }}
+                                            </p>
+                                            <div class="col s12 hide-on-med-and-up">
+                                                {% include ':observation/validation:observer.html.twig' %}
+                                            </div>
+                                            <div class="col s12 hide-on-small-only no-pad">
+                                                <br/><p>{{ observation.comments }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m6 right">
+                                            <img src="{{ asset('images/observations/' ~ observation.imagePath ) }}"
+                                                 alt="{{ 'alt_bird'|trans }}">
+                                        </div>
+                                        <div class="col s12 m6 hide-on-med-and-up">
+                                            <br/><p>{{ observation.comments }}</p><br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s12 m10 push-m1">
+                                    <div class="row no-pad-bot">
+                                        <div class="col s12 m6 hide-on-small-only">
+                                            {% include ':observation/validation:observer.html.twig' %}
+                                        </div>
+                                        <div class="col s12 m6 center">
+                                            {{ form_start(form, {'attr': {'id': 'observation_choice'}}) }}
+                                            {{ form_widget(form.reject) }}&nbsp;
+                                            {{ form_widget(form.validate) }}
+                                            {{ form_end(form) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div id="reject_div" style="display:none">
+                {% include ':observation/validation:reject.html.twig' %}
+            </div>
+
+            <!-- MODAL -->
+            <div id="action-validate" class="modal">
+                <div class="modal-content">
+                    <h4>{{ 'observation_validation' | trans }}</h4>
+                    <p>{{ 'modal_confirmation_explain'|trans|nl2br }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="modal-action modal-close waves-effect btn-flat light-orange">{{ 'cancel' | trans }}</button>
+                    <button type="submit" id="submitValidate" class="modal-action modal-close waves-effect btn-flat light-orange">{{ 'confirm' | trans }}</button>
+                </div>
+            </div>
+
+            <div id="action-reject" class="modal">
+                <div class="modal-content">
+                    <h4>{{ 'reject_observation' | trans }}</h4>
+                    <p>{{ 'modal_confirmation_explain'|trans|nl2br }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="modal-action modal-close waves-effect btn-flat light-orange">{{ 'cancel' | trans }}</button>
+                    <button type="submit" id="submitReject" class="modal-action modal-close waves-effect btn-flat light-orange">{{ 'confirm' | trans }}</button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            $('#observation_choice_reject').click(function (e) {
+                e.preventDefault();
+                $('#reject_div').show();
+                $('html, body').animate({
+                    scrollTop: $("#reject_div").offset().top
+                }, 1000);
+
+            });
+
+            $('.modal').modal();
+
+            $('#submitValidate').click(function (e) {
+                e.preventDefault();
+                $("#observation_choice").submit();
+            });
+
+            $('#submitReject').click(function (e) {
+                e.preventDefault();
+                $("#reject").submit();
+            });
+
+
+            $('#reject_cancel').click(function(e){
+                e.preventDefault();
+                $('#reject_div').hide();
+                $('html, body').animate({
+                    scrollTop: $("#validate_dialog").offset().top
+                }, 1000);
+
+            });
+        });
+    </script>
+{% endblock %}
+

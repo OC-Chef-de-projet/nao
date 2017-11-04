@@ -13,25 +13,14 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use AppBundle\Entity\User;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 /**
  * Class LoadUserData
  * @package AppBundle\DataFixtures\ORM
  */
-class LoadUserData implements FixtureInterface, ContainerAwareInterface
+class LoadUserData extends Fixture implements FixtureInterface, ContainerAwareInterface
 {
-
-    private $container;
-
-    /**
-     * Container
-     *
-     * @param ContainerInterface|null $container
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }
 
     /**
      * Create users*
@@ -49,8 +38,9 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
         $user->setRole('ROLE_ADMIN');
         $user->setInactive(false);
-        $user->setNewsletter(false);$user->setImagePath('bobby.jpg');
+        $user->setImagePath('bobby.jpg');
         $manager->persist($user);
+        $this->addReference('admin', $user);
         $manager->flush();
 
         // Add editor
@@ -61,10 +51,9 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
         $user->setRole('ROLE_NATURALIST');
         $user->setInactive(false);
-        $user->setNewsletter(false);$user->setImagePath('charlotte.jpg');
-        $user->setNewsletter(false);
-
+        $user->setImagePath('charlotte.jpg');
         $manager->persist($user);
+        $this->addReference('naturalist', $user);
         $manager->flush();
 
         // Add contributor
@@ -75,55 +64,82 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
         $user->setRole('ROLE_OBSERVER');
         $user->setInactive(false);
-        $user->setNewsletter(false);$user->setImagePath('johnny.jpg');
-        $user->setNewsletter(false);
-
-
+        $user->setImagePath('johnny.jpg');
+        $this->addReference('observer', $user);
         $manager->persist($user);
         $manager->flush();
 
-        for($i = 0 ; $i < 20 ; $i++ ) {
+        for($i = 0 ; $i < 5 ; $i++ ) {
             // Add admin
             $user = new User();
-            $user->setName('Administrateur_'.$i);
+            $user->setName($this->rand_name());
             $user->setEmail('admin'.$i.'@test.com');
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
             $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
             $user->setRole('ROLE_ADMIN');
             $user->setInactive(true);
-            $user->setNewsletter(false);
-            $user->setNewsletter(false);$user->setImagePath('avatar-default.png');
+            $user->setImagePath('avatar-default.png');
             $manager->persist($user);
             $manager->flush();
 
             // Add editor
             $user = new User();
-            $user->setName('Naturaliste_'.$i);
+            $user->setName($this->rand_name());
             $user->setEmail('natur'.$i.'@test.com');
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
             $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
             $user->setRole('ROLE_NATURALIST');
-            $user->setNewsletter(false);$user->setImagePath('avatar-default.png');
+            $user->setImagePath('avatar-default.png');
             $user->setInactive(true);
-            $user->setNewsletter(false);
 
             $manager->persist($user);
             $manager->flush();
 
             // Add contributor
             $user = new User();
-            $user->setName('Observateur_'.$i);
+            $user->setName($this->rand_name());
             $user->setEmail('obs'.$i.'@test.com');
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
             $user->setPassword($encoder->encodePassword('test', $user->getSalt()));
             $user->setRole('ROLE_OBSERVER');
             $user->setInactive(true);
-            $user->setNewsletter(false);$user->setImagePath('avatar-default.png');
-            $user->setNewsletter(false);
+            $user->setImagePath('avatar-default.png');
 
 
             $manager->persist($user);
             $manager->flush();
         }
+    }
+
+    private function rand_name()
+    {
+        $names = [
+            'Iscander',
+            'Ishac',
+            'Isidore',
+            'Iskandre',
+            'Uveys',
+            'Uwais',
+            'Uwe',
+            'Uygar',
+            'Dean',
+            'Dembo',
+            'Denilson',
+            'Denis',
+            'Fenda',
+            'Ferdaous',
+            'Ferdinand',
+            'Ferial',
+            'Thessa',
+            'Thifaine',
+            'Thiphaine',
+            'Thomas',
+            'Thalya'
+        ];
+
+        $idx_name = rand(0,20);
+        $idx_surname = rand(0,20);
+
+        return $names[$idx_name].' '.$names[$idx_surname];
     }
 }

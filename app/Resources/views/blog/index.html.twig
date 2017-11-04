@@ -1,0 +1,89 @@
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'blog_page_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ 'blog_page_meta_description'|trans }}">
+    <meta name="og:description" content="{{ 'blog_page_meta_description'|trans }}">
+    <meta name="og:title" content="{{ 'blog_page_title'|trans }}">
+    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="collapse bg4">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'blog_main_title'}%}
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <div id="header-main-title">
+                            <h1>{{ 'blog_main_title'|trans }}</h1>
+                            <span>{{ 'blog_secondary_title'|trans }}</span>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <span class="breadcrumb">{{ 'blog'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <div class="heading">{{ 'blog_main_title'|trans }}</div>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section>
+            <div class="row">
+                <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
+                    {% include 'blog/list.html.twig' %}
+                </div>
+            </div>
+            <div class="row">
+                {% include 'admin/paginate.html.twig' %}
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/paginate.js') }}"></script>
+    <script>
+        /**
+         *
+         * @param pageno
+         * @param user_id
+         */
+        function getList(pageno, no) {
+            $.ajax({
+                url: "{{ path('api_post_paginate') }}?bearer={{ jwt.token }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "page": pageno,
+                    "status": 2,
+                    "common": true,
+                },
+                success: function (response) {
+                    $('#eltlist').html(response.html);
+                }
+            });
+        }
+    </script>
+{% endblock %}
+
+
+

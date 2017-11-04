@@ -17,36 +17,16 @@ class LoginType extends AbstractType
 
     {
         $builder
-            ->add('_email', EmailType::class,
-                [
-                    'attr' => [
-                        'placeholder' => 'Adresse email'
-                    ]
-                ]
-            )
-            ->add('_password', PasswordType::class,
-                [
-                    'attr' => [
-                        'placeholder' => 'Mot de passe'
-                    ]
-                ]
-            )
-            ->add('save', SubmitType::class,
-                [
-                    'attr' => array('class' => 'btn btn-success btn-sm'),
-                    'label' => 'Connexion'
-                ]
-            )
-            ->add('_remember_me', CheckboxType::class,
-                [
-                    'data' => true,
-                    'required' => false
-                ]
-            );
+            ->add('_email', EmailType::class, array(
+                    'attr'  => array( 'class' => '', 'autocomplete' => 'off'),
+            ))
+            ->add('_password', PasswordType::class,array(
+                    'attr'  => array( 'class' => '', 'autocomplete' => 'off'),
+            ))
+        ;
     }
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-        ]);
+        $resolver->setDefaults(array());
     }
 }

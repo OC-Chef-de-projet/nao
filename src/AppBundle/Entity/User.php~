@@ -1,10 +1,12 @@
 <?php
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserCheckerInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * User
  *
@@ -12,7 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(fields="email", message="This email address is already in use")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User implements UserInterface
+class User
 {
     /**
      * @var int
@@ -27,6 +29,8 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="not_blank")
+     * @Assert\Regex( pattern="#^(?!-)[\p{L}- ]{2,20}[^\-]$#u", message="name_format")
      */
     private $name;
 
@@ -34,17 +38,10 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
-     *
-     * @Assert\Email(message = "The email '{{ value }}' is not a valid email.", checkMX = true)
+     * @Assert\NotBlank(message="not_blank")
+     * @Assert\Email( message = "email_invalid", checkMX = true)
      */
     private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
-     */
-    private $password;
 
 
     /**
@@ -55,16 +52,16 @@ class User implements UserInterface
     /**
      * @var string
      *
+     * @ORM\Column(name="password", type="string", length=255)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="role", type="string", length=50)
      */
     private $role;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="newsletter", type="boolean")
-     */
-    private $newsletter;
 
     /**
      * @var string
@@ -88,12 +85,55 @@ class User implements UserInterface
     private $image_path;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime")
+     * @Assert\DateTime(format = "Y-m-d H:i:s")
+     */
+    private $created;
+
+    /**
      * @var boolean
      *
-     * @ORM\Column(name="active", type="boolean")
+     * @ORM\Column(name="inactive", type="boolean")
      */
-    private $active;
+    private $inactive;
+    
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="private", type="boolean")
+     */
+    private $private;
+
+
+    /**
+     * @var string
+     * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
+     */
+    private $facebookId;
+    
+
+    /**
+     * @var string
+     * @ORM\Column(name="google_id", type="string", length=255, nullable=true)
+     */
+    private $googleId;
+
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->created      = new \DateTime();
+        $this->token        = bin2hex(openssl_random_pseudo_bytes(16));
+        $this->role         = 'ROLE_OBSERVER';
+        $this->image_path   = 'avatar-default.png';
+        $this->inactive     = true;
+        $this->private      = false;
+    }
 
     public function getSalt()
     {
@@ -122,7 +162,7 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        return $this->roles;
+        return array($this->role);
     }
 
 
@@ -222,29 +262,7 @@ class User implements UserInterface
         return $this->role;
     }
 
-    /**
-     * Set newsletter
-     *
-     * @param boolean $newsletter
-     *
-     * @return User
-     */
-    public function setNewsletter($newsletter)
-    {
-        $this->newsletter = $newsletter;
 
-        return $this;
-    }
-
-    /**
-     * Get newsletter
-     *
-     * @return boolean
-     */
-    public function getNewsletter()
-    {
-        return $this->newsletter;
-    }
 
     /**
      * Set token
@@ -308,6 +326,7 @@ class User implements UserInterface
         return $this;
     }
 
+
     /**
      * Get imagePath
      *
@@ -319,26 +338,158 @@ class User implements UserInterface
     }
 
     /**
-     * Set active
+     * Set inactive
      *
-     * @param boolean $active
+     * @param boolean $inactive
      *
      * @return User
      */
-    public function setActive($active)
+    public function setInactive($inactive)
     {
-        $this->active = $active;
+        $this->inactive = $inactive;
 
         return $this;
     }
 
     /**
-     * Get active
+     * Get inactive
      *
      * @return boolean
      */
-    public function getActive()
+    public function getInactive()
     {
-        return $this->active;
+        return $this->inactive;
     }
+
+    public function getRoleString(){
+        return  self::roleToString($this->getRole());
+    }
+
+    public static function roleToString($role){
+        switch ($role){
+            case 'ROLE_ADMIN':
+                return 'Administrateur';
+            case 'ROLE_NATURALIST':
+                return 'Naturaliste';
+            case 'ROLE_OBSERVER':
+                return 'Observateur';
+            default:
+                return 'N/A';
+        }
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param string $plainPassword
+     * @return User
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+        return $this;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return User
+     */
+    public function setCreated(\DateTime $created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set private
+     *
+     * @param $private
+     * @return $this
+     */
+    public function setPrivate($private)
+    {
+        $this->private = $private;
+
+        return $this;
+    }
+
+    /**
+     * Get private
+     *
+     * @return boolean
+     */
+    public function getPrivate()
+    {
+        return $this->private;
+    }
+
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     *
+     * @return User
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebook_id = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebook_id;
+    }
+
+    /**
+     * Set googleId
+     *
+     * @param string $googleId
+     *
+     * @return User
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->google_id = $googleId;
+
+        return $this;
+    }
+
+    /**
+     * Get googleId
+     *
+     * @return string
+     */
+    public function getGoogleId()
+    {
+        return $this->google_id;
+    }
+
 }

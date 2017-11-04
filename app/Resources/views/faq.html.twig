@@ -1,0 +1,112 @@
+{% set bgwhite = true %}
+
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'faq_page_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ 'faq_page_meta_description'|trans }}">
+    <meta name="og:description" content="{{ 'faq_page_meta_description'|trans }}">
+    <meta name="og:title" content="{{ 'faq_page_title'|trans }}">
+    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="collapse bg8">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'faq_full'}%}
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <div id="header-main-title">
+                            <h1>{{ 'faq_main_title'|trans }}</h1>
+                            <span>{{ 'faq_secondary_title'|trans }}</span>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <span class="breadcrumb">{{ 'faq_full'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <div class="heading">{{ 'faq_main_title'|trans }}</div>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m8 push-m2">
+                                    <ul class="collapsible" data-collapsible="accordion">
+                                        <li>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>1. Comment ajouter une observation d’oiseau ?</h2></div>
+                                            <div class="collapsible-body">
+                                                <span>
+                                                    Pour ajouter une observation, vous devez tout d’abord vous connecter au site puis rendez-vous sur la page de création d’une observation.
+                                                    Il vous suffira simplement d’ajouter le lieu, la date, l’espèce observée ainsi que le nombre d’oiseaux observés.
+                                                    Vous avez aussi la possibilité d’ajouter une photo ainsi qu’une remarque sur le comportement observé mais cela reste facultatif.
+                                                    Enfin après avoir renseigné ces informations, cliquez sur le bouton « Soumettre l’observation ».
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>2. Pourquoi mon observation n’est pas publiée ?</h2></div>
+                                            <div class="collapsible-body">
+                                                <span>
+                                                    Votre observation n’est pas publiée automatiquement, celle-ci requiert la validation d’un naturaliste.
+                                                    Vous pouvez voir vos observations sur votre espace, tant que vos observations sont dans l’onglet « En attente », celles-ci ne sont pas encore publiées.
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>3. Mon observation a été rejetée, pourquoi ?</h2></div>
+                                            <div class="collapsible-body">
+                                                <span>
+                                                     Il s’agit d’un cas assez rare mais un naturaliste peut rejeter votre observation si celui-ci estime que votre observation n’est pas valide.
+                                                    Le naturaliste vous informera de la raison concernant le rejet de celle-ci et votre observation sera remise dans vos brouillons afin que vous puissiez la corriger.
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>4. Je souhaite contribuer à l’évolution du site, comment faire ?</h2></div>
+                                            <div class="collapsible-body">
+                                                <span>
+                                                    Tout d’abord, merci de l’intérêt que vous portez au projet ! Vous pouvez aider l’association à l’évolution du site en faisant un don sur ce <a href="https://www.helloasso.com/" class="light-orange" target="_blank">lien</a>.</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_right</i><h2>5. Comment obtenir un compte naturaliste ?</h2></div>
+                                            <div class="collapsible-body">
+                                                <span>
+                                                    Vous devez tout d'abord créer un compte "particulier" sur le site puis faire la demande d'évolution vers un compte naturaliste via le <a href="{{ path('contact') }}" class="light-orange">formulaire de contact</a>. Un administrateur prendra alors contact avec vous pour vous demander certaines pièces justificatives. L'association NAO se réserve le droit de refuser votre demande en cas de doute.</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                      <p class="center-align">{{ 'faq_more_question'|trans|nl2br }}<a href="{{ path('contact') }}" class="light-orange">{{ 'faq_contact_page'|trans }}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+

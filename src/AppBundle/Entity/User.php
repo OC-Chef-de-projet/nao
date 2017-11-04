@@ -1,10 +1,13 @@
 <?php
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Cocur\Slugify\Slugify;
+
 /**
  * User
  *
@@ -27,6 +30,8 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="not_blank")
+     * @Assert\Regex( pattern="#^(?!-)[\p{L}- ]{2,25}[^\-]$#u", message="name_format")
      */
     private $name;
 
@@ -34,17 +39,10 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
-     *
-     * @Assert\Email(message = "The email '{{ value }}' is not a valid email.", checkMX = true)
+     * @Assert\NotBlank(message="not_blank")
+     * @Assert\Email( message = "email_invalid", checkMX = true)
      */
     private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
-     */
-    private $password;
 
 
     /**
@@ -55,16 +53,16 @@ class User implements UserInterface
     /**
      * @var string
      *
+     * @ORM\Column(name="password", type="string", length=255)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="role", type="string", length=50)
      */
     private $role;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="newsletter", type="boolean")
-     */
-    private $newsletter;
 
     /**
      * @var string
@@ -76,7 +74,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="aboutme", type="string", length=255, nullable=true)
+     * @ORM\Column(name="aboutme", type="text", nullable=true)
      */
     private $aboutme;
 
@@ -101,7 +99,40 @@ class User implements UserInterface
      * @ORM\Column(name="inactive", type="boolean")
      */
     private $inactive;
+    
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="private", type="boolean")
+     */
+    private $private;
+
+
+    /**
+     * @var string
+     * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
+     */
+    private $facebookId;
+    
+
+    /**
+     * @var string
+     * @ORM\Column(name="google_id", type="string", length=255, nullable=true)
+     */
+    private $googleId;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->created      = new \DateTime();
+        $this->role         = 'ROLE_OBSERVER';
+        $this->image_path   = 'avatar-default.png';
+        $this->inactive     = true;
+        $this->private      = false;
+    }
 
     public function getSalt()
     {
@@ -231,30 +262,6 @@ class User implements UserInterface
     }
 
     /**
-     * Set newsletter
-     *
-     * @param boolean $newsletter
-     *
-     * @return User
-     */
-    public function setNewsletter($newsletter)
-    {
-        $this->newsletter = $newsletter;
-
-        return $this;
-    }
-
-    /**
-     * Get newsletter
-     *
-     * @return boolean
-     */
-    public function getNewsletter()
-    {
-        return $this->newsletter;
-    }
-
-    /**
      * Set token
      *
      * @param string $token
@@ -324,6 +331,24 @@ class User implements UserInterface
      */
     public function getImagePath()
     {
+        if(is_null($this->image_path) || empty($this->image_path)){
+            $this->image_path = 'avatar-default.png';
+        }
+
+        if (!$this->isSocialAccount()){
+            return 'images/users/' . $this->image_path;
+        }else{
+            return $this->image_path;
+        }
+    }
+
+    /**
+     * Get only image name
+     *
+     * @return string
+     */
+    public function getImageName()
+    {
         return $this->image_path;
     }
 
@@ -387,7 +412,6 @@ class User implements UserInterface
         return $this;
     }
 
-
     /**
      * Set created
      *
@@ -411,4 +435,92 @@ class User implements UserInterface
         return $this->created;
     }
 
+    /**
+     * Set private
+     *
+     * @param $private
+     * @return $this
+     */
+    public function setPrivate($private)
+    {
+        $this->private = $private;
+
+        return $this;
+    }
+
+    /**
+     * Get private
+     *
+     * @return boolean
+     */
+    public function getPrivate()
+    {
+        return $this->private;
+    }
+
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     *
+     * @return User
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * Set googleId
+     *
+     * @param string $googleId
+     *
+     * @return User
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
+
+        return $this;
+    }
+
+    /**
+     * Get googleId
+     *
+     * @return string
+     */
+    public function getGoogleId()
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * Get Slug for pretty URL
+     * @return string
+     */
+    public function getSlug(){
+        $slugify = new Slugify();
+        return $slugify->slugify($this->getName());
+    }
+
+    /**
+     * Determine if this user issue to social account network
+     * @return bool
+     */
+    public function isSocialAccount(){
+        return ( is_null($this->getFacebookId()) && is_null($this->getGoogleId()) ) ? false : true;
+    }
 }

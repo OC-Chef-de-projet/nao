@@ -1,0 +1,22 @@
+<div class="card observation">
+    <div class="card-content">
+        <div class="row no-pad-bot">
+            <div class="col s6">
+                <h2>{{ observation.taxref.commonName }}</h2>
+                <p class="caption light-2-no-hov">
+                    {{ 'observe_at'|trans({'%date%': observation.watched|date("d/m/Y")}) }}<br />
+                    {{ 'in_place'|trans({'%place%': observation.place}) }}
+                </p>
+            </div>
+            <div class="col s6">
+                <div class="media-container" style="background: url('{{ asset('images/observations/' ~ observation.imagePath ) }}') center/cover no-repeat">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-action">
+        <a href="#" class="bleen sharing" data-link="{{ url('observation.detail', {'id' : observation.id}) }}">{{ 'share'|trans }}</a>
+        <a href="{{ path('observation.detail', {'id' : observation.id}) }}" class="bleen">{{ 'read'|trans }}</a>
+    </div>
+</div>

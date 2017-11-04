@@ -1,0 +1,9 @@
+<li {% if current_route == 'blog' %} class="active" {% endif %}><a href="{{ path('blog') }}">{{ 'blog'|trans }}</a></li>
+<li {% if current_route == 'stay.connected' %} class="active" {% endif %}><a href="{{ path('stay.connected') }}">{{ 'stay_connected'|trans }}</a></li>
+<li {% if current_route == 'contact' %} class="active" {% endif %}><a href="{{ path('contact') }}">{{ 'contact'|trans }}</a></li>
+
+{% if user_is_logged %}
+    <li><a href="{{ path('dashboard.profil') }}" class="btn white waves-effect">{{ 'your_account'|trans }}</a></li>
+{% else %}
+    <li><a href="{{ path('login') }}" class="btn waves-effect">{{ 'connexion'|trans }}</a></li>
+{% endif %}

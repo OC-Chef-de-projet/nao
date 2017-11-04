@@ -1,0 +1,12 @@
+<ul id="secondary-side-menu">
+    <li><a href="{{ path('dashboard.profil') }}"><i class="mdi mdi-view-dashboard"></i>{{ 'your_dashboard'|trans }}</a></li>
+    {% if is_granted('ROLE_ADMIN') %}
+        <li><a href="{{ path('admin_homepage') }}"><i class="material-icons">settings</i>{{ 'admin_panel'|trans }}</a></li>
+    {% endif %}
+    <li><a href="{{ path('observation.me.validate') }}"><i class="material-icons">visibility</i>{{ 'your_observation'|trans }}</a></li>
+    {% if is_granted('ROLE_NATURALIST') %}
+        <li><a href="{{ path('observation.validation.waiting') }}"><i class="mdi mdi-check"></i>{{ 'validate_observation'|trans }}</a></li>
+    {% endif %}
+    <li><a href="{{ path('dashboard.notification') }}"><i class="material-icons">notifications</i>{{ 'your_notifications'|trans }}</a></li>
+    <li><a id="logout" href="{{ path('logout') }}"><i class="material-icons">exit_to_app</i>{{ 'sign_out'|trans }}</a></li>
+</ul>

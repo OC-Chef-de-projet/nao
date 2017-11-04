@@ -1,0 +1,27 @@
+<div class="navbar-fixed">
+    <nav class="nav-extended" role="navigation">
+        <div class="nav-wrapper">
+            <a href="#" data-activates="side-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a href="{{ path('homepage') }}"><div id="nav-logo" class="brand-logo"></div></a>
+            <div id="nav-small-title">{% if navtitle is defined %}{{ navtitle|trans }}{% endif %}</div>
+            <ul class="right static-menu">
+                {% if admin is defined %}<li><a href="{{ path('admin_homepage') }}"><i class="material-icons">settings</i></a></li>{% endif %}
+                {% include 'common/widget/navbar/sharing.html.twig' %}
+                {% if user_is_logged %}
+                    <li>
+                        <a href="{{ path('dashboard.notification') }}">
+                            <i class="material-icons">notifications</i>
+                            {% if notifs.count > 0 %}<span class="badge">{{ notifs.count }}</span>{% endif %}
+                        </a>
+                    </li>
+                {% endif %}
+                <li><a href="javascript:void(0)" class="dropdown-button" data-activates="dropdown-search"><i class="material-icons">search</i></a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                {% include 'common/widget/navbar/main_section.html.twig' %}
+                {% include 'common/widget/navbar/secondary_section.html.twig' %}
+            </ul>
+        </div>
+    </nav>
+</div>
+

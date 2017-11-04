@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta name="viewport" content="width=device-width"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>{{ 'NAO'|trans }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style type="text/css">
+        * {
+            margin:0;
+            padding:0;
+        }
+        * { font-family: 'Roboto', sans-serif; }
+
+        img {
+            max-width: 100%;
+        }
+        .collapse {
+            margin:0;
+            padding:0;
+        }
+        body {
+            -webkit-font-smoothing:antialiased;
+            -webkit-text-size-adjust:none;
+            width: 100%!important;
+            height: 100%;
+            background: rgba(0,150,136,.07);
+        }
+
+        a { color: #2BA6CB;}
+
+        p.callout {
+            padding:15px;
+            background-color:#ECF8FF;
+            margin-bottom: 15px;
+        }
+        .callout a {
+            font-weight:bold;
+            color: #2BA6CB;
+        }
+
+        table.head-wrap { width: 100%;}
+
+        .header.container table td.logo { padding: 15px; }
+        .header.container table td.label { padding: 15px; padding-left:0px;}
+
+        table.body-wrap { width: 100%;}
+
+        h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; text-transform: none; }
+
+        h1 { font-weight:200; font-size: 44px;}
+        h2 { font-weight:200; font-size: 37px;}
+        h3 { font-weight:500; font-size: 27px; color: rgba(0,0,0,0.87);}
+        h4 { font-weight:500; font-size: 23px;}
+        h5 { font-weight:900; font-size: 17px;}
+        h6 { font-size: 14px; color:#ffffff;}
+
+        .collapse { margin:0!important;}
+
+        p, ul {
+            margin-bottom: 10px;
+            font-weight: normal;
+            font-size:17px;
+            line-height:1.6;
+        }
+        p.lead { font-size:17px; }
+        p.last { margin-bottom:0px;}
+
+        .right{
+            float: right;
+        }
+
+        .button{
+            -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+            height: 36px;
+            line-height: 36px;
+            padding: 0.9rem;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 2px;
+            background-color: #FF3D00;
+            font-weight: 700;
+            font-size: 13px;
+            color: #FFF;
+            text-decoration:none;
+        }
+        .button:hover{
+            background-color: #FF6E40;
+        }
+
+        .container {
+            display:block!important;
+            max-width:600px!important;
+            margin:0 auto!important; /* makes it centered */
+            clear:both!important;
+        }
+        .content {
+            padding:15px;
+            max-width:600px;
+            margin:0 auto;
+            display:block;
+        }
+        .content.margin{
+            margin: 15px 0 15px 0;
+        }
+        .content table { width: 100%; }
+
+        .column {
+            width: 300px;
+            float:left;
+        }
+        .column tr td { padding: 15px; }
+        .column-wrap {
+            padding:0!important;
+            margin:0 auto;
+            max-width:600px!important;
+        }
+        .column table { width:100%;}
+        .social .column {
+            width: 280px;
+            min-width: 279px;
+            float:left;
+        }
+        .clear { display: block; clear: both; }
+
+        table.summary tr td {padding: 10px 0 10px 0;}
+
+        @media only screen and (max-width: 600px) {
+
+            a[class="btn"] { display:block!important; margin-bottom:10px!important; background-image:none!important; margin-right:0!important;}
+
+            div[class="column"] { width: auto!important; float:none!important;}
+
+            table.social div[class="column"] {
+                width:auto!important;
+            }
+
+        }
+    </style>
+</head>
+<body bgcolor="#edf7f6">
+
+<table class="head-wrap" bgcolor="#009688">
+    <tr>
+        <td></td>
+        <td class="header container">
+            <div class="content">
+                <table>
+                    <tr>
+                        <td><img src="{{ absolute_url('assets/img/logo/logo-NAO-white-shadow-3.png') }}" width="80"/></td>
+                        <td align="right"><h6 class="collapse">{{ 'NAO'|trans  }}</h6></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td></td>
+    </tr>
+</table>
+
+{% block body %}{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+{% set bgwhite = true %}
+
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'stay_connected_page_title'|trans }}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ 'stay_connected_page_meta_description'|trans }}">
+    <meta name="og:description" content="{{ 'stay_connected_page_meta_description'|trans }}">
+    <meta name="og:title" content="{{ 'stay_connected_page_title'|trans }}">
+    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="collapse bg13">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'stay_connected_main_title'}%}
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <div id="header-main-title">
+                            <h1>{{ 'stay_connected_main_title'|trans }}</h1>
+                            <span>{{ 'stay_connected_secondary_title'|trans }}</span>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <span class="breadcrumb">{{ 'stay_connected'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <div class="heading">{{ 'stay_connected_page_title'|trans }}</div>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m10 push-m1">
+                                    <br />
+                                    <div class="row">
+                                        <div class="col s12 m6 right">
+                                            <h2> {{ 'stay_connected_newsletter_title'|trans }}</h2>
+                                            <p>{{ 'stay_connected_newsletter_explain'|trans }}</p>
+                                            <form id="form_newsletter" class="col s12" method="post" action="{{ path('newsletter.subscribe') ~ '?bearer=' ~ jwt.token }}">
+                                                <div class="row no-pad-bot">
+                                                    <div class="input-field col s12">
+                                                        <input style="display:none">
+                                                        <input name="ng_email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" data-msg-pattern="{{ 'error_email_format'|trans }}" autocomplete="off"  class="validate"/>
+                                                        <div class="error"></div>
+                                                        <label>{{ 'label_email'|trans }} *</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <input type="submit" class="btn waves-effect" value="{{ 'subscribe_to_newsletter'|trans }}" />
+                                                        <br />
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <br />
+                                        </div>
+                                        <div class="col s12 m6 right">
+                                            <img src="assets/img/benny-jackson-111916.jpg" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <h2> {{ 'stay_connected_share_title'|trans }}</h2>
+                                            <p>{{ 'stay_connected_share_explain'|trans }}</p>
+                                            <ul class="social bottom">
+                                                <li><a class="light-1" href="https://www.facebook.com/Nos-amis-les-oiseaux-709279699264029/" target="_blank"><i class="mdi mdi-facebook"></i></a></li>
+                                                <li><a class="light-1" href="https://plus.google.com/105417715833330667133" target="_blank"><i class="mdi mdi-google-plus"></i></a></li>
+                                                <li><a class="light-1" href="https://twitter.com/asso_nao" target="_blank"><i class="mdi mdi-twitter"></i></a></li>
+                                                <li><a class="light-1" href="https://www.instagram.com/asso.nao/" target="_blank"><i class="mdi mdi-instagram"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col s12 m6">
+                                            <img src="assets/img/boris-smokrovic-131485.jpg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+

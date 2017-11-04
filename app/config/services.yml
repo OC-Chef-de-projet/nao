@@ -4,10 +4,13 @@ parameters:
     #parameter_name: value
 
 services:
-
+    twig.extension.text:
+            class: Twig_Extensions_Extension_Text
+            tags:
+                - { name: twig.extension }
     form_authenticator:
         class: AppBundle\Security\FormAuthenticator
-        arguments: ['@router', '@form.factory', '@security.user_password_encoder.generic']
+        arguments: ['@router', '@form.factory', '@security.user_password_encoder.generic','@app.captcha']
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     AppBundle\:
@@ -32,16 +35,81 @@ services:
         public: true
         arguments: []
 
+    app.gps:
+        class: AppBundle\Service\GPSService
+        public: true
+        arguments: []
+
+    app.notification:
+        class: AppBundle\Service\NotificationService
+        public: true
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
+
     app.user:
         class: AppBundle\Service\UserService
         public: true
-        arguments: ['%list_limit%']
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%', "@app.news", "@security.password_encoder", "@app.mailer", '%users_directory%']
 
     app.post:
         class: AppBundle\Service\PostService
         public: true
         arguments: ["@doctrine.orm.entity_manager",'%posts_directory%', '%list_limit%']
 
+    app.obs:
+        class: AppBundle\Service\ObservationService
+        public: true
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%', '%obseravtions_directory%', '@translator']
+
+    app.cmt:
+        class: AppBundle\Service\CommentService
+        public: true
+        arguments: ["@doctrine.orm.entity_manager", '%list_limit%', "@security.token_storage", "@translator", "@templating"]
+
+    app.news:
+        class: AppBundle\Service\NewsletterService
+        public: true
+        arguments: ["@doctrine.orm.entity_manager", "@translator", "@app.mailchimp"]
+
+    app.geoloc:
+        class: AppBundle\Service\GeolocService
+        public: true
+        arguments: ["@doctrine.orm.entity_manager", "@app.gps"]
+
+    app.jwt:
+        class: AppBundle\Service\JwtService
+        public: true
+        arguments: ["@security.token_storage", "@lexik_jwt_authentication.jwt_manager"]
+
+    app.mailer:
+        class: AppBundle\Mailer\Mailer
+        arguments: ["@mailer", "@templating", "@translator", "%mailer_from%", "%mailer_to%", "%mailer_name%"]
+
+    app.oauth:
+        class: AppBundle\Provider\OAuthUserProvider
+        public: true
+        arguments: ["@doctrine", "@app.user" ]
+
+    app.captcha:
+        class: AppBundle\Service\ReCaptchaService
+        public: true
+        arguments: ['%captcha.secret%']
+
+    app.mailchimp:
+        class: AppBundle\Service\MailChimpService
+        public: true
+        arguments: ['%mailchimp.key%', '%mailchimp.list%']
+
+    app.validator.city.check:
+        class: AppBundle\Validator\CityCheckValidator
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: validator.constraint_validator, alias: app.city.check }
+
+    app.validator.bird.check:
+        class: AppBundle\Validator\BirdCheckValidator
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: validator.constraint_validator, alias: app.bird.check }
 
     AppBundle\EventListener\UserListener:
         tags:
@@ -52,3 +120,20 @@ services:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
+    AppBundle\EventListener\NotificationListener:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+
+    AppBundle\EventListener\CommentListener:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+
+    AppBundle.twig.gps_extension:
+            class: AppBundle\Twig\Extension\GpsDMSExtension
+            tags:
+                - { name: twig.extension }
+
+    AppBundle.twig.html_extension:
+        class: AppBundle\Twig\Extension\HtmlExtension
+        tags:
+            - { name: twig.extension }

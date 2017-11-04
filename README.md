@@ -3,3 +3,6 @@
 
 
 [![Build Status](https://travis-ci.org/PierreSylvain/nao.svg?branch=master)](https://travis-ci.org/PierreSylvain/nao)
+
+[![Known Vulnerabilities](https://snyk.io/test/github/pierresylvain/nao/badge.svg)](https://snyk.io/test/github/pierresylvain/nao)
+

@@ -1,0 +1,35 @@
+<div class="card no-style">
+    <div class="card-content">
+        <!-- Search block -->
+        <div class="row">
+            <div class="col s12 m5 push-m3">
+                {% if paginate.totalItems <= 0 %}
+                    <p class="center"><b>{{ 'search_again'|trans }}</b></p>
+                {% endif %}
+
+                <form class="small" action="{{ path('search.global') }}">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">search</i>
+                        <input id="sub-search" type="text" class="validate" name="search"
+                               placeholder="{{ 'search_new'|trans }}" autocomplete="off">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!-- Search result -->
+        <div class="row">
+            {% for article in postlist %}
+                <div class="col s12 m6 push-m2">
+                    <div class="card-content">
+                        <a href="{{ path('blog.detail', {'id' : article.id, 'slug' : article.slug }) }}" class="bleen"><span class="card-title">{{ article.title }}</span>
+                        </a>
+                        <p>{{ article.content|truncate(120) }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+

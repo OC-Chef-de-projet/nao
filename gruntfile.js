@@ -78,8 +78,19 @@ module.exports = function (grunt) {
             },
             jpg: {
                 files: [
-                    {expand: true, cwd: 'resources/images', src: ['*.jpg'], dest: 'web/assets/img/'}
+                    {expand: true, cwd: 'resources/images', src: ['**/*.jpg'], dest: 'web/assets/img/'}
                 ]
+            },
+            fixtures: {
+                files: [
+                    {expand: true, cwd: 'resources/fixtures', src: ['**/*.*'], dest: 'web/images/'}
+                ]
+            },
+            js: {
+                files: [
+                    {expand: true, cwd: 'resources/js', src: ['paginate.js'], dest: 'web/assets/js/'}
+                ]
+
             }
         },
 
@@ -92,14 +103,20 @@ module.exports = function (grunt) {
                     'web/assets/js/core.min.js': [
                         'resources/vendor/jquery/jquery-3.2.1.min.js',
                         'resources/vendor/materialize/js/materialize.min.js',
-                        'resources/vendor/materialize/js/material-dialog.min.js'
+                        'resources/vendor/materialize/js/material-dialog.min.js',
+                        'resources/vendor/materialize-autocomplete/jquery.materialize-autocomplete.min.js',
+                        'resources/vendor/jquery-validator/jquery.validate.min.js',
+                        'resources/vendor/jquery-validator/additional-methods.min.js',
+                        'resources/vendor/jquery-validator/localization/messages_fr.js',
+                        'resources/vendor/materialNote/js/materialnote.js',
+                        'resources/vendor/gmaps/gmaps.min.js'
                     ],
 
 
                     // CSS
                     'web/assets/css/core.min.css': [
                         'resources/vendor/bootstrap/css/bootstrap.min.css',
-                        'resources/vendor/materialize/css/materialize.min.css'
+                        'resources/vendor/materialize/css/materialize.min.css',
                     ]
                 }
             },
@@ -107,27 +124,27 @@ module.exports = function (grunt) {
             custom: {
                 files: {
                     'web/assets/css/custom.min.css': [
-                        'resources/css/nao.css'
+                        'resources/css/nao.css',
+                        'resources/css/materialnote.css'
+
                     ]
                 }
             }
-
         },
 
         // Uglify JS files
         //
         uglify: {
-            options: {
-                mangle          : true,
-                preserveComments: false
+            nao : {
+                options: {
+                    mangle: true,
+                    preserveComments: false
+                },
+                files: {
+                    'web/assets/js/nao.min.js': ['resources/js/nao.js', 'resources/js/social.js','resources/js/paginate.js']
+                }
             },
-
-            script : {
-                src : 'resources/js/nao.js',
-                dest: 'web/assets/js/nao.min.js'
-            }
         },
-
 
         // Do some post processing on CSS files
         postcss: {
@@ -137,9 +154,9 @@ module.exports = function (grunt) {
                     require('postcss-flexbugs-fixes')
                 ]
             },
-	    compressed: {
-		src: 'web/assets/css/custom.min.css'
-	    }
+            compressed: {
+                src: 'web/assets/css/custom.min.css'
+            }
         },
 
         // Minify CSS files
@@ -178,14 +195,13 @@ module.exports = function (grunt) {
     grunt.registerTask('dist',
         [
             'clean:before_copy',
-	    'dev',
+            'dev',
             'imagemin'
         ]
     );
     grunt.registerTask('dev',
         [
-            'copy:font',
-            'copy:jpg',
+            'copy',
             'concat',
             'uglify',
             'cssmin',
@@ -193,4 +209,3 @@ module.exports = function (grunt) {
         ]
     );
 };
-

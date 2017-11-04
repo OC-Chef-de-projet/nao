@@ -1,9 +1,13 @@
+admin_user_search:
+    path:     /search
+    defaults: { _controller: AppBundle:Admin\User:search }
+    methods:  POST
 
+admin_user_search_clear:
+    path:     /clearsearch
+    defaults: { _controller: AppBundle:Admin\User:index, page: 1, role: 'ROLE_OBSERVER' }
+    methods:  [GET, POST ]
 
-admin_user_new:
-    path:     /new
-    defaults: { _controller: AppBundle:Admin\User:new }
-    methods:  [GET, POST]
 
 admin_user_edit:
     path:     /{id}/edit
@@ -25,7 +29,4 @@ admin_user_index:
     defaults: { _controller: AppBundle:Admin\User:index, page: 1, role: 'ROLE_OBSERVER' }
     methods:  [GET, POST]
 
-admin_user_paginate:
-    path:     /paginate
-    defaults: { _controller: AppBundle:Admin\User:paginate }
-    methods:  POST
+

@@ -1,0 +1,37 @@
+<div class="side-nav" id="side-menu">
+    <div class="side-profile">
+        <div class="row">
+            {% if user_is_logged %}
+            <div class="col s5">
+                <img class="circle" src="{{ asset(app.user.imagePath ) }}" alt="{{ 'alt_profil'|trans }}"/>
+            </div>
+            {% endif %}
+            <div class="col s7">
+                <div class="logo-medium"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 infos">
+                {% if user_is_logged %}
+                    {{ app.user.email }}
+                {% else %}
+                    <a href="{{ path('registration') }}" class="dark">{{ 'sign_in'|trans }}</a> / <a href="{{ path('login') }}" class="dark">{{ 'sign_up'|trans }}</a>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    <ul id="main-side-menu">
+        <li><a href="{{ path('homepage') }}"><i class="material-icons">home</i>{{ 'home'|trans }}</a></li>
+        <li><a href="{{ path('observation.create') }}"><i class="mdi mdi-map-marker-plus"></i>{{ 'observer'|trans }}</a></li>
+        <li><a href="{{ path('observation.map') }}"><i class="material-icons">map</i>{{ 'map'|trans }}</a></li>
+        <li><a href="{{ path('about') }}"><i class="material-icons">info_outline</i>{{ 'about'|trans }}</a></li>
+        <li><a href="{{ path('blog') }}"><i class="mdi mdi-newspaper"></i>{{ 'blog'|trans }}</a></li>
+        <li><a href="{{ path('stay.connected') }}"><i class="material-icons">supervisor_account</i>{{ 'stay_connected'|trans }}</a></li>
+        <li><a href="{{ path('contact') }}"><i class="material-icons">email</i>{{ 'contact'|trans }}</a></li>
+    </ul>
+
+    {% if user_is_logged %}
+        {% include '/common/widget/sidebar/connected_zone.html.twig' %}
+    {% endif %}
+</div>

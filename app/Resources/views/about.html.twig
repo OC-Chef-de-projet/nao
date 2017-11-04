@@ -1,0 +1,126 @@
+{% set bgwhite = true %}
+
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'about_page_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ 'about_page_meta_description'|trans }}">
+    <meta name="og:description" content="{{ 'about_page_meta_description'|trans }}">
+    <meta name="og:title" content="{{ 'about_page_title'|trans }}">
+    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="collapse bg3">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': 'about_main_title'}%}
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <div id="header-main-title">
+                            <h1>{{ 'about_main_title'|trans }}</h1>
+                            <span>{{ 'about_secondary_title'|trans }}</span>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <span class="breadcrumb">{{ 'about'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <div class="heading">{{ 'about_main_title'|trans }}</div>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m10 push-m1">
+                                    <div class="row">
+                                        <div class="col s12 ">
+                                            <br />
+                                            <h2 class="big"> {{ 'NAO'|trans }}</h2>
+                                            <p>{{ 'about_nao_explain'|trans|nl2br }}</p>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col s12 center-align">
+                                            <img src="assets/img/logo/logo-NAO-color-3.png" width="280px"/>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <h2 class="big">{{ 'collaborative_project_title'|trans }}</h2>
+                                            <p>{{ 'collaborative_project_explain'|trans }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <ul id="stepbar">
+                                                <li>{{ 'observe'|trans }}</li>
+                                                <li>{{ 'photographed'|trans }}</li>
+                                                <li>{{ 'do_validate'|trans }}</li>
+                                                <li>{{ 'share'|trans }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col s12 m6 right">
+                                            <img src="assets/img/a-shuhani-541.jpg" />
+                                        </div>
+                                        <div class="col s12 m6 right">
+                                            {{ 'about_explain_1'|trans|nl2br }}
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <img src="assets/img/pawel-janiak-114499.jpg" />
+                                        </div>
+                                        <div class="col s12 m6">
+                                            {{ 'about_explain_2'|trans }}<br /><br />
+                                            <b>{{ 'about_explain_no_waiting'|trans }}</b><br />
+                                            {{ 'about_explain_2_1'|trans }}
+                                            <p class="center-align"><br /><a href="{{ path('observation.create') }}" class="btn waves-effect">{{ 'homepage_submit_observation'|trans }}</a><br /><br /></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m6 right">
+                                            <img src="assets/img/NAO-dons.jpg" />
+                                        </div>
+                                        <div class="col s12 m6 right">
+                                            {{ 'about_explain_3'|trans|nl2br }}
+                                            <p class="center-align"><br /><a href="https://www.helloasso.com/" class="btn waves-effect" target="_blank">{{ 'give_me_money'|trans }}</a><br /><br /></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+

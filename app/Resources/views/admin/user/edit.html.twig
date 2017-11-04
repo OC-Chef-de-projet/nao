@@ -1,0 +1,109 @@
+{% set bgwhite = true %}
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'admin_user'|trans }}{% endblock %}
+
+{% block header %}
+    <header class="collapse admin">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_user' , 'admin' : true} %}
+    </header>
+{% endblock %}
+
+{% block body %}
+
+
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down admin">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb dbz">{{ 'home'|trans }}</a>
+                    <a href="{{ path('admin_homepage') }}" class="breadcrumb dbz">{{ 'admin'|trans }}</a>
+                    <a href="{{ path('admin_user_index') }}" class="breadcrumb dbz">{{ 'admin_user'|trans }}</a>
+                    <span class="breadcrumb">{{ 'admin_user_edit'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <h1 class="activated">{{ 'admin_user'|trans }}</h1>
+    </section>
+
+    <main class="container marge-top-large">
+        <section>
+            <div class="row">
+                <div class="hide-on-med-and-up user-container">
+                    <div class="img-container push-s3">
+                        <img src="{{ asset(user.imagePath ) }}" alt="{{ 'alt_profil'|trans }}"/>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
+                                <div class="row">
+                                    <div class="col s12 l6 main-section">
+                                        <div class="col l5 push-s2 hide-on-small-only">
+                                            <div class="img-container-small">
+                                                <img src="{{ asset(user.imagePath ) }}" alt="{{ 'alt_profil'|trans }}"/>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 l6">
+                                            <ul class="profil-details">
+                                                <li><span class="card-title">{{ user.name }}</span></li>
+                                                <li>{% trans %}
+                                                    enrolled_since{% endtrans %} {{ user.created|date('d/m/Y') }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col s12 l6 secondary-section v-margin-small">
+                                        <div class="col s12 ">
+                                            {{ form_start(form) }}
+                                            <div class="col s12 m6">
+                                                {{ form_widget(form.role) }}
+                                                <br/>
+                                                <div class='switch row'>
+                                                    <label>
+                                                        {{ form_widget(form.inactive) }}
+                                                        <span class="lever"></span>
+                                                        {{ 'bloqued_user' | trans }}
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col s12">
+                                            <br>
+                                            <div class="row">
+
+                                                <div class="col s6">
+                                                    {{ form_widget(form.cancel) }}
+                                                </div>
+                                                <div class="col s6">
+                                                    {{ form_widget(form.save) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{ form_end(form) }}
+                                    </div>
+                                </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            $('select').material_select();
+            $('.modal').modal();
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,11 @@
+<div id="delete-account" class="modal">
+    <div class="modal-content">
+        <h4>{{ 'delete_account'|trans }}</h4>
+        <p>{{ 'modal_confirmation_explain'|trans|nl2br }}</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0);" class="modal-action modal-close waves-effect btn-flat light-orange">{{ 'cancel'|trans }}</a>
+        <a href="{{ path('dashboard.account.delete') }}" class="modal-action modal-close waves-effect btn-flat light-orange">{{ 'confirm'|trans }}</a>
+    </div>
+</div>
+

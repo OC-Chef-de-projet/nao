@@ -1,0 +1,107 @@
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'registration_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ 'registration_meta_description'|trans }}">
+    <meta name="og:description" content="{{ 'registration_meta_description'|trans }}">
+    <meta name="og:title" content="{{ 'registration_title'|trans }}">
+    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="collapse bg11">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'register' }%}
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <div id="header-main-title">
+                            <h1>{{ 'registration_main_title'|trans }}</h1>
+                            <span>{{ 'registration_secondary_title'|trans }}</span>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <span class="breadcrumb">{{ 'register'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <div class="heading">{{ 'register'|trans }}</div>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <form id="register_form" method="post" autocomplete="off">
+                                <div class="row">
+                                    <div class="col s12 l6 main-section">
+                                       <div class="input-field col s12">
+                                            {{ form_widget(form.name) }}
+                                            <label>{{ 'label_name'|trans }}</label>
+                                            <div class="error">{{ form_errors(form.name) }}</div>
+                                        </div>
+                                        <input style="display:none">
+                                        <div class="input-field col s12">
+                                            {{ form_widget(form.email) }}
+                                            <label>{{ 'label_email'|trans }}</label>
+                                            <div class="error">{{ form_errors(form.email) }}</div>
+                                        </div>
+                                        <input style="display:none">
+                                        <div class="input-field col s12">
+                                            {{ form_widget(form.plainPassword.first) }}
+                                            <label>{{ 'label_password'|trans }}</label>
+                                            <div class="error">{{ form_errors(form.plainPassword.first) }}</div>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            {{ form_widget(form.plainPassword.second) }}
+                                            <label>{{ 'label_password_confirmation'|trans }}</label>
+                                            <div class="error">{{ form_errors(form.plainPassword.second) }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col s12 l6 secondary-section v-margin center-align">
+                                        <div class="col s12">
+                                            {{ form_widget(form.newsletter) }}
+                                            <label for="register_newsletter" class="light-2">{{ 'registration_newsletter_explain'|trans }}</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <button class="btn waves-effect" >{{ 'sign_in'|trans }}</button>
+                                        </div>
+                                        <div class="col s12">
+                                            <br />
+                                            <p class="center-align light-2-no-hov">{{ 'registration_have_account'|trans }} <a href="{{ path('login') }}" class="light-2">{{ 'sign_up'|trans }}</a></p>
+                                        </div>
+                                    </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    {% if app.session.flashbag.has("success") %}
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <script>var toastMsg = "{{ 'registration_success'|trans }}";</script>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+
+
+            <!-- COMMON -->
+            <trans-unit id="not_blank">
+                <source>not_blank</source>
+                <target>Ce champ est obligatoire.</target>
+            </trans-unit>
+            <trans-unit id="format_min_2">
+                <source>format_min_2</source>
+                <target>Veuillez fournir au moins 2 caractères.</target>
+            </trans-unit>
+
+
+            <!-- EMAIL -->
+            <trans-unit id="email_invalid">
+                <source>email_invalid</source>
+                <target>Veuillez fournir une adresse email valide.</target>
+            </trans-unit>
+            <trans-unit id="This email address is already in use">
+                <source>This email address is already in use</source>
+                <target>Cette adresse email est déja utilisé.</target>
+            </trans-unit>
+
+            <!-- NAME -->
+            <trans-unit id="name_format">
+                <source>name_format</source>
+                <target>Veuillez fournir un nom valide.</target>
+            </trans-unit>
+
+            <!-- PASSWORD -->
+            <trans-unit id="password_not_equal">
+                <source>password_not_equal</source>
+                <target>Le mot de passe doit être identique à sa confirmation .</target>
+            </trans-unit>
+
+            <!-- IMAGE -->
+            <trans-unit id="avatar_format">
+                <source>avatar_format</source>
+                <target>l'image n'est pas valide</target>
+            </trans-unit>
+            <trans-unit id="avatar_size">
+                <source>avatar_size</source>
+                <target>La taille de l'image est trop grande</target>
+            </trans-unit>
+
+            <!-- CITY -->
+            <trans-unit id="city.wrong">
+                <source>city.wrong</source>
+                <target>Ce lieu n'est pas valide.</target>
+            </trans-unit>
+
+            <!-- CITY -->
+            <trans-unit id="bird.wrong">
+                <source>bird.wrong</source>
+                <target>Cette espèce n'a pas été reconnue.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
+        <!--
+        {% trans %}{% endtrans %}
+        -->

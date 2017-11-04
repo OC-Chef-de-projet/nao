@@ -1,71 +1,229 @@
-{% extends 'base.html.twig' %}
+{% set bgwhite = true %}
+{% extends "common/template/base.html.twig" %}
 
+{% block title %}{{ 'admin_user'|trans }}{% endblock %}
 
-
+{% block header %}
+    <header class="collapse admin">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_user' , 'admin' : true} %}
+        <ul class="tabs tabs-transparent">
+            <li class="tab">
+                <a target="_self" id="ROLE_OBSERVER"
+                   href="{{ path('admin_user_index', {page: 1, role: 'ROLE_OBSERVER'}) }}"
+                        {{ (app.request.attributes.get('role') == 'ROLE_OBSERVER') ? ' class="active"' }}
+                >{{ 'ROLE_OBSERVER'|trans }}</a>
+            </li>
+            <!-- Naturalist -->
+            <li class="tab">
+                <a target="_self" id="ROLE_NATURALIST"
+                   href="{{ path('admin_user_index', {page: 1, role: 'ROLE_NATURALIST'}) }}"
+                        {{ (app.request.attributes.get('role') == 'ROLE_NATURALIST') ? ' class="active"' }}
+                >{{ 'ROLE_NATURALIST'|trans }}</a>
+            </li>
+            <!-- Admin -->
+            <li class="tab">
+                <a target="_self" id="ROLE_ADMIN"
+                   href="{{ path('admin_user_index', {page: 1, role: 'ROLE_ADMIN'}) }}"
+                        {{ (app.request.attributes.get('role') == 'ROLE_ADMIN') ? ' class="active"' }}
+                >{{ 'ROLE_ADMIN'|trans }}</a>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
 
 {% block body %}
-{% include ':admin/user:navbar.html.twig' %}
-
-
-    <div class="container">
-        {% include '::breadcrumb.html.twig'  with {'breadcrumb':header.breadcrumb} only %}
-        <h4>{% trans %}gestion_utilisateurs{% endtrans %}</h4>
-        <div class="card-panel">
-            <div class="row">
-                <div class="col s12 m6 push-m3 search">
-                        <div class="input-field">
-                            {{ form_start(form) }}
-                            {{ form_widget(form.search) }}
-                            <label for="icon_prefix"><i class="material-icons prefix">search</i><span class="search_name">{% trans %}recherche_par_nom{% endtrans %}</span></label>
-                            {{ form_end(form) }}
-                        </div>
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down admin">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb dbz">{{ 'home'|trans }}</a>
+                    <a href="{{ path('admin_homepage') }}" class="breadcrumb dbz">{{ 'admin'|trans }}</a>
+                    <span class="breadcrumb">{{ 'admin_user'|trans }}</span>
                 </div>
             </div>
-            <!-- -->
+        </nav>
+        <h1 class="activated">{{ 'admin_user'|trans }}</h1>
+    </section>
+    <main class="container marge-top">
+        <section>
             <div class="row">
-            {%  for user in users %}
-                <div class="col s12 m6">
-                    <a href="{{ path('admin_user_update', { 'id': user.id}) }}">
-                        <div class="card horizontal z-depth-0">
-                            <div class="card-image roundedImage">
-                                <img src="{{ asset('images/users/'~user.getImagePath) }}">
-                            </div>
-                            <div class="card-stacked">
-                                <b>{{ user.getName }}</b>
-                                <span class="text-grey">{{ user.roleString }}</span>
-                            </div>
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m10 push-m1">
+                                    <div class="row">
+                                        <div class="col s12 m5 push-m3">
+                                            <div class="card input-field" style="min-height: 0;">
+                                                <i class="material-icons prefix" style="margin-top:10px;margin-left:5px">search</i>
+                                                <input type="text" id="searchuser"
+                                                       data-activates="singleDropdown" data-beloworigin="true"
+                                                       autocomplete="off">
+                                                <label for="searchuser">{{ 'search_by_name' | trans }}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m2 push-m3">
+                                            <a class="caption light-2" href="#" id="clearsearch">{{ 'clear_search' | trans }}</a>
+                                        </div>
 
+                                    </div>
+                                    <ul id="singleDropdown" class="dropdown-content ac-dropdown"></ul>
+                                </div>
+
+                                <!-- user list -->
+                                <ul class="collection col s12" style="border: 1px solid white !important;" id="userList">
+                                    {% include 'admin/user/list.html.twig' %}
+                                </ul>
+                                {% include 'admin/paginate.html.twig' %}
+                                </div>
+                            </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
-                {% endfor %}
-            <!-- end user -->
-        </div>
-            <div class="container center-align">
-                <ul class="pagination">
-
-                    <li {{ paginate.current <= 1 ? 'class="disabled"': 'class="waves-effect"' }}>
-                        <a href="{{ path('admin_user_index', {page: paginate.current-1 < 1 ? 1 : paginate.current-1}) }}">
-                            <i class="material-icons">chevron_left</i>
-                        </a>
-                    </li>
-
-                    {% for i in paginate.current..paginate.current+2 %}
-                        <li class="waves-effect {{ paginate.current == i ? 'active' }}{{ i > paginate.maxPages ? 'disabled' }}">
-                            <a class="gotopage {{ i > paginate.maxPages ? ' not-active' }}" href="#" data-page="{{ i }}">{{ i }}</a>
-                        </li>
-                    {% endfor %}
-
-                    <li {{ paginate.current == paginate.maxPages ? 'class="disabled"': 'class="waves-effect"' }}>
-                        <a href="{{ path('admin_user_index', {page: paginate.current+1 <= paginate.maxPages ? paginate.current+1 : paginate.current}) }}">
-                            <i class="material-icons">chevron_right</i>
-                        </a>
-                    </li>
-                </ul>
             </div>
-    </div>
+        </section>
+    </main>
 
-{% endblock body %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            // Search form
+            var single = $('#searchuser').materialize_autocomplete({
+                limit: 6,
+                cacheable: true,
+                multiple: {
+                    enable: false
+                },
+                dropdown: {
+                    el: '#singleDropdown'
+                },
+                getData: function (value, callback) {
+                    var data = [];
+                    var role = $('.tab').find('.active').attr('id');
+                    $.ajax({
+                        url: "{{ url('api_user_search') }}?bearer={{ token }}",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            "role": role,
+                            "search": value
+                        },
+                        success: function (response) {
+                            callback(value, response);
+                        }
+                    });
+                },
+                onSelect: function (item) {
+                    userList(1, item.id);
+                    $('.pagination').hide();
+                }
+            });
+
+            // Clear search by reloading page
+            $("#clearsearch").click(function () {
+                location.reload();
+            });
+
+            // Next page for pagination
+            $('#nextpage').click(function () {
+                var current = $('.pages').find('.active').attr('id').replace('p_', '');
+                current = parseInt(current) + 1;
+                checkLastpage(current);
+                checkFirstpage(current);
+                if (current <= {{ paginate.maxPages }}) {
+                    displayPage(current);
+                }
+
+            });
+            // Previous page for pagination
+            $('#prevpage').click(function () {
+                var current = $('.pages').find('.active').attr('id').replace('p_', '');
+                current = parseInt(current) - 1;
+                checkLastpage(current);
+                checkFirstpage(current);
+                if (current >= 1) {
+                    displayPage(current);
+                }
+            });
+            $('.gotopage').click(function () {
+                var pageno = $(this).data("page");
+                // Search active page
+                checkFirstpage(pageno);
+                checkLastpage(pageno);
+                displayPage(pageno);
+
+            });
+        });
+
+        /**
+         *
+         * @param pageno
+         * @param user_id
+         */
+        function userList(pageno, user_id) {
+            var role = $('.tab').find('.active').attr('id');
+            var search = $('#form_search').val();
+            $.ajax({
+                url: "{{ path('api_user_paginate') }}?bearer={{ token }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "page": pageno,
+                    "role": role,
+                    "user_id": user_id
+                },
+                success: function (response) {
+                    $('#userList').html(response.html);
+                }
+            });
+        }
+
+
+        /**
+         * Display page
+         */
+        function displayPage(page) {
+            // Remove active classes
+            $(".pages li").removeClass("active");
+            userList(page, 0);
+            $('#p_' + page).addClass('active');
+        }
+
+        /**
+         * Check page number to active next icon
+         *
+         * @param pageno
+         */
+        function checkLastpage(pageno) {
+            var maxpage = {{ paginate.maxPages }} ;
+            if (pageno >= maxpage) {
+                $('#chevron_right').addClass('disabled');
+
+            } else {
+                $('#chevron_right').removeClass('disabled');
+            }
+        }
+
+        /**
+         * Check page number to active previous icon
+         *
+         * @param pageno
+         */
+        function checkFirstpage(pageno) {
+            if (pageno <= 1) {
+                $('#chevron_left').addClass('disabled');
+
+            } else {
+                $('#chevron_left').removeClass('disabled');
+            }
+        }
+    </script>
+{% endblock %}
 
 
 

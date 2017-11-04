@@ -1,0 +1,5 @@
+{% for article in postlist %}
+    <div class="col s12 m6 l4" >
+        {% include 'common/cards/article.html.twig' with {'article':article } only %}
+    </div>
+{% endfor %}

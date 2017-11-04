@@ -77,4 +77,24 @@ class PostRepository extends EntityRepository
 
         return $paginator;
     }
+
+
+
+    public function searchPosts($currentPage,$limit = 50,$pattern)
+    {
+        $pattern = "%$pattern%";
+
+        $query = $this->createQueryBuilder('p')
+            ->where('p.status = :status')->setParameter('status',Post::PUBLISHED)
+            ->andWhere('p.title LIKE :pattern1 OR p.content LIKE :pattern2')
+            ->setParameter('pattern1', $pattern)
+            ->setParameter('pattern2', $pattern);
+
+        $query->orderBy('p.publishedAt', 'DESC');
+
+        $query->getQuery();
+        dump($query);
+        $paginator = $this->paginate($query, $currentPage, $limit);
+        return $paginator;
+    }
 }

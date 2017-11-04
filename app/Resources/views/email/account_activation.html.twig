@@ -1,0 +1,29 @@
+{% extends "common/template/email.html.twig" %}
+
+{% block body %}
+    <table class="body-wrap">
+        <tr>
+            <td></td>
+            <td class="container" bgcolor="#FFFFFF">
+                <div class="content margin">
+                    <table>
+                        <tr>
+                            <td>
+                                <h3>{{ 'email_account_activation_title'|trans }}</h3>
+                                <br />
+                                <table class="summary">
+                                    {{ 'email_account_activation_content'| trans({ '%name%': user.name })| nl2br }}
+
+                                    <center><a class="button" href="{{ absolute_url(path('registration_activation', {'code' : user.token})) }}">{{ 'activate_account'|trans }}</a></center>
+
+                                    {{ 'email_signature'|trans|nl2br }}
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+{% endblock %}

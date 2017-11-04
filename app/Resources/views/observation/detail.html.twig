@@ -1,0 +1,109 @@
+{% set bgwhite = true %}
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'observation_detail_title'|trans }}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ observation.comments }}">
+    <meta name="og:description" content="{{ observation.comments }}">
+    <meta name="og:title" content="{{ 'observation_detail_title'|trans }} - {{ observation.taxref.commonName }}">
+    <meta property="og:image" content="{{ asset('images/observations/' ~ observation.imagePath ) }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="classic">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'observation_detail_title'} %}
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <a href="{{ path('observation.map') }}" class="breadcrumb">{{ 'the_observations'|trans }}</a>
+                    <span class="breadcrumb">{{ 'observation'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <h1 class="activated">{{ 'observation_detail_title'|trans }}</h1>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section>
+            <div class="row no-pad-bot">
+                <div class="col s12">
+                    <div class="card no-style observation no-border">
+                        <div class="card-content">
+                            <div class="row no-pad-bot">
+                                <div class="col s12 m10 push-m1">
+                                    <br/>
+                                    <div class="row no-pad-bot">
+                                        <div class="col s12 m6 right">
+                                            <h2>{{ observation.taxref.commonName }}</h2>
+                                            <p>
+                                                {{ 'observation_individuals'|trans({'%individuals%': observation.individuals, '%date%': observation.watched|date("d/m/Y")}) }}<br/>
+                                                {{ 'in_place'|trans({'%place%': observation.place}) }}
+                                            </p>
+                                            <p class="caption light-2-no-hov coordinate">
+                                                {{ 'GPS_coordinate' | trans({'%latitude%': observation.latitude | gps_dms, "%longitude%": observation.longitude | gps_dms()}) }}
+                                            </p>
+                                            <div class="col s12 hide-on-med-and-up">
+                                                {% include ':observation/validation:observer.html.twig' %}
+                                            </div>
+                                            <div class="col s12 hide-on-small-only no-pad">
+                                                <br/><p>{{ observation.comments }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m6 right">
+                                            <img src="{{ asset('images/observations/' ~ observation.imagePath ) }}" alt="{{ 'alt_bird'|trans }}">
+                                        </div>
+                                        <div class="col s12 m6 hide-on-med-and-up">
+                                            <br/><p>{{ observation.comments }}</p><br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s12 m11 push-m1">
+                                    <div class="row no-pad-bot">
+                                        <div class="col s12 m5 hide-on-small-only">
+                                            {% include ':observation/validation:observer.html.twig' %}
+                                        </div>
+                                        <div class="col s12 m7 center">
+                                            <br />
+                                            <a  href="#" class="waves-effect waves-light btn social less facebook share-link" data-social="facebook" data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}">
+                                                <i class="mdi mdi-facebook"></i><span class="hide-on-small-only">{{ 'sharing'|trans }}</span>
+                                            </a>
+                                            <a href="#" class="waves-effect waves-light btn social less google share-link" data-social="google" data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}">
+                                                <i class="mdi mdi-google-plus"></i><span class="hide-on-small-only">{{ 'sharing'|trans }}</span>
+                                            </a>
+                                            <a href="#" class="waves-effect waves-light btn social less twitter share-link" data-social="twitter" data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}">
+                                                <i class="mdi mdi-twitter"></i><span class="hide-on-small-only">{{ 'sharing'|trans }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+                <h2>{{ 'last_bird_watched_of'|trans({'%name%': observation.taxref.commonName}) }}</h2>
+                {% if lastobs != null %}
+                    <div class="row">
+                        <div class="col s12 m6 offset-l4 l4">
+                            {% include 'common/cards/observation.html.twig' with {'observation': lastobs } only %}
+                        </div>
+                    </div>
+                {% else %}
+                    {{ 'no_last_bird_watched'|trans }}
+                {% endif %}
+            </section>
+        </section>
+    </main>
+{% endblock %}
+

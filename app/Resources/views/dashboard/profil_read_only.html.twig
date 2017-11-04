@@ -1,0 +1,101 @@
+{% set bgwhite = true %}
+
+{% set homeshare = true %}
+
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'profil_view_page_title'|trans({'%name%' : user.name}) }} - {{ 'NAO'|trans }}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ 'profil_view_page_meta_description'|trans }}">
+    <meta name="og:description" content="{{ 'profil_view_page_meta_description'|trans }}">
+    <meta name="og:title" content="{{ 'profil_view_page_title'|trans({'%name%' : user.name}) }}">
+    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="classic">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'profil_view_page_title'|trans({'%name%' : user.name})} %}
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <span class="breadcrumb">{{ 'profil_view_main_title'|trans({'%name%' : user.name}) }}</span>
+                </div>
+            </div>
+        </nav>
+        <div class="heading">{{ 'dashboard_main_title'|trans }}</div>
+    </section>
+    {% if access_to_profil %}
+    <section class="bg-body hide-on-med-and-up">
+        <div class="row no-pad-bot">
+            <div class="col s12 center-align">
+                <div class="img-container">
+                    <img src="{{ asset(user.imagePath ) }}" alt="{{ 'alt_profil'|trans }}"/>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top-large">
+        <section>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
+                            {% if access_to_profil %}
+                                <form>
+                                    <div class="row">
+                                        <div class="col s12 l6 main-section">
+                                            <div class="col l4 right-align hide-on-small-only">
+                                                <div class="img-container">
+                                                    <img src="{{ asset(user.imagePath ) }}" alt="{{ 'alt_profil'|trans }}"/>
+                                                </div>
+                                            </div>
+                                            <div class="col s12 l8">
+                                                <ul class="profil-details">
+                                                    <li><span class="card-title">{{ user.name }}</span></li>
+                                                    <li>{{ 'registered_since'|trans({'%date%': user.created|date("d/m/Y")}) }}</li>
+                                                    <li>{{ 'profil'|trans|capitalize }} {{ user.role|trans|lower}}</li>
+                                                    <li>&nbsp;</li>
+                                                    <li><h2>{{ 'activities'|trans }}</h2></li>
+                                                    <li>{{ 'x_obersation_validate'|trans({'%nb%' : obs_validate}) }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 l6 secondary-section v-margin-small">
+                                            <div class="col s12 ">
+                                                <h2>{{ 'about'|trans }}</h2>
+                                                {% if user.aboutMe != NULL %}
+                                                    <p>{{ user.aboutMe }}</p>
+                                                {% else %}
+                                                    <p>{{ 'about_me_default'|trans({'%name%' : user.name})|nl2br }}</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            {% else %}
+                            <div class="row">
+                                <div class="col s12 m8 push-m2">
+                                    <br /><br /><p>{{ 'private_access'|trans({'%name%' : user.name})|nl2br }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+

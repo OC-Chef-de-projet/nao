@@ -1,0 +1,109 @@
+{% set bgwhite = true %}
+
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'observation_me_page_title'|trans }} - {{ 'NAO'|trans }}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ 'observation_me_page_meta_description'|trans }}">
+    <meta name="og:description" content="{{ 'observation_me_page_meta_description'|trans }}">
+    <meta name="og:title" content="{{ 'observation_me_page_title'|trans }}">
+    <meta property="og:image" content="{{ url('homepage') ~ 'images/default_sharer.png' }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="collapse bg15">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'observation_me_page_title'} %}
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <div id="header-main-title">
+                            <h1>{{ 'observation_me_main_title'|trans }}</h1>
+                            <span>{{ 'draft'|trans }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <ul class="tabs tabs-transparent">
+            <li class="tab"><a class="active" href="{{ path('observation.me.draft') }}" target="_self">{{ 'draft'|trans }}</a></li>
+            <li class="tab"><a href="{{ path('observation.me.validate') }}" target="_self">{{ 'validated'|trans }}</a></li>
+            {% if not is_granted('ROLE_NATURALIST') and not is_granted('ROLE_ADMIN') %}
+                <li class="tab"><a href="{{ path('observation.me.waiting') }}" target="_self">{{ 'waiting'|trans }}</a></li>
+            {% endif %}
+        </ul>
+        <div id="btn-float-add">
+            <a href="{{ path('observation.create') }}" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a>
+        </div>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <span class="breadcrumb">{{ 'your_observation'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <div class="heading">{{ 'observation_me_page_title'|trans }} {{ 'draft'|trans }}</div>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section>
+            {% if obslist|length > 0 %}
+                <div class="row">
+                    <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
+                        {% for observation in obslist %}
+                            <div class="col s12 m6" >
+                                {% include 'common/cards/observation_state.html.twig' with {'observation':observation, 'action': 'edit' } only %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row">
+                    {% include 'admin/paginate.html.twig' with {'pnormal' :true} %}
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col s12">
+                        <p>{{ 'dont_have_obs_draft'|trans }}</p>
+                    </div>
+                </div>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        /**
+         *
+         * @param pageno
+         * @param user_id
+         */
+        function getList(pageno, no) {
+            var status = $('.tab').find('.active').attr('id');
+            $.ajax({
+                url: "{{ path('api_obs_paginate') }}?bearer={{ token }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "page": pageno,
+                    "state": 'my_draft'
+                },
+                success: function (response) {
+                    $('#eltlist').html(response.html);
+                }
+            });
+        }
+    </script>
+{% endblock %}
+

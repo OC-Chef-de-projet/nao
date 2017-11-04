@@ -1,8 +1,0 @@
-<div class="nav-content">
-    <ul class="tabs tabs-transparent">
-        {% for tab in tabs %}
-            <li class="tab"><a target="_self" href="{{ path('admin_user_index', {page: current, role: tab.role}) }}" {{ tab.active ? 'class="active"' }}>{{ tab.text }}</a></li>
-        {% endfor %}
-    </ul>
-</div>
-

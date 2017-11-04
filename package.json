@@ -6,10 +6,10 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.7.7",
+    "generate-changelog": "^1.5.0",
     "grunt": "^1.0.1",
     "grunt-browser-sync": "^2.2.0",
     "grunt-contrib-clean": "^1.0.0",
@@ -45,4 +45,3 @@
   },
   "homepage": "https://github.com/PierreSylvain/nao#readme"
 }
-

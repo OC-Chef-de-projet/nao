@@ -8,6 +8,10 @@ security:
     access_control:
         # require ROLE_ADMIN for /admin*
         - { path: ^/admin, roles: [ROLE_ADMIN]}
+        - { path: ^/API/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/API, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
 
     role_hierarchy:
         ROLE_ADMIN:  [ROLE_EDITOR, ROLE_NATURALIST, ROLE_OBSERVER ]
@@ -24,8 +28,43 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+
+        login:
+                pattern:  ^/API/login
+                stateless: true
+                anonymous: true
+                form_login:
+                    check_path:               /API/login_check
+                    success_handler:          lexik_jwt_authentication.handler.authentication_success
+                    failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+                    require_previous_session: false
+                    #username_parameter: email
+
+        post_paginate:
+            methods: [POST]
+            pattern: ^/API/post/paginate
+            security: false
+
+        post_observations:
+            methods: [POST]
+            pattern: ^/API/observation/search
+            security: false
+
+        post_taxref:
+            methods: [POST]
+            pattern: ^/API/taxref/search
+            security: false
+
+        api:
+            pattern:   ^/API
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
         main:
             pattern: ^/
+            user_checker: AppBundle\Security\UserChecker
             anonymous: true
             provider: user_provider
             guard:
@@ -34,5 +73,20 @@ security:
             logout:
                 path: /logout
                 target: /
+
             remember_me:
                 secret: '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+                always_remember_me: false
+
+            oauth:
+                resource_owners:
+                    google:             "/login/check-google"
+                    facebook:           "/login/check-facebook"
+                login_path:        /connexion
+                use_forward:       false
+                failure_path:      /login
+
+                oauth_user_provider:
+                    service: app.oauth

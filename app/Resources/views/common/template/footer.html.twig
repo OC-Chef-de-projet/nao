@@ -1,0 +1,78 @@
+<footer class="page-footer">
+    <div class="container">
+        <div class="row no-pad-bot">
+            <div id="stay-connect" class="col l4 m12 s12 right">
+                <div class="row hide-on-med-and-down">
+                    <div class="col s12">
+                        <h2>{{ 'last_article'|trans }}</h2>
+                        {% if posts.getLastPost |length > 0 %}
+                            <span class="title"><a href="{{ path('blog.detail', {'id': posts.getLastPost.id, 'slug' : posts.getLastPost.slug }) }}">{{ posts.getLastPost.title }}</a></span>,
+                            <span class="date">{{ 'published_at' |trans ({'%date%': posts.getLastPost.publishedAt|date("d/m/Y")}) }}</span>
+                        {% else %}
+                            {{ 'no_article_for_moment'|trans }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row no-pad-bot">
+                    <div class="col s12">
+                        <h2>{{ 'stay_inform'|trans }}</h2>
+                        <div class="row no-pad-bot">
+                            <form id="global_form_newsletter" class="col s12" method="post" action="{{ path('newsletter.subscribe') ~ '?bearer=' ~ jwt.token }}">
+                                <div class="row no-pad-bot">
+                                    <div class="input-field col s12">
+                                        <input style="display:none">
+                                        <input name="ng_email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" data-msg-pattern="{{ 'error_email_format'|trans }}" autocomplete="off"  class="validate"/>
+                                        <div class="error"></div>
+                                        <label>{{ 'label_email'|trans }} *</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <button class="btn waves-effect">{{ 'subscribe_to_newsletter'|trans }}</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col l4 m12 s12 center-align hide-on-med-and-down right">
+                <div class="logo-medium"></div>
+            </div>
+            <div class="col l4 m12 s12 right">
+                <div class="row hide-on-med-and-down">
+                    <div class="col s12">
+                        <ul>
+                            <li><a class="light" href="{{ path('about') }}">{{ 'about'|trans }}</a></li>
+                            <li><a class="light" href="{{ path('blog') }}">{{ 'blog'|trans }}</a></li>
+                            <li><a class="light" href="{{ path('stay.connected') }}">{{ 'stay_connected'|trans }}</a></li>
+                            <li><a class="light" href="{{ path('faq') }}">{{ 'faq'|trans }}</a></li>
+                            <li><a class="light" href="{{ path('contact') }}">{{ 'contact'|trans }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row no-pad-bot">
+                    <div class="col s12">
+                        <h2>{{ 'stay_connected'|trans }}</h2>
+                        <ul class="social">
+                            <li><a class="light" href="https://www.facebook.com/Nos-amis-les-oiseaux-709279699264029/" target="_blank"><i class="mdi mdi-facebook"></i></a></li>
+                            <li><a class="light" href="https://plus.google.com/105417715833330667133" target="_blank"><i class="mdi mdi-google-plus"></i></a></li>
+                            <li><a class="light" href="https://twitter.com/asso_nao" target="_blank"><i class="mdi mdi-twitter"></i></a></li>
+                            <li><a class="light" href="https://www.instagram.com/asso.nao/" target="_blank"><i class="mdi mdi-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="scroll-container" class="circle"><a id="scroll-top" href="#"><i class="mdi mdi-arrow-up-thick"></i></a></div>
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    {{ 'NAO'|trans }} - 2017 <br />
+                    {{ 'Powered_by_agency'|trans }}  - <a href="{{ path('legacy') }}" class="light">{{ 'legacy'|trans }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+

@@ -1,0 +1,14 @@
+<section>
+    <h2>{{ 'last_observation'|trans }}</h2>
+    {% if observations|length > 0 %}
+        <div class="row">
+            {% for observation in observations %}
+                <div {% if loop.index < 3 %} class="col s12 m6 l4" {% else %} class="col s12 m6 offset-m3 l4" {% endif %}>
+                    {% include 'common/cards/observation.html.twig' with {'observation':observation } only %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        {{ 'no_observation_for_moment'|trans }}
+    {% endif %}
+</section>

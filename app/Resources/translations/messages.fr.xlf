@@ -2,110 +2,477 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
         <body>
+            <!-- WEBSITE INFORMATIONS -->
             <trans-unit id="NAO">
                 <source>NAO</source>
                 <target>Nos Amis les Oiseaux</target>
             </trans-unit>
-
-            <!-- Dashboard -->
-            <trans-unit id="admin_dashboard">
-                <source>admin_dashboard</source>
-                <target>Administration - Tableau de bord</target>
-            </trans-unit>
-            <trans-unit id="gerer_utilisateurs_titre">
-                <source>gerer_utilisateurs_titre</source>
-                <target>Gérer les utilisateurs</target>
-            </trans-unit>
-            <trans-unit id="gerer_utilisateurs_contenu">
-                <source>gerer_utilisateurs_contenu</source>
-                <target>Attribuer ou retirer des droits aux utilisateurs</target>
-            </trans-unit>
-            <trans-unit id="gerer_articles_titre">
-                <source>gerer_articles_titre</source>
-                <target>Gérer les articles</target>
-            </trans-unit>
-            <trans-unit id="gerer_articles_contenu">
-                <source>gerer_articles_contenu</source>
-                <target>Ajouter/modifier/supprimer des articles</target>
+            <trans-unit id="Powered_by_agency">
+                <source>Powered_by_agency</source>
+                <target>Propulsé par Dot.coM</target>
             </trans-unit>
 
-            <trans-unit id="moderer_commentaires_titre">
-                <source>moderer_commentaires_titre</source>
-                <target>Modérer les commentaires</target>
+            <!-- COOKIES BAR -->
+            <trans-unit id="cookies_explain">
+                <source>cookies_explain</source>
+                <target>Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.</target>
             </trans-unit>
-            <trans-unit id="moderer_commentaires_contenu">
-                <source>moderer_commentaires_contenu</source>
-                <target>Accepter ou refuser les commentaires des internautes</target>
+            <trans-unit id="i_agree">
+                <source>i_agree</source>
+                <target>J'accepte</target>
             </trans-unit>
-
-            <!-- Gestion des utilisateurs -->
-            <trans-unit id="gestion_utilisateurs">
-                <source>gestion_utilisateurs</source>
-                <target>Gestion des utilisateurs</target>
-            </trans-unit>
-            <trans-unit id="recherche_par_nom">
-                <source>recherche_par_nom</source>
-                <target>Rechercher par nom</target>
-            </trans-unit>
-            <trans-unit id="inscrit_depuis">
-                <source>inscrit_depuis</source>
-                <target>Inscrit depuis le</target>
-            </trans-unit>
-            <trans-unit id="utilisateur_bloque">
-                <source>utilisateur_bloque</source>
-                <target>Utilisateur bloqué</target>
+            <trans-unit id="want_to_know_more">
+                <source>want_to_know_more</source>
+                <target>En savoir plus</target>
             </trans-unit>
 
-            <!-- Gestion des articles -->
-            <trans-unit id="gestion_articles">
-                <source>gestion_articles</source>
-                <target>Gestion des articles</target>
+            <!-- ERROR MESSAGE -->
+            <trans-unit id="error_email_format">
+                <source>error_email_format</source>
+                <target>Veuillez fournir une adresse email valide.</target>
             </trans-unit>
-            <trans-unit id="poste_le">
-                <source>poste_le</source>
-                <target>Posté le</target>
-            </trans-unit>
-            <trans-unit id="cree_le">
-                <source>cree_le</source>
-                <target>Créé le</target>
-            </trans-unit>
-            <trans-unit id="rediger_article">
-                <source>rediger_article</source>
-                <target>Rédiger un article</target>
-            </trans-unit>
-            <trans-unit id="sauve_brouillon">
-                <source>sauve_brouillon</source>
-                <target>Sauvegarder le brouillon</target>
-            </trans-unit>
-            <trans-unit id="sauve_publie">
-                <source>sauve_publie</source>
-                <target>Publier l'article</target>
-            </trans-unit>
-            <trans-unit id="supprimer_article">
-                <source>supprimer_article</source>
-                <target>Suppression article</target>
-            </trans-unit>
-            <trans-unit id="supprimer_article_confirm">
-                <source>supprimer_article_confirm</source>
-                <target>Etes-vous sur de vouloir supprimer cet article ?</target>
+            <trans-unit id="error_newsletter_already_subscribe">
+                <source>error_newsletter_already_subscribe</source>
+                <target>Cet email recoit déjà les newsletters.</target>
             </trans-unit>
 
+            <!-- PAGE TITLE -->
+            <trans-unit id="homepage_title">
+                <source>homepage_title</source>
+                <target>Observez les oiseaux lors de vos randonnées et balades</target>
+            </trans-unit>
+            <trans-unit id="registration_title">
+                <source>registration_title</source>
+                <target>Inscrivez-vous sur le site de l’association NAO</target>
+            </trans-unit>
+            <trans-unit id="observation_create_title">
+                <source>observation_create_title</source>
+                <target>Nouvelle observation</target>
+            </trans-unit>
+            <trans-unit id="observation_map_title">
+                <source>observation_map_title</source>
+                <target>Observations d'oiseaux en France</target>
+            </trans-unit>
+            <trans-unit id="observation_list_title">
+                <source>observation_list_title</source>
+                <target>Liste des observations d'oiseaux en France</target>
+            </trans-unit>
+            <trans-unit id="observation_detail_title">
+                <source>observation_detail_title</source>
+                <target>Fiche d'observation</target>
+            </trans-unit>
+            <trans-unit id="about_page_title">
+                <source>about_page_title</source>
+                <target>Découvrez l’association NAO regroupant des passionnés d’ornithologie</target>
+            </trans-unit>
+            <trans-unit id="blog_page_title">
+                <source>blog_page_title</source>
+                <target>Découvre le blog sur les oiseaux de NAO</target>
+            </trans-unit>
+            <trans-unit id="stay_connected_page_title">
+                <source>stay_connected_page_title</source>
+                <target>Restez connecté avec l’association Nos Amis les Oiseaux !</target>
+            </trans-unit>
+            <trans-unit id="contact_page_title">
+                <source>contact_page_title</source>
+                <target>Rentrez en contact avec l'association NAO </target>
+            </trans-unit>
+            <trans-unit id="login_page_title">
+                <source>login_page_title</source>
+                <target>Connectez-vous au site de l’association NAO</target>
+            </trans-unit>
+            <trans-unit id="dashboard_page_title">
+                <source>dashboard_page_title</source>
+                <target>Votre tableau de board</target>
+            </trans-unit>
+            <trans-unit id="legacy_page_title">
+                <source>legacy_page_title</source>
+                <target>Mentions légales de l’association NAO</target>
+            </trans-unit>
+            <trans-unit id="faq_page_title">
+                <source>faq_page_title</source>
+                <target>Une question sur le projet NAO ? - FAQ </target>
+            </trans-unit>
+            <trans-unit id="search_page_title">
+                <source>search_page_title</source>
+                <target>Votre recherche</target>
+            </trans-unit>
+            <trans-unit id="observation_me_page_title">
+                <source>observation_me_page_title</source>
+                <target>Vos observations</target>
+            </trans-unit>
+            <trans-unit id="observation_validation_page_title">
+                <source>observation_validation_page_title</source>
+                <target>Valider une observation</target>
+            </trans-unit>
+            <trans-unit id="404_page_title">
+                <source>404_page_title</source>
+                <target>Page 404</target>
+            </trans-unit>
+            <trans-unit id="account_recovery_page_title">
+                <source>account_recovery_page_title</source>
+                <target>Mot de passe oublié</target>
+            </trans-unit>
+            <trans-unit id="new_password_page_title">
+                <source>new_password_page_title</source>
+                <target>Changement de mot de passe</target>
+            </trans-unit>
+            <trans-unit id="GPS_coordinate">
+                <source>GPS_coordinate</source>
+                <target>Coordonnées GPS %latitude% N, %longitude% E</target>
+            </trans-unit>
+            <trans-unit id="profil_view_page_title">
+                <source>profil_view_page_title</source>
+                <target>Profil de %name%</target>
+            </trans-unit>
 
+            <!-- PAGE META -->
+            <trans-unit id="homepage_meta_description">
+                <source>homepage_meta_description</source>
+                <target>Devenez l'acteur d'un projet collaboratif engagé et environnemental avec NAO ! Joignez-vous aux nombreux passionnés d'ornithologie de France.</target>
+            </trans-unit>
+            <trans-unit id="registration_meta_description">
+                <source>registration_meta_description</source>
+                <target>Rejoignez le projet NAO en vous inscrivant sur le site de l’association et accédez à toutes les fonctionnalités comme l’envoi de vos observations d’oiseaux.</target>
+            </trans-unit>
+            <trans-unit id="observation_create_meta_description">
+                <source>observation_create_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="observation_map_meta_description">
+                <source>observation_map_meta_description</source>
+                <target>Retrouvez sur cette page la carte des observations d'oiseaux en France sur laquelle vous pouvez filtrer par espèce d'oiseau et par département.</target>
+            </trans-unit>
+            <trans-unit id="observation_list_meta_description">
+                <source>observation_list_meta_description</source>
+                <target>Découvrez la liste de toutes les observations d'oiseaux en France, réalisées par les passionnés d'ornithologie du site collaboratif Nos Amis les Oiseaux.</target>
+            </trans-unit>
+            <trans-unit id="observation_detail_meta_description">
+                <source>observation_detail_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="about_page_meta_description">
+                <source>about_page_meta_description</source>
+                <target>Nos amis les oiseaux est une association loi 1901 regroupant de nombreux passionnés d’ornithologie. Elle a été créée dans le but de préserver les oiseaux.</target>
+            </trans-unit>
+            <trans-unit id="blog_page_meta_description">
+                <source>blog_page_meta_description</source>
+                <target>Vous souhaitez rester informé et en apprendre plus sur l'ornithologie ? Retrouvez notre blog des articles sur les oiseaux et ce qui les entourent.</target>
+            </trans-unit>
+            <trans-unit id="stay_connected_page_meta_description">
+                <source>stay_connected_page_meta_description</source>
+                <target>NAO, ce n’est pas que l’observation d’oiseaux ! Nous vous proposons de partager cette passion à travers plusieurs supports comme notre blog sur les oiseaux.</target>
+            </trans-unit>
+            <trans-unit id="contact_page_meta_description">
+                <source>contact_page_meta_description</source>
+                <target>Vous souhaitez contacter l'association Nos Amis les Oiseaux ? Vous êtes au bon endroit ! Depuis cette page, il vous sera possible de nous envoyer un mail.</target>
+            </trans-unit>
+            <trans-unit id="login_page_meta_description">
+                <source>login_page_meta_description</source>
+                <target>Rejoignez le projet NAO en vous connectant sur le site de l’association et accédez à toutes les fonctionnalités comme l’envoi de vos observations d’oiseaux.</target>
+            </trans-unit>
+            <trans-unit id="dashboard_page_meta_description">
+                <source>dashboard_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="legacy_page_meta_description">
+                <source>legacy_page_meta_description</source>
+                <target>Retrouvez les Mentions légales de l’association NAO ainsi que les conditions d’utilisation du site sur cette page.</target>
+            </trans-unit>
+            <trans-unit id="faq_page_meta_description">
+                <source>faq_page_meta_description</source>
+                <target>Retrouvez les questions fréquemment posées concernant l'utilisation du site pour l'observation des oiseaux et la saisie de celles-ci.</target>
+            </trans-unit>
+            <trans-unit id="search_page_meta_description">
+                <source>search_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="account_recovery_page_meta_description">
+                <source>account_recovery_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="new_password_page_meta_description">
+                <source>new_password_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="observation_me_page_meta_description">
+                <source>observation_me_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="observation_validation_page_meta_description">
+                <source>observation_validation_page_meta_description</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="profil_view_page_meta_description">
+                <source>profil_view_page_meta_description</source>
+                <target></target>
+            </trans-unit>
 
+            <!-- LINK NAVIGATION -->
+            <trans-unit id="sign_in">
+                <source>sign_in</source>
+                <target>S'incrire</target>
+            </trans-unit>
+            <trans-unit id="register">
+                <source>register</source>
+                <target>Inscription</target>
+            </trans-unit>
+            <trans-unit id="sign_up">
+                <source>sign_up</source>
+                <target>Se connecter</target>
+            </trans-unit>
+            <trans-unit id="connexion">
+                <source>connexion</source>
+                <target>connexion</target>
+            </trans-unit>
+            <trans-unit id="home">
+                <source>home</source>
+                <target>Accueil</target>
+            </trans-unit>
+            <trans-unit id="observer">
+                <source>observer</source>
+                <target>Observer</target>
+            </trans-unit>
+            <trans-unit id="map">
+                <source>map</source>
+                <target>Carte</target>
+            </trans-unit>
+            <trans-unit id="list">
+                <source>list</source>
+                <target>Liste</target>
+            </trans-unit>
+            <trans-unit id="about">
+                <source>about</source>
+                <target>À propos</target>
+            </trans-unit>
+            <trans-unit id="blog">
+                <source>blog</source>
+                <target>Le blog</target>
+            </trans-unit>
+            <trans-unit id="faq">
+                <source>faq</source>
+                <target>faq</target>
+            </trans-unit>
+            <trans-unit id="legacy">
+                <source>legacy</source>
+                <target>Mentions légales</target>
+            </trans-unit>
+            <trans-unit id="stay_connected">
+                <source>stay_connected</source>
+                <target>Restez connecté</target>
+            </trans-unit>
+            <trans-unit id="contact">
+                <source>contact</source>
+                <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="your_account">
+                <source>your_account</source>
+                <target>Votre espace</target>
+            </trans-unit>
+            <trans-unit id="your_dashboard">
+                <source>your_dashboard</source>
+                <target>Votre tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="admin_panel">
+                <source>admin_panel</source>
+                <target>Administration</target>
+            </trans-unit>
+            <trans-unit id="your_observation">
+                <source>your_observation</source>
+                <target>Vos observations</target>
+            </trans-unit>
+            <trans-unit id="validate_observation">
+                <source>validate_observation</source>
+                <target>Valider une observation</target>
+            </trans-unit>
+            <trans-unit id="your_notifications">
+                <source>your_notifications</source>
+                <target>Vos notifications</target>
+            </trans-unit>
+            <trans-unit id="sign_out">
+                <source>sign_out</source>
+                <target>Se déconnecter</target>
+            </trans-unit>
+            <trans-unit id="activate_account">
+                <source>activate_account</source>
+                <target>Activer votre compte</target>
+            </trans-unit>
+            <trans-unit id="lost_password">
+                <source>lost_password</source>
+                <target>Mot de passe oublié</target>
+            </trans-unit>
+            <trans-unit id="delete_account">
+                <source>delete_account</source>
+                <target>Supprimer le compte</target>
+            </trans-unit>
+            <trans-unit id="need_help">
+                <source>need_help</source>
+                <target>Besoin d'aide ?</target>
+            </trans-unit>
+            <trans-unit id="target_on_map">
+                <source>target_on_map</source>
+                <target>Pointer sur la carte</target>
+            </trans-unit>
+            <trans-unit id="Yes">
+                <source>Yes</source>
+                <target>Oui</target>
+            </trans-unit>
+            <trans-unit id="No">
+                <source>No</source>
+                <target>Non</target>
+            </trans-unit>
+            <trans-unit id="Maybe">
+                <source>Maybe</source>
+                <target>Peut-être</target>
+            </trans-unit>
 
+            <!-- ALT IMAGE -->
+            <trans-unit id="alt_big_logo_white">
+                <source>alt_big_logo_white</source>
+                <target>Grand logo blanc nos amis les oiseaux</target>
+            </trans-unit>
+            <trans-unit id="alt_bird">
+                <source>alt_bird</source>
+                <target>Image d'un oiseaux</target>
+            </trans-unit>
+            <trans-unit id="alt_actuality">
+                <source>alt_actuality</source>
+                <target>Image d'une actualité</target>
+            </trans-unit>
+            <trans-unit id="alt_profil">
+                <source>alt_profil</source>
+                <target>Photo de profil</target>
+            </trans-unit>
 
-
-            <!-- Général -->
-            <trans-unit id="annuler">
-                <source>annuler</source>
+            <!-- FORMS / BUTTON -->
+            <trans-unit id="search">
+                <source>search</source>
+                <target>Rechercher</target>
+            </trans-unit>
+            <trans-unit id="cancel">
+                <source>cancel</source>
                 <target>Annuler</target>
             </trans-unit>
-            <trans-unit id="enregistrer">
-                <source>enregistrer</source>
+            <trans-unit id="save">
+                <source>save</source>
                 <target>Enregistrer</target>
             </trans-unit>
+            <trans-unit id="label_email">
+                <source>label_email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="label_name">
+                <source>label_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="label_password">
+                <source>label_password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="label_password_confirmation">
+                <source>label_password_confirmation</source>
+                <target>Confirmer le mot de passe</target>
+            </trans-unit>
+            <trans-unit id="label_object">
+                <source>label_object</source>
+                <target>Objet</target>
+            </trans-unit>
+            <trans-unit id="label_message">
+                <source>label_message</source>
+                <target>Message</target>
+            </trans-unit>
+            <trans-unit id="send">
+                <source>send</source>
+                <target>Envoyer</target>
+            </trans-unit>
+            <trans-unit id="remember_me">
+                <source>remember_me</source>
+                <target>Se souvenir de moi</target>
+            </trans-unit>
+            <trans-unit id="connect_with_facebook">
+                <source>connect_with_facebook</source>
+                <target>se connecter avec facebook</target>
+            </trans-unit>
+            <trans-unit id="connect_with_google">
+                <source>connect_with_google</source>
+                <target>se connecter avec google</target>
+            </trans-unit>
+            <trans-unit id="send_raz_link">
+                <source>send_raz_link</source>
+                <target>Reinitialiser</target>
+            </trans-unit>
+            <trans-unit id="new_password">
+                <source>new_password</source>
+                <target>Nouveau mot de passe</target>
+            </trans-unit>
+            <trans-unit id="new_password_confirmation">
+                <source>new_password_confirmation</source>
+                <target>Confirmer nouveau mot de passe</target>
+            </trans-unit>
+            <trans-unit id="change_password">
+                <source>change_password</source>
+                <target>Changer le mot de passe</target>
+            </trans-unit>
+            <trans-unit id="sharing">
+                <source>sharing</source>
+                <target>Partager</target>
+            </trans-unit>
+            <trans-unit id="leave_a_comment">
+                <source>leave_a_comment</source>
+                <target>Laisser un commentaire</target>
+            </trans-unit>
+            <trans-unit id="require_input">
+                <source>require_input</source>
+                <target>Ce champ est obligatoire.</target>
+            </trans-unit>
+            <trans-unit id="confirm">
+                <source>confirm</source>
+                <target>Confirmer</target>
+            </trans-unit>
+            <trans-unit id="give_me_money">
+                <source>give_me_money</source>
+                <target>Faire un don a l'association</target>
+            </trans-unit>
+            <trans-unit id="label_location">
+                <source>label_location</source>
+                <target>Lieu</target>
+            </trans-unit>
+            <trans-unit id="label_date">
+                <source>label_date</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="label_bird_view">
+                <source>label_bird_view</source>
+                <target>Espèce observée</target>
+            </trans-unit>
+            <trans-unit id="label_quota_bird">
+                <source>label_quota_bird</source>
+                <target>Nombre d'individus observés</target>
+            </trans-unit>
+            <trans-unit id="label_more_bird">
+                <source>label_more_bird</source>
+                <target>Comportement observé (facultatif)</target>
+            </trans-unit>
+            <trans-unit id="save_observation">
+                <source>save_observation</source>
+                <target>Soumettre l'observation</target>
+            </trans-unit>
+            <trans-unit id="search_by_bird">
+                <source>search_by_bird</source>
+                <target>Rechercher par espèce</target>
+            </trans-unit>
 
-            <!-- roles -->
+            <!-- MODAL -->
+            <trans-unit id="modal_confirmation_explain">
+                <source>modal_confirmation_explain</source>
+                <target>
+                    Cette décision est irrévocable
+
+                    Voulez-vous continuez ?
+                </target>
+            </trans-unit>
+
+            <!-- ROLES -->
             <trans-unit id="ROLE_ADMIN">
                 <source>ROLE_ADMIN</source>
                 <target>Administrateur</target>
@@ -118,7 +485,6 @@
                 <source>ROLE_OBSERVER</source>
                 <target>Particulier</target>
             </trans-unit>
-
             <trans-unit id="profil_ROLE_ADMIN">
                 <source>profil_ROLE_ADMIN</source>
                 <target>profil administrateur</target>
@@ -132,10 +498,895 @@
                 <target>Profil particulier</target>
             </trans-unit>
 
+            <!-- ARTICLES (POSTS) -->
+            <trans-unit id="last_article">
+                <source>last_article</source>
+                <target>Dernière actualité</target>
+            </trans-unit>
+            <trans-unit id="no_article_for_moment">
+                <source>no_article_for_moment</source>
+                <target>Il n'y a pas encore d'actualité</target>
+            </trans-unit>
+            <trans-unit id="published_at">
+                <source>published_at</source>
+                <target>posté le %date%</target>
+            </trans-unit>
+            <trans-unit id="created_at">
+                <source>created_at</source>
+                <target>créé le %date%</target>
+            </trans-unit>
+            <trans-unit id="received_at">
+                <source>received_at</source>
+                <target>reçu le %date%</target>
+            </trans-unit>
+            <trans-unit id="from">
+                <source>from</source>
+                <target>De</target>
+            </trans-unit>
+            <trans-unit id="article_management">
+                <source>article_management</source>
+                <target>Gestion des articles</target>
+            </trans-unit>
+            <trans-unit id="writing_article">
+                <source>writing_article</source>
+                <target>Rédiger un article</target>
+            </trans-unit>
+            <trans-unit id="saving_draft">
+                <source>saving_draft</source>
+                <target>Sauvegarder le brouillon</target>
+            </trans-unit>
+            <trans-unit id="publish_article">
+                <source>publish_article</source>
+                <target>Publier l'article</target>
+            </trans-unit>
+            <trans-unit id="delete_article">
+                <source>delete_article</source>
+                <target>Suppression article</target>
+            </trans-unit>
+            <trans-unit id="want_delete_article">
+                <source>want_delete_article</source>
+                <target>Supprimer l'article ?</target>
+            </trans-unit>
+            <trans-unit id="read">
+                <source>read</source>
+                <target>Lire</target>
+            </trans-unit>
+            <trans-unit id="article_title">
+                <source>article_title</source>
+                <target>Titre de l'article</target>
+            </trans-unit>
+            <trans-unit id="article_content">
+                <source>article_content</source>
+                <target>Contenu de l'article</target>
+            </trans-unit>
+            <trans-unit id="featured_image">
+                <source>featured_image</source>
+                <target>Image à la une</target>
+            </trans-unit>
+
+            <!-- OBSERVATIONS -->
+            <trans-unit id="observations">
+                <source>observations</source>
+                <target>Observations</target>
+            </trans-unit>
+            <trans-unit id="the_observations">
+                <source>the_observations</source>
+                <target>Les observations</target>
+            </trans-unit>
+            <trans-unit id="observation">
+                <source>observation</source>
+                <target>Observation</target>
+            </trans-unit>
+            <trans-unit id="observe_at">
+                <source>observe_at</source>
+                <target>observé le %date%</target>
+            </trans-unit>
+            <trans-unit id="in_place">
+                <source>in_place</source>
+                <target>à %place%</target>
+            </trans-unit>
+            <trans-unit id="observation_create_main_title">
+                <source>observation_create_main_title</source>
+                <target>Nouvelle observation</target>
+            </trans-unit>
+            <trans-unit id="observation_create_secondary_title">
+                <source>observation_create_secondary_title</source>
+                <target>Ayez l’œil</target>
+            </trans-unit>
+            <trans-unit id="observation_map_main_title">
+                <source>observation_map_main_title</source>
+                <target>Les observations</target>
+            </trans-unit>
+            <trans-unit id="observation_map_secondary_title">
+                <source>observation_map_secondary_title</source>
+                <target>A vol d'oiseau</target>
+            </trans-unit>
+            <trans-unit id="observation_list_main_title">
+                <source>observation_list_main_title</source>
+                <target>Liste des observations</target>
+            </trans-unit>
+            <trans-unit id="waiting">
+                <source>waiting</source>
+                <target>En attente</target>
+            </trans-unit>
+            <trans-unit id="waiting_validation">
+                <source>waiting_validation</source>
+                <target>En attente de validation</target>
+            </trans-unit>
+            <trans-unit id="validated">
+                <source>validated</source>
+                <target>Validées</target>
+            </trans-unit>
+            <trans-unit id="observation_me_main_title">
+                <source>observation_me_main_title</source>
+                <target>Vos observations</target>
+            </trans-unit>
+            <trans-unit id="observation_validation_main_title">
+                <source>observation_validation_main_title</source>
+                <target>Valider une observation</target>
+            </trans-unit>
+            <trans-unit id="your_validation">
+                <source>your_validation</source>
+                <target>Vos validations</target>
+            </trans-unit>
+            <trans-unit id="your_refuse">
+                <source>your_refuse</source>
+                <target>Vos refus</target>
+            </trans-unit>
+            <trans-unit id="dont_have_notifications">
+                <source>dont_have_notifications</source>
+                <target>Vous n'avez pas de notification</target>
+            </trans-unit>
+            <trans-unit id="dont_have_obs_draft">
+                <source>dont_have_obs_draft</source>
+                <target>Vous n'avez pas d'observation en brouillons</target>
+            </trans-unit>
+            <trans-unit id="dont_have_obs_validate">
+                <source>dont_have_obs_validate</source>
+                <target>Vous n'avez pas d'observation validée</target>
+            </trans-unit>
+            <trans-unit id="dont_have_obs_waiting">
+                <source>dont_have_obs_waiting</source>
+                <target>Vous n'avez pas d'observation en attente</target>
+            </trans-unit>
+            <trans-unit id="last_bird_watched_of">
+                <source>last_bird_watched_of</source>
+                <target>Dernier spécimen observé de %name%</target>
+            </trans-unit>
+            <trans-unit id="no_last_bird_watched">
+                <source>no_last_bird_watched</source>
+                <target>Il n'y a pas d'autre observation pour ce spécimen</target>
+            </trans-unit>
+            <trans-unit id="notification_subject">
+                <source>notification_subject</source>
+                <target>De %naturalist% concernant l'utilisateur %observer%</target>
+            </trans-unit>
+            <trans-unit id="dont_have_obs_found">
+                <source>dont_have_obs_found</source>
+                <target>Aucune observation n'a été trouvée</target>
+            </trans-unit>
+            <trans-unit id="department">
+                <source>department</source>
+                <target>Département</target>
+            </trans-unit>
+            <trans-unit id="all_department">
+                <source>all_department</source>
+                <target>Tous les départements</target>
+            </trans-unit>
+            <trans-unit id="no_observation_found_in_zone">
+                <source>no_observation_found_in_zone</source>
+                <target>Il n'y a pas d'observation correspondante aux critères de votre recherche.</target>
+            </trans-unit>
+            <trans-unit id="x_observation_found_in_zone">
+                <source>x_observation_found_in_zone</source>
+                <target>Il y a %nombre% observation(s) trouvée(s) correspondante aux critères de votre recherche. Consultez la liste pour plus de détails</target>
+            </trans-unit>
+            <trans-unit id="x_observation_in_site">
+                <source>x_observation_in_site</source>
+                <target>%nombre% observations ont été validées sur le site. Consultez la liste pour plus de détails</target>
+            </trans-unit>
+            <trans-unit id="observation_validation_notice">
+                <source>observation_validation_notice</source>
+                <target>Félicitations, votre observation a été validée.</target>
+            </trans-unit>
+            <trans-unit id="observation_refused_notice">
+                <source>observation_refused_notice</source>
+                <target>Votre observation de %species% du %date% a été refusée</target>
+            </trans-unit>
+            <trans-unit id="observation_refused_notice_admin">
+                <source>observation_refused_notice_admin</source>
+                <target>Refus de l'observation de %species% du %date%</target>
+            </trans-unit>
+
+            <!-- HOMEPAGE -->
+            <trans-unit id="homepage_main_title">
+                <source>homepage_main_title</source>
+                <target>Vous avez l'oeil ?</target>
+            </trans-unit>
+            <trans-unit id="homepage_secondary_title">
+                <source>homepage_secondary_title</source>
+                <target>Envolez-vous avec</target>
+            </trans-unit>
+            <trans-unit id="homepage_know_more">
+                <source>homepage_know_more</source>
+                <target>En savoir plus</target>
+            </trans-unit>
+            <trans-unit id="homepage_submit_observation">
+                <source>homepage_submit_observation</source>
+                <target>Soumettre une observation</target>
+            </trans-unit>
+            <trans-unit id="collaborative_project_title">
+                <source>collaborative_project_title</source>
+                <target>Un projet collaboratif engagé</target>
+            </trans-unit>
+            <trans-unit id="collaborative_project_explain">
+                <source>collaborative_project_explain</source>
+                <target>Le projet de NAO a pour objectif de collecter des informations afin d’étudier les effets de l’urbanisation sur les oiseaux. L'érosion de la biodiversité est un problème différent de celui du climat mais néanmoins lié. Elle est si inquiétante qu'il nous faut agir, et tout de suite.</target>
+            </trans-unit>
+            <trans-unit id="collaborative_project_explain_2">
+                <source>collaborative_project_explain_2</source>
+                <target>
+                    Rejoignez de nombreux passionnés d'ornithologie à travers le projet de Nos Amis les Oiseaux (NAO).
+                    Nous formons une communauté active et dynamique souhaitant partager cette passion et préserver les oiseaux.
+                    N'attendez plus, rejoignez-nous !
+                </target>
+            </trans-unit>
+            <trans-unit id="observe">
+                <source>observe</source>
+                <target>Observer</target>
+            </trans-unit>
+            <trans-unit id="photographed">
+                <source>photographed</source>
+                <target>Photographier</target>
+            </trans-unit>
+            <trans-unit id="share">
+                <source>share</source>
+                <target>Partager</target>
+            </trans-unit>
+            <trans-unit id="do_validate">
+                <source>do_validate</source>
+                <target>Faire valider</target>
+            </trans-unit>
+            <trans-unit id="last_observation">
+                <source>last_observation</source>
+                <target>Dernières observations d’oiseaux</target>
+            </trans-unit>
+            <trans-unit id="last_actuality_of_nao">
+                <source>last_actuality_of_nao</source>
+                <target>Notre blog sur les oiseaux</target>
+            </trans-unit>
+            <trans-unit id="no_observation_for_moment">
+                <source>no_observation_for_moment</source>
+                <target>Il n'y a pas encore d'observations</target>
+            </trans-unit>
+
+            <!-- FOOTER -->
+            <trans-unit id="stay_inform">
+                <source>stay_inform</source>
+                <target>Restez informé</target>
+            </trans-unit>
+            <trans-unit id="subscribe_to_newsletter">
+                <source>subscribe_to_newsletter</source>
+                <target>S'inscrire à la newsletter</target>
+            </trans-unit>
+
+            <!-- REGISTRATION PAGE -->
+            <trans-unit id="registration_main_title">
+                <source>registration_main_title</source>
+                <target>inscription</target>
+            </trans-unit>
+            <trans-unit id="registration_secondary_title">
+                <source>registration_secondary_title</source>
+                <target>Rejoignez la communauté</target>
+            </trans-unit>
+            <trans-unit id="registration_newsletter_explain">
+                <source>registration_newsletter_explain</source>
+                <target>Je souhaite être informé des actualités</target>
+            </trans-unit>
+            <trans-unit id="registration_have_account">
+                <source>registration_have_account</source>
+                <target>Déja un compte ?</target>
+            </trans-unit>
+            <trans-unit id="registration_success">
+                <source>registration_success</source>
+                <target>Votre demande de compte s'est envolée. Un email de confirmation vous a été envoyé.</target>
+            </trans-unit>
+
+            <!-- ACTIVATION PAGE -->
+            <trans-unit id="registration_activation_title">
+                <source>registration_activation_title</source>
+                <target>Activation de votre compte</target>
+            </trans-unit>
+            <trans-unit id="registration_activation_success">
+                <source>registration_activation_success</source>
+                <target>Félicitations, votre compte est maintenant activé. Vous pouvez dès à dès à présent profiter de toutes les fonctionnalités.</target>
+            </trans-unit>
+            <trans-unit id="registration_activation_fail">
+                <source>registration_activation_fail</source>
+                <target>Nous n'avons pas pu valider votre compte, merci de vous assurer d'avoir cliquez sur le lien d'activation présent dans le mail qui vous a été envoyer et de ne pas avoir pas déjà valider votre compte. </target>
+            </trans-unit>
+
+            <!-- LOGIN PAGE -->
+            <trans-unit id="login_main_title">
+                <source>login_main_title</source>
+                <target>Connexion</target>
+            </trans-unit>
+            <trans-unit id="login_secondary_title">
+                <source>login_secondary_title</source>
+                <target>On vous attendait</target>
+            </trans-unit>
+            <trans-unit id="login_connexion_error">
+                <source>login_connexion_error</source>
+                <target>Problème de connexion ! merci de vérifier vos identifiants.</target>
+            </trans-unit>
+
+            <!-- ACCOUNT RECOVERY PAGE -->
+            <trans-unit id="account_recovery_main_title">
+                <source>account_recovery_main_title</source>
+                <target>Mot de passe oublié</target>
+            </trans-unit>
+            <trans-unit id="account_recovery_secondary_title">
+                <source>account_recovery_secondary_title</source>
+                <target>Pas de panique</target>
+            </trans-unit>
+            <trans-unit id="account_raz_password_title">
+                <source>account_raz_password_title</source>
+                <target>Réinitialisation du mot de passe</target>
+            </trans-unit>
+            <trans-unit id="account_raz_password_explain">
+                <source>account_raz_password_explain</source>
+                <target>
+                    Vous avez oublié votre mot de passe ? Indiquez-nous votre adresse email et nous vous enverrons un lien afin de le réinitialiser.
+                    Pensez à regarder dans votre dossier Spam si vous ne recevez rien.
+                </target>
+            </trans-unit>
+            <trans-unit id="account_recovery_not_found">
+                <source>account_recovery_not_found</source>
+                <target>Cette adresse e-mail n'a pas été reconnue.</target>
+            </trans-unit>
+            <trans-unit id="recovery_account_success">
+                <source>recovery_account_success</source>
+                <target>Nous venons de vous envoyer un email qui va vous permettre de choisir un nouveau mot de passe.</target>
+            </trans-unit>
+
+            <!-- CHANGE PASSWORD PAGE -->
+            <trans-unit id="new_password_main_title">
+                <source>new_password_main_title</source>
+                <target>Nouveau mot de passe</target>
+            </trans-unit>
+            <trans-unit id="new_password_secondary_title">
+                <source>new_password_secondary_title</source>
+                <target>La sécurité avant tout</target>
+            </trans-unit>
+            <trans-unit id="new_password_success_title">
+                <source>new_password_success_title</source>
+                <target>Mot de passe modifié</target>
+            </trans-unit>
+            <trans-unit id="new_password_success_explain">
+                <source>new_password_success_explain</source>
+                <target>Votre mot de passe a bien été modifié. Vous pouvez dès à présent accéder à votre compte avec vos nouveaux identifiants.</target>
+            </trans-unit>
+
+            <!-- ABOUT US PAGE -->
+            <trans-unit id="about_main_title">
+                <source>about_main_title</source>
+                <target>À propos</target>
+            </trans-unit>
+            <trans-unit id="about_secondary_title">
+                <source>about_secondary_title</source>
+                <target>L'association NAO</target>
+            </trans-unit>
+            <trans-unit id="about_nao_explain">
+                <source>about_nao_explain</source>
+                <target>
+                    Qui sommes-nous ?
+                    Nos amis les oiseaux est une association loi 1901 regroupant de nombreux passionnés d’ornithologie.
+                    Elle a été créée en 2001 par Michel Dujardin et Marie DUPONT tous deux naturalistes passionnés.
+                </target>
+            </trans-unit>
+            <trans-unit id="about_explain_1">
+                <source>about_explain_1</source>
+                <target>
+                    Vous n’êtes pas seul ! Vous vous dites peut-être que vous n’y connaissez rien pour identifier les oiseaux ou encore vous n’avez pas l’équipement adéquat. Ne vous en faites pas, nos membres naturalistes sont là pour vous aiguiller et pour vérifier les observations que vous rentrez sur le site.
+
+                    Ne vous mettez pas de barrières, l’observation d’oiseaux et l’inscription sur le site sont ouvertes à tous !
+                </target>
+            </trans-unit>
+            <trans-unit id="about_explain_2">
+                <source>about_explain_2</source>
+                <target>Nous comptons actuellement plus de 200 adhérents à l’association NAO ainsi que 2 000 membres inscrits sur le site qui effectuent régulièrement des observations lors de leurs balades et randonnées.</target>
+            </trans-unit>
+            <trans-unit id="about_explain_no_waiting">
+                <source>about_explain_no_waiting</source>
+                <target>Alors qu’attendez-vous ?</target>
+            </trans-unit>
+            <trans-unit id="about_explain_2_1">
+                <source>about_explain_2_1</source>
+                <target>Rejoignez une communauté active sur l’ornithologie pour ne plus être simplement un spectateur, devenez l'acteur d'un projet environnemental pour préserver cette si belle nature.</target>
+            </trans-unit>
+            <trans-unit id="about_explain_3">
+                <source>about_explain_3</source>
+                <target>
+                    Vous voulez contribuer davantage ou vous n'avez tout simplement pas le temps de soumettre des observations ?
+
+                    Nous soutenir même avec un petit don, c'est aussi être acteur du combat écologique que nous menons.
+                </target>
+            </trans-unit>
+
+            <!-- BLOG -->
+            <trans-unit id="blog_main_title">
+                <source>blog_main_title</source>
+                <target>Le blog</target>
+            </trans-unit>
+            <trans-unit id="blog_secondary_title">
+                <source>blog_secondary_title</source>
+                <target>Rédigé avec notre plus belle plume</target>
+            </trans-unit>
+            <trans-unit id="comments">
+                <source>comments</source>
+                <target>Commentaires</target>
+            </trans-unit>
+            <trans-unit id="no_comments_for_moment">
+                <source>no_comments_for_moment</source>
+                <target>Il n'y a pas encore de commentaire pour cet article.</target>
+            </trans-unit>
+            <trans-unit id="leave_comment">
+                <source>leave_comment</source>
+                <target>Laissez un commentaire</target>
+            </trans-unit>
+            <trans-unit id="you_should">
+                <source>you_should</source>
+                <target>Vous devez</target>
+            </trans-unit>
+            <trans-unit id="be_connected">
+                <source>be_connected</source>
+                <target>être connecté</target>
+            </trans-unit>
+            <trans-unit id="to_leave_a_comment">
+                <source>to_leave_a_comment</source>
+                <target>pour pouvoir laisser un commentaire.</target>
+            </trans-unit>
+            <trans-unit id="connected_to">
+                <source>connected_to</source>
+                <target>Connecté en tant que [%name%]</target>
+            </trans-unit>
+            <trans-unit id="message_need_moderation">
+                <source>message_need_moderation</source>
+                <target>Votre commentaire a été prit en compte, cependant il doit être validé par un membre de notre équipe avant d'être publié.</target>
+            </trans-unit>
+
+            <!-- STAY CONNECTED PAGE -->
+            <trans-unit id="stay_connected_main_title">
+                <source>stay_connected_main_title</source>
+                <target>Restez connecté</target>
+            </trans-unit>
+            <trans-unit id="stay_connected_secondary_title">
+                <source>stay_connected_secondary_title</source>
+                <target>Restez près du nid</target>
+            </trans-unit>
+            <trans-unit id="stay_connected_newsletter_title">
+                <source>stay_connected_newsletter_title</source>
+                <target>Inscrivez-vous et recevez les news par pigeon voyageur</target>
+            </trans-unit>
+            <trans-unit id="stay_connected_newsletter_explain">
+                <source>stay_connected_newsletter_explain</source>
+                <target>NAO, ce n’est pas que l’observation d’oiseaux ! Nous vous proposons de partager cette passion à travers plusieurs supports comme notre blog sur les oiseaux et de rester informer des rencontres avec nos naturalistes spécialisés sur l’ornithologie lors de randonnées.</target>
+            </trans-unit>
+            <trans-unit id="stay_connected_share_title">
+                <source>stay_connected_share_title</source>
+                <target>Suivez nos autres fils d'actualités</target>
+            </trans-unit>
+            <trans-unit id="stay_connected_share_explain">
+                <source>stay_connected_share_explain</source>
+                <target>En plus de notre newsletter, vous pouvez nous suivre sur nos réseaux sociaux pour vous tenir informé et pour discuter avec les membres de la communauté NAO. Nous avons mis à disposition un groupe sur Facebook afin de faciliter ces échanges. </target>
+            </trans-unit>
+
+            <!-- STAY CONNECTED PAGE -->
+            <trans-unit id="contact_main_title">
+                <source>contact_main_title</source>
+                <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="contact_secondary_title">
+                <source>contact_secondary_title</source>
+                <target>Notre équipe vole à votre secours</target>
+            </trans-unit>
+
+            <!-- FAQ PAGE -->
+            <trans-unit id="faq_main_title">
+                <source>faq_main_title</source>
+                <target>Foire aux questions</target>
+            </trans-unit>
+            <trans-unit id="faq_secondary_title">
+                <source>faq_secondary_title</source>
+                <target>Pour les "têtes de linotte"</target>
+            </trans-unit>
+            <trans-unit id="faq_full">
+                <source>faq_full</source>
+                <target>Foire aux questions</target>
+            </trans-unit>
+            <trans-unit id="faq_more_question">
+                <source>faq_more_question</source>
+                <target>Vous ne trouvez pas la réponse à votre question ?
+                    N'hésitez pas à nous contacter via la </target>
+            </trans-unit>
+            <trans-unit id="faq_contact_page">
+                <source>faq_contact_page</source>
+                <target>page contact</target>
+            </trans-unit>
+
+            <!-- GLOBAL SEARCH PAGE -->
+            <trans-unit id="search_min">
+                <source>search_min</source>
+                <target>Recherche</target>
+            </trans-unit>
+
+            <trans-unit id="search_new">
+                <source>search_new</source>
+                <target>Nouvelle recherche</target>
+            </trans-unit>
+
+            <trans-unit id="search_result">
+                <source>search_result</source>
+                <target>%total_count% résultats trouvés pour "%pattern%"</target>
+            </trans-unit>
+
+            <trans-unit id="no_search_result">
+                <source>no_search_result</source>
+                <target>Désolé, aucun résultat trouvé pour "%pattern%"</target>
+            </trans-unit>
+
+            <trans-unit id="search_again">
+                <source>search_again</source>
+                <target>Rien n'est perdu, vous pouvez faire une nouvelle recherche</target>
+            </trans-unit>
+
+            <!-- NEWSLETTER SEARCH PAGE -->
+            <trans-unit id="newsletter_subscribe_success">
+                <source>newsletter_subscribe_success</source>
+                <target>Votre inscription à notre newsletter a bien été prise en compte, toute l'équipe de NAO vous remercie.</target>
+            </trans-unit>
+
+            <!-- CONTACT PAGE -->
+            <trans-unit id="contact_explain_faq">
+                <source>contact_explain_faq</source>
+                <target>N'hésitez pas à consulter notre</target>
+            </trans-unit>
+            <trans-unit id="contact_faq_link">
+                <source>contact_faq_link</source>
+                <target>foire aux questions</target>
+            </trans-unit>
+            <trans-unit id="contact_success">
+                <source>contact_success</source>
+                <target>Votre message est bien parti par pigeon voyageur.</target>
+            </trans-unit>
+
+            <!-- 404 PAGE -->
+            <trans-unit id="404_main_title">
+                <source>404_main_title</source>
+                <target>OUPS !</target>
+            </trans-unit>
+            <trans-unit id="404_secondary_title">
+                <source>404_secondary_title</source>
+                <target>Vous êtes perdu(e) ?</target>
+            </trans-unit>
+            <trans-unit id="404_explain">
+                <source>404_explain</source>
+                <target>
+                    La page que vous recherchez n'existe pas ou plus
+                    Nous en sommes désolés
+                </target>
+            </trans-unit>
+            <trans-unit id="back_to_homepage">
+                <source>back_to_homepage</source>
+                <target>Retour à l'accueil</target>
+            </trans-unit>
+
+            <!-- USERS DASHBOARD -->
+            <trans-unit id="dashboard_main_title">
+                <source>dashboard_main_title</source>
+                <target>Votre tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="dashboard_secondary_title">
+                <source>dashboard_secondary_title</source>
+                <target> </target>
+            </trans-unit>
+            <trans-unit id="dashboard">
+                <source>dashboard</source>
+                <target>Tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="account">
+                <source>account</source>
+                <target>Compte</target>
+            </trans-unit>
+            <trans-unit id="profil">
+                <source>profil</source>
+                <target>profil</target>
+            </trans-unit>
+            <trans-unit id="notifications">
+                <source>notifications</source>
+                <target>notifications</target>
+            </trans-unit>
+            <trans-unit id="subscribe_newsletter">
+                <source>subscribe_newsletter</source>
+                <target>Je m'inscris à la newsletter</target>
+            </trans-unit>
+            <trans-unit id="private_profil">
+                <source>private_profil</source>
+                <target>Je veux rendre mon profil privé</target>
+            </trans-unit>
+            <trans-unit id="registered_since">
+                <source>registered_since</source>
+                <target>Inscrit(e) depuis le %date%</target>
+            </trans-unit>
+            <trans-unit id="activities">
+                <source>activities</source>
+                <target>Activités</target>
+            </trans-unit>
+            <trans-unit id="x_obersation_validate">
+                <source>x_obersation_validate</source>
+                <target>%nb% observation(s) validées</target>
+            </trans-unit>
+            <trans-unit id="about_me_default">
+                <source>about_me_default</source>
+                <target>%name% n'a pas encore renseigné cette partie, c'est dommage :(
+                Soyez patient, ça va venir :)
+                </target>
+            </trans-unit>
+            <trans-unit id="new_pofil_image">
+                <source>new_pofil_image</source>
+                <target>Nouvelle image de profil</target>
+            </trans-unit>
+            <trans-unit id="private_access">
+                <source>private_access</source>
+                <target>Désolé, vous ne pouvez avoir accès au profil de %name%, ce dernier est confidentiel</target>
+            </trans-unit>
+            <trans-unit id="profil_view_main_title">
+                <source>profil_view_main_title</source>
+                <target>Profil de %name%</target>
+            </trans-unit>
+            <trans-unit id="observation_individuals">
+                <source>observation_individuals</source>
+                <target>%individuals% individu(s) observé(s) le %date%</target>
+            </trans-unit>
+            <trans-unit id="validate">
+                <source>validate</source>
+                <target>Valider</target>
+            </trans-unit>
+            <trans-unit id="reject">
+                <source>reject</source>
+                <target>Rejeter</target>
+            </trans-unit>
+            <trans-unit id="reject_title">
+                <source>reject_title</source>
+                <target>Le motif de votre refus sera envoyé à %username%</target>
+            </trans-unit>
+            <trans-unit id="warn_admin">
+                <source>warn_admin</source>
+                <target>Signaler cette observation à l'administrateur</target>
+            </trans-unit>
+            <trans-unit id="observation_validation">
+                <source>observation_validation</source>
+                <target>Valider cette observation ?</target>
+            </trans-unit>
+            <trans-unit id="reject_observation">
+                <source>reject_observation</source>
+                <target>Rejeter l'observation ?</target>
+            </trans-unit>
+            <trans-unit id="no_observation_waiting">
+                <source>no_observation_waiting</source>
+                <target>Vous n'avez pas d'observation en attente de validation</target>
+            </trans-unit>
+            <trans-unit id="no_observation_validated">
+                <source>no_observation_validated</source>
+                <target>Vous n'avez pas encore validé d'observation</target>
+            </trans-unit>
+            <trans-unit id="no_observation_refused">
+                <source>no_observation_refused</source>
+                <target>Vous n'avez pas encore refusé d'observation</target>
+            </trans-unit>
+
+            <!-- ADMIN DASHBOARD -->
+            <trans-unit id="admin">
+                <source>admin</source>
+                <target>Administration</target>
+            </trans-unit>
+            <trans-unit id="admin_dashboard">
+                <source>admin_dashboard</source>
+                <target>Administration - Tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="admin_post">
+                <source>admin_post</source>
+                <target>Gestion des articles</target>
+            </trans-unit>
+            <trans-unit id="admin_user_title">
+                <source>admin_user_title</source>
+                <target>Gérer les utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="admin_user_explain">
+                <source>admin_user_explain</source>
+                <target>Attribuer ou retirer des droits aux utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="admin_post_title">
+                <source>admin_post_title</source>
+                <target>Gérer les articles</target>
+            </trans-unit>
+            <trans-unit id="admin_post_explain">
+                <source>admin_post_explain</source>
+                <target>Ajouter/modifier/supprimer des articles</target>
+            </trans-unit>
+            <trans-unit id="admin_comment_title">
+                <source>admin_comment_title</source>
+                <target>Modérer les commentaires</target>
+            </trans-unit>
+            <trans-unit id="admin_comment_explain">
+                <source>admin_comment_explain</source>
+                <target>Accepter ou refuser les commentaires des internautes</target>
+            </trans-unit>
+            <trans-unit id="published">
+                <source>published</source>
+                <target>Publiés</target>
+            </trans-unit>
+            <trans-unit id="draft">
+                <source>draft</source>
+                <target>Brouillons</target>
+            </trans-unit>
+            <trans-unit id="delete_comment_confirmation">
+                <source>delete_comment_confirmation</source>
+                <target>Supprimer le commentaire ?</target>
+            </trans-unit>
+            <trans-unit id="accept_comment_confirmation">
+                <source>accept_comment_confirmation</source>
+                <target>Autoriser le commentaire ?</target>
+            </trans-unit>
+            <trans-unit id="no_comment">
+                <source>no_comment</source>
+                <target>Il n'y a aucun commentaire à modérer</target>
+            </trans-unit>
+
+            <!-- USER MANAGEMENT -->
+            <trans-unit id="admin_user">
+                <source>admin_user</source>
+                <target>Gestion des utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="admin_user_edit">
+                <source>admin_user_edit</source>
+                <target>Modification d'un utilisateur</target>
+            </trans-unit>
+            <trans-unit id="search_by_name">
+                <source>search_by_name</source>
+                <target>Rechercher par nom</target>
+            </trans-unit>
+            <trans-unit id="enrolled_since">
+                <source>enrolled_since</source>
+                <target>Inscrit depuis le</target>
+            </trans-unit>
+            <trans-unit id="bloqued_user">
+                <source>bloqued_user</source>
+                <target>Utilisateur bloqué</target>
+            </trans-unit>
+            <trans-unit id="clear_search">
+                <source>clear_search</source>
+                <target>Effacer la recherche</target>
+            </trans-unit>
+
+            <!-- Social -->
+            <trans-unit id="cancel_transaction">
+                <source>cancel_transaction</source>
+                <target>Transaction annulée</target>
+            </trans-unit>
+            <trans-unit id="already_connected">
+                <source>already_connected</source>
+                <target>Vous êtes déjà connecté</target>
+            </trans-unit>
+
+            <!-- MISC -->
+            <trans-unit id="yes">
+                <source>yes</source>
+                <target>Oui</target>
+            </trans-unit>
+            <trans-unit id="no">
+                <source>no</source>
+                <target>Non</target>
+            </trans-unit>
+            <trans-unit id="delete">
+                <source>delete</source>
+                <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="edit">
+                <source>edit</source>
+                <target>Modifier</target>
+            </trans-unit>
+            <trans-unit id="authorize">
+                <source>authorize</source>
+                <target>Autoriser</target>
+            </trans-unit>
+            <trans-unit id="captcha_error">
+                <source>captcha_error</source>
+                <target>Erreur de vérification, veuillez recommencez s'il vous plait</target>
+            </trans-unit>
+            <!-- EMAIL -->
+            <trans-unit id="email_signature">
+                <source>email_signature</source>
+                <target>
+
+                    Cet email a été envoyé automatiquement, merci de ne pas y répondre.
+
+                    Cordialement,
+                    L'équipe NAO
+                </target>
+            </trans-unit>
+
+            <trans-unit id="email_feedback_subject">
+                <source>email_feedback_subject</source>
+                <target>NAO - Demande de contact</target>
+            </trans-unit>
+            <trans-unit id="email_feedback_title">
+                <source>email_feedback_title</source>
+                <target>Un oisillon a besoin de votre aide</target>
+            </trans-unit>
+            <trans-unit id="email_feedback_content">
+                <source>email_feedback_content</source>
+                <target>
+                    Bonjour,
+
+                    vous recevez cet email car une demande de contact vient d'être faite sur le site.
+                    Vous trouverez ci-dessous toutes les informations par laissé l'expéditeur.
+
+                    ---------------------------
+
+                    Nom : %name%
+
+                    Email: %email%
+
+                    Objet: %objet%
+
+                    Message: %message%
+
+                    ---------------------------
+
+                </target>
+            </trans-unit>
+
+            <trans-unit id="email_account_activation_subject">
+                <source>email_account_activation_subject</source>
+                <target>NAO - Confirmation d'inscription</target>
+            </trans-unit>
+            <trans-unit id="email_account_activation_title">
+                <source>email_account_activation_title</source>
+                <target>Bienvenue parmi nous</target>
+            </trans-unit>
+            <trans-unit id="email_account_activation_content">
+                <source>email_account_activation_content</source>
+                <target>
+                    Bonjour %name%,
+
+                    Pour valider votre compte utilisateur, merci de valider le lien ci-dessous.
+                    Pour information ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.
+
+                </target>
+            </trans-unit>
+
+            <trans-unit id="email_recovery_account_subject">
+                <source>email_recovery_account_subject</source>
+                <target>NAO - reinitialisation de votre mot de passe</target>
+            </trans-unit>
+            <trans-unit id="email_recovery_account_title">
+                <source>email_recovery_account_title</source>
+                <target>Reinitialisation de votre mot de passe</target>
+            </trans-unit>
+            <trans-unit id="email_recovery_account_content">
+                <source>email_recovery_account_content</source>
+                <target>
+                    Bonjour %name%,
+
+                    Vous avez demandé la modification de votre mot de passe sur notre site Nos amis les oiseaux, pou cela merci de cliquer sur le lien présent ci-dessous.
+                    Si vous n'avez pas demandé la modification de votre mot de passe, merci de prendre contact avec notre support.
+
+                </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
-
 
         <!--
         {% trans %}{% endtrans %}

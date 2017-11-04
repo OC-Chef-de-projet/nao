@@ -1,0 +1,12 @@
+<div class="card z-depth-0">
+{% for user in users %}
+    <li class="collection-item avatar col s12 m4" style="border-bottom: none">
+        <a class="dark" href="{{ path('admin_user_update', { 'id': user.id}) }}">
+            <img src="{{ asset(user.getImagePath) }}" class="circle">
+            <span class="title">{{ user.getName }}</span>
+            <p class="caption light-2">{{ user.roleString }}</p>
+        </a>
+    </li>
+{% endfor %}
+</div>
+

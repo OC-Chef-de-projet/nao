@@ -1,0 +1,29 @@
+<br />
+{% for cmt in cmtlist %}
+<div class="col s12">
+    <div class="comment-content">
+        <div class="img-container" style="background: url({{ asset(cmt.user.imagePath ) }}) center/cover no-repeat ;width:50px;height: 50px; float: left;">
+        </div>
+        <div class="comment-detail">
+            <span class="right caption light-2-no-hov">{{ 'published_at'|trans({'%date%': cmt.created|date("d/m/Y")}) }}</span>
+            <a href="{{ path('dashboard.user', {'id' : cmt.user.id, 'name' : cmt.user.slug }) }}" class="bleen">{{ cmt.user.name }}</a>
+            <p>{{ cmt.content }}</p>
+            <br />
+            <i class="material-icons post-icon prefix light-2 post-link">delete</i>
+            <a class="waves-effect modal-trigger confirm btn-link" href="#action-cmt"
+               data-cmtid="{{ cmt.id }}" data-cmtaction="delete">
+                {{ 'delete' | trans }}
+            </a>&nbsp;&nbsp;
+            <i class="material-icons post-icon prefix light-2 post-link">verified_user</i>
+            <a class="waves-effect modal-trigger confirm btn-link" href="#action-cmt"
+               data-cmtid="{{ cmt.id }}" data-cmtaction="authorize">
+                {{ 'authorize' | trans }}
+            </a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+
+

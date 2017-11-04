@@ -1,0 +1,128 @@
+{% set bgwhite = true %}
+
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ article.title }} - Blog - {{ 'NAO'|trans }}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ article.content|truncate(120)|striptags }}">
+    <meta name="og:description" content="{{ article.content|truncate(120)|striptags }}">
+    <meta name="og:title" content="{{ article.title }}">
+    <meta property="og:image" content="{{ absolute_url(asset('images/posts/' ~ article.imageLink )) }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="collapse" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(84, 84, 84, 0)), url('{{ asset('images/posts/' ~ article.imageLink ) }}') center/cover no-repeat">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle': article.title }%}
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <div id="header-main-title">
+                            <h1>{{ article.title }}</h1>
+                            <br /><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+    <section class="page-heading container hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb">{{ 'home'|trans }}</a>
+                    <a href="{{ path('blog') }}" class="breadcrumb">{{ 'blog'|trans }}</a>
+                    <span class="breadcrumb">{{ article.title }}</span>
+                </div>
+            </div>
+        </nav>
+        <div class="heading">{{ article.title }}</div>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <main class="container marge-top">
+        <section>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m10 push-m1">
+                                    <br />
+                                    <div class="row">
+                                        <div class="col s12 m6 right">
+                                            <p class="caption light-2-no-hov">{{ 'published_at'|trans({'%date%': article.publishedAt|date("d/m/Y")}) }}</p>
+                                            <br />
+                                            <p>{{ article.content|html }}</p>
+                                            <br />
+                                        </div>
+                                        <div class="col s12 m6 right">
+                                            <img src="{{ asset('images/posts/' ~ article.imageLink ) }}" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s12 m10 push-m1 center-align">
+                                    <br />
+                                    <a  href="#" class="waves-effect waves-light btn social less facebook share-link" data-social="facebook" data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}">
+                                        <i class="mdi mdi-facebook"></i><span class="hide-on-small-only">{{ 'sharing'|trans }}</span>
+                                    </a>
+                                    <a href="#" class="waves-effect waves-light btn social less google share-link" data-social="google" data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}">
+                                        <i class="mdi mdi-google-plus"></i><span class="hide-on-small-only">{{ 'sharing'|trans }}</span>
+                                    </a>
+                                    <a href="#" class="waves-effect waves-light btn social less twitter share-link" data-social="twitter" data-link="{{ url(current_route, app.request.attributes.get('_route_params'))|trim('/') }}">
+                                        <i class="mdi mdi-twitter"></i><span class="hide-on-small-only">{{ 'sharing'|trans }}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="card no-style all">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m10 push-m1">
+                                    <br />
+                                    <h2>{{ 'comments'|trans }}</h2>
+                                    {% if comments|length == 0 %} <p id="no-comment">{{ 'no_comments_for_moment'|trans }}</p>{% endif %}
+                                    <div id="cmt-list">
+                                        {% for comment in comments %}
+                                            {% include 'common/cards/comment.html.twig' with {'comment': comment } only %}
+                                        {% endfor %}
+                                        <br />
+                                    </div>
+                                    <br /><br />
+                                    <h2>{{ 'leave_comment'|trans }}</h2>
+                                    {% if user_is_logged %}
+                                        <span class="caption light-2-no-hov top-neg">{{ 'connected_to'|trans({'%name%': app.user.name}) }}</span>
+                                        <form id="form_comment" method="post" class="no-pad" action="{{ path('comment_add', {'article' : article.id}) ~ '?bearer=' ~ jwt.token }}">
+                                            <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <textarea  name="message" class="materialize-textarea" maxlength="250" required></textarea>
+                                                    <div class="error"></div>
+                                                    <span class="caption light-2-no-hov top-neg right" style="margin-right: 5px;"><span id="count_chars">0</span>/250</span>
+                                                </div>
+                                                <div class="col s12 center-align">
+                                                    <input type="submit" class="btn waves-effect" value="{{ 'leave_a_comment'|trans }}" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    {% else %}
+                                        <p>{{ 'you_should'|trans }} <a href="{{ path('login') }}" class="light-orange">{{ 'be_connected'|trans }}</a> {{ 'to_leave_a_comment'|trans }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+

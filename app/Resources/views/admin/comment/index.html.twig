@@ -1,0 +1,118 @@
+{% set bgwhite = true %}
+
+{% extends "common/template/base.html.twig" %}
+
+{% block title %}{{ 'admin_user'|trans }}{% endblock %}
+
+{% block header %}
+    <header class="classic admin">
+        <!-- NAVIGATION -->
+        {% include 'common/widget/navbar/base.html.twig' with {'navtitle' : 'admin_comment_title', 'admin' : true } %}
+    </header>
+{% endblock %}
+
+{% block body %}
+    <!-- PAGE HEADING -->
+
+    <section class="page-heading container hide-on-med-and-down admin">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="{{ path('homepage') }}" class="breadcrumb dbz">{{ 'home'|trans }}</a>
+                    <a href="{{ path('admin_homepage') }}" class="breadcrumb dbz">{{ 'admin'|trans }}</a>
+                    <span class="breadcrumb">{{ 'admin_comment_title'|trans }}</span>
+                </div>
+            </div>
+        </nav>
+        <h1 class="activated">{{ 'admin_comment_title'|trans }}</h1>
+    </section>
+    <main class="container marge-top">
+        <section>
+            <div class="row">
+                <div class="col s12">
+                    {% if cmtlist|length <= 0 %}
+                        <p>{{ 'no_comment' | trans }}</p>
+                    {% else %}
+                    <div class="card no-style">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m10 push-m1">
+                                    <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
+                                        {% include 'admin/comment/list.html.twig' %}
+                                    </div>
+                                    <div class="row">
+                                        {% include 'admin/paginate.html.twig' %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <div id="action-cmt" class="modal">
+            <div class="modal-content">
+                <h4 id="modalTitle"></h4>
+                <p>{{ 'modal_confirmation_explain'|trans|nl2br }}</p>
+            </div>
+            <div class="modal-footer">
+                {{ form_start(form) }}
+                <button type="reset"
+                        class="modal-action modal-close waves-effect btn-flat light-orange">{{ 'cancel' | trans }}</button>
+                {{ form_widget(form.save) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+
+            $('.modal').modal();
+
+            $('.confirm').click(function () {
+                var modal_title = "";
+                if ($(this).data("cmtaction") == "authorize") {
+                    modal_title = '{{ 'accept_comment_confirmation' | trans }}';
+                }
+                if ($(this).data("cmtaction") == "delete") {
+                    modal_title = '{{ 'delete_comment_confirmation' | trans }}';
+                }
+                $('#modalTitle').html(modal_title);
+                $('#confirm_action').val($(this).data("cmtaction"));
+                $('#confirm_id').val($(this).data("cmtid"));
+            });
+        });
+
+        /**
+         *
+         * @param pageno
+         * @param user_id
+         */
+        function getList(pageno, user_id) {
+
+            $.ajax({
+                url: "{{ path('api_comment_paginate') }}?bearer={{ token }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "page": pageno,
+                },
+                success: function (response) {
+                    $('#eltlist').html(response.html);
+                }
+            });
+        }
+    </script>
+{% endblock %}
+
+
+
+
+

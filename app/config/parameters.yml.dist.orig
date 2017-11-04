@@ -1,0 +1,41 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host: 127.0.0.1
+    database_port: ~
+    database_name: symfony
+    database_user: root
+    database_password: ~
+    # You should uncomment this if you want to use pdo_sqlite
+    #database_path: '%kernel.project_dir%/var/data/data.sqlite'
+
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: ~
+    mailer_password: ~
+
+    mailer_from:  no-reply@nao.fr
+    mailer_to: asso.nao@outlook.fr
+    mailer_name: 'Nos amis les oiseaux'
+
+    # A secret key that's used to generate certain security-related tokens
+    secret: MySecretStoryIsSoAwesome
+
+    jwt_private_key_path: '%kernel.root_dir%/../jwt/private.pem' # ssh private key path
+    jwt_public_key_path:  '%kernel.root_dir%/../jwt/public.pem'  # ssh public key path
+    jwt_key_pass_phrase:  'SecretForAPI'                         # ssh key pass phrase
+    jwt_token_ttl:        3600
+
+    google.client_id: CLIENTID
+    google.client_secret: SECRET
+    facebook.client_id: CLIENTID
+    facebook.client_secret: SECRET
+
+    captcha.key: KEY
+    captcha.secret: SECRET
+
+    mailchimp.key: KEY
+    mailchimp.list: LIST
+
+    google.maps: API_KEY
