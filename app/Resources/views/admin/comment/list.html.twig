@@ -8,7 +8,6 @@
             <span class="right caption light-2-no-hov">{{ 'published_at'|trans({'%date%': cmt.created|date("d/m/Y")}) }}</span>
             <a href="{{ path('dashboard.user', {'id' : cmt.user.id, 'name' : cmt.user.slug }) }}" class="bleen">{{ cmt.user.name }}</a>
             <p>{{ cmt.content }}</p>
-            <p>{{ cmt.id }}</p>
             <br />
             <i class="material-icons post-icon prefix light-2 post-link">delete</i>
             <a class="waves-effect modal-trigger confirm btn-link" href="#action-cmt"
