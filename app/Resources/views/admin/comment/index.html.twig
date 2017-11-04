@@ -37,8 +37,12 @@
                         <div class="card-content">
                             <div class="row">
                                 <div class="col s12 m10 push-m1">
-                                    {% include 'admin/comment/list.html.twig' %}
-                                    {% include 'admin/paginate.html.twig' %}
+                                    <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
+                                        {% include 'admin/comment/list.html.twig' %}
+                                    </div>
+                                    <div class="row">
+                                        {% include 'admin/paginate.html.twig' %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +71,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('assets/js/paginate.js') }}"></script>
     <script>
         $(function () {
 

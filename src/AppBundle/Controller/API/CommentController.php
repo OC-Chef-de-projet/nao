@@ -43,12 +43,14 @@ class CommentController extends Controller
             $this->getParameter('list_limit')
         );
 
+
         $form = $this->createForm(ConfirmType::class,null, ['url' => $this->generateUrl('admin_comment_confirmation', array('action' => '--','id' => 0))]);
         $form->handleRequest($request);
 
+        
 
         $html = $this->render('admin/comment/list.html.twig', [
-            'cmtlist' => $comments,
+            'cmtlist' => $comments->getIterator(),
             'form' =>  $form->createView()
         ])->getContent();
 

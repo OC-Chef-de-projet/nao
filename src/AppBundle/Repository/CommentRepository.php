@@ -19,9 +19,8 @@ class CommentRepository extends EntityRepository
         $query = $this->createQueryBuilder('c')
             ->where('c.status = :status')
             ->setParameter('status',Comment::WAITING)
-            ->orderBy('c.created', 'DESC')
+            ->orderBy('c.id', 'DESC')
             ->getQuery();
-
         $paginator = $this->paginate($query, $currentPage, $limit);
         return $paginator;
     }
