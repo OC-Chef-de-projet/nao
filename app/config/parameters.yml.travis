@@ -29,3 +29,5 @@ parameters:
 
     mailchimp.key: KEY
     mailchimp.list: LIST
+
+    google.maps: API_KEY
