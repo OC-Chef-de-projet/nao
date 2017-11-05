@@ -19,7 +19,6 @@ class SearchController extends Controller
         $em = $this->getDoctrine()->getManager();
         $posts = $em->getRepository('AppBundle:Post')->searchPosts($page,$this->getParameter('list_limit'),$request->query->get('search'));
 
-        dump($posts->getIterator());
         return $this->render('search.html.twig', array(
             'paginate' => $this->container->get('app.post')->getPagination($posts,$page),
             'postlist' => $posts->getIterator(),

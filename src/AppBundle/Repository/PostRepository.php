@@ -93,7 +93,6 @@ class PostRepository extends EntityRepository
         $query->orderBy('p.publishedAt', 'DESC');
 
         $query->getQuery();
-        dump($query);
         $paginator = $this->paginate($query, $currentPage, $limit);
         return $paginator;
     }
